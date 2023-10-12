@@ -27,31 +27,33 @@ Alla oleva lista ei kata kaikkea, mutta on enemmänkin ohjeellinen, mitä odotta
 
 | Osa | Tavoite                                                                                                                                                                                                                                                                         |
 | :--: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  1   | You can write simple programs, which read user input and for example basic calculations. You know the terms **variable**, **conditional** or **if**, and **while-loop** and can use them in the programs.                                                                     |
-|  2   | You know the logical operators, such as **and**, **or** and **not** and can use them in conditionals and while-loops. You know what **methods**, **method parameters** and **method return** mean, how to create them and what happens in the program while a method is used. |
-|  3   | You can comment your code and understand how naming variables affects the readibility of code. You understand the basics of **lists** and can use them in your programs, and iterate through a list.                                                                          |
-|  4   | You comprehend the terms **file** and **filesystem** and can read a simple file with your program. You know the basics for **Object oriented programming** and how to use this information in your programs.                                                                  |
-|  5   | You know the different **data types** and how they differ from each other. You can **overload** methods and **constructors**. You can use all these in your programs.                                                                                                         |
-|  6   | You understand the dfference between **static** and **non-static** classes and methods. You can separate **user interface** from program logic.                                                                                                                               |
+|  1   | Tunnet  käsitteet **muuttuja**, **ehtolause** ja **silmukka** ja osaat käyttää niitä ohjelmissa.                                                                |
+|  2   | Tunnet loogiset operaattorit, kuten **ja**, **tai** ja **ei** sekä osaat käyttää niitä ehtolauseissa ja silmukoissa.
+Tiedot, mitä **metodit/funktiot**, **parametrit** ja **paluuarvo** tarkoittavat, ja miten niitä käytetään. |
+|  3   | Osaat kommentoida omaa koodia ja ymmärrät kuinka muuttujien nimeäminen vaikuttaa koodin luettavuuteen. Ymmärrät **listojen** perusteet ja osaat käyttää niitä ohjelmissa.      |
+|  4   | Ymmärrät termit **tiedosto** ja **tiedostojärjestelmä** sekä osaat lukea / kirjoittaa tiedostoja ohjelmallisesti.
+Tunnet **olio-ohjelmoinnin** perusteet ja käytön ohjelmoinnissa.                                                                  |
+|  5   | Tunnet eri **tietotyypit** ja kuinka ne eroavat toisistaan.
+Osaat **ylikuormittaa** menetelmiä ja **konstruktoreita**. Pystyt käyttämään näitä ohjelmissasi.                                                                                      |
+|  6   | Ymmärrät **staattisen** ja **ei-staattisen** luokan ja metodin eron. Osaat erottaa **käyttöliittymän** ohjelmalogiikasta.                                                                                                                   |
 
 
-The course is graded on a scale of 0-5. The grade comprises of the amount of exercise points earned.
+Kurssi arvostellaan asteikolla 0-5. Arvosana määräytyy saavutettujen tehtäväpisteiden määrän perusteella.
 
-| Percentage done | Grade |
+| Prosenttia pisteistä | Arvosana |
 | :-------------- | :---: |
-| 90 % or more    |   5   |
+| 90 % tai enemmän    |   5   |
 | 80 % - 89,99 %  |   4   |
 | 70 % - 79,99 %  |   3   |
 | 60 % - 69,99 %  |   2   |
 | 50 % - 59,99 %  |   1   |
-| Less than 50 %  |   0   |
+| Alle 50 %  |   0   |
 
-At the end of the course, there is also an exam with **pass / fail** grading. This does not affect the grade but is to ensure that you have done the exercises yourself. The exam is reserved for students of Centria University of Applied Sciences and Centria Open University, and you can find the registeration information from above. The course material and the exercises are available still for anyone who wants.
+Lisäksi kurssin lopussa on koe, joka arvostellaan **hyväksytty / hylätty**. Tämä ei vaikuta arvosanaan, vaan tarkoituksena on varmistaa että olet tehnyt tehtävät itse. Koe on varattu Centria-ammattikorkeakoulun ja Centrian avoimen ammattikorkeakoulun opiskelijoille, ja rekisteröitymisohjeet löydät ylempää. Kurssin materiaali ja tehtävät ovat silti kaikkien saatavilla.
 
+## Mitä seuraavaksi
 
-## What's next
-
-Read the <Link style={{color: "#ef5b5b"}} to='/exercises'>Exercises and Exam instructions.</Link> 
+Lue <Link style={{color: "#ef5b5b"}} to='/exercises'>Tehtävä- ja koeohjeet.</Link> 
 
 ## Virheitä materiaalissa?
 

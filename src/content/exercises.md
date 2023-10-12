@@ -24,7 +24,6 @@ Ohjeet tehtävien palauttamiseen löytyy <Link style={{color: "#ef5b5b"}} to='/t
 
 Koe löytyy Centrian Itslearning-alustalta.
 
-
 ### Avoimen AMK:n koe
 
 Päästäksesi kokeeseen käsiksi, lue ohjeet ja rekisteröidy: https://koulutus.centria.fi/koulutukset/software-development/.
