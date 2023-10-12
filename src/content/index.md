@@ -4,7 +4,9 @@ nav_order: 1
 hidden: false
 ---
 
-Tervetuloa ohjelmoinnin perusteisiin C#:lla (_C Sharp_)!
+Tervetuloa ohjelmoinnin perusteisiin C#:lla (_C-Sharp_)!
+
+<Note>Tämän sivun käännöstyö on vielä kesken. Englanninkielinen materiaali on valmis!</Note>
 
 ## Jos haluat vain oppia
 

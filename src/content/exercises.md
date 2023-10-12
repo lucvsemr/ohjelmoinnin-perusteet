@@ -12,7 +12,7 @@ The course can have either weekly deadlines or a single deadline at the end, by 
 
 ## Advancing on the course
 
-At the beginning of the course, only the exercises for Part 1 are available for a student. To advance to next part, the student must get at least 50 % of a part's points.
+At the beginning of the course, only the exercises for Part 1 are available for a student. To advance to next part, the student must get at least 40 % of a part's points.
 
 ## Submitting the exercises
 
