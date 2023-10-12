@@ -1,5 +1,5 @@
 ---
-title: 'Printing and reading'
+title: 'Tulostaminen ja lukeminen'
 nav_order: 1
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'License'
+title: 'Lisenssi'
 nav_order: 999
 hidden: true
 ---

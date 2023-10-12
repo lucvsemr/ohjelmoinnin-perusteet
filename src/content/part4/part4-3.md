@@ -1,5 +1,5 @@
 ---
-title: "Files and reading data"
+title: "Tiedostot ja tiedon lukeminen"
 nav_order: 3
 hidden: false
 ---

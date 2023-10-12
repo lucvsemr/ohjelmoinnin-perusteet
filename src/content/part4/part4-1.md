@@ -1,5 +1,5 @@
 ---
-title: "Object Oriented Programming"
+title: "Olio-ohjelmointi"
 nav_order: 1
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Objects in a list"
+title: "Oliot listassa"
 nav_order: 2
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'Methods'
+title: 'Metodit'
 nav_order: 3
 hidden: false
 ---

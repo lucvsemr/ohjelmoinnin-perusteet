@@ -1,5 +1,5 @@
 ---
-title: 'More loops'
+title: 'Lisää silmukoita'
 nav_order: 2
 hidden: false
 ---

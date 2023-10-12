@@ -1,5 +1,5 @@
 ---
-title: 'Calculations'
+title: 'Laskutoimitukset'
 nav_order: 3
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'Discovering errors'
+title: 'Virheiden löytäminen'
 nav_order: 1
 hidden: false
 ---

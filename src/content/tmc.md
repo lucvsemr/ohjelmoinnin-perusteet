@@ -1,5 +1,5 @@
 ---
-title: 'TMC Instructions'
+title: 'TMC-Ohjeet'
 nav_order: 9999
 hidden: false
 ---

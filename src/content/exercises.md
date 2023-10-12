@@ -1,5 +1,5 @@
 ---
-title: 'Exercises and Exam'
+title: 'Tehtävät ja koe'
 nav_order: 99
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Lists"
+title: "Listat"
 nav_order: 2
 hidden: false
 ---

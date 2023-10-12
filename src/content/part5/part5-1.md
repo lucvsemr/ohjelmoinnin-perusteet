@@ -1,5 +1,5 @@
 ---
-title: "Object Oriented revision"
+title: "Olioiden kertausta"
 nav_order: 1
 hidden: false
 ---

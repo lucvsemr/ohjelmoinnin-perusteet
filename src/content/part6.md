@@ -1,5 +1,5 @@
 ---
-title: "Part 6 - User Interfaces and Static"
+title: "Osa 6 - Käyttöliittymä ja staattisuus"
 nav_order: 7
 hidden: false
 ---

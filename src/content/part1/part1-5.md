@@ -1,5 +1,5 @@
 ---
-title: "Repetition"
+title: "Toisto"
 nav_order: 5
 hidden: false
 ---

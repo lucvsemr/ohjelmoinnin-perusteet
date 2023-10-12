@@ -1,5 +1,5 @@
 ---
-title: 'Part 2 - Problem solving'
+title: 'Osa 2 - Ongelmanratkaisu'
 nav_order: 3
 hidden: false
 ---

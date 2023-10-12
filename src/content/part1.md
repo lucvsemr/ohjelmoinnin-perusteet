@@ -1,5 +1,5 @@
 ---
-title: 'Part 1 - The beginning'
+title: 'Osa 1 - Aloitus'
 nav_order: 2
 hidden: false
 ---

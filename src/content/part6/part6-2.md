@@ -1,5 +1,5 @@
 ---
-title: "Static and non-static"
+title: "Staattisuus ja ei-staattisuus"
 nav_order: 2
 hidden: false
 ---

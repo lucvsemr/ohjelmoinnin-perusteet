@@ -1,5 +1,5 @@
 ---
-title: 'Variables'
+title: 'Muuttujat'
 nav_order: 2
 hidden: false
 ---

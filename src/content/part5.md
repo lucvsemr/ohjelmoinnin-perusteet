@@ -1,5 +1,5 @@
 ---
-title: "Part 5 - Objects continued"
+title: "Osa 5 - Lisää olioita"
 nav_order: 6
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'Subproblems'
+title: 'Aliongelmat'
 nav_order: 1
 hidden: false
 ---

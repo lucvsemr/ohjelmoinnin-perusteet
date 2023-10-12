@@ -1,5 +1,5 @@
 ---
-title: "Part 4 - Object Oriented Programming"
+title: "Osa 4 - Olio-ohjelmointi"
 nav_order: 5
 hidden: false
 ---

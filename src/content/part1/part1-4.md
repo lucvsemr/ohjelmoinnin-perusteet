@@ -1,5 +1,5 @@
 ---
-title: 'Conditional and comparison'
+title: 'Ehdot ja vertailut'
 nav_order: 4
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: 'Part 3 - Lists and Arrays'
+title: 'Osa 3 - Listat ja taulukot'
 nav_order: 4
 hidden: false
 ---
