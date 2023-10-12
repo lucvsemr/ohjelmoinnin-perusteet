@@ -4,6 +4,6 @@ nav_order: 3
 hidden: false
 ---
 
-The second part of the material focuses on repetition in programs and on how to divide funcionality into distinct units.
+Materiaalin toinen osa keskittyy toistoon ohjelmissa ja siihen, kuinka ohjelmia voidaan jakaa osiin.
 
-In this part you will learn to recognize that certain sub-problems, such as reading input or calculations, recur in programs. You will be aware of solution models to certain sub-problems. In the exercises, you practice combining solution patterns used on sub-problems to solve broader ones.
+Tässä osassa opit tunnistamaan tietyt aliongelmat, kuten syötteen lukeminen tai laskutoimitukset, jotka toistuvat usein ohjelmissa. Olet tietoinen ratkaisuista tietyille aliongelmille. Harjoituksissa yhdistät ratkaisumallit, joita käytetään aliongelmissa, ratkaistaksesi laajempia ongelmia. 

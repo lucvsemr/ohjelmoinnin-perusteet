@@ -4,6 +4,5 @@ nav_order: 5
 hidden: false
 ---
 
-## Part 4
 
-The main theme of the fourth part is object-oriented programming. You will learn to read data from files and to represent and handle information with the help of objects.
+Neljännen osan teema on olio-ohjelmointi. Opit lukemaan dataa tiedostoista ja esittämään ja käsittelemään tietoa olioiden avulla.

@@ -4,7 +4,5 @@ nav_order: 6
 hidden: false
 ---
 
-## Part 5
 
-The fifth part of the course material continues with object-oriented programming, which was introduced in the fourth part. You will learn datatypes, overloading and using them in programs.
-
+Materiaalin viides osa jatkaa olio-ohjelmoinnilla, johon tutustuttiin edellisessä osassa. Opit lisää tietotyypeistä, ylikuormituksesta ja niiden käytöstä ohjelmissa.
