@@ -31,6 +31,6 @@ Tällä hetkellä riittää että tiedät, että jokaisessa ohjelmassa on koodia
 
 Kun haluat kokeilla, toimiiko lähdekoodisi, sinä **ajat ohjelman**. Tämä tarkoittaa käytännössä kahta vaihetta: Ensin koodi pitää **kääntää**. Toinen vaihe on ohjelman ajaminen. Onneksi kääntäminen ja ajaminen voidaan yleensä tehdä melko automaattisesti, omalla **kääntäjällä**. Nykyaikaisilla kehitystyökaluilla kääntäminen ja ajaminen tapahtuu yhdellä komennolla, tai jopa napin painalluksella.
 
-Kun käännät koodin, C# kääntäjä kääntää lähdekoodin moduuliksi, joka muutetaan **asemaksi**. Asema sisältää **Intermediate Language** (IL) koodin yhdessä **metadatan** kanssa. **Common Language Runtime** (CLR) toimii aseman kanssa. Se lataa aseman ja muuntaa sen **konekieleksi**. Tämän jälkeen käyttöjärjestelmä suorittaa konekielen ja tulostaa ohjelman tuloksen.
+Kun käännät koodin, C# kääntäjä kääntää lähdekoodin moduuliin, joka muutetaan **tulkittavaksi paketiksi**. Paketti sisältää **välikielen** (Intermediate Language, IL) yhdessä koodin **metadatan** kanssa. Dotnetin **Common Language Runtime** (CLR) toimii paketin kanssa. Se lataa paketin ja muuntaa sen **konekieleksi**. Tämän jälkeen käyttöjärjestelmä suorittaa konekielen ja tulostaa ohjelman tuloksen.
 
 Kuten huomataan, kääntämisprosessi on melko monimutkainen toimenpide, jossa ihmisluettava koodi kääntyy konekielisemmäksi. Me keskitymme kuitenkin ihmislukuisempaan puoleen.
