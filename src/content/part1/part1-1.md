@@ -308,8 +308,10 @@ Your message was: I want to print this
 
 # Exercises
 
+<Note>Muista ajaa ohjelmat itse konsolissa, komennolla dotnet run!</Note>
+
 <Exercise title={'001 Hello World!'}>
-The basic structure of a program is given in the exercise:
+Ohjelman perusrunko on annettu tehtävänannossa:
 
 ```cpp
 using System;
@@ -327,11 +329,13 @@ namespace Exercise001
 }
 ```
 
-The line `\\Add your code here:` is a comment. The composer does not compose it, so you do not have to worry about it. You can remove it, if you want.
+Rivi `\\Add your code here:` on kommentti. Kääntäjä ei käännä sitä, joten siitä ei tarvitse välittää. Voit poistaa sen, jos haluat.
 
-Create a program that writes the text `Hello World!` into the console. The program contains the basic structure pictured above.
+Luo ohjelma, joka tulostaa tekstin `Hello World!` komentoriville. Ohjelma sisältää yllä kuvaillun perusrakenteen.
 
 </Exercise>
+
+
 
 
 <Exercise title={'002 Bonnie Tyler'}>
@@ -346,7 +350,7 @@ Create a program which prints these lyrics using `Console.WriteLine` three times
 
 </Exercise>
 
-<Exercise title={'003 Bonnie Tyler with line changes'}>
+<Exercise title={'003 Bonnie Tyler rivinvaihdoilla'}>
 
 Let's refine our program. Print the same message:  
 ```
@@ -358,7 +362,7 @@ This time, use only one `Console.WriteLine`.
 
 </Exercise>
 
-<Exercise title={'004 First variable'}>
+<Exercise title={'004 Ensimmäinen muuttuja'}>
 
 The exercise has following structure:
 
