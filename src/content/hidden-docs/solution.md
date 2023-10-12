@@ -1,7 +1,7 @@
 ---
-title: 'How to see the solution'
+title: 'Kuinka näkee mallivastauksen'
 nav_order: 502
 hidden: true
 ---
 
-You can see the solution in the Test My Code -service in TMC website after completing the exercise.
+Voit nähdä mallivastauksen Test My Code -palvelussa tehtyäsi tehtävän oikein.

@@ -1,9 +1,9 @@
 ---
-title: 'Submission Instructions'
+title: 'Palautusohjeet'
 nav_order: 500
 hidden: true
 ---
 
-Submit your solution to be checked on the server in Visual Studio Code: <Link style={{color: "#ef5b5b"}} to='/tmc'>Exercise submission instructions</Link>
+Palauta vastauksesi palvelimelle tarkistettavaksi Visual Studio Codessa: <Link style={{color: "#ef5b5b"}} to='/tmc'>Tehtävien palautusohjeet</Link>
 
-You can see your submissions in the <a href="https://tmc.mooc.fi/" target="_blank">Test My Code exercise submission environment, here</a>.
+Voit nähdä omat palautuksesi <a href="https://tmc.mooc.fi/" target="_blank">Test My Code -palvelussa, täällä</a>.
