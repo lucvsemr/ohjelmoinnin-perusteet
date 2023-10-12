@@ -50,7 +50,7 @@ Lisäksi kurssin lopussa on koe, joka arvostellaan **hyväksytty / hylätty**. T
 
 ## Mitä seuraavaksi
 
-Lue <Link style={{color: "#ef5b5b"}} to='/exercises'>Tehtävä- ja koeohjeet.</Link> 
+Lue <Link style={{color: "#ef5b5b"}} to='/tehtavat'>Tehtävä- ja koeohjeet.</Link> 
 
 ## Virheitä materiaalissa?
 

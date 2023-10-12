@@ -32,7 +32,7 @@ const Layout = ({ children, tableOfContents, location }) => {
           </p>
           <p>
             Lue lisää{' '}
-            <Link to='/license'>Lisenssistä</Link>
+            <Link to='/lisenssi'>Lisenssistä</Link>
           </p>
         </Footer>
       </SiteWrapper>
