@@ -91,7 +91,7 @@ Dollarin merkki kuvissa EI ole osa komentoa!
 
 ## Tehtävien lähettäminen palvelimelle
 
-Vain lähettämällä tehtävät palvelimelle, tehtävistä saa pisteitä, ja kurssilla pääsee etenemään. [Seuraa näitä ohjeita]https://www.mooc.fi/installation/vscode/#teht%C3%A4v%C3%A4n-l%C3%A4hett%C3%A4minen-palvelimelle).
+Vain lähettämällä tehtävät palvelimelle, tehtävistä saa pisteitä, ja kurssilla pääsee etenemään. [Seuraa näitä ohjeita](https://www.mooc.fi/installation/vscode/#teht%C3%A4v%C3%A4n-l%C3%A4hett%C3%A4minen-palvelimelle).
 
 ## Pistetilanteen tarkistaminen
 
