@@ -28,13 +28,10 @@ Alla oleva lista ei kata kaikkea, mutta on enemmänkin ohjeellinen, mitä odotta
 | Osa | Tavoite                                                                                                                                                                                                                                                                         |
 | :--: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  1   | Tunnet  käsitteet **muuttuja**, **ehtolause** ja **silmukka** ja osaat käyttää niitä ohjelmissa.                                                                |
-|  2   | Tunnet loogiset operaattorit, kuten **ja**, **tai** ja **ei** sekä osaat käyttää niitä ehtolauseissa ja silmukoissa.
-Tiedot, mitä **metodit/funktiot**, **parametrit** ja **paluuarvo** tarkoittavat, ja miten niitä käytetään. |
+|  2   | Tunnet loogiset operaattorit, kuten **ja**, **tai** ja **ei** sekä osaat käyttää niitä ehtolauseissa ja silmukoissa. Tiedät, mitä **metodit/funktiot**, **parametrit** ja **paluuarvo** tarkoittavat, ja miten niitä käytetään. |
 |  3   | Osaat kommentoida omaa koodia ja ymmärrät kuinka muuttujien nimeäminen vaikuttaa koodin luettavuuteen. Ymmärrät **listojen** perusteet ja osaat käyttää niitä ohjelmissa.      |
-|  4   | Ymmärrät termit **tiedosto** ja **tiedostojärjestelmä** sekä osaat lukea / kirjoittaa tiedostoja ohjelmallisesti.
-Tunnet **olio-ohjelmoinnin** perusteet ja käytön ohjelmoinnissa.                                                                  |
-|  5   | Tunnet eri **tietotyypit** ja kuinka ne eroavat toisistaan.
-Osaat **ylikuormittaa** menetelmiä ja **konstruktoreita**. Pystyt käyttämään näitä ohjelmissasi.                                                                                      |
+|  4   | Ymmärrät termit **tiedosto** ja **tiedostojärjestelmä** sekä osaat lukea / kirjoittaa tiedostoja ohjelmallisesti. Tunnet **olio-ohjelmoinnin** perusteet ja käytön ohjelmoinnissa.                                                                  |
+|  5   | Tunnet eri **tietotyypit** ja kuinka ne eroavat toisistaan. Osaat **ylikuormittaa** menetelmiä ja **konstruktoreita**. Pystyt käyttämään näitä ohjelmissasi.                                                                                      |
 |  6   | Ymmärrät **staattisen** ja **ei-staattisen** luokan ja metodin eron. Osaat erottaa **käyttöliittymän** ohjelmalogiikasta.                                                                                                                   |
 
 
