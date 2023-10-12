@@ -53,6 +53,6 @@ At the end of the course, there is also an exam with **pass / fail** grading. Th
 
 Read the <Link style={{color: "#ef5b5b"}} to='/exercises'>Exercises and Exam instructions.</Link> 
 
-## Errors in the material?
+## Virheitä materiaalissa?
 
-Did you find an error? A typo perhaps? Please make a pull request at [GitHub](https://github.com/centria/basic-csharp/tree/master/src/content) and help us make the material better!
+Löysitkö virheen tiedoissa? Tai kirjoitusvirheen? Lähetä meille parannusehdotus [GitHubissa](https://github.com/centria/ohjelmoinnin-perusteet/tree/master/src/content) ja auta meitä parantamaan materiaalia!

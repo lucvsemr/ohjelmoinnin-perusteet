@@ -4,30 +4,27 @@ nav_order: 999
 hidden: true
 ---
 
-The course structure and materials are based on the [**Introductory programming course in Java**](https://ohjelmointi-19.mooc.fi) by [**Agile Education Research Group**](https://www.helsinki.fi/en/researchgroups/data-driven-education) from the [**University of Helsinki**](https://www.helsinki.fi/en/). 
+Kurssin rakenne ja materiaali perustuvat [**Helsingin yliopiston**](https://www.helsinki.fi/en/) kurssiin [**Ohjelmoinnin perusteet Javalla**](https://ohjelmointi-20.mooc.fi), jonka on luonut [**Agile Education Research Group**](https://www.helsinki.fi/en/researchgroups/data-driven-education). 
 
-This material has been adapted from the said material by [**Heikki Ahonen**](https://github.com/heikkihei); the adaptation is licensed using [**CC BY-NC-SA 4.0**](https://creativecommons.org/licenses/by-nc-sa/4.0/deed). More information about the original material and its license can be found [**here**](https://ohjelmointi-19.mooc.fi/credits/).
+Tämän materiaalin on muokannut kyseisestä materiaalista  [**Heikki Ahonen**](https://github.com/heikkihei); tämän lisenssi on [**CC BY-NC-SA 4.0**](https://creativecommons.org/licenses/by-nc-sa/4.0/deed). Lisätietoa alkuperäisestä materiaalista ja sen lisenssistä [**täällä**](https://ohjelmointi-20.mooc.fi/credits/).
 
-### Acknowledgements
+### Kiitokset
 
-This material and its exercises have been a group effort. Thanks goes to at least the following people (in alphabetical order):
-* [Joni Aromaa](https://github.com/aromaa), University of Helsinki
-* [Mohammad Farid](https://github.com/farid555), Centria
-* [Petri Kivipuro](https://github.com/PetriKivipuro), Centria
-* [Antti Leinonen](https://github.com/Redande/), University of Helsinki
-* [Janne Nylund](https://github.com/janne-nylund), Centria
-* [Mathilda Nynäs](https://github.com/Majon1), Centria
-* [Merja Pyrhönen](https://github.com/meikku), Centria
+Tämä materiaali ja sen tehtävät ovat ryhmätyön tulos. Kiitos ainakin seuraaville henkilöille (aakkosjärjestyksessä):
+* [Joni Aromaa](https://github.com/aromaa), Helsingin yliopisto
+* [Mohammad Farid](https://github.com/farid555), Centria-ammattikorkeakoulu
+* [Petri Kivipuro](https://github.com/PetriKivipuro), Centria-ammattikorkeakoulu
+* [Antti Leinonen](https://github.com/Redande/), Helsingin yliopisto
+* [Janne Nylund](https://github.com/janne-nylund), Centria-ammattikorkeakoulu
+* [Mathilda Nynäs](https://github.com/Majon1), Centria-ammattikorkeakoulu
+* [Merja Pyrhönen](https://github.com/meikku), Centria-ammattikorkeakoulu
 * Markus Räisänen, Business College Helsinki
-* [Tuukka Ullakko](https://github.com/TuukkaUllakko), Centria
-* Mirja Uusitalo, Centria
+* [Tuukka Ullakko](https://github.com/TuukkaUllakko), Centria-ammattikorkeakoulu
+* Mirja Uusitalo, Centria-ammattikorkeakoulu
 
 This page template was originally created by:
-* [Vũ Nguyễn](https://github.com/ndkv9), Centria
+* [Vũ Nguyễn](https://github.com/ndkv9), Centria-ammattikorkeakoulu
 
-## Errors in the material?
+## Virheitä materiaalissa?
 
-Did you find an error? A typo perhaps? Please make a pull request at [GitHub](https://github.com/centria/basic-csharp/tree/master/src/content) and help us make the material better!
-
-
-
+Löysitkö virheen tiedoissa? Tai kirjoitusvirheen? Lähetä meille parannusehdotus [GitHubissa](https://github.com/centria/ohjelmoinnin-perusteet/tree/master/src/content) ja auta meitä parantamaan materiaalia!
