@@ -28,8 +28,7 @@ export const Exercise = ({ title, children }) => {
     <ExerciseContainer>
       <ExerciseTitle>{title}</ExerciseTitle>
       {children}
-      <ExtraInfo title={'Palautusohjeet'} />
-      <ExtraInfo title={'Kuinka näkee mallivastauksen'} />
+      <ExtraInfo title={'Palautusohjeet ja mallivastaus'} />
     </ExerciseContainer>
   )
 }
