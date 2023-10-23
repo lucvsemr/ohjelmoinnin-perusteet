@@ -4,9 +4,10 @@ nav_order: 4
 hidden: false
 ---
 
-So far, our programs have been quite linear, going step-by-step in order, without any options or alternatives. We do often want options in our software, meaning that functionality is dependant on the state of variables in the program. 
+Tähän asti ohjelmamme ovat olleet melko lineaarisia, edeten vaiheittain järjestyksessä ilman vaihtoehtoja tai vaihtoehtoja. Usein haluamme vaihtoehtoja ohjelmistoomme, mikä tarkoittaa, että toiminnallisuus riippuu ohjelman muuttujien tilasta.
 
-For the program to **branch** with for example user input, we will need a **conditional statement** in the program. The most simple conditional is
+Jotta ohjelma voisi haarautua esimerkiksi käyttäjän syötteen perusteella, tarvitsemme **ehtolauseen** ohjelmaan. Yksinkertaisin ehtolause on
+
 
 ```cpp
 Console.WriteLine("Hello world!");
@@ -21,13 +22,13 @@ Hello world!
 This is always printed!
 ```
 
-On the other hand, we could make a part of our code unreachable:
+Toisaalta voimme saada aikaan koodin jota ei koskaan suoriteta:
 
 ```cpp
 Console.WriteLine("Hello world!");
 if (false) 
 {
-    Console.WriteLine("This is never printed!");
+    Console.WriteLine("This will never printed!");
 }
 ```
 
@@ -35,13 +36,14 @@ if (false)
 Hello world!
 ```
 
-This is, of course, quite unnecessary, even though possible.
+Tämä on tietysti aivan tarpeeton, vaikka mahdollinen.
 
-A conditional statement begins with a keyword **if**, which is followed by **brackets ( )**. Inside the brackets is the expression that is evaluated. The result of the evaluation is a truth value. In the examples above there was no need for evaluation, as they were already truth values.
+Ehtolause alkaa avainsanalla **if**, jota seuraa **hakasulkeet ( )**. Hakasulkujen sisällä on lauseke, joka arvioidaan. Arvioinnin tulos on totuusarvo. Yllä olevissa esimerkeissä ei ollut tarvetta arvioinnille, koska ne olivat jo totuusarvoja.
 
-The brackets are followed by a code block, enclosed in **{ }**. The code inside the block is run, if the expression inside the brackets is evaluated as true.
+Hakasulkeiden jälkeen tulee koodilohko, joka on ympäröity **{ }**. Lohkon sisällä oleva koodi suoritetaan, jos hakasulkujen sisällä oleva lauseke arvioidaan todeksi.
 
-Let us examine an example, where we compare integers.
+Tutkitaan esimerkki, jossa vertailemme kokonaislukuja.
+
 
 ```cpp
 int number = 11;
@@ -51,21 +53,22 @@ if (number > 10)
 }
 ```
 
-If the expression in the conditional statement is evaluated as true, above in the line of "if the value in the variable number is greater than 10", the code execution moves inside the block defined within the conditional statement.
+Jos ehtolauseen lauseke arvioidaan todeksi, kuten yllä rivillä "jos muuttujan number arvo on suurempi kuin 10", koodin suoritus siirtyy ehdollisen lauseen sisällä määritellyn lohkon sisään.
 
-If the statement would be false, the code execution moves to the next line after the closing **}** of the code block.
+Jos lause olisi epätosi, koodin suoritus siirtyisi seuraavalle riville koodilohkon sulkevan **}** jälkeen.
 
-<Note>There is no semicolon after the if-clause, as the statement does not end after the conditional part.</Note>
+<Note>if-lauseen jälkeen ei ole puolipistettä, koska lause ei pääty ehdollisen osan jälkeen.</Note>
 
-### Reminder of code indent
+### Muistutus koodin sisennyksestä
 
-The code inside a block should be indented. For example, the code inside an if statement should be indented more than the keyword **if** in the code. The ending **}** should be at the same level as the if.
+Koodin sisällä oleva lohko tulee sisentää. Esimerkiksi, if-lauseen sisällä oleva koodi tulee olla sisennetty enemmän kuin avainsana **if** koodissa. Lopetus **}** tulee olla samalla tasolla kuin if.
+
 
 ```cpp
 int number = 11;
 if (number > 10) 
 {
-Console.WriteLine("This indention is wrong");
+Console.WriteLine("Indentation is wrong!");
 }
 ```
 
@@ -73,22 +76,22 @@ Console.WriteLine("This indention is wrong");
 int number = 11;
 if (number > 10) 
 {
-    Console.WriteLine("This indention is right");
+    Console.WriteLine("Indentation is right!");
 }
 ```
 
 ## Relational operators
 
-The following are relational operators:
+Seuraavassa taulukossa on lueteltu vertailuoperaattorit:
 
-|Sign| Meaning |
+|Merkki| Merkitys |
 |:--:|:---|
-| >  | greater than |
-| >= | greater than or equal to |
-| <  | less than |
-| <= | less than or equal to |
-| == | equal to |
-| != | not equal to |
+| >  | suurempi kuin |
+| >= | suurempi tai yhtäsuuri kuin |
+| <  | pienempi kuin|
+| <= | pienempi tai yhtäsuuri kuin |
+| == | yhtäsuuri |
+| != | ei yhtäsuuri|
 
 
 ```cpp
@@ -96,109 +99,114 @@ int number = 55;
 
 if (number != 0) 
 {
-    Console.WriteLine("The number was not equal to zero");
+    Console.WriteLine("Number is not equal to 0.");
 }
 
 if (number >= 1000) 
 {
-    Console.WriteLine("The number was at least 1000");
+    Console.WriteLine("Number is at least 1000.");
 }
 ```
 
 ```console
-The number was not equal to zero
+Number is at least 1000.
 ```
 
-## Options, or Else!
+## Vaihtoehdot, ELSE
 
-If the expression inside the if-clause evaluates as false, the code execution continues to the next statement. This is not always desired, but we want to have an option for the cases, when the if is evaluated as false.
+Jos if-lauseen sisällä oleva lauseke arvioidaan epätodeksi, koodin suoritus jatkuu seuraavaan lausuntoon. Tämä ei aina ole toivottavaa, mutta haluamme vaihtoehdon niille tilanteille, joissa if-lause arvioidaan epätodeksi.
 
-This can be achieved with an else-statement, that is combined to the if-statement.
+Tämä voidaan saavuttaa else-lauseella, joka yhdistetään if-lauseeseen.
+
 
 ```cpp
 int number = 4;
 
 if (number > 5) 
 {
-    Console.WriteLine("Your number is greater than five!");
+    Console.WriteLine("Number is greater than 5!");
 } 
 else 
 {
-    Console.WriteLine("Your number is 5 or less!");
+    Console.WriteLine("Number is 5 or smaller!");
 }
 ```
 
 ```console
-Your number is 5 or less!
+Number is 5 or smaller!
 ```
 
-If the conditional statement has an else branch, the code block defined for the else is run, if the if-clause is evaluated as false. Notice the indentation and lines!
+Jos ehtolauseella on else-haara, ehdollisen lauseen määrittelemä koodilohko suoritetaan, jos if-lause arvioidaan epätodeksi. Huomaa sisennys ja rivit!
 
-## More options, else if
 
-If you want to have more than one option, use **else-if-structure**. It is similar to else, but has an if-conditional. There can be multiple of them, and they come after if, before else.
+## Vaihtoehdot, ELSE IF
+
+Jos haluat useita vaihtoehtoja, käytä **else-if-rakennetta**. Se on samanlainen kuin else, mutta sillä on if-ehto. Niitä voi olla useita, ja ne tulevat if:n jälkeen, ennen elseä.
+
 
 ```cpp
 int number = 3;
 
 if (number == 1) 
 {
-    Console.WriteLine("Number is one!");
+    Console.WriteLine("Number is 1");
 } 
 else if (number == 2) 
 {
-    Console.WriteLine("Number is two!");
+    Console.WriteLine("Number is 2");
 } 
 else if (number == 3) 
 {
-    Console.WriteLine("Number is three!");
+    Console.WriteLine("Number is 3");
 } 
 else 
 {
-    Console.WriteLine("Number is something else!");
+    Console.WriteLine("Number is something else");
 }
 ```
 
 ```console
-Number is three!
+Number is 3
 ```
 
-In the example above, we first check if the number is equal to 1. As it is not, we move to the first else-if and compare the number to value of 2. As this is not the case, we move forward, and compare our variable's value to 3. As this is true, we execute the code inside the code block, and print the message shown above. We do not go into the else-statement, because an earlier statement evaluated as true.
+Yllä olevassa esimerkissä tarkistamme ensin, onko numero yhtä suuri kuin 1. Koska näin ei ole, siirrymme ensimmäiseen else-if:iin ja vertailemme numeroa arvoon 2. Koska tämä ei ole totta, siirrymme eteenpäin ja vertaamme muuttujamme arvoa 3:een. Koska tämä on totta, suoritamme koodin koodilohkossa ja tulostamme yllä näytetyn viestin. Emme mene else-lauseeseen, koska aiempi lause arvioitiin todeksi.
 
-## Order of comparison
+## Vertailujärjestys
 
-As any code, the comparisons are done in order, from top to bottom, left to right. When we reach a conditional which evaluates to **true**, we execute that block and end comparison.
+Kuten kaikki koodit, vertailut tehdään järjestyksessä ylhäältä alas, vasemmalta oikealle. Kun saavutamme ehtolauseen, joka arvioidaan **todeksi**, suoritamme sen lohkon ja lopetamme vertailun.
+
 
 ```cpp
 int number = 42;
 
 if (number == 0) 
 {
-    Console.WriteLine("The number is 0.");
+    Console.WriteLine("Number is 0.");
 } 
 else if (number > 0) 
 {
-    Console.WriteLine("The number is greater than 0.");
+    Console.WriteLine("Number is greater than 0.");
 } 
 else if (number > 2) 
 {
-    Console.WriteLine("The number is greater than 2.");
+    Console.WriteLine("Number is greater than 2.");
 } 
 else 
 {
-    Console.WriteLine("The number is smaller than 0.");
+    Console.WriteLine("Number is smaller than 0.");
 }
 ```
 
 ```console
-The number is greater than 0.
+Number is greater than 0.
 ```
 
-In the example, the condition **number > 0** is evaluated as **true**, so we execute the code block related to that, and end comparison. Even if the next statement would also evaluate to true, we do not reach that part of the code (and never can).
+Esimerkissä ehto **number > 0** arvioidaan **todeksi**, joten suoritamme siihen liittyvän koodilohkon ja lopetamme vertailun. Vaikka seuraava lause arvioitaisi myös todeksi, emme saavuta sitä osaa koodista (ja emme koskaan voi).
 
-## Conditional statement and boolean variable
+## Ehtolause ja bool-luokka
 
-The evaluated value of an expression inside the if-clause's brackets must be a **boolean**. Boolean is a representation of a truth-value, and is either **true** or **false**.
+If-lauseen hakasulkujen sisällä olevan lauseen arvioidun arvon on oltava **bool**-tyyppiä. Bool on totuusarvon edustus ja se voi olla joko **true** tai **false**.
+
 
 ```cpp
 bool truthValue = true;
@@ -209,7 +217,7 @@ Console.WriteLine("The value of truthValue is " + truthValue);
 The value of truthValue is True
 ```
 
-Or with a conditional,
+Tai ehdollisesti,
 
 ```cpp
 bool truthValue = true;
@@ -222,7 +230,8 @@ if (truthValue)
 This is awesome!
 ````
 
-Comparison can be used outside statements, as well. Then the value of a boolean is stored into a boolean variable until further use.
+Vertailua voidaan käyttää myös ilman lauseita. Silloin bool-arvo tallennetaan bool-muuttujaan odottamaan myöhempää käyttöä.
+
 
 
 ```cpp
@@ -231,7 +240,8 @@ int second = 3;
 bool isFirstLargerThanSecond = first > second;
 ```
 
-Now the value of **isFirstLargerThanSecond** is **false**. Let's change the example a bit and continue:
+Nyt **isFirstLargerThanSecond** muuttujan arvo on **false**. Muutetaan esimerkkiä hieman ja jatketaan:
+
 
 ```cpp
 int first = 1;
@@ -248,20 +258,21 @@ if (isFirstSmallerThanSecond)
 1 is less than 3!
 ```
 
-## Remainder
+## Jakojäännös
 
-Remainder is not used as frequently, but is a nice tool, especially if we want to check if something is divisible by some other number.
+Jakojäännöstä ei tarvita kovin usein, mutta se on hyvä työkalu jos halutaan selvittää onko jokin jaollinen jollain toisella numerolla. 
 
 ```cpp
 int remainder = 7 % 2;
-Console.WriteLine(remainder); // prints 1
-Console.WriteLine(5 % 3); // prints 2
-Console.WriteLine(7 % 4); // prints 3
-Console.WriteLine(8 % 4); // prints 0
-Console.WriteLine(1 % 2); // prints 1
+Console.WriteLine(remainder); // 1
+Console.WriteLine(5 % 3); //  2
+Console.WriteLine(7 % 4); //  3
+Console.WriteLine(8 % 4); //  0
+Console.WriteLine(1 % 2); // 1
 ```
 
-As remainder is an operation similar to other calculations, we can use it in for example an if clause
+Koska jakojäännös on toimenpide, joka on samankaltainen kuin muut laskutoimitukset, voimme käyttää sitä esimerkiksi if-lauseessa.
+
 
 ```cpp
 string userInput = Console.ReadLine();
@@ -279,13 +290,14 @@ else
 }
 ```
 
-## Conditionals an equality of variables
+## Ehtolauseet ja muuttujien yhdenvertaisuus
 
-In most programming languages, including C#, string is of reference type, and for example integer, boolean and double are value types. 
+Useimmissa ohjelmointikielissä, mukaan lukien C#, merkkijono on viittausmuotoinen (reference type), kun taas esimerkiksi kokonaisluku, totuusarvo ja liukuluku ovat arvotyyppejä (value types).
 
-In some of the programming languages, this means that string comparison has to be done differently from other variables. **C# is more forgiving.** We can compare two strings with **==** operator, at least in this point of the course.
+Joissakin ohjelmointikielissä tämä tarkoittaa, että merkkijonojen vertailu on tehtävä eri tavalla kuin muiden muuttujien. **C# on anteeksiantavampi.** Voimme vertailla kahta merkkijonoa **==** -operaattorilla, ainakin tässä kurssin vaiheessa.
 
-For example the following works in C#, while in most other languages it would not:
+Esimerkiksi seuraava toimii C#-kielellä, kun taas useimmissa muissa kielissä se ei toimisi:
+
 
 ```cpp
 string a = "word";
@@ -297,7 +309,8 @@ Console.WriteLine(a == b);
 True
 ```
 
-Other way to compare strings, is with **equals-method**. The method compares the value of an object. We will go deeper into that later, now it is enough for you to know such a method exists.
+Toinen tapa verrata merkkijonoja on käyttää **Equals-metodia**. Tämä metodi vertailee objektin arvoa. Palaamme tähän aiheeseen tarkemmin myöhemmin; nyt riittää, että tiedät tällaisen metodin olemassaolosta.
+
 
 ```cpp
 string a = "word";
@@ -310,13 +323,16 @@ Console.WriteLine(a.Equals(b));
 True
 ```
 
-# Exercises
+# Harjoitukset
+
+<Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 
 <Exercise title={'024 Speeding'}>
 
-Let's create a program, which asks the user for an integer.
+Luodaan ohjelma, joka pyytää käyttäjältä kokonaislukua.
 
-If the given integer is larger than 120, output "Speeding!".
+Jos annettu kokonaisluku on suurempi kuin 120, tulostetaan "Speeding!".
+
 
 ```console
 Your speed:
@@ -333,7 +349,8 @@ Speeding!
 
 <Exercise title={'025 Orwell'}>
 
-Create a program which asks for an integer. If the integer is 1984, output "Orwell".
+Luo ohjelma, joka kysyy kokonaisluvun käyttäjältä. Jos luku on 1984, tulosta "Orwell".
+
 
 ```console
 Give a number:
@@ -352,7 +369,8 @@ Orwell
 
 <Exercise title={'026 Too old'}>
 
-Create a program which asks for an integer. If the integer is less than 1900, output "You're old".
+Luo ohjelma, joka kysyy kokonaisluvun käyttäjältä. Jos luku on pienempi kuin 1900, tulostuu "You're old".
+
 
 ```console
 Give your year of birth:
@@ -369,7 +387,8 @@ You're old
 
 <Exercise title={'027 Stay positive'}>
 
-Create a program which tells if the given number is positive (greater than zero), or not.
+Tee ohjelma, joka kertoo onko annettu luku positiivinen vai ei.
+
 
 ```console
 Give a number:
@@ -387,7 +406,7 @@ It is not positive
 
 <Exercise title={'028 Over eighteen'}>
 
-Create a program which tell if the given person is legally adult (in Finland, over 18), or not.
+Tee ohjelma, joka kertoo onko henkilö laillisesti aikuinen (Suomessa 18 tai yli), vai ei.
 
 ```console
 How old are you?
@@ -405,7 +424,8 @@ You're an adult!
 
 <Exercise title={'029 Larger number'}>
 
-Create a program which asks for two integers. The program should tell which of them is greater. If they are equal, that should be noted, too.
+Tee ohjelma, joka kysyy kaksi kokonaislukua. Ohjelman tulee kertoa kumpi luvuista on suurempi. Jos ne ovat samat, sekin tulee ilmoittaa.
+
 
 ```console
 Give the first number!
@@ -435,7 +455,7 @@ They are equal!
 
 <Exercise title={'030 Course grading'}>
 
-Here is the grading for this course:
+Alla on kurssin arviointitaulukko.
 
 | Percent | Grade|
 |---|---|
@@ -448,7 +468,11 @@ Here is the grading for this course:
 | 90 - 100 | 5 |
 | > 100 | Outstanding! |
 
-Create a program, which asks the user for their percent, and gives them their score. A few examples:
+Laadi ohjelma, joka kysyy käyttäjältä heidän prosentit ja antaa arvosanan. 
+
+(Käytä englanninkielisiä termejä!)
+
+Alla pari esimerkkiä ohjelman toiminnasta:
 
 ```console
 Give your percent [0 - 100]:
@@ -484,7 +508,8 @@ Outstanding!
 
 <Exercise title={'031 Even or odd'}>
 
-Create a program which asks for an integer and tells the user if it is even or not.
+Tee ohjelma, joka kysyy käyttäjältä kokonaisluvun ja kertoo onko se parillinen vai ei.
+
 
 ```console
 Give a number:
@@ -498,13 +523,14 @@ Give a number
 It is odd.
 ````
 
-<Note>You might want to use the % operator to get the remainder after a division with 2.</Note>
+<Note>Vinkki: Voit tutkia jakojäännöksen avulla parillisuutta, käyttämällä % operaattoria.</Note>
 
 </Exercise>
 
 <Exercise title={'032 Enter friend'}>
 
-Create a program which asks for a string. If the string is "Mellon", print "Welcome, friend", otherwise print "They've got a cave troll!"
+Luo ohjelma, joka kysyy merkkijonon (string). Jos merkkijono on "Mellon", tulosta "Welcome, friend", muuten tulosta "They've got a cave troll!"
+
 
 ```console
 Speak, friend, and enter!
@@ -522,7 +548,8 @@ Welcome, friend
 
 <Exercise title={'033 Echo'}>
 
-Create a program which asks for two string. If the strings are equal, print "Echo!", otherwise print "Nope!".
+Tee ohjelma, joka kysyy kaksi merkkijonoa (string). Jos merkkijonot ovat samoja, tulosta "Echo!", muuten tulosta "Nope!"
+
 
 ```console
 Give the first string:

@@ -5,9 +5,10 @@ hidden: false
 ---
 
 
-We now can do simple commands, one at a time. But what if we want to do something more than once?
+Nyt osaamme tehdä yksinkertaisia komentoja, yksi kerrallaan. Mutta mitä jos haluamme tehdä jotain monta kertaa?
 
-For example, let's make a program which asks the user for a number 7 times and sums them up.
+Esimerkiksi, tehdään ohjelma, joka kysyy käyttäjältä numeron 7 kertaa ja laskee ne yhteen.
+
 
 ```cpp
 int sum = 0;
@@ -47,9 +48,10 @@ sum = sum + userInput;
 Console.WriteLine("Sum is " + sum);
 ``` 
 
-This will get the job done, but as you can see, there is plenty of repetition, and many lines of code for such a simple task. What if we wanted to ask the user 10 numbers? Or 1000? We could keep copying the same lines, but that would be quite insane.
+Tämä saa tehtävän hoidettua, mutta kuten huomaat, siinä on paljon toistoa ja monta riviä koodia näin yksinkertaiseen tehtävään. Entä jos haluaisimme pyytää käyttäjältä 10 numeroa? Tai 1000? Voisimme toistaa samat rivit, mutta se olisi melko hullua.
 
-The easier and nicer way to solve this problem, is with **loops**, especially the **while-loop**, which we  peeked into a little in previous parts. 
+Helpompi ja siistimpi tapa ratkaista tämä ongelma on käyttää **silmukoita**, erityisesti **while-silmukkaa**, johon tutustuimme hieman aiemmissa osissa.
+
 
 ```cpp
 int sum = 0;
@@ -68,9 +70,9 @@ while (true)
 Console.WriteLine("Sum is " + sum);
 ```
 
-Let's look deeper into the while loops.
+Tutkitaan while-silmukkaa hieman tarkemmin.
 
-## While loop, forever and ever and ever...
+## While-silmukka
 
 ```cpp
 while (expression)
@@ -80,13 +82,14 @@ while (expression)
 }
 ```
 
-For now, we shall be using the boolean value of **true** as our expression. This can lead us to a neverending loop. Once the code block has been run, the value of the expression is checked. As it is always true, it will always start running the code again.
+Toistaiseksi käytämme **true** -arvoa totuusarvona. Tämä voi johtaa loputtomaan silmukkaan. Kun koodilohko on suoritettu, tarkistetaan lausekkeen arvo. Koska se on aina tosi, koodi suoritetaan aina uudelleen.
 
-## Ending a while loop
+## While-silmukan lopettaminen
 
-We did manage to create a program in the previous example, that is not looping forever. We did that with the keyword **break**. As the name suggests, it breaks the loop. More technically, it stops the current code block from running, and jumps ahead to the next code block.
+Onnistuimme luomaan ohjelman edellisessä esimerkissä, joka ei toimi ikuisesti. Teimme sen avainsanalla **break**. Kuten nimi viittaa, se keskeyttää silmukan. Teknisesti ottaen se estää nykyisen koodilohkon suorituksen ja hyppää eteenpäin seuraavaan koodilohkoon.
 
-Usually a break is used when the user gives a certain kind of input, or when the loop-calculation has reached a certain point, just like in our example above.
+Yleensä break-komentoa käytetään, kun käyttäjä antaa tietyn tyyppisen syötteen tai kun silmukkalaskenta on saavuttanut tietyn kohdan, juuri kuten esimerkissämme yllä.
+
 
 ```cpp
 int number = 1;
@@ -111,7 +114,7 @@ Console.WriteLine("All done!");
 All done!
 ```
 
-<Note>We created our original number outside of the loop. If we would create it in the beginning, it would be recreated every time the loop starts again.</Note>
+<Note>Loimme alkuperäisen numeromme silmukan ulkopuolella. Jos loisimme sen silmukan alussa, se luotaisiin uudelleen joka kerta, kun silmukka alkaa uudelleen.</Note>
 
 ```cpp
 while (true) 
@@ -136,7 +139,8 @@ Console.WriteLine("All done!");
 (This keeps going forever)
 ```
 
-You can also ask user input in a while loop. In the following example, we will ask the user if they want to continue the program.
+Voit myös pyytää käyttäjän syötettä while-silmukassa. Seuraavassa esimerkissä kysymme käyttäjältä, haluavatko he jatkaa ohjelman suorittamista.
+
 
 ```cpp
 while (true) 
@@ -164,7 +168,8 @@ Do you want to continue?
 All done!
 ```
 
-In the previous example, we asked the user for string input. Of course, other types of variable work just as well.
+Edellisessä esimerkissä pyysimme käyttäjältä merkkijonosyötettä. Tietenkin muut muuttujatyypit toimivat yhtä hyvin.
+
 
 ```cpp
 while (true) 
@@ -194,11 +199,12 @@ Input an integer, 0 quits
 All done!
 ```
 
-## Returning to the beginning of a while loop
+## Paluu while-silmukan alkuun
 
-We return to the beginning of a while loop when all the code inside the code block has been run. It is possible to return to the beginning from other parts of code, as well. We will do that with the **continue** keyword.
+Palaamme while-silmukan alkuun, kun kaikki koodilohkon sisällä oleva koodi on suoritettu. On myös mahdollista palata alkuun muista kohdista koodia. Teemme sen **continue**-avainsanalla.
 
-In the example below, we will ask the user for positive integers. If the user gives a negative integer, we will print out a message "Not a positive integer" and return to the beginning of the loop. If the user gives a zero, the program will end.
+Alla olevassa esimerkissä pyydämme käyttäjältä positiivisia kokonaislukuja. Jos käyttäjä antaa negatiivisen kokonaisluvun, tulostamme viestin "Ei ole positiivinen kokonaisluku" ja palaamme silmukan alkuun. Jos käyttäjä antaa nollan, ohjelma päättyy.
+
 
 ```cpp
 while (true) 
@@ -233,7 +239,8 @@ Input a positive integer, 0 quits
 All done!
 ```
 
-You might have noticed, that we used two ifs instead of if-else-if structure. Let's see our code with if-else.
+Saatoit huomata, että käytimme kaksi if-ehtolauseketta sen sijaan, että käyttäisimme if-else-if -rakennetta. Katsotaan koodiamme if-else-rakenteella.
+
 
 ```cpp
 while (true) 
@@ -256,7 +263,8 @@ while (true)
 Console.WriteLine("All done!");
 ```
 
-The only difference in code is the **else if** instead of just if. What if we change the order inside the block?
+Ainoa ero koodissa on **else if** sen sijaan, että olisi pelkkä **if**. Entä jos muuttaisimme järjestystä koodilohkossa?
+
 
 ```cpp
 while (true) 
@@ -278,7 +286,8 @@ while (true)
 Console.WriteLine("All done!");
 ```
 
-The functionality from the user's perspective is identical. Let's combine this code into if-else-structure.
+Käyttäjän näkökulmasta toiminnallisuus on identtinen. Yhdistetään tämä koodi if-else-rakenteeksi.
+
 
 ```cpp
 while (true) 
@@ -302,135 +311,139 @@ while (true)
 Console.WriteLine("All done!");
 ```
 
-Now let's comment the newest versions of our program, to see what happens in the code.
+Nyt kommentoimme ohjelman uusimmat versiot nähdäksemme, mitä tapahtuu koodissa.
+
 
 ```cpp
-// Repeat until the block has been exited
+// Toista kunnes break
 while (true) 
 {
-    // Ask user for input
+    // Kysy käyttäjältä syöte
     Console.WriteLine("Input a positive integer, 0 quits");
-    // Read the input
+    // Lue syöte
     int number = Convert.ToInt32(Console.ReadLine());
     
-    // Check the user input is above zero, give "error"
+    // Tarkista onko luku pienmpi kuin 0, jos ei, anna virhe
     if  (number < 0)
     {
         Console.WriteLine("Not a positive integer!");
         continue;
     }
-    // Check if user wants to exit the loop
+    // Haluaako käyttäjä lopettaa?
     if (number == 0) 
     {
         break;
     }
-    // Print the outcome
+    // Tulosta lopputulos
     Console.WriteLine("You gave " + number);
 }
 
-// Confirm exit with print
+// Lopeta
 Console.WriteLine("All done!");
 ```
 
-All the lines and inner code blocks have a simple, meaningful task to perform. What about the combined version?
+Kaikki rivit ja sisäiset koodilohkot suorittavat yksinkertaisen, merkityksellisen tehtävän. Entä yhdistetty versio?
+
 
 ```cpp
-// Repeat until the block has been exited
+// Toista kunnes break
 while (true) 
 {
-    // Ask user for input
+    // Kysy käyttäjältä syöte
     Console.WriteLine("Input a positive integer, 0 quits");
-    // Read the input
+    // Lue syöte
     int number = Convert.ToInt32(Console.ReadLine());
 
     // if-else-if-else
-    // One code block, multiple functions...
+    // Yksi koodilohko, monta toimintaoa
 
-    // Check if number is too small, give warning
+    // Tarkista onko numero liian pieni
     if  (number < 0)
     {
         Console.WriteLine("Not a positive integer!");
     }
-    // If the number is not too small, check if the user wants to exit the loop
+    // Jos numero ei ole liian pieni, haluaako käyttäjä lopettaa?
     else if (number == 0) 
     {
         break;
     }
-    // If the number is not too small and the user does not want to exit the loop, print the outcome
+    // Jos numero ei ole liian pieni eikä käyttäjä halua lopettaa, tulosta numero
     else 
     {
     Console.WriteLine("You gave " + number);
     }
 }
-// Confirm exit with print
+// Lopetus
 Console.WriteLine("All done!");
 ```
 
-As you can see, the if-else-if-else block has quite a huge task, and defining it takes few steps. When you design your programs, you should aim for simple tasks for all the code blocks.
+Kuten näet, if-else-if-else -lohkolla on melko suuri tehtävä, ja sen määrittäminen vaatii useita vaiheita. Kun suunnittelet ohjelmiasi, sinun tulisi pyrkiä yksinkertaisiin tehtäviin kaikille koodilohkoille.
 
-## Calculations with while loops
+## Laskutoimitukset while-silmukoiden avulla
 
-While-loops are often used for calculations. For example programs, that handle undetermined amounts of user inputs, are based on while-structrure. In these kinds of programs we can gather for example statistics from given numbers or other inputs.
+While-silmukoita käytetään usein laskutoimituksiin. Esimerkiksi ohjelmat, jotka käsittelevät määrittelemättömiä määriä käyttäjän syötteitä, perustuvat while-rakenteeseen. Tällaisissa ohjelmissa voimme kerätä esimerkiksi tilastoja annetuista numeroista tai muista syötteistä.
 
-For a program to be able to print information after the while loop has been executed, we must store and modify data during the loop.
+Jotta ohjelma voi tulostaa tietoa sen jälkeen, kun while-silmukka on suoritettu, meidän on tallennettava ja muokattava tietoja silmukan aikana.
 
-If the variable for data storage is introduced inside the block dedicated for the loop, the variable is accessible only inside the block, but not elsewhere. Let's demonstrate that with commented code.
+Jos muuttuja tietojen tallentamiseen esitellään silmukalle omistetussa koodilohkossa, muuttuja on saatavilla vain koodilohkossa eikä muualla. Näytetään tämä kommentoidulla koodilla.
+
 
 ```cpp
-// Repeat until the block has been exited
+// Toista kunnes lopetetaan
 
 while (true) 
 {
-    // Create a variable as storage for counting 1s
+    // Luo muuttuja pitämään kirjaa ykkösistä
     int countOnes = 0;
-    // Ask for integers
+    // Kysy luku
     Console.WriteLine("Input an integer, 0 quits");
-    // Read user input
+    // Lue luku ja tallenna se muuttujaan
     int number = Convert.ToInt32(Console.ReadLine());
-    // If the input is 0, exit the loop
+    // Jos 0, lopeta
     if (number == 0) 
     {
         break;
     }
-    // If the input is 1, add to count
-    if  (number == 1)
+    // Jos annettu numero on 1
+        if  (number == 1)
     {
-        // Increase the value of countOnes by 1
+        // Kasvata muuttujan arvoa 1:llä
         countOnes = countOnes + 1;
     }
 }
 
-// This cannot access the variable "countOnes",
-// as it has been defined in the inner block.
-// Our code does not compile.
+// Alla oleva käsky ei pysty käyttämään muuttujaa "countOnes",
+// koska se on määritelty while-loopin sisäll
+// Koodi ei toimi
 Console.WriteLine("Amount of ones: " + countOnes);
 ```
 
-All the variables are **visible** to the code block they are in. Let's modify our example, so that the printing line is inside the inner code block, and see what happens.
+Kaikki muuttujat ovat **näkyvissä** sille koodilohkolle, jossa ne sijaitsevat. Muokataan esimerkkiämme niin, että tulostusrivi on sisäisen koodilohkon sisällä, ja katsotaan, mitä tapahtuu.
+
 
 ```cpp
-// Repeat until the block has been exited
+// Toista kunnes lopetetaan
 
 while (true) 
 {
-    // Create a variable as storage for counting 1s
+    // Luo muuttuja pitämään kirjaa ykkösistä
     int countOnes = 0;
-    // Ask for integers
+    // Kysy luku
     Console.WriteLine("Input an integer, 0 quits");
-    // Read user input
+    // Lue luku ja tallenna se muuttujaan
     int number = Convert.ToInt32(Console.ReadLine());
-    // If the input is 0, exit the loop
+    // Jos 0, lopeta
     if (number == 0) 
     {
         break;
     }
-    // If the input is 1, add to count
+    // Jos annettu numero on 1
     if  (number == 1)
     {
-        // Increase the value of countOnes by 1
+        // Kasvata muuttujan arvoa 1:llä
         countOnes = countOnes + 1;
     }
-    // Print the amount of 1s from input
+    // Tulosta montako ykköstä kerättiin
     Console.WriteLine("Amount of ones: " + countOnes);
 }
 ```
@@ -452,36 +465,36 @@ Input an integer, 0 quits
 > 0
 ```
 
-Now the program works, but not the way we intended. As the "storage" is created inside the loop, whenever the loop loops, the variable is created again.
+Nyt ohjelma toimii, mutta ei niin kuin tarkoitimme. Koska muuttuja luodaan silmukan sisällä ja alustetaan nollaksi, aina kun silmukka toistuu, muuttuja palaa aina alkutilanteeseen.
 
-If we want the program to work, we have to create the variable before the loop. The next example works as intended.
+Jos haluamme ohjelman toimivan, meidän on luotava muuttuja ennen silmukkaa. Seuraava esimerkki toimii tarkoitetusti.
+
 
 ```cpp
-// Create a variable as storage for counting 1s
+// Luo muuttuja pitämään kirjaa ykkösistä. Huom nyt while-silmukan ulkopuolella!
 int countOnes = 0;
 
-// Repeat until the block has been exited
+// Toista kunnes lopetetaan
 while (true) 
 {
 
-    // Ask for integers
+    // Kysy luku
     Console.WriteLine("Input an integer, 0 quits");
-    // Read user input
+    // Lue luku ja tallenna se muuttujaan
     int number = Convert.ToInt32(Console.ReadLine());
-    // If the input is 0, exit the loop
+    // Jos 0, lopeta
     if (number == 0) 
     {
         break;
     }
-    // If the input is 1, add to count
+    // Jos annettu numero on 1
     if  (number == 1)
     {
-        // Increase the value of countOnes by 1
+        // Kasvata muuttujan arvoa 1:llä
         countOnes = countOnes + 1;
     }
 }
-
-// Print the amount of 1s from input
+// Tulosta montako ykköstä kerättiin
 Console.WriteLine("Amount of ones: " + countOnes);
 ```
 
@@ -499,11 +512,14 @@ Input an integer, 0 quits
 Amount of ones: 2
 ```
 
-# Exercises
+# Harjoitukset
+
+<Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 
 <Exercise title={'034 Continue'}>
 
-Create a program which asks the user if they want to continue. If the user answers "no", then quit the program. Otherwise, ask again.
+Luo ohjelma, joka kysyy käyttäjältä haluaako hän jatkaa. Jos käyttäjä vastaa "no", ohjelma päättyy, muussa tapauksessa kysytään uudestaan.
+
 
 <Note>Use a while-loop!</Note>
 
@@ -520,7 +536,8 @@ Do you want to continue?
 
 <Exercise title={'035 Answer to life'}>
 
-Create a program, which asks the user for integers, until the user give the number "42".
+Luo ohjelma, joka kysyy käyttäjältä kokonaislukuja, kunnes käyttäjä antaa luvun 42.
+
 
 ```console
 Give a number:
@@ -537,7 +554,8 @@ Give a number:
 
 <Exercise title={'036 Power of positivity'}>
 
-Create a program, which asks the user for integers. If the number is zero, exit the program. If the number is negative, give the user message "That is negative". If the number is positive, output the number, raised to its second power (the number multiplied with itself).
+Luo ohjelma, joka kysyy kokonaislukuja käyttäjältä. Jos numero on nolla, ohjelma loppuu. Jos numero on negatiivinen tulosta viesti "That is negative". Jos numero on positiivinen, tulosta numero korotettuna toiseen potenssiin (eli numero kerrottuna itsellään).
+
 
 ```console
 Give a number:
@@ -557,7 +575,8 @@ Give a number:
 
 <Exercise title={'037 Counting numbers'}>
 
-Create a program which asks the user for integers. If the integer is 0, quit. In the end, output "Total amount of numbers:" and the amount. Do not count the 0 into the amount.
+Luo ohjelma, joka kysyy käyttäjältä kokonaislukuja. Jos käyttäjä syöttää 0, ohjelma loppuu. Ohjelman lopussa ohjelma ilmoittaa montako numeroa käyttäjä kerkesi syöttää ennen loptusta. Älä laske viimeistä nollaa mukaan.
+
 
 ```console
 Give a number:
@@ -575,7 +594,8 @@ Total amount of numbers: 3
 
 <Exercise title={'038 Counting negatives'}>
 
-Create a program which asks the user for integers. If the integer is 0, quit. In the end, output the total amount of **negative numbers** with "Total amount of negative numbers:" and the amount. Do not count the 0 into the amount.
+Luo ohjelma joka kysyy käyttäjältä kokonaislukuja. Jos luku on 0, lopeta. Lopussa ohjelma tulostaa montako negatiivista lukua käyttäjä syötti ennen lopetusta. Tee tulostus käyttämällä fraasia "Total amount of negative numbers: " ja summa. Älä laske viimeistä nollaa mukaan.
+
 
 ```console
 Give a number:
@@ -593,7 +613,9 @@ Total amount of negative numbers: 1
 
 <Exercise title={'039 Sum of numbers'}>
 
-Create a program which asks the user for integers. If the integer is 0, quit. In the end, output the total **sum** of the numbers with "Total sum of numbers:" and the sum. Do not count the 0 into the sum, even though it does not change the result.
+
+Luo ohjelma, joka kysyy käyttäjältä kokonaislukuja. Jos luku on 0, lopeta. Lopussa tulosta syötettyjen lukujen yhteissumma "Total sum of numbers: " ja summa perään. 
+
 
 ```console
 Give a number:
@@ -611,7 +633,8 @@ Total sum of numbers: 25
 
 <Exercise title={'040 Amount and sum'}>
 
-Create a program which asks the user for integers. Exit with 0. In the end, output both the amount and the sum. Do not count 0 to either.
+Luo ohjelma, joka kysyy käyttäjältä kokonaislukuja. Nolla lopettaa. Lopussa tulosta numeroiden summa ja numeroiden määrä.
+
 
 ```console
 Give a number:
@@ -626,7 +649,7 @@ Total sum of numbers: 25
 Total amount of numbers: 3
 ```
 
-<Note>You will need two variables to store the data, one for the sum, one for the amount.</Note>
+<Note>Tarvitset kaksi muuttujaa, yhden summalle ja toisen numeroiden määrälle.</Note>
 
 
 </Exercise>

@@ -4,7 +4,7 @@ nav_order: 1
 hidden: false
 ---
 
-The basic structure of a program is following:
+Ohjelman perusrunko on seuraava:
 
 ```cpp
 using System;
@@ -13,12 +13,13 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // Add your statements here
+        // Koodisi tulee tähän väliin
     }
 }
 ```
 
-The program execution starts from the first line after **public static void Main(string[] args) {** and ends at the closing **}** bracket. Everything in between is run one row at a time. For example, the most common first program of any programmer, the **Hello World!**, would go like this:
+Ohjelman suoritus alkaa ensimmäisestä rivistä **public static void Main(string[] args) {** ja päättyy sulkevaan **}** sulkeeseen. Kaikki niiden välissä suoritetaan yksi rivi kerrallaan. Esimerkiksi ohjelmoijan yleisin aloitusohjelma, **Hello World!**, menisi näin:
+
 
 ```cpp
 public class Program {
@@ -29,29 +30,31 @@ public class Program {
 }
 ```
 
-In this example, the only runnable statement is **Console.WriteLine("Hello World!");**, which prints out
+Tässä esimerkissä ainoa suoritettava lauseke on **Console.WriteLine("Hello World!");**, joka tulostaa
 
 ```console
 Hello World!
 ```
 
-We will later focus on the terms **public class** and **public static void**, no need to worry about them yet.
+Keskitymme myöhemmin lausekkeisiin **public class** ja **public static void**, joten sinun ei tarvitse huolehtia niistä vielä.
 
-In the material the whole structure might not be shown, unless purposefully needed. The example above could be represented also as
+Materiaalissa koko koodirakenne saattaa olla esitettyä pienempi, ellei sitä nimenomaan tarvita. Yllä oleva esimerkki voitaisiin esittää myös seuraavasti:
+
 
 ```cpp
 Console.WriteLine("Hello World!");
 ```
 
-in the future. In the exercises, for the first weeks the basic structure is given, so you do not have to worry about memorising it quite yet.
+materiaalissa. Harjoituksissa ensimmäisille viikoille annetaan perusrakenne, joten sinun ei tarvitse vielä huolehtia sen ulkoa opettelusta.
 
-## Printing
+## Tulostaminen
 
-As mentioned earlier, programming languages have statements built in them. **Console.WriteLine** is one of them. The statement is quite self-explanatory. It tells the computer to **write a line to the console**. You can change the **Hello World!** to any text you wish, as long as the command itself is not changed, and it will work.
+Kuten aiemmin mainittiin, ohjelmointikielissä on sisäänrakennettuja lauseita. **Console.WriteLine** on yksi niistä. Lause on melko itsestään selvä. Se kertoo tietokoneelle **kirjoita rivi konsoliin**. Voit muuttaa **Hei maailma!** minkä tahansa haluamasi tekstin, kunhan itse komentoa ei muuteta, ja se toimii.
 
-The requirements in the exercises are very precise. If for example the line needs to end with an exclamation mark, it cannot be left out.
+Harjoitusten vaatimukset ovat hyvin tarkkoja. Esimerkiksi, jos rivi tarvitsee päättyä huutomerkkiin, sitä ei voida jättää pois.
 
-Programs are created (and read) command by command, where every command has to be on their own line. In the next example, we are calling **Console.WriteLine** twice, which means the print command is executed twice.
+Ohjelmat luodaan (ja luetaan) käsky kerrallaan, missä jokaisen käskyn on oltava omalla rivillään. Seuraavassa esimerkissä kutsutaan **Console.WriteLine** kahdesti, mikä tarkoittaa, että tulostuskomento suoritetaan kahdesti.
+
 
 ```cpp
 public class Program {
@@ -63,14 +66,15 @@ public class Program {
 }
 ```
 
-This would print
+Tämä tulostaisi:
 
 ```console
 Hello World!
 ... and Pietarsaari!
 ```
 
-To be precise, the command **Console.WriteLine("example text");** prints the text **example text** and a line change. The line change can also be handled with special character **\n**, which is written as a part of the printable text. The example above could also be written as
+Tarkennettuna komento **Console.WriteLine("esimerkkiteksti");** tulostaa tekstin **esimerkkiteksti** ja rivinvaihdon. Rivinvaihdon voi myös hoitaa erikoismerkillä **\n**, joka kirjoitetaan tulostettavan tekstin osana.
+
 
 ```cpp
 public class Program {
@@ -81,9 +85,11 @@ public class Program {
 }
 ```
 
-<Note> There is no empty space around the \n. In a text, every character, even the empty ones, are part of the text. If you would put space around the line change, the first line would end with an empty character and the second one would start with one.</Note>
+<Note> Tyhjää tilaa \n ympärillä ei ole. Tekstissä jokainen merkki, mukaan lukien tyhjät, on osa tekstiä. Jos laittaisit tyhjää tilaa rivinvaihdon ympärille, ensimmäinen rivi päättyisi tyhjään merkkiin ja toinen alkaisi sillä.
+</Note>
 
-Sometimes the texts can be quite long, and reading them from a single line can become quite difficult. It is possible to do split the string into multiple pieces and then concatenate them together with the **+** operator. The example above could be
+Joskus teksti voi olla varsin pitkiä, ja sen lukeminen yhdestä rivistä voi olla melko vaikeaa. On mahdollista jakaa merkkijono useisiin osiin ja sitten yhdistää ne yhteen **+** -operaattorilla. Yllä oleva esimerkki voisi olla:
+
 
 ```cpp
 public class Program {
@@ -95,73 +101,80 @@ public class Program {
 }
 ```
 
-This will print exactly the same information as previously. Compared to the first solution this is more efficient, as we have to call the print command only once. Compared to the second solution, this is easier to read.
+Tämä tulostaa täsmälleen saman informaation kuin aiemmin. Ensimmäiseen ratkaisuun verrattuna tämä on tehokkaampi, koska tulostuskomentoa tarvitsee kutsua vain kerran. Toiseen ratkaisuun verrattuna tämä on helpompi lukea.
 
-So far, everything we have printed have ended in a line change. If would want to print something but not change the line in the end, we would use **Console.Write("I do not change line");**
+Tähän asti kaikki, mitä olemme tulostaneet, on päättynyt rivinvaihtoon. Jos haluaisimme tulostaa jotain ilman, että rivi vaihtuu lopussa, käyttäisimme **Console.Write("En vaihda riviä");**
 
-Thus, there are two statements for printing:
+Näin ollen tulostamiseen on kaksi lausetta:
 
-- **Console.WriteLine()** prints the text and changes line
-- **Console.Write()** prints the text but keeps on the same line
+- **Console.WriteLine()** tulostaa tekstin ja vaihtaa rivin
+- **Console.Write()** tulostaa tekstin, mutta pitää samalla rivillä
 
-In the printed text, there can be special characters, such as **\n**. There are also [**other special characters (here)**](https://en.wikipedia.org/wiki/Escape_character) you might want to familiarise yourself with.
+Tulostetussa tekstissä voi olla erikoismerkkejä, kuten **\n**. On myös [**muita erikoismerkkejä (täällä)**](https://en.wikipedia.org/wiki/Escape_character), joihin saattaa olla hyödyllistä tutustua.
 
-## Parameters for a command
 
-When we want to print something, we have to give that information as a **parameter** to our print command. Parameters are given to the command inside **()**. For example, to print **I like coding**, we give the parameter inside quotes as follows: **Console.Write("I like coding")**.
+## Komennon parametrit
 
-## Semicolon separates commands
+Kun haluamme tulostaa jotain, meidän on annettava se tieto **parametrina** tulostuskäskyllemme. Parametrit annetaan komennolle **()** sisällä. Esimerkiksi tulostaaksemme **Pidän ohjelmoinnista**, annamme parametrin lainausmerkeissä seuraavasti: **Console.Write("Pidän ohjelmoinnista")**.
 
-With a semicolon **;** statements are separated from each other. We could write our examples on a one line, but they would not be very readable.
+
+## Puolipiste erottaa komennot
+
+Puolipisteellä **;** erotetaan komennot toisistaan. Voisimme kirjoittaa esimerkkimme yhdelle riville, mutta ne eivät olisi kovin luettavia.
+
 
 ```cpp
 Console.Write("Hello "); Console.Write("World!"); Console.Write("\n");
 ```
 
-This would print out
+Tämä tulostaisi:
 
 ```console
 Hello World!
 ```
 
-## Code blocks
+## Koodilohkot
 
-Code consists of **Code blocks**. Code block means part of the code, separated with **{}**. There are usually multiple of these in a single program, as could already be seen from our basic structure.
+Koodi koostuu **koodilohkoista**. Koodilohko tarkoittaa koodin osaa, joka on erotettu **{}** suluilla. Usein yhdessä ohjelmassa on useita näitä, kuten voitiin jo nähdä perusrakenteestamme.
 
-For example, the line **public static void Main(string[] args)** that defines where to start the program, defines a block of what to run when the program is started.
+Esimerkiksi rivi **public static void Main(string[] args)**, joka määrittelee, mistä ohjelman suoritus alkaa, määrittelee lohkon siitä, mitä suoritetaan, kun ohjelma käynnistyy.
+
 
 ```cpp
 public class Program
-{  // Here starts block for the class
+{  // Luokan koodilohko alkaa
 
   public static void Main(string[] args)
-  {  // Here starts block for the main
+  {  // Pääohjelman koodilohko alkaa
 
-  // Your code would be here
+  // Koodisi tulee tähän väliin
 
-  } // The main block ends
+  } // Pääohjelman koodilohko päättyy
 
-} // The class block ends
+} // Luokan koodilohko päättyy
 ```
 
-The example shows a block inside another block. Blocks can be used to define the structure of a program. The block for the **class** contains the whole program structure, whereas the block for **main** contains the source code that is run when the program is started.
+Esimerkki näyttää lohkon toisen lohkon sisällä. Lohkoja voidaan käyttää ohjelman rakenteen määrittämiseen. **class**-lohko sisältää koko ohjelman rakenteen, kun taas **main**-lohko sisältää lähdekoodin, joka suoritetaan, kun ohjelma käynnistyy.
 
-The block is always opened with **{** and closed with **}**. If either of them is missing, the code will not compile, and thus will not run.
+Lohko avataan aina **{** ja suljetaan **}**. Jos jompikumpi niistä puuttuu, koodi ei käänny ja sitä ei suoriteta.
 
-## Comments
 
-As you might have noticed, we already have **comments** in our code. Comments are text that are not compiled and thus are not run. Comments can be used for example to comment certain elements in the code, or to **temporarily** comment out part of a code for debugging purposes. There are two types of comments:
+## Kommentit
 
-- **// single line comment**
-- **/\* multiple line comment \*/**
+Kuten olet ehkä huomannut, meillä on jo **kommentteja** koodissamme. Kommentit ovat tekstejä, jotka eivät käännä, ja siksi niitä ei suoriteta. Kommentteja voidaan käyttää esimerkiksi tietyissä koodielementeissä kommentointiin tai osan koodista **väliaikaiseen** kommentointiin vianjäljitystarkoituksiin. On olemassa kahdenlaisia kommentteja:
 
-As you can see, the single line comment is started with **//** but does not have an ending delimeter. Multiline comment starts with **/\*** and ends with **\*/**. Everything between these are considered as a comment by the compiler.
+- **// yksirivinen kommentti**
+- **/\* monirivinen kommentti \*/**
 
-## Code style
+Kuten näet, yksirivinen kommentti alkaa **//**, mutta sillä ei ole lopetusmerkkiä. Monirivinen kommentti alkaa **/\*** ja päättyy **\*/**. Kaikki niiden välissä oleva tulkitaan kommentiksi kääntäjän toimesta.
 
-Even though there is no style restraint from computer or the language we have chosen, there is great advantage in keeping the code neat and easy to read. For every language, there are widely spread [**coding conventions (here)**](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions). Indentation and variable naming conventions are the most useful ones to keep in mind.
 
-We could write our program as
+## Koodin tyyli
+
+Vaikka tietokoneella tai valitsemallamme kielellä ei ole tyylirajoituksia, on suuri etu pitää koodi siistinä ja helppolukuisena. Jokaiselle kielelle on olemassa laajalle levinneitä [**koodauskäytäntöjä (täällä)**](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions). Sisennys ja muuttujien nimeämiskäytännöt ovat hyödyllisimmät seikat, jotka on hyvä pitää mielessä.
+
+Voimme kirjoittaa ohjelmamme esimerkiksi seuraavasti:
+
 
 ```cpp
 public class Program
@@ -174,7 +187,7 @@ public class Program
 }
 ```
 
-As well as
+kuten myös:
 
 ```cpp
 public class Program { public static void Main(string[] args) { Console.WriteLine("Hello World!\n" +
@@ -182,30 +195,34 @@ public class Program { public static void Main(string[] args) { Console.WriteLin
                                         }
 ```
 
-But as you can see, the latter is not as easy to read, and understanding for example the different code blocks is harder. **Keep your code neat and clean!**
+Kuten näet, jälkimmäinen ei ole yhtä helppo lukea, ja esimerkiksi eri koodilohkojen ymmärtäminen on vaikeampaa. **Pitäkää koodinne siistinä ja puhtaana!**
 
-## Printing a string
 
-Now that we have the tools for programming, let's go a bit deeper. so far we have printed simple lines of text. These texts are actually **string literals**. These literals can be saved into **string variables**. When we introduce a variable into a program, we usually give it a **value**. A value is given by following the variable with a **=** sign, the value and ending the line again with a semicolon, **;**. For example, if we want a string variable called **message** with a value of **I am learning**, we would assign it with
+## Merkkijonon tulostaminen
+
+Nyt kun ymmärrämme koodin perusrakenteen, mennään hieman syvemmälle. Tähän mennessä olemme tulostaneet yksinkertaisia tekstirivejä. Nämä tekstit ovat itse asiassa **merkkijonoliteraaleja**. Näitä literaaleja voidaan tallentaa **merkkijonomuuttujiin**. Kun tuomme muuttujan ohjelmaan, annamme sille yleensä **arvon**. Arvo annetaan seuraamalla muuttujaa **=** merkillä, arvolla ja lopettamalla rivi jälleen puolipisteellä, **;**. Esimerkiksi, jos haluamme merkkijonomuuttujan nimeltään **viesti** arvolla **I am learning**, antaisimme sen näin:
+
 
 ```cpp
 string message = "I am learning";
 ```
 
-Creating a variable gives us an opportunity to reference to the variable inside the program. We could use our variable for printing:
+Muuttujan luominen antaa meille mahdollisuuden viitata muuttujaan ohjelman sisällä. Voisimme käyttää muuttujaa tulostamiseen:
+
 
 ```cpp
 string message = "Print me";
 Console.WriteLine(message);
 ```
 
-And would get
+Ja tällöin saisimme:
 
 ```console
 Print me
 ```
 
-If we now would use quotes around our variable name, we would print it as a string literal.
+Jos nyt käyttäisimme lainausmerkkejä muuttujan nimen ympärillä, tulostaisimme sen merkkijonoliteraalina.
+
 
 ```cpp
 string message = "Print me";
@@ -216,7 +233,8 @@ Console.WriteLine("message");
 message
 ```
 
-As we earlier combined multiple lines of text, the string variables can also be concatenated as a part of printing.
+Kuten aiemmin yhdistimme useita tekstirivejä, myös merkkijonomuuttujia voidaan liittää yhteen osana tulostamista.
+
 
 ```cpp
 string name = "Doctor Octopus";
@@ -227,7 +245,7 @@ Console.WriteLine("We meet again, " + name);
 We meet again, Doctor Octopus
 ```
 
-Same can be done with multiple parts
+Sama voidaan tehdä myös osissa:
 
 ```cpp
 string name = "Doctor Octopus";
@@ -239,7 +257,8 @@ Console.WriteLine(greeting + name + "!");
 We meet again, Doctor Octopus!
 ```
 
-We could also create a string variable from multiple literals:
+Voisimme myös luoda merkkijonomuuttujan useista literaaleista:
+
 
 ```cpp
 string counting = "One" + "\n" + "Two" + "\n" + "Three";
@@ -252,61 +271,67 @@ Two
 Three
 ```
 
-## Reading strings from user
+## Merkkijonon kysyminen käyttäjältä
 
-So far we have used strings that are written directly to the source code. It would be nice if we could tell our program, what we want to print each time. This can be done with another built in command, **ReadLine**.
+Tähän mennessä olemme käyttäneet suoraan lähdekoodiin kirjoitettuja merkkijonoja. Olisi hyvä, jos voisimme kertoa ohjelmalle, mitä haluamme tulostaa joka kerta. Tämä voidaan tehdä toisella sisäänrakennetulla komennolla, **ReadLine**.
+
 
 ```cpp
 public class Program
 {
     public static void Main()
     {
-    // Print a request for message.
+    // Tulosta kysymys
     Console.Write("Give a message: ");
 
-    // Assign a new string variable. The value is the command we want to use.
+    // Määritä uusi string-muuttuja ja lue merkkijono käyttäjältä
     string message = Console.ReadLine();
 
-    // Print out the message we gave.
+    // Tulosta vastaus
     Console.WriteLine(message);
     }
 }
 ```
 
-This will look something like this with imput **I want to print this**:
+Tämä näyttäisi joltakin tältä, syötteellä **Haluan tulostaa tämän**:
+
 
 ```console
 Give a message: I want to print this
 I want to print this
 ```
 
-This is the same example, but with concatenating the input message with **Your message was:**
+Tämä on sama esimerkki, mutta yhdistämällä syöttöviestin **Viestisi oli:**:
+
 
 ```cpp
 public class Program
 {
    public static void Main()
    {
-    // Print a request for message.
+    // Tulosta kysymys
     Console.Write("Give a message: ");
 
-    // Assign a new string variable. The value is the command we want to use.
+    // Määritä uusi string-muuttuja ja lue merkkijono käyttäjältä
     string message = Console.ReadLine();
 
-    // Print out the message we gave.
+    // Tulosta vastaus
     Console.WriteLine("Your message was: " + message);
    }
 }
 ```
 
-This will look something like this with imput **I want to print this**:
+Tämä näyttäisi jotakuinkin tältä syötteellä **Haluan tulostaa tämän**:
+
 
 ```console
 Give a message: I want to print this
 Your message was: I want to print this
 ```
 
-# Exercises
+# Harjoitukset
+
+<Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 
 <Note>Muista ajaa ohjelmat itse konsolissa, komennolla dotnet run!</Note>
 
@@ -322,14 +347,14 @@ namespace Exercise001
     {
         public static void Main(string[] args)
         {
-            // Add your code here:
+            // Koodisi tulee tänne
             
         }
     }
 }
 ```
 
-Rivi `\\Add your code here:` on kommentti. Kääntäjä ei käännä sitä, joten siitä ei tarvitse välittää. Voit poistaa sen, jos haluat.
+Rivi `\\Koodisi tulee tänne:` on kommentti. Kääntäjä ei käännä sitä, joten siitä ei tarvitse välittää. Voit poistaa sen, jos haluat.
 
 Luo ohjelma, joka tulostaa tekstin `Hello World!` komentoriville. Ohjelma sisältää yllä kuvaillun perusrakenteen.
 
@@ -340,31 +365,32 @@ Luo ohjelma, joka tulostaa tekstin `Hello World!` komentoriville. Ohjelma sisäl
 
 <Exercise title={'002 Bonnie Tyler'}>
 
-Let's write some more. Bonnie Tyler once sang about feelings, that also apply to coding:  
+Tehdään hieman lisää! Bonnie Tyler laului joskus tunteista, joka soveltuu myös koodaukseen:
 ```
 Once upon a time
 I was falling in love
 Now I'm only falling apart
 ```
-Create a program which prints these lyrics using `Console.WriteLine` three times.
+Kirjoita ohjelma, joka tulostaa yllä olevat lyriikat käyttämällä komentoa `Console.WriteLine` kolme kertaa.
 
 </Exercise>
 
-<Exercise title={'003 Bonnie Tyler rivinvaihdoilla'}>
+<Exercise title={'003 Bonnie Tyler with line changes'}>
 
-Let's refine our program. Print the same message:  
+Hienosäädetään ohjelmaamme. Tulosta sama viesti:
+  
 ```
 Once upon a time
 I was falling in love
 Now I'm only falling apart
 ```
-This time, use only one `Console.WriteLine`.
+Tällä kertaa vain käyttämällä kerran komentoa `Console.WriteLine`.
 
 </Exercise>
 
-<Exercise title={'004 Ensimmäinen muuttuja'}>
+<Exercise title={'004 First variable'}>
 
-The exercise has following structure:
+Tehtävässä on valmiina seuraava runko:
 
 ```cpp
 using System;
@@ -382,14 +408,14 @@ namespace Exercise004
 }
 ```
 
-Change it, so that it prints `Passport and a toothbrush!`
-Do not change the line containing `Console.WriteLine`, only change the content of the variable!
+Muokkaa sitä niin, että se tulostaa `Passport and a toothbrush!`
+Älä muokkaa riviä joka alkaa `Console.WriteLine`, muokkaa vain muuttujan sisältöä!
 
 </Exercise>
 
 <Exercise title={'005 Ada Lovelace'}>
 
-You will find following structure in the exercise:
+Tehtävässä on valmiina seuraava runko:
   
 ```cpp
 using System;
@@ -407,14 +433,16 @@ namespace Exercise005
 }
 ```
 
-Modify the code, so that it prints `Hello Ada LoveLace!`
-Do not modify the variable content!
+Muokkaa koodia että se tulostaa `Hello Ada Lovelace!`
+Älä muokkaa muuttujaa!
 
 </Exercise>
 
 <Exercise title={'006 Print input'}>
 
-Create a program, that asks user for a string. After the user has given the string (written text and pressed enter), the program will print the given line. Example output with `Hello` as input (input marked with `>` for clarification):
+Luo ohjelma, joka pyytää käyttäjältä merkkijonoa. Kun käyttäjä on antanut merkkijonon (kirjoittanut tekstin ja painanut Enter), ohjelma tulostaa annetun rivin. Esimerkki tulosteesta syötteellä `Hello` (syöte on merkitty `>` selkeyden vuoksi):
+
+
 
 ```console
 Give input!
@@ -426,7 +454,9 @@ Hello
 
 <Exercise title={'007 Triple hello'}>
 
-Create a program, that asks user for a string. After the user has given the string (written text and pressed enter), the program will print the given line 3 times. Example output with `Hello` as input:
+Luo ohjelma, joka pyytää käyttäjältä merkkijonoa. Kun käyttäjä on antanut merkkijonon (kirjoittanut tekstin ja painanut Enter), ohjelma tulostaa annetun rivin 3 kertaa. Esimerkki tulosteesta syötteellä `Hello`:
+
+
 
 ```console
 Give input!
@@ -440,20 +470,24 @@ Hello
 
 <Exercise title={'008 Greeting'}>
 
-Create a program, that asks user for their name and greets them. Example output with `Ada` as input:
+Luo ohjelma, joka kysyy käyttäjältä heidän nimeään ja tervehtii heitä. Esimerkki tulosteesta syötteellä `Ada`:
+
+
 
 ```console
 What is your name?
 > Ada
 Hello Ada!
 ```
-<Note>Notice the exclamation mark.</Note>
+<Note>Huomaa huutomerkki!</Note>
 
 </Exercise>
 
 <Exercise title={'009 Conversation'}>
 
-Create a program, that simulates a small conversation. The program will tell three lines, and expects two user inputs. Example output:
+Luo ohjelma, joka simuloi pientä keskustelua. Ohjelma tulostaa kolme lausetta ja odottaa kaksi käyttäjän syötettä. Esimerkki tulosteesta:
+
+
 
 ```console
 Hello, how are you?
@@ -467,9 +501,11 @@ Thank you for sharing!
 
 <Exercise title={'010 Name and profession'}>
 
-Create a program, that asks the user for a name and a profession. Then make the program to write a little story with this information. Here is an example story with inputs `Ada` and `Data Scientist`.
+Luo ohjelma, joka kysyy käyttäjältä nimen ja ammatin. Tämän jälkeen ohjelma kirjoittaa pienen tarinan näillä tiedoilla. Tässä esimerkkitarina syötteillä `Ada` ja `Data Scientist`:
 
-<Note> Every Ada and Data Scientist in the story are the inputs by the user. Remember to save the Console.ReadLines into variables and use them as parts of the story! </Note>
+
+
+<Note>Jokainen Ada ja Data Scientist tarinassa ovat käyttäjän antamia syötteitä. Muista tallentaa käyttäjältä kysytyt syötteet muuttujiin ja käyttää niitä tarinassa!  </Note>
 
 ```console
 I will tell a story, but I need some information.

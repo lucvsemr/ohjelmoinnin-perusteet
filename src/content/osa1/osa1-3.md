@@ -4,64 +4,69 @@ nav_order: 3
 hidden: false
 ---
 
-Calculations as such should be quite familiar to you already. They are done with same operators in code, as they are in mathematics: addition with **+**, substraction with **-**, multiplication with **\*** and division with **/**. The order of calculation is also very traditional. From left to right, taking into account any brackets, and multiplication and division before addition or substraction.
+Laskutoimitukset kuten nämä pitäisi olla sinulle jo varsin tuttuja. Niitä suoritetaan samoilla operaattoreilla koodissa kuin matematiikassa: yhteenlasku **+**, vähennyslasku **-**, kertolasku **\*** ja jakolasku **/**. Laskujärjestys on myös hyvin perinteinen. Vasemmalta oikealle, ottaen huomioon mahdolliset sulkeet, ja kertolasku ja jakolasku ennen yhteen- tai vähennyslaskua.
+
 
 ```cpp
 int first = 2;
-Console.WriteLine(first); // prints 2
+Console.WriteLine(first); // tulostaa 2
 int second = 4;
-Console.WriteLine(second); // prints 4
+Console.WriteLine(second); // tulostaa 4
 
-int sum = first + second; // variable "sum" is set with the value of the sum from "first" and "second"
-Console.WriteLine(sum); // prints 6
+int sum = first + second; // muuttujaan summa tallennetaan first + second
+Console.WriteLine(sum); // tulostaa 6
 ```
 
-## Calculation order with brackets
+## Laskujärjestys sulkujen kanssa
 
-You can change the order of calculation with brackets, if you wish.
+Voit muuttaa laskurjärestystä käyttämällä sulkuja.
 
 ```cpp
 int calcWithBrackets = (1 + 1) + 3 * (2 + 5);
-Console.WriteLine(calcWithBrackets); // prints 23
+Console.WriteLine(calcWithBrackets); // tulostaa 23
 
 int calcWithoutBrackets = 1 + 1 + 3 * 2 + 5;
-Console.WriteLine(calcWithoutBrackets); // prints 13
+Console.WriteLine(calcWithoutBrackets); // tulostaa 13
 ```
 
-## Statement and expression
+## Lausekkeet
 
-Expression is a combination of values, that is changed into a value during a calculation or evaluation. For example,
+Lauseke on arvojen yhdistelmä, joka muuttuu arvoksi suorituksen aikana. Esimerkiksi,
+
 
 ```cpp
 int calcWithoutBrackets = 1 + 1 + 3 * 2 + 5;
 ```
 
-contains an expression of **1 + 1 + 3 \* 2 + 5**, which is evaluated before it is assigned to the variable. The evaluation happens always before the assignment, so the calculation is done before the value is set to the variable.
+sisältää lausekkeen **1 + 1 + 3 \* 2 + 5**, joka lasketaan ennen kuin se annetaan muuttujalle. Laskenta tapahtuu aina ennen sijoitusta, joten laskenta suoritetaan ennen kuin arvo asetetaan muuttujalle.
 
-The evaluation is done in the same order of code as the rest of the code, line by line, left to right. The evaluation can also be done during a print, if the expression is used as a parameter for printing.
+Laskenta tapahtuu koodin muun osan kanssa samassa järjestyksessä, rivi riviltä, vasemmalta oikealle. Laskenta voidaan myös suorittaa tulostuksen yhteydessä, jos lauseketta käytetään tulostuksen parametrina.
+
 
 ```cpp
 int first = 42;
 int second = 2;
 
 Console.WriteLine(first + second);
-// The expression "first + second" is evaluated when this line is called.
-// Prints "44".
+// Lauseke "first + second" lasketaan kun riviä kutsutaan.
+// Tulostaa "44".
 ```
 
-An expression does not change the value of a variable, unless the result of the expression is set as a value or given as a parameter to a method, such as printing.
+Lauseke ei muuta muuttujan arvoa, ellei lausekkeen tulosta aseteta arvoksi tai annetaan parametrina metodille, kuten tulostamiselle.
+
 
 ```cpp
 int first = 42;
 int second = 2;
 
 first + second;
-// Does not work, as the expression is not assigned to a variable or used as a parameter.
+// Ei toimi, koska vastausta ei aseta muuttujan arvoksi tai anneta parametrina minnekään, esim. tulostukselle.
 ```
 
-## Calculations and printing
+## Laskutoimitukset ja tulostus
 
-So far we have looked into basics of printing and calculations. Now let's combine them. You can print the value of a variable with **Console.WriteLine()**. If you want to concatenate the value to a string, it is done with **\*+** and having the string inside quotation marks.
+Tähän mennessä olemme tarkastelleet tulostamisen ja laskutoimitusten perusteita. Nyt yhdistetään ne. Voit tulostaa muuttujan arvon **Console.WriteLine()**-funktiolla. Jos haluat liittää arvon merkkijonoon, se tehdään käyttämällä **\*+**-operaattoria ja asettamalla merkkijono lainausmerkkeihin.
+
 
 ```cpp
 int truth = 42;
@@ -73,8 +78,9 @@ Console.WriteLine("The magic number is " + truth + ".");
 The magic number is 42.
 ```
 
-In our example, we combined a string, value of our variable, and another string. 
-<Note>The first string ends in whitespace, so there is space between the word "is" and the value. The dot in the end does not have whitespace, so it is right next to the number.</Note>
+Esimerkissämme yhdistimme merkkijonon, muuttujan arvon ja toisen merkkijonon. 
+<Note>Ensimmäinen merkkijono päättyy tyhjätilaan, joten sanan "on" ja arvon välissä on väli. Piste lopussa ei sisällä tyhjätilaa, joten se on suoraan numeron vieressä.</Note>
+
 
 ```cpp
 Console.WriteLine("The magic number is " + 42);
@@ -86,7 +92,8 @@ The magic number is 42.
 42 is the magic number.
 ```
 
-If one side of the addition is a string, the other side is also changed to a string when the program is run. In the lower situation of the next example, the integer **2** changes into a string **"2"**, and is combined with a string. In the upper case, we demonstrate again the calculation order and brackets, how they change the case.
+Jos yhden lisäyksen puolella on merkkijono, toinen puoli muutetaan myös merkkijonoksi ohjelman aikana. Seuraavassa esimerkin tilanteessa kokonaisluku **2** muuttuu merkkijonoksi **"2"** ja yhdistetään toiseen merkkijonoon. Toisessa tapauksessa demonstroimme uudelleen laskujärjestystä ja sulkeita, ja kuinka ne vaikuttavat tilanteeseen.
+
 
 ```cpp
 Console.WriteLine("Four: " + (2 + 2));
@@ -98,7 +105,8 @@ Four: 4
 But! Twenty-two: 22
 ```
 
-With all this information, we can create an expression that contains text and a variable, which is evaluated during printing.
+Kaiken tämän tiedon avulla voimme luoda lausekkeen, joka sisältää tekstiä ja muuttujan, joka koostetaan tulostuksen aikana.
+
 
 ```cpp
 int x = 10;
@@ -116,9 +124,10 @@ value of x is 10
 y is 5 and z is 6
 ```
 
-## Multiplication and division
+## Kerto- ja jakolasku
 
-So far we have only done very simple additions. Multiplication is also quite simple, as from mathematical point of view, it is just a special case of addition (well, everything is). For example, 3\*2 is the same as 2+2+2. In code, this could be something like:
+Tähän mennessä olemme tehneet hyvin yksinkertaisia lisäyksiä. Kertolasku on myös melko yksinkertaista, sillä matemaattisesti katsottuna se on vain lisäyksen erikoistapaus (no, kaikki on). Esimerkiksi 3\*2 on sama kuin 2+2+2. Koodissa tämä voisi näyttää jotakuinkin tältä:
+
 
 ```cpp
 Console.WriteLine(3*2);
@@ -130,29 +139,31 @@ Console.WriteLine(2+2+2);
 6
 ```
 
-Let's not go deeper than that into the multiplication. Division is more interesting.
+Emme mene syvemmälle kertolaskuun. Jakaminen on kiinnostavampaa.
 
-When dividing in code, the type of the variables that are divided, also determines the type of the answer. For example, if you divide integers, the result will be an integer.
+Kun jaetaan koodissa, jaettavien muuttujien tyyppi määrää myös vastauksen tyypin. Esimerkiksi jos jaat kokonaislukuja, tulos on kokonaisluku.
 
-For the operands of integer types, the result of the **/** operator is of an integer type and equals the quotient of the two operands rounded towards zero:
+Kokonaislukutyyppisten operandien osalta **/**-operaattorin tulos on kokonaislukutyyppinen ja vastaa kahden operandin osamaaraa pyöristettynä nollaan:
+
 
 ```cpp
-Console.WriteLine(13 / 5);    // output: 2
-Console.WriteLine(-13 / 5);   // output: -2
-Console.WriteLine(13 / -5);   // output: -2
-Console.WriteLine(-13 / -5);  // output: 2
+Console.WriteLine(13 / 5);    // tulos: 2
+Console.WriteLine(-13 / 5);   // tulos: -2
+Console.WriteLine(13 / -5);   // tulos: -2
+Console.WriteLine(-13 / -5);  // tulos: 2
 ```
 
-If we change one (or both) of the numbers to be double, the result will also be a double.
+Jos muutamme toisen (tai molemmat) numeroista olemaan desimaalilukuja, tulos on myös desimaaliluku:
+
 
 ```cpp
-Console.WriteLine(13 / 5.0);       // output: 2.6
+Console.WriteLine(13 / 5.0);       // tulos: 2.6
 int x = 13;
 int y = 5;
-Console.WriteLine((double)x / y);  // output: 2.6
+Console.WriteLine((double)x / y);  // tulos: 2.6
 ```
 
-If we would like to calculate an average of values, we could do something like
+Jos haluamme laskea keskiarvon, voimme tehdä sen vaikka näin:
 
 ```cpp
 int first = 13;
@@ -162,93 +173,103 @@ double average = (first + second + third) / 3.0; //divide by the amount of numbe
 Console.WriteLine(average);  // prints 20.333333333333332
 ```
 
-<Note> The divider for the average is 3.0, which is a double. Even though we declare average as a double, if all the operands are integers, the value for average would evaluate as 20.</Note>
+<Note> Keskiarvon jakaja on 3.0, joka on desimaaliluku. Vaikka julistamme keskiarvon desimaaliluvuksi, jos kaikki operandit ovat kokonaislukuja, keskiarvon arvo lasketaan 20:ksi.
+</Note>
 
-## Common misconceptions with variables
+## Yleisiä väärinkäsityksiä muuttujista
 
-When a computer runs source code, the code is run one command at a time, progressing exactly as the code says. When a value is set to a variable, the same event happens every time: The right side of the equals sign is copied as the value of the variable on the left. The most common misconceptions with this operation are:
+Kun tietokone suorittaa lähdekoodia, koodi suoritetaan yksi komento kerrallaan, edeten tarkalleen niin kuin koodi määrää. Kun arvo asetetaan muuttujaan, tapahtuma on aina sama: yhtäsuuruusmerkin oikealla puolella oleva arvo kopioituu muuttujan arvoksi vasemmalle. Yleisimmät väärinkäsitykset tämän toimenpiteen yhteydessä ovat:
 
-- The value is moved instead of copying. For example, if source code has a statement
+- Arvo siirretään kopioimisen sijaan. Esimerkiksi, jos lähdekoodissa on lausunto:
 
-```cpp
-first = second;
-```
-
-You might think that **second** does not have a value any more, and the value has been transferred to **first**. This is incorrect, for when the **first = second** is evaluated, the value that variable **second** refers to, is **copied** as the value for **first**.
-
-- Seeing the variable declaration as a dependency rather than copying: With the same example
 
 ```cpp
 first = second;
 ```
 
-You might think, that any change into **second** affects **first** as well. That is not correct. Once the line of code has been run, there is no affection between first and second. The copying of value is done once and only once.
+Voisit ajatella, että **second**-muuttujalla ei ole enää arvoa, ja arvo on siirretty **first**-muuttujaan. Tämä on väärin, sillä kun **first = second** arvioidaan, muuttujan **second** viittaama arvo **kopioituu** arvoksi **first**-muuttujalle.
 
-- Third and most common misconception is the order of copying. Often in the beginning of coding, it easy to mix up the direction on assignment. For example, you might want to write
+- Muuttujan arvon asettamisen käsittäminen riippuvuutena sen sijaan, että arvo kopioitaisiin: Sama esimerkki:
+
+
+```cpp
+first = second;
+```
+
+Voisit ajatella, että mikä tahansa muutos **second**-muuttujaan vaikuttaa myös **first**-muuttujaan. Tämä ei pidä paikkaansa. Kun koodirivi on suoritettu, **first** ja **second** välillä ei ole vuorovaikutusta. Arvon kopioiminen tehdään vain kerran.
+
+- Kolmas ja yleisin väärinkäsitys on kopioinnin järjestys. Usein koodin alussa on helppo sekoittaa sijoituksen suuntaa. Esimerkiksi, saatat haluta kirjoittaa
+
 
 ```cpp
 42 = int truth;
 42 = 21;
 ```
 
-Which of course do not work. To understand what is happening in the code for variables,you might want to pick up pen and paper, and write down what happens in the code, line by line. For example in this code, happens quite much:
+Mikä tietysti ei toimi. Muuttujien käyttäytymisen koodissa ymmärtämiseksi voi olla tarpeellista ottaa kynä ja paperin, ja kirjoittaa ylös mitä koodissa tapahtuu, rivi riviltä. Esimerkiksi tässä koodissa tapahtuu melko paljon:
+
 
 ```cpp
-row 1: int first = (1 + 1);
-row 2: int second = first + 3 * (2 + 5);
-row 3:
-row 4: first = 5;
-row 5:
-row 6: int third = first + second;
-row 7: Console.WriteLine(first);
-row 8: Console.WriteLine(second);
-row 9: Console.WriteLine(third);
+rivi 1: int first = (1 + 1);
+rivi 2: int second = first + 3 * (2 + 5);
+rivi 3:
+rivi 4: first = 5;
+rivi 5:
+rivi 6: int third = first + second;
+rivi 7: Console.WriteLine(first);
+rivi 8: Console.WriteLine(second);
+rivi 9: Console.WriteLine(third);
 ```
 
-In the next console you can see what happens, row by row. The program does not of course print all that, but a console window might be easier to read thank plain text.
+Seuraavassa konsolissa voit nähdä, mitä tapahtuu, rivi riviltä. Ohjelma ei toki tulosta kaikkea tätä, mutta konsoli-ikkuna voi olla helpompi lukea kuin pelkkä teksti.
 
 ```console
-row 1: create variable first
-row 1: evaluate the calculation 1 +1 and assign the value to the variable first
-row 1: the value of variable first is now 2
-row 2: create variable second
-row 2: calculate 2 + 5, 2 + 5 -> 7
-row 2: calculate 3 * 7, 3 * 7 -> 21
-row 2: calculate first + 21
-row 2: copy the value of the variable first into the calculation, the value of first is 2
-row 2: calculate 2 + 21, 2 + 21 -> 23
-row 2: assign the value for variable second as 23
-row 2: the value of variable second is now 23
-row 3: (empty, do nothing)
-row 4: assign the value for variable first as 5
-row 4: the value of variable first is now 5
-row 5: (empty, do nothing)
-row 6: create variable third
-row 6: calculate first + second
-row 6: copy the value for variable first arvo into the calculation, the value of variable first is now 5
-row 6: calculate 5 + second
-row 6: copy the value for variable second arvo into the calculation, the value of variable second is now 23
-row 6: calculate 5 + 23 -> 28
-row 6: assign the value for variable third as 28
-row 6: the value of variable third is now 28
-row 7: print variable first
-row 7: copy the value for variable first arvo to be printed, the value of variable first is now 5
-row 7: print value 5
-row 8: print variable second
-row 8: copy the value for variable second arvo to be printed, the value of variable second is now 23
-row 8: print value 23
-row 9: print variable third
-row 9: assign the value for variable third arvo to be printed, the value of variable third is now 28
-row 9: print value 28
+rivi 1: luodaan muuttuja first
+rivi 1: arvioidaan laskutoimitus 1 + 1 ja annetaan arvo muuttujalle first
+rivi 1: muuttujan first arvo on nyt 2
+rivi 2: luodaan muuttuja second
+rivi 2: lasketaan 2 + 5, 2 + 5 -> 7
+rivi 2: lasketaan 3 * 7, 3 * 7 -> 21
+rivi 2: lasketaan first + 21
+rivi 2: kopioi muuttujan first arvon laskentaan, muuttujan first arvo on 2
+rivi 2: lasketaan 2 + 21, 2 + 21 -> 23
+rivi 2: annetaan muuttujalle second arvoksi 23
+rivi 2: muuttujan second arvo on nyt 23
+rivi 3: (tyhjä, ei tee mitään)
+rivi 4: annetaan muuttujalle first arvoksi 5
+rivi 4: muuttujan first arvo on nyt 5
+rivi 5: (tyhjä, ei tee mitään)
+rivi 6: luodaan muuttuja third
+rivi 6: lasketaan first + second
+rivi 6: kopioi muuttujan first arvon laskentaan, muuttujan first arvo on nyt 5
+rivi 6: lasketaan 5 + second
+rivi 6: kopioi muuttujan second arvon laskentaan, muuttujan second arvo on nyt 23
+rivi 6: lasketaan 5 + 23 -> 28
+rivi 6: annetaan muuttujalle third arvoksi 28
+rivi 6: muuttujan third arvo on nyt 28
+rivi 7: tulostetaan muuttuja first
+rivi 7: kopioi muuttujan first arvon tulostusta varten, muuttujan first arvo on nyt 5
+rivi 7: tulostetaan arvo 5
+rivi 8: tulostetaan muuttuja second
+rivi 8: kopioi muuttujan second arvon tulostusta varten, muuttujan second arvo on nyt 23
+rivi 8: tulostetaan arvo 23
+rivi 9: tulostetaan muuttuja third
+rivi 9: kopioi muuttujan third arvon tulostusta varten, muuttujan third arvo on nyt 28
+rivi 9: tulostetaan arvo 28
+
 ```
 
-# Exercises
+# Harjoitukset
+
+<Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 
 <Exercise title={'016 Seconds in days'}>
 
-Create a program, which asks user for amount of days, and prints the total amount of seconds for that amount of days, gives the answer and quits.
+Luo ohjelma, joka kysyy käyttäjältä päivien määrää ja tulostaa kyseisen päivämäärän kokonaismäärän sekunteina, antaa vastauksen ja lopettaa.
 
-Example print:
+Esimerkkitulostus:
+
+
 
 ```console
 How many days?
@@ -266,11 +287,13 @@ How many days?
 
 <Exercise title={'017 Input two integers'}>
 
-Create a program, which asks the user for two `integers`, and calculates their sum.  
+Luo ohjelma, joka kysyy käyttäjältä kaksi kokonaislukua ja laskee niiden summan.
 
-Remember, that the input is a string, so you have to convert it to integer!
+Muista, että syöte on merkkijono, joten sinun on muunnettava se kokonaisluvuksi!
 
-Example output:
+Esimerkkitulos:
+
+
 
 ```console
 Give the first number!
@@ -292,7 +315,10 @@ The sum is 2
 
 <Exercise title={'018 Input three integers'}>
 
-Expand a little on the previous exercise. Now create a program, which asks for three `integers`, and calculates their sum.
+Laajenna hieman edellistä harjoitusta. Luo nyt ohjelma, joka pyytää kolmea kokonaislukua käyttäjältä ja laskee niiden summan.
+
+Esimerkkitulos voisi olla:
+
 
 ```console
 Give the first number!
@@ -308,7 +334,11 @@ The sum is 4
 
 <Exercise title={'019 Sum of two integers'}>
 
-Create a program, which asks the user for two `integers` and counts their sum. This time, also print the equation to the user, too.
+Luo ohjelma, joka kysyy käyttäjältä kaksi kokonaislukua ja laskee niiden summan. Tällä kertaa tulosta myös laskutoimitus käyttäjälle.
+
+Esimerkkitulos:
+
+
 
 ```console
 Give the first number!
@@ -330,7 +360,9 @@ Give the second number!
 
 <Exercise title={'020 Multiply two integers'}>
 
-Create a program, which asks the user for two `integers` and multiplies them with each other.
+Luo ohjelma, joka kysyy käyttäjältä kaksi `kokonaislukua` ja kertoo ne keskenään. Tulosta laskutoimitus ja vastaus käyttäjälle.
+
+Esimerkkitulos:
 
 ```console
 Give the first number!
@@ -352,7 +384,10 @@ Give the second number!
 
 <Exercise title={'021 Average of two integers'}>
 
-Create a program, which asks the user for two `integers` and calculates their average as a `double`.
+Luo ohjelma, joka kysyy käyttäjältä kaksi kokonaislukua ja laskee niiden keskiarvon desimaalilukuna `(double)`.
+
+Esimerkkitulos:
+
 
 ```console
 Give the first number!
@@ -366,7 +401,10 @@ The average is 2.5
 
 <Exercise title={'022 Average of three integers'}>
 
-Create a program, which asks the user for three `integers` and calculates their average as a `double`.
+Luo ohjelma, joka kysyy käyttäjältä kolme `kokonaislukua` ja laskee niiden keskiarvon desimaalilukuna `(double)`.
+
+Esimerkkitulos:
+
 
 ```console
 Give the first number!
@@ -382,7 +420,11 @@ The average is 2.0
 
 <Exercise title={'023 Tiny calculator'}>
 
-Let's create a program, that does all the basic calculations from user input! Ask for two `integers` and do and print the calculations with them.
+Luodaan ohjelma, joka suorittaa kaikki peruslaskutoimitukset käyttäjän syöttämien `kokonaislukujen` avulla! Kysy kaksi kokonaislukua ja suorita ja tulosta laskutoimitukset niiden avulla.
+Muista tulostaa laskutoimitukset näkyville.
+
+Esimerkkitulos:
+
 
 ```console
 Give the first number!

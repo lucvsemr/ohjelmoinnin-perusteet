@@ -4,15 +4,17 @@ nav_order: 2
 hidden: false
 ---
 
-In the previous section, we introduced our first **variable**, the **string variable**. String is not the only variable in coding. Variables are the basic storages of information in coding. Variables are for example the familiar **string** for text, but also **int** for integers, **double** for numbers with decimal numbers, or **boolean** for truth value. As mentioned earlier, the value for a variable is set with **the equals sign, =**.
+Edellisessä osiossa esittelimme ensimmäisen **muuttujan**, **merkkijonomuuttujan**. Merkkijono ei ole ainoa muuttuja koodauksessa. Muuttujat ovat perustietovarastoja koodissa. Muuttujat voivat olla esimerkiksi tuttuja **merkkijonoja** tekstille, mutta myös **int** kokonaisluvuille, **double** desimaaliluvuille tai **boolean** totuusarvoille. Kuten aiemmin mainittiin, muuttujan arvo asetetaan käyttäen **yhtäsuuruusmerkkiä, =**.
+
 
 ```cpp
 int truth = 42;
 ```
 
-In the example above we **declare** a variable called **truth** and **assign** it the **value** **42**.
+Yllä olevassa esimerkissä **esitellään** muuttuja nimeltä **totuus** ja **annetaan sille arvo** **42**.
 
-This integer can be concatenated to a string in our program.
+Tätä kokonaislukua voidaan liittää yhteen merkkijonon kanssa ohjelmassamme.
+
 
 ```cpp
 int truth = 42;
@@ -24,7 +26,7 @@ Console.WriteLine("Life of " + pie);
 Console.WriteLine("This is awesome: " + valid);
 ```
 
-Produces the following when ran
+Tulostaa koodin ajettaessa seuraavaa
 
 ```console
 The magic number: 42
@@ -32,7 +34,8 @@ Life of 3.141592653
 This is awesome: true
 ```
 
-The variable names must be unique inside a code block. You can declare each variable only once. But, as the name **variable** suggests, you can change their value.
+Muuttujien nimet täytyy olla yksilöllisiä koodilohkossa. Voit esitellä jokaisen muuttujaa vain kerran. Mutta, kuten nimi **muuttuja** viittaa, voit muuttaa niiden arvoa.
+
 
 ```cpp
 int number = 42;
@@ -41,16 +44,16 @@ number = 21;
 Console.WriteLine(number);
 ```
 
-Prints
+Tulostaa
 
 ```console
 42
 21
 ```
 
-## Assigning value to a variable
+## Arvon määrittäminen muuttujalle
 
-Let us take a closer look of our previous example.
+Katsotaanpa tarkemmin edellistä esimerkkiä...
 
 ```cpp
 int number = 42;
@@ -59,60 +62,62 @@ number = 21;
 Console.WriteLine(number);
 ```
 
-Prints
+Tulostaa
 
 ```console
 42
 21
 ```
 
-In the first line, we declare the variable and assign it a value. With this information, the compiler creates the **int** variable and stores the value.
+Ensimmäisellä rivillä esitellään muuttuja ja annamme sille arvon. Tällä tiedolla kääntäjä luo **int**-muuttujan ja tallentaa arvon.
 
-In the second line, we use the variable to access the stored information. It could be said that the variable name is a reference to the value. Once we have gained the value, the command prints it as requested.
+Toisella rivillä käytämme muuttujaa tallennetun tiedon hakemiseen. Voitaisiin sanoa, että muuttujan nimi on viittaus arvoon. Kun olemme saaneet arvon, komento tulostaa sen pyydettynä.
 
-Earlier it was mentioned, that you can declare a variable only once. This time we do not declare the value. The difference is the **int** on the first line. As we did on the second line while we printed the value, on the third line we once again reference to the number, rather than declare it again. With the **equals sign** we **assign a new value** to the variable.
+Aiemmin mainittiin, että muuttujan voi esitellä vain kerran. Tällä kertaa emme esittele sitä. Erotuksena on **int** ensimmäisellä rivillä. Kuten teimme toisella rivillä tulostaessamme arvon, kolmannella rivillä viittaamme jälleen kerran numeroon, emme esittele sitä uudelleen. **Yhtäsuuruusmerkillä** annamme muuttujalle **uuden arvon**.
 
-## Variable typing
 
-The variables in **C#** are statically typed. This means that once a variable is declared into a certain type, the type does not change\*.
+## Muuttujien tyypitys
 
-\* There is nowadays a keyword **dynamic** in C#, but that is not relevant for basic coding. For our purposes, we treat C# with static typing.
+Muuttujat **C#**-koodissa ovat staattisesti tyypitettyjä. Tämä tarkoittaa, että kun muuttuja on esitelty tiettyyn tyyppiin, tyyppi ei muutu\*.
 
-For example, this works:
+\* Nykypäivänä C#:ssa on avainsana **dynamic**, mutta se ei ole relevantti peruskoodauksessa. Tarkoituksiimme käsittelemme C#:aa staattisena tyypityksenä.
+
+Esimerkiksi, tämä toimii:
+
 
 ```cpp
 int magic = 42;
 magic = 41;
 ```
 
-This does not:
+Tämä taas ei...
 
 ```cpp
 int magic = 42;
 magic = "Magic";
 ```
 
-There are exceptions, of course. For example, you can assign an integer to a double:
+Tästä on toki poikkeuksia olemassa. Esimerkiksi voit asettaa integer luvun doubleksi. 
 
 ```cpp
-double decimal = 10; // Works fine
+double decimal = 10; // Toimii
 
 int number = 20;
-decimal = number; // Also works
+decimal = number; // Toimii
 ```
 
-... but not the other way around:
+... mutta ei toisinpäin, koska int viittaa kokonaislukuun!
 
 ```cpp
-int number = 4.2; // Does not work
+int number = 4.2; // Ei toimi
 
 double decimal = 4.2;
-number = decimal // Does not work either
+number = decimal // Ei toimi myöskään näin
 ```
 
-## Naming variables
+## Muuttujien nimeäminen
 
-Previously we discussed about the quality of code, and its readibility. Consider the following examples:
+Kävimme aiemmin läpi koodin luettavuutta. Mietitäänpä seuraavaa esimerkkiä...
 
 ```cpp
 double a = 3.14;
@@ -122,7 +127,7 @@ double c = a * b * b;
 Console.WriteLine(c);
 ```
 
-Prints
+Tulostaa...
 
 ```console
 1519.76
@@ -136,40 +141,41 @@ double area = pi * radius * radius;
 Console.WriteLine(area);
 ```
 
-Prints
+Tulostaa...
 
 ```console
 1519.76
 ```
 
-They both produce the same result. How ever, the second one is much easier to read, and its functionality is easier to understand. Both codes calculate the area of a circle. First we define the value of pi, then the radius, and finally we calculate the area.
+Molemmat tuottavat saman tuloksen. Toisaalta toinen on paljon helpompi lukea, ja sen toiminnallisuus on helpompi ymmärtää. Molemmat koodit laskevat ympyrän pinta-alan. Ensin määritellään piin arvo, sitten säde, ja lopuksi lasketaan pinta-ala.
 
-There are certain restrictions to naming variables, as well as conventions. The variable names...
+Muuttujien nimille on tietyt rajoitukset sekä käytänteet. Muuttujien nimet...
 
-- cannot contain special characters, such as **!**, **?**, **å** or **ö**
-- cannot contain empty spaces, also called **whitespace**
-- start with a **lowercase letter**
-- shouldBeWrittenInCamelCase
+- eivät voi sisältää erikoismerkkejä, kuten **!**, **?**, **å** tai **ö**
+- eivät voi sisältää tyhjiä välejä, myös kutsutaan **whitespaceksi**
+- alkavat pienellä alkukirjaimella
+- tulisi kirjoittaa camelCasella
 
-The variables in C# are usually written with [**camelCase (here)**](https://en.wikipedia.org/wiki/Camel_case). This means the variable name starts with a small letter, contains no other characters than letters and numbers and contains no punctuation or spaces.
+C#:n muuttujat kirjoitetaan yleensä [**camelCasella (täällä)**](https://fi.wikipedia.org/wiki/CamelCase). Tämä tarkoittaa, että muuttujan nimi alkaa pienellä kirjaimella, siinä ei ole muita merkkejä kuin kirjaimia ja numeroita, eikä se sisällä välimerkkejä tai tyhjiä välejä.
 
-Even though **snake_case** with underscore would be a valid variable name, such naming convention is not recommended, and should **not** be used during this course.
+Vaikka **snake_case** alaviivalla olisi sallittu muuttujanimi, tällaista nimeämiskäytäntöä ei suositella, eikä sitä tule käyttää tämän kurssin aikana.
+
 
 ```cpp
-int 9var = 42; // Does not work
-int var9 = 42; // Works, but does not describe the variable well
+int 9var = 42; // Ei toimi
+int var9 = 42; // Toimii, mutta ei kovin selvä nimeämistapa
 ```
 
-The variables can only be declared once:
+Muuttujat voidaan esitellä vain kerran (kuten yllä opittiin)
 
 ```cpp
 string camelCase = "Camels are fun!";
-string camelCase = "Camels are nice"; // Does not compile, the variable name is already in use
+string camelCase = "Camels are nice"; // Ei toimi, koska muuttuja jo esitelty ylemmällä rivillä
 ```
 
-## Reading different kinds of variables from user
+## Erilaisten muuttujien lukeminen käyttäjältä
 
-In the previous part we learned how to read a **string variable** from the user.
+Aiemmin tutustuimme, miten **string muuttuja** kysytään käyttäjältä
 
 ```cpp
 public class Program
@@ -188,25 +194,26 @@ Give a message: I want to print this
 I want to print this
 ```
 
-All the other variables, such as integers, doubles or booleans are also read from the user as strings. We have to convert them to the correct type with built in methods.
+Kaikki muut muuttujat, kuten kokonaisluvut, desimaaliluvut tai totuusarvot, luetaan myös käyttäjältä merkkijonoina. Meidän täytyy muuntaa ne oikeaan tyyppiin käyttämällä sisäänrakennettuja metodeja.
+
 
 ```cpp
 Console.Write("Give integer value: ");
 
-// Declare and assign the input as string
+// Esittele muuttuja tekstiksi ja lue käyttäjältä teksti
 string userInput = Console.ReadLine();
 
-// Convert string to integer type
+// Konvertoi käyttäjän syöttämä syöte kokonaisluvuksi
 int intValue = Convert.ToInt32(userInput);
 
 Console.WriteLine("You gave " + intValue);
 
 Console.Write("Give double value: ");
 
-// Assign new value to userInput
+// Aseta uusi arvo jo esiteltyyn muuttujaan
 userInput = Console.ReadLine();
 
-// Convert string to double type
+// Konvertoi käyttäjän syöte desimaaliluvuksi
 double doubleValue = Convert.ToDouble(userInput);
 
 Console.WriteLine("You gave " + doubleValue);
@@ -221,9 +228,10 @@ Give double value: 4.2
 You gave: 4.2
 ```
 
-In the example above, we read both an integer and a double. As you can see, there is no large difference between the methods, only the method name is different, from the coding point of view.
+Yllä olevassa esimerkissä luemme sekä kokonaisluvun että desimaaliluvun. Kuten näet, menetelmien välillä ei ole suurta eroa, vain metodin nimi eroaa koodauksen näkökulmasta.
 
-If we want to convert a truth value from a string, are two options: **True** and **False**.
+Jos haluamme muuntaa totuusarvon merkkijonosta, on kaksi vaihtoehtoa: **True** ja **False**.
+
 
 ```cpp
 string truth = "True";
@@ -235,20 +243,23 @@ booleanValue = System.Convert.ToBoolean(truth);
 Console.WriteLine(booleanValue);
 ```
 
-Gives us
+Antaa meille
 
 ```console
 True
 False
 ```
 
-The **Convert Class** can be used to convert strings into multiple other types as well. We will handle them as they come, but for the curious, the full list can be [**found here**](https://docs.microsoft.com/en-us/dotnet/api/system.convert?view=netframework-4.8).
+**Convert-luokkaa** voidaan käyttää muuntamaan merkkijonoja myös moniin muihin tyyppeihin. Käsittelemme niitä niiden ilmetessä, mutta uteliaisuudesta kiinnostuneille, lisätietoja löytyy [** täältä**](https://learn.microsoft.com/en-us/dotnet/api/system.convert?view=net-7.0).
 
-# Exercises
+
+# Harjoitukset
+
+<Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 
 <Exercise title={'011 Print variables'}>
 
-The exercise comes with a template that prints the following:
+Harjoituksessa on valmis pohja, joka tulostaa seuraavaa:
 
 ```console
 Days to summer:
@@ -259,7 +270,7 @@ Coding is fun:
 Are you sure?
 ```
 
-Change the `values` of the variables, so the program will print
+Muuta muuttujien `arvoja` jotta ohjelma tulostaa
 
 ```console
 Days to summer:
@@ -270,13 +281,14 @@ Coding is fun:
 It sure is!
 ```
 
-Do not change anything else, only the variable values!
+Älä muuta mitään muuta kuin muuttujien arvoja!
 
 </Exercise>
 
 <Exercise title={'012 Print integer'}>
 
-Create a program which asks the user for an `integer`. After user input, the program will print the `integer`. Example prints:
+Luo ohjelma, joka kysyy käyttäjältä `kokonaislukua`. Käyttäjän syötön jälkeen ohjelma tulostaa `kokonaisluvun`. Esimerkki:
+
 
 ```console
 Give a number!
@@ -290,13 +302,14 @@ Give a number!
 You gave 42
 ```
 
-<Note>Use WriteLine for prints, not just Write! </Note>
+<Note>Käytä WriteLine tulostukseen, ei pelkkä Write! </Note>
 
 </Exercise>
 
 <Exercise title={'013 Print double'}>
 
-Create a program, that asks the user for a `double`. After user input, the program will print the `double`. Example prints:
+Luo ohjelma, joka kysyy käyttäjältä `desimaalilukua`. Käyttäjän syötön jälkeen ohjelma tulostaa `desimaaliluvun`. Esimerkki:
+
 
 ```console
 Give a number!
@@ -314,7 +327,9 @@ You gave 41.999999
 
 <Exercise title={'014 Print truth'}>
 
-Create a program, that asks the user for a `boolean`. After user input, the program will print the `boolean`. Example prints:
+Luo ohjelma, joka kysyy käyttäjältä `totuusarvoa`. Käyttäjän syötön jälkeen ohjelma tulostaa `totuusarvon`. Esimerkki:
+
+
 
 ```console
 Give me the truth!
@@ -332,7 +347,9 @@ False
 
 <Exercise title={'015 Asking multiple inputs'}>
 
-Let's combine everything you know so far. create program that asks the user for a string, an integer, a double and a boolean, and prints them like follows:
+Kootaan nyt lopuksi kaikki tieto yhteen! Luo ohjelma, joka kysyy käyttäjältä merkkijonoa, kokonaislukua, desimaalilukua ja totuusarvoa, ja tulostaa ne seuraavasti:
+
+
 
 ```console
 Give a string:
