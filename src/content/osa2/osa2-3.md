@@ -4,23 +4,24 @@ nav_order: 3
 hidden: false
 ---
 
-Printing to the screen has been done with the statement **Console.WriteLine()**, and reading numbers with the statement **Console.ReadLine()**. Conditional statements have used **if**, repeat statements **while** and **for**. We notice that printing and reading somewhat differ from **if**, **while**, and **for**; the printing and reading commands are followed by parentheses, and sometimes there also are parameters given to the command between the parentheses. These statements "ending with parentheses" are strictly speaking not commands, but rather methods.
+Ruudulle tulostaminen ja lukeminen on tehty **Console.WriteLine()** -käskyllä ja lukeminen **Console.ReadLine()** -käskyllä. Ehtolauseet ovat käyttäneet **if**-rakennetta, toistolauseet **while**- ja **for**-rakenteita. Huomaamme, että tulostaminen ja lukeminen eroavat hieman **if**-, **while**- ja **for**-rakenteista; tulostamis- ja lukemiskäskyt päättyvät sulkeisiin, ja välillä sulkeissa on myös käskyn parametreja. Nämä sulkeisiin päättyvät käskyt eivät ole varsinaisesti käskyjä, vaan metodeja.
 
-Technically speaking, **a method** is a named set of statements - a part of the program that can be called from elsewhere in the program code by using the method's name. For instance the line of code
+Teknisesti ottaen, **metodi** on nimetty joukko lauseita - osa ohjelmaa, jota voidaan kutsua muualta ohjelmakoodista käyttämällä metodin nimeä. Esimerkiksi koodirivi
 
 ```cpp
 Console.WriteLine("I am a parameter given to a method!");
 ```
 
-calls a methods that handles printing to the screen. The internal implementation of the method -- i.e. the set of statements to be executed -- is hidden, and the programmer need not concern themselves with it when using the method.
+kutsuu metodia joka käsittelee ruudulle tulostamista. Metodin sisäinen rakenne -- eli miten metodin kutsun yhteydessä annettu käskyjoukko suoritetaan -- on piilotettu, eikä ohjelmoijan tarvitse sitä käyttäessään tietää.
 
-Thus far all the methods we have used have been pre-made C# methods. Next we will learn to create our own methods.
+Tähän mennessä kaikki metodit joita olemme käyttäneet ovat olleet C#:n valmiita metodeja. Seuraavaksi opimme luoman omia metodeja.
 
-## Own methods
 
-A method means a named set consisting of statements that can be called from elsewhere in the program code by its name. Programming languages offer pre-made methods, but programmers can also write their own ones. It would in fact be quite exceptional if a program used no methods written by the programmer, because methods help in structuring the program. From this point onward nearly every program on the course will therefore contain custom-created methods.
+## Omat metodit
 
-In the code boilerplate, methods are written outside of the curly braces of the Main, yet inside out the outermost curly braces. They can be located above or below the Main.
+Metodi tarkoittaa nimettyä joukkoa lauseita, jota voidaan kutsua muualta ohjelmakoodista sen nimellä. Ohjelmointikielten mukana tulee valmiita metodeja, mutta ohjelmoija voi myös kirjoittaa omiaan. Olisi itse asiassa melko erikoista, jos ohjelma ei käyttäisi lainkaan ohjelmoijan kirjoittamia metodeja, sillä metodit auttavat ohjelman rakenteen hahmottamisessa. Tästä eteenpäin lähes jokainen kurssilla tehtävä ohjelma sisältää siis ohjelmoijan kirjoittamia metodeja.
+
+Koodin mallipohjassa metodit on kirjoitettu **Main**-metodin aaltosulkujen ulkopuolelle, mutta uloimpien aaltosulkujen sisälle. Ne voivat sijaita joko **Main**-metodin ylä- tai alapuolella.
 
 ```cpp
 using System;
@@ -29,14 +30,14 @@ public class Program
 {
   public static void Main(string[] args)
   {
-      // Add your statements here
+      // Tänne tulisi koodia
   }
 
-  // Your own methods are here
+  // Omat metodit ovat täällä
 }
 ```
 
-Let's observe how to create a new method. We'll create the method **greet**.
+Tarkastellaan uuden metodin luomista. Luodaan metodi **Greet**.
 
 ```cpp
 public static void Greet()
@@ -45,7 +46,8 @@ public static void Greet()
 }
 ```
 
-And then we'll insert it into a suitable place for a method.
+Ja laitetaan se metodille sopivaan paikkaan.
+
 
 ```cpp
 using System;
@@ -54,10 +56,10 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // Add your statements here
+        // Tänne tulisi koodia
     }
 
-    // Your own methods are here
+    // Omat metodit ovat täällä
     public static void Greet()
     {
       Console.WriteLine("Greetings from the method world!");
@@ -65,9 +67,10 @@ public class Program
 }
 ```
 
-The definition of the method consists of two parts. The first line of the definition includes the name of the method, i.e. **greet**. On the left side of the name are the keywords **public static void**. Beneath the row containing the name of the method is a code block surrounded by curly brackets, inside of which is the code of the method - the commands that are executed when it is called. The only thing our method greet does is write a line of text on the screen.
+Metodin määritelmä koostuu kahdesta osasta. Ensimmäisen rivi sisältää metodin nimen, eli **Greet**. Nimen vasemmalla puolella ovat avainsanat **public static void**. Nimen alla on aaltosulkeiden ympäröimä koodilohko, jonka sisällä on metodin koodi -- käskyt, jotka suoritetaan kun metodia kutsutaan. Metodimme tekee vain yhden asian: kirjoittaa ruudulle yhden rivin tekstiä.
 
-Calling a custom method is simple: write the name of the methods followed by a set of parentheses and the semicolon. In the following snippet the Main program (Main) calls the greet method four times in total.
+Oman metodin kutsuminen on yksinkertaista: kirjoitetaan metodin nimi, perään sulkumerkit ja puolipiste. Seuraavassa koodissa **Main**-metodi kutsuu **Greet**-metodia neljä kertaa.
+
 
 ```cpp
 using System;
@@ -76,7 +79,6 @@ public class Program
 {
   public static void Main(string[] args)
   {
-    // Add your statements here
     Console.WriteLine("Let's try if we can travel to the method world:");
     Greet();
 
@@ -86,7 +88,7 @@ public class Program
     Greet();
   }
 
-  // Your own methods are here
+  // Omat metodit tänne
   public static void Greet()
   {
     Console.WriteLine("Greetings from the method world!");
@@ -94,25 +96,26 @@ public class Program
 }
 ```
 
-The execution of the program produces the following output:
+Ohjelman suoritu tuottaa seuraavan tulosteen:
 
 ```console
-Let's try if we can travel to the method world: Greetings from the method world!
+Let's try if we can travel to the method world: 
+Greetings from the method world!
 Looks like we can, let's try again:
 Greetings from the method world!
 Greetings from the method world!
 Greetings from the method world!
 ```
 
-The order of execution is worth noticing. The execution of the program happens by executing the lines of the Main method (**Main**) in order from top to bottom, one at a time. When the encountered statement is a method call, the execution of the program moves inside the method in question. The statements of the method are executed one at a time from top to bottom. After this the execution returns to the place where the method call occured, and then proceeds to the next statement in the program.
+Suoritusjärjestykseen kannattaa kiinnittää huomiota. Ohjelman suoritus tapahtuu suorittamalla **Main**-metodin (eli **Main**) rivit järjestyksessä ylhäältä alas, yksi kerrallaan. Käskyn ollessa metodikutsu, ohjelman suoritus siirtyy kutsuttavan metodin sisälle. Metodin käskyt suoritetaan ylhäältä alas, yksi kerrallaan. Tämän jälkeen suoritus palaa takaisin siihen kohtaan, josta metodikutsu tapahtui, ja jatkaa seuraavalla käskyllä.
 
-Strictly speaking the Main program (**Main**) itself is a method. When the program starts, the operating system calls Main. The Main method is the starting point for the program, since the execution begins from its first row. The execution of a program ends at the end of the Main method.
+Tarkalleen ottaen **Main**-metodi itsessään on myös metodi. Kun ohjelma käynnistyy, käyttöjärjestelmä kutsuu **Main**-metodia. **Main**-metodi on siis ohjelman aloituspiste, sillä suoritus alkaa sen ensimmäiseltä riviltä. Ohjelman suoritus päättyy **Main**-metodin viimeiselle riville. 
 
-## On the naming of methods
+## Metodien nimeämisestä
 
-We discussed variable naming in the previous part. There are conventions for method naming, as well. For methods, we use **PascalCase**. It is very similar to the camelCase used for variables. The major difference is that with PascalCase **method names Start with a Capital Letter**.
+Kävimme läpi muuttujien nimeämistä edellisessä osassa. Myös metodien nimeämiseen on oma käytäntönsä. Metodien nimet kirjoitetaan **PascalCase**-tyylillä. Tämä tarkoittaa, että metodin nimi alkaa isolla kirjaimella, ja jokaisen sanan ensimmäinen kirjain on iso. Se on hyvin samankaltainen kuin camelCase jota käytetään muuttujille. Suurin ero on, että PascalCase **metodin nimet alkavat isolla kirjaimella**.
 
-In the code example below the method is poorly named. It begins with a lower-case letter and the words are separated by \_ characters. The parentheses after the method name have a space between and indentation in the code block is incorrect.
+Alla olevassa esimerkissä metodi on huonosti nimetty. Se alkaa pienellä alkukirjaimella ja sanat on eroteltu \_ merkillä. Metodin nimen perässä olevissa sulkumerkeissä on väli ja metodin sisällä oleva koodilohko on sisennetty väärin.
 
 ```cpp
 public static void this_method_says_woof ( ) {
@@ -120,7 +123,7 @@ Console.WriteLine("woof");
 }
 ```
 
-In contrast the method below is correctly named: The name begins with an upper-case letter and the words are joined together with the PascalCase style, meaning that each word begins with an upper-case letter. The parentheses sit next to one another and the contents are correctly indented (the method has its own code block, so the indentation of the code is four characters).
+Vertailun vuoksi alla oleva metodi on nimetty oikein: nimi alkaa isolla kirjaimella ja sanat on yhdistetty PascalCase-tyylillä, eli jokainen sana alkaa isolla kirjaimella. Sulkumerkit ovat vierekkäin ja sisällä oleva koodilohko on sisennetty oikein (metodilla on oma koodilohkonsa, joten koodin sisennys on neljä merkkiä).
 
 ```cpp
 public static void ThisMethodSaysWoof()
@@ -129,7 +132,7 @@ public static void ThisMethodSaysWoof()
 }
 ```
 
-## Method parameters
+## Metodin parametrit
 
 **Parameters** are values given to a method that can be used in its execution. The parameters of a method are defined on the uppermost row of the method within the parentheses following its name. The values of the parameters that the method can use are copied from the values given to the method when it is executed.
 
