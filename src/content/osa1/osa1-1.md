@@ -49,7 +49,7 @@ materiaalissa. Harjoituksissa ensimmäisille viikoille annetaan perusrakenne, jo
 
 ## Tulostaminen
 
-Kuten aiemmin mainittiin, ohjelmointikielissä on sisäänrakennettuja lauseita. **Console.WriteLine** on yksi niistä. Lause on melko itsestään selvä. Se kertoo tietokoneelle **kirjoita rivi konsoliin**. Voit muuttaa **Hei maailma!** minkä tahansa haluamasi tekstin, kunhan itse komentoa ei muuteta, ja se toimii.
+Kuten aiemmin mainittiin, ohjelmointikielissä on sisäänrakennettuja lauseita. **Console.WriteLine** on yksi niistä. Lause on melko itsestään selvä. Se kertoo tietokoneelle **kirjoita rivi konsoliin**. Voit muuttaa **Hello World!** tilalle minkä tahansa haluamasi tekstin, kunhan itse komentoa ei muuteta, ja se toimii.
 
 Harjoitusten vaatimukset ovat hyvin tarkkoja. Esimerkiksi, jos rivi tarvitsee päättyä huutomerkkiin, sitä ei voida jättää pois.
 
@@ -88,7 +88,7 @@ public class Program {
 <Note> Tyhjää tilaa \n ympärillä ei ole. Tekstissä jokainen merkki, mukaan lukien tyhjät, on osa tekstiä. Jos laittaisit tyhjää tilaa rivinvaihdon ympärille, ensimmäinen rivi päättyisi tyhjään merkkiin ja toinen alkaisi sillä.
 </Note>
 
-Joskus teksti voi olla varsin pitkiä, ja sen lukeminen yhdestä rivistä voi olla melko vaikeaa. On mahdollista jakaa merkkijono useisiin osiin ja sitten yhdistää ne yhteen **+** -operaattorilla. Yllä oleva esimerkki voisi olla:
+Joskus teksti voi olla varsin pitkiä, ja sen lukeminen yhdestä rivistä voi olla melko vaikeaa. On mahdollista jakaa **merkkijono** (englanniksi **string**) useisiin osiin ja sitten yhdistää ne yhteen **+** -operaattorilla. Yllä oleva esimerkki voisi olla:
 
 
 ```cpp
@@ -133,7 +133,7 @@ Tämä tulostaisi:
 Hello World!
 ```
 
-## Koodilohkot
+## Koodilohkot (code blocks)
 
 Koodi koostuu **koodilohkoista**. Koodilohko tarkoittaa koodin osaa, joka on erotettu **{}** suluilla. Usein yhdessä ohjelmassa on useita näitä, kuten voitiin jo nähdä perusrakenteestamme.
 
@@ -159,7 +159,7 @@ Esimerkki näyttää lohkon toisen lohkon sisällä. Lohkoja voidaan käyttää 
 Lohko avataan aina **{** ja suljetaan **}**. Jos jompikumpi niistä puuttuu, koodi ei käänny ja sitä ei suoriteta.
 
 
-## Kommentit
+## Kommentit (comments)
 
 Kuten olet ehkä huomannut, meillä on jo **kommentteja** koodissamme. Kommentit ovat tekstejä, jotka eivät käännä, ja siksi niitä ei suoriteta. Kommentteja voidaan käyttää esimerkiksi tietyissä koodielementeissä kommentointiin tai osan koodista **väliaikaiseen** kommentointiin vianjäljitystarkoituksiin. On olemassa kahdenlaisia kommentteja:
 
@@ -197,10 +197,11 @@ public class Program { public static void Main(string[] args) { Console.WriteLin
 
 Kuten näet, jälkimmäinen ei ole yhtä helppo lukea, ja esimerkiksi eri koodilohkojen ymmärtäminen on vaikeampaa. **Pitäkää koodinne siistinä ja puhtaana!**
 
+<Note>Omasta koodista saa helposti luettavampaa, kun käyttää koodin kirjoittamisen jälkeen näppäinyhdistelmää ALT + SHIFT + F. Tämä sisentää tekstin automaattisesti!</Note>
 
 ## Merkkijonon tulostaminen
 
-Nyt kun ymmärrämme koodin perusrakenteen, mennään hieman syvemmälle. Tähän mennessä olemme tulostaneet yksinkertaisia tekstirivejä. Nämä tekstit ovat itse asiassa **merkkijonoliteraaleja**. Näitä literaaleja voidaan tallentaa **merkkijonomuuttujiin**. Kun tuomme muuttujan ohjelmaan, annamme sille yleensä **arvon**. Arvo annetaan seuraamalla muuttujaa **=** merkillä, arvolla ja lopettamalla rivi jälleen puolipisteellä, **;**. Esimerkiksi, jos haluamme merkkijonomuuttujan nimeltään **viesti** arvolla **I am learning**, antaisimme sen näin:
+Nyt kun ymmärrämme koodin perusrakenteen, mennään hieman syvemmälle. Tähän mennessä olemme tulostaneet yksinkertaisia tekstirivejä. Nämä tekstit ovat itse asiassa **merkkijonoliteraaleja** (englanniksi **string literals**). Näitä literaaleja voidaan tallentaa **merkkijonomuuttujiin** (englanniksi **string variables**). Kun tuomme muuttujan ohjelmaan, annamme sille yleensä **arvon** (englanniksi **value**). Arvo annetaan seuraamalla muuttujaa **=** merkillä, arvolla ja lopettamalla rivi jälleen puolipisteellä, **;**. Esimerkiksi, jos haluamme merkkijonomuuttujan nimeltään **message** arvolla **I am learning**, antaisimme sen näin:
 
 
 ```cpp
@@ -293,7 +294,7 @@ public class Program
 }
 ```
 
-Tämä näyttäisi joltakin tältä, syötteellä **Haluan tulostaa tämän**:
+Tämä näyttäisi joltakin tältä, syötteellä **I want to print this**:
 
 
 ```console
@@ -301,7 +302,7 @@ Give a message: I want to print this
 I want to print this
 ```
 
-Tämä on sama esimerkki, mutta yhdistämällä syöttöviestin **Viestisi oli:**:
+Tämä on sama esimerkki, mutta yhdistämällä syöttöviestin **Give me a message:**:
 
 
 ```cpp
@@ -321,7 +322,7 @@ public class Program
 }
 ```
 
-Tämä näyttäisi jotakuinkin tältä syötteellä **Haluan tulostaa tämän**:
+Tämä näyttäisi jotakuinkin tältä syötteellä **I want to print this**:
 
 
 ```console
