@@ -358,7 +358,7 @@ static void Main(string[] args)
 3120
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'001 One minute'}>
 

@@ -342,7 +342,7 @@ What is the age limit? 12
 Matthew, age 12 years
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'015 Main class'}>
 

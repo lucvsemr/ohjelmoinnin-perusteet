@@ -715,7 +715,7 @@ The output of the method call **MultiplicationTable(3)**, for instance, looks li
 3 6 9
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'009 Print phrase'}>
 

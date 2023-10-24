@@ -255,7 +255,7 @@ for (int i = 0; i < arrayOfFloatingpoints.Length; i++) {
 }
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'017 Swap indices'}>
 

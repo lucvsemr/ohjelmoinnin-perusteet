@@ -252,7 +252,7 @@ else
 Age average: 1.6666666666666667
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'022 String three times'}>
 

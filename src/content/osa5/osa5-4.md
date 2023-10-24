@@ -1114,7 +1114,7 @@ public class Factory
 }
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'006 NullReferenceException'}>
 

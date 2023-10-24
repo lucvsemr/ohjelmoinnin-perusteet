@@ -222,7 +222,7 @@ static void Main(string[] args)
 Total amount read: 3
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'019 Reading strings'}>
 

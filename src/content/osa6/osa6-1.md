@@ -881,7 +881,7 @@ public class UserInterface
 }
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'001 Grade register'}>
 

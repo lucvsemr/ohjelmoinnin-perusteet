@@ -317,7 +317,7 @@ Console.WriteLine("Valid numbers: " + validNumbers);
 Console.WriteLine("Invalid numbers: " + invalidNumbers);
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'005 Iterating to input'}>
 

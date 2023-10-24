@@ -332,7 +332,7 @@ public class Program
 
 The method **TellIfOfAge** has been defined static, so it is not attached to any object, **BUT** the the method gets an object as a parameter. Method has not been defined inside the person class, even though it handles Persons. It is a helper method for the main program, which made our main program more readable.
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'003 How many names'}>
 

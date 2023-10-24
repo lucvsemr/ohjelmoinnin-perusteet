@@ -887,7 +887,7 @@ public override string ToString()
 }
 ```
 
-# Exercises
+# Tehtävät
 
 <Note>
 When creating own classes, make sure to include the correct namespace so you can reference it from your Program.cs file. We'll get to namespaces later. For now, whenever you create a new class, use the same namespace as the Program.cs has.

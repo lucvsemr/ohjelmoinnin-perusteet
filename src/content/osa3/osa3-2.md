@@ -810,7 +810,7 @@ numbers.Add(2);
 numbers.ForEach(Console.WriteLine);
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'001 Third from list'}>
 The exercise contains a base that asks the user for strings and adds them to a list. The program stops reading when the user enters an empty string. The program then prints the first element of the list.

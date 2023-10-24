@@ -4,9 +4,9 @@ nav_order: 1
 hidden: false
 ---
 
-## Reading user input
+## Käyttäjän syötteen lukeminen
 
-The solution pattern for programming tasks involving reading user input is straightforward. We can use the **System.Console.ReadLine();** command for this task. In most cases, we want to use the command more than once, or use other methods from **System** as well. For this, we will have **using System** in our program structure:
+Ratkaisumalli ohjelmointitehtävissä käyttäjän syötteen (englanniksi **input**) lukemiseen on suoraviivainen. Tähän tehtävään käytämme **System.Console.ReadLine();** -komentoa. Useimmissa tapauksissa haluamme käyttää komentoa useammin kuin kerran, tai käyttää muita **System**:n metodeja. Tätä varten meillä on ohjelmassa **using System;**:
 
 ```cpp
 using System;
@@ -22,49 +22,50 @@ public class Program
 
 ```
 
-In the material this basic structure is assumed to exist, and is not included in the example code.
+Tässä materiaalissa oletamme tämän perusrakenteen olevan olemassa, eikä sitä sisällytetä esimerkkikoodeihin.
 
-## Calculating
+## Laskeminen
 
-We quite often need to calculate something in a program, such as an average or a sum. The solution patter to solve such problems is as follows.
+Ohjelmassa tarvitsemme usein laskutoimituksia, kuten keskiarvon tai summan laskemista. Ratkaisumalli tällaisen ongelman ratkaisemiseen on seuraava:
 
-- Define the inputs required for the calculation and declare variables for them. Input refers to the values used in the calculation. You can typically identify the type of inputs from the problem description.
-- Identify the operation needed, and declare a variable for the result of the calculation. Perform the calculation using the inputs, and assign the result to the variable that was reserved for it. The type of the result can also usually be identified from the problem description.
-- Once the calculation is done, do something with its result. This can mean printing the result of a computation, or, for example, using it in calculating an average by dividing a sum of integers by their count.
+- Määrittele laskutoimituksessa tarvittavat syötteet ja varaa niille muuttujat. Syöte tarkoittaa laskutoimituksessa käytettäviä arvoja. Syötteiden tyypin voi yleensä päätellä ongelman kuvauksesta.
+- Määrittele laskutoimitus ja varaa muuttuja laskutoimituksen tulokselle. Suorita laskutoimitus syötteillä ja sijoita tulos sille varattuun muuttujaan. Tuloksen tyyppi voidaan yleensä päätellä ongelman kuvauksesta.  
+- Kun laskutoimitus on suoritettu, tee sen tulokselle jotain. Tämä voi tarkoittaa tuloksen tulostamista, tai esimerkiksi keskiarvon laskemisessa summan jakamista lukujen määrällä.
 
-For example, the solution pattern for the problem **Create a program to calculate the sum of two integers** is the following.
+Esimerkiksi, jos haluamme **luoda ohjelman joka laskee kahden kokonaisluvun summan**, ratkaisumalli on seuraava:
+
 
 ```cpp
-// Identifying the input values and declaring the variables for them
+// Tunnistetaan syötteet ja varataan niille muuttujat
 int first = 1;
 int second = 2;
 
-// Identifying the operation and declaring a variable for the result
+// Tunnistetaan laskutoimitus ja varataan muuttuja tulokselle
 int sum = first + second;
 
-// printing the result of the calculation
+// Tulostetaan laskutoimituksen tulos
 Console.WriteLine("The sum of " + first + " and " + second + " is " + sum);
 ```
 
-A program that both reads and calculates combines both of these patterns. One that calculates the product of two integers provided by the use looks like this:
+Ohjelma joka sekä lukee ja laskee yhdistää nämä ratkaisumallit. Ohjelma joka laskee kahden kokonaisluvun tulon näyttää tältä:
+
 
 ```cpp
-// Identifying the input values and declaring the variables for them
+// Tunnistetaan syötteet ja varataan niille muuttujat
 int first = 1;
 int second = 2;
 
-// Assigning the user input to the variables
+// Nimitetään käyttäjän syöte muuttujiin
 first = Convert.ToInt32(Console.ReadLine());
 second = Convert.ToInt32(Console.ReadLine());
 
-// Identifying the operation and declaring a variable for the result
+// Tunnistetaan laskutoimitus ja varataan muuttuja tulokselle
 int product = first * second;
 
-// Printing the result of the operation
+// Tulostetaan laskutoimituksen tulos
 Console.WriteLine("The product of " + first + " and " + second + " is " + product);
 ```
-
-In the example above, the program has been implemented so that the variables are declared first after which values are read into them. Variable declaration and the reading of values into them can also be combined into one.
+Yllä olevassa esimerkissä, ohjelma on toteutettu niin että muuttujat määritellään ensin, jonka jälkeen arvot luetaan niihin. Muuttujien määrittely ja arvojen lukeminen niihin voidaan myös yhdistää yhdeksi.
 
 ```cpp
 int first = Convert.ToInt32(Console.ReadLine());
@@ -76,19 +77,20 @@ Console.WriteLine("The product of " + first + " and " + second + " is " + produc
 
 ```
 
-## Some alternative functionality
+## Vähän vaihtoehtoista toimintaan
 
-Problems often contain some alternative functionality, and in such case we use conditional statements. A Conditional statement starts with an **if** command followed by an expression in parentheses. The expression evaluates to either true or false. If it evaluates true, the following block delimited by curly brackets gets executed.
+Ongelmat sisältävät usein jonkin vaihtoehtoisen toiminnon, ja tällöin käytämme ehtolauseita. Ehtolause alkaa **if**-komennolla, jonka jälkeen tulee sulkujen sisään lauseke. Lauseke arvioi joko todeksi tai epätodeksi. Jos lauseke arvioi todeksi, suoritetaan seuraava aaltosulkeilla rajattu lohko.
+
 
 ```cpp
-// if the value is greater than five
+// Jos arvo on enemmän kuin viisi
 if (value > 5)
 {
-    // then...
+    // sitten...
 }
 ```
 
-A program that prints "ok" if the value of the variable is greater than 42, and otherwise prints "not ok" looks like this:
+Ohjelma joka tulostaa "ok" jos muuttujan arvo on suurempi kuin 42, ja muuten tulostaa "not ok" näyttää tältä:
 
 ```cpp
 int value = 15;
@@ -102,56 +104,59 @@ else
 }
 ```
 
-You can also chain together multiple conditions. In such a case, the problem takes the form "if a, then b; else if c, then d; else if e, then f; otherwise g". The chain consists of an if-statement followed by else if-statements each containing its own expression and a block.
+Voit myös ketjuttaa useita ehtoja. Tällöin ongelma muuttuu muotoon "jos a, niin b; muuten jos c, niin d; muuten jos e, niin f; muuten g". Ketju koostuu if-lauseesta, jota seuraa else if-lauseita, joissa kussakin on oma lauseke ja lohko.
+
 
 ```cpp
-// if the value is greater than five
+// Jos arvo on enemmän kuin viisi
 if (value > 5)
 {
-    // functionality when value is greater than five
+    // Toiminnallisuus kun arvo on suurempi kuin viisi
 }
 else if (value < 0)
 {
-    // functionality when value is less than zero
-    // and the value IS NOT larger than five
+    // Toiminallisuus kun arvo on pienempi kuin nolla
+    // ja arvo EI OLE suurempi kuin viisi
 }
-else // otherwise
+else // muussa tapauksessa
 {
-    // functionality otherwise
+    // Toiminnallisuus muissa tapauksissa
 }
 ```
 
-Conditional functionality can be combined with other solution patterns. Let's look into a problem **"Read two integers from the user. If the sum of the integers is over 100, print too much. If the sum is less than 0, print too little. Otherwise, print ok."** The program below combines reading, calculating and conditional functionality.
+Ehdollinen toiminnallisuus voidaan yhdistää muihin ratkaisumalleihin. Katsotaan ongelma **"Lue kaksi kokonaislukua käyttäjältä. Jos lukujen summa on yli 100, tulosta too much. Jos summa on alle 0, tulosta too little. Muuten tulosta ok."** Ohjelma alla yhdistää lukemisen, laskemisen ja ehdollisen toiminnallisuuden.
+
 
 ```cpp
- // Declaring the variables and assigning user input to them
+// Julistetaan muuttujat ja luetaan käyttäjän syöte niihin
 int first = Convert.ToInt32(Console.ReadLine());
 int second = Convert.ToInt32(Console.ReadLine());
 
-// Identifying the operation and declaring variable for the result
+// Tunnistetaan laskutoimitus ja varataan muuttuja tulokselle
 int sum = first + second;
 
-// Doing something with the result. In this case
-// the result is used in the conditional operations.
+// Tehdään tuloksella jotain. Tässä tapauksessa
+// tulosta käytetään ehdollisissa operaatioissa.
 
-if (sum > 100) // if the sum is over 100
+if (sum > 100) // jos summa on yli 100
 {
     Console.WriteLine("too much");
 }
-else if (sum < 0) // if the sum is less than 0
+else if (sum < 0) // jos summa on alle 0
 {
     Console.WriteLine("too little");
 }
-else // otherwise
+else // muussa tapauksessa
 {
     Console.WriteLine("ok");
 }
 ```
 
-# Exercises
+# Tehtävät
 
 <Exercise title={'001 Second power'}>
-Write a program that reads an integer from the user input, and then prints the second power of the given integer, i.e. the integer multiplied by itself.
+
+Kirjoita ohjelma, joka lukee kokonaisluvun käyttäjältä, ja tulostaa luvun toisen potenssin, eli luvun kerrottuna itsellään.
 
 ```console
 > 4
@@ -172,9 +177,9 @@ Write a program that reads an integer from the user input, and then prints the s
 
 <Exercise title={'002 Square root of sum'}>
 
-Write a program that reads two integers from the user, and prints the square root of the sum of these integers. The program does not need to work with negative values.
+Kirjoita ohjelma, joka lukee kaksi kokonaislukua käyttäjältä, ja tulostaa näiden lukujen summan neliöjuuren. Ohjelman ei tarvitse toimia negatiivisilla luvuilla.
 
-You can get the square root of an integer with the command Math.Sqrt like this:
+Saat neliöjuuren laskettua kokonaisluvusta komennolla Math.Sqrt tähän tapaan:
 
 ```cpp
 int number = 42;
@@ -204,7 +209,7 @@ Console.WriteLine(squareRoot);
 
 <Exercise title={'003 Absolute value'}>
 
-Write a program which reads an integer from the user. If the number is less than 0, it prints the number multiplied by -1. Otherwise the program prints the number itself. A few examples of the expected function below:
+Kirjoita ohjelma, joka lukee kokonaisluvun käyttäjältä. Jos luku on alle 0, tulosta luku kerrottuna -1:llä. Muussa tapauksessa tulosta luku sellaisenaan. Muutama esimerkki ohjelman odotetusta toiminnasta:
 
 ```console
 > -3
@@ -225,9 +230,9 @@ Write a program which reads an integer from the user. If the number is less than
 
 <Exercise title={'004 Comparison'}>
 
-Write a program that reads two integers from the user input. If the first number is greater than the second, the program prints "(first) is greater than (second)." If the first number is less than the second, the program prints "(first) is less than (second)." Otherwise the program prints "(first) is equal to (second)." The (first) and (second) should always be replaced with the actual numbers given by the user.
+Kirjoita ohjelma joka lukee kaksi kokonaislukua käyttäjältä. Jos ensimmäinen luku on suurempi kuin toinen, tulosta "(first) is greater than (second)." Jos toinen luku on suurempi kuin ensimmäinen, tulosta "(first) is less than (second)." Muussa tapauksessa tulosta "(first) is equal to (second)." (first) ja (second) tulee korvata käyttäjän antamilla luvuilla.
 
-A few examples of the expected behaviour:
+Muutama esimerkki ohjelman odotetusta toiminnasta:
 
 ```console
 > 8 
