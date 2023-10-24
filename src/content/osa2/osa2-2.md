@@ -4,26 +4,28 @@ nav_order: 2
 hidden: false
 ---
 
-In part 1 we had a look of the basic while-true loop structure
+Osassa 1 tutustuimme yksin kertaiseen while-silmukkaan
 
 ```cpp
 while (true)
 {
-  // Do something
+  // Tee jotain
 }
 ```
 
-This is very handy when the program has to repeat a functionality until the user provides certain input.
+Tämä on erittäin hyödyllinen kun ohjelman täytyy toistaa jotain toiminnallisuutta kunnes käyttäjä antaa tietyn syötteen.
 
-Next, we'll come to know a few other ways to implement loops.
 
-## While-loop with a condition
+Seuraavaksi tutustumme muutamaan muuhun tapaan toteuttaa silmukoita.
 
-So far we have been using a loop with the boolean "true" in its paranthesis, so the loop continues forever (or until the loop is ended with the "break" command ).
+## While-silmukka ehdolla
 
-Actually the paranthesis of a loop contain a conditional expression, or a condition, just like the paranthesis of an "if statement". The true value can be replaced with an expression, which is evaluated as the program is executed. The expression is defined the same way as the condition of a conditional statement.
+Tähän asti olemme käyttäneet silmukkaa "true" ehdolla, jolloin silmukka toistuu ikuisesti (tai kunnes silmukka lopetetaan "break" komennolla).
 
-The following code prints the numbers 1,2,...,5. When the value of the variable number is more than 5, the while-condition evaluates to false and the execution ends.
+Todellisuudessa silmukan sulkeet sisältävät ehtolauseen, tai ehdon, aivan kuten "if-lauseen" sulkeet. True arvo voidaan korvata lausekkeella, joka arvioidaan ohjelman suorituksen aikana. Lauseke määritellään samalla tavalla kuin ehtolauseen ehto.
+
+Seuraava koodi tulostaa numerot 1,2,...,5. Kun muuttujan "number" arvo on yli 5, while-ehdon arvo arvoidaan olevan false ja suoritus päättyy.
+
 
 ```cpp
 int number = 1;
@@ -34,12 +36,11 @@ while (number < 6)
   number++;
 }
 ```
+Yllä oleva koodi voidaan lukea "Niin kauan kuin muuttujan "number" arvo on pienempi kuin 6, tulosta muuttujan "number" arvo ja lisää muuttujan "number" arvoa yhdellä".
 
-The code above can be read "As long as the value of the variable number is less than 6, print the value of the variable number and increase the value of the variable number by one".
+Koodissa on myös uusi tapa lisätä muuttujan arvoa. Yllä olevassa koodissa muuttujan "number" arvoa lisätään yhdellä joka kerta kun silmukan sisältö suoritetaan.
 
-In the code is also a new way to increase a number's value. Above the value of the variable "number" is increased by one every time the loop body is executed.
-
-The program prints as below.
+Koodi tulostaa kuten alla.
 
 ```console
 1
@@ -49,11 +50,11 @@ The program prints as below.
 5
 ```
 
-## For-loop
+## For-silmukka (for-loop)
 
-Above we learned how a "while-loop" with a condition can be used to go through numbers in a certain interval.
+Yllä opimme kuinka "while-silmukkaa" ehdolla voidaan käyttää käymään läpi numeroita tietyllä välillä.
 
-The structure of this kind of loop is the following.
+Tällaisen silmukan rakenne on seuraava.
 
 ```cpp
 int i = 0;
@@ -64,9 +65,9 @@ while (i < 10)
 }
 ```
 
-The above loop can be split into three parts. First we introduce the variable i, used to count the number of times the loop has executed, and set its value to 0: **int i = 0;**. This is followed by the definition of the loop -- the loops condition is i < 10 so the loop is executed as long as the value of the variable **i is less than 10**. The loop body contains the functionality to be executed **Console.WriteLine(i);**, which is followed by increasing the value of the variable i++.
+Yllä oleva silmukka voidaan jakaa kolmeen osaan. Ensin määritellään muuttuja "i", jota käytetään silmukan toistojen laskemiseen, ja asetetaan sen arvoksi 0: **int i = 0;**. Tämän jälkeen määritellään silmukan ehto -- silmukka toistuu niin kauan kuin muuttujan "i" arvo on pienempi kuin 10: **i < 10**. Silmukan sisältö sisältää toiminnallisuuden joka suoritetaan **Console.WriteLine(i);**, jota seuraa muuttujan "i" arvon lisääminen yhdellä i++.
 
-The same can be achieved with a **for-loop** like so.
+Sama voidaan saavuttaa **for-silmukalla** näin.
 
 ```cpp
 for (int i = 0; i < 10; i++)
@@ -75,21 +76,21 @@ for (int i = 0; i < 10; i++)
 }
 ```
 
-A for-loop contains four parts:
+For-silmukka koostuu neljästä osasta:
 
-- introducing the variable for counting the number of executions;
-- the condition of the loop;
-- increasing (or decreasing or changing) the value of the counter variable; and
-- the functionality to be executed.
+- määritellään muuttuja jota käytetään silmukan toistojen laskemiseen;
+- silmukan ehto;
+- muuttujan arvon lisääminen (tai vähentäminen tai muuttaminen); ja
+- toiminnallisuus joka suoritetaan.
 
 ```cpp
-for (*introducting a variable*; *condition*; *increasing the counter*)
+for (*muuttujan määrittely*; *ehto*; *muuttujan kasvattaminen*)
 {
-  // Functionality to be executed
+  // Toiminnallisuus
 }
 ```
 
-Let's see this in action:
+Tarkastellaan tätä toiminnassa:
 
 ```cpp
 for (int i = 0; i < 5; i++)
@@ -98,7 +99,7 @@ for (int i = 0; i < 5; i++)
 }
 ```
 
-The example above prints the numbers from zero to four. The interval can also be defined using variables -- the example below uses variables start and end to define the interval of numbers the loop goes through.
+Yllä oleva esimerkki tulostaa numerot nollasta neljään. Välillä voidaan käyttää myös muuttujia -- alla oleva esimerkki käyttää muuttujia "start" ja "end" määrittelemään numeroiden välillä, jotka silmukka käy läpi.
 
 ```cpp
 int start = 3;
@@ -109,16 +110,16 @@ for (int i = start; i < end; i++)
 }
 ```
 
-We will continue practicing loops in the exercises. You can use either a while-loop with a condition, or a for-loop.
+Jatkamme harjoittelua silmukoilla tehtävissä. Voit käyttää joko while-silmukkaa ehdolla tai for-silmukkaa.
 
-## On Stopping a Loop Execution
+## Silmukan suorituksen lopettaminen
 
-A loop does not stop executing immediately when its condition evaluates to true. A loop's condition is evaluated at the start of a loop, i.e.,
+Silmukka ei lopeta suoritustaan välittömästi kun sen ehto arvioidaan todeksi. Silmukan ehto arvioidaan silmukan suorituksen alussa, eli
 
-- when the next statement to be executed is a loop, and
-- the execution of the loop body has finished.
+- kun seuraava suoritettava lauseke on silmukka, ja
+- silmukan sisältö on suoritettu.
 
-Let's look at the following loop.
+Katsotaan seuraavaa silmukkaa.
 
 ```cpp
 int number = 1;
@@ -132,7 +133,7 @@ while (number != 2)
 }
 ```
 
-This prints
+Tämä tulostaa
 
 ```console
 1
@@ -142,11 +143,12 @@ This prints
 ... keeps on going forever
 ```
 
-Even though **number equals 2 at one point**, the loop runs forever.
+Vaikka **number** on yhtä kuin 2 jossain vaiheessa, silmukka suoritetaan ikuisesti.
 
-**The condition of a loop is evaluated when the execution of a loop starts and when the execution of the loop body has reached the closing curly bracket.** If the condition evaluates to true, execution continues from the top of the loop body. If the condition evaluates to false, execution continues from the first statement following the loop.
+**Silmukan ehto arvioidaan silmukan suorituksen alussa ja silmukan suorituksen päästessä sulkevaan aaltosulkeeseen.** Jos ehto on tosi, suoritus jatkuu silmukan alusta. Jos ehto on epätosi, suoritus jatkuu ensimmäisestä lausekkeesta aaltosulkeiden jälkeen (eli silmukan jälkeen).
 
-This also applies to for-loops. In the example below, loop execution -- when understood incorrectly -- should end when i equals 100. However, it doesn't.
+Tämä pätee myös for-silmukkaan. Alle olevassa esimerkissä, silmukan suoritus -- väärin ymmärrettynä -- pitäisi loppua kun i on yhtä kuin 100. Kuitenkin, se ei lopu.
+
 
 ```cpp
 for (int i = 0; i != 100; i++)
@@ -158,13 +160,13 @@ for (int i = 0; i != 100; i++)
 }
 ```
 
-The loop above never stops executing.
+Yllä oleva silmukka ei koskaan lakkaa suoritusta.
 
-## Repeating Functionality
+## Toiminnallisuuden toistaminen
 
-One common program type is "do something certain amount of times". What's common to all these programs is repetition. Some functionality is done repeatedly, and a counter variable is used to keep track of the repetitions.
+Yksi yleinen ohjelmatyyppi on "tee jotain tietty määrä kertoja". Yhteistä näille ohjelmille on toistuvuus. Jotain toiminnallisuutta toistetaan, ja laskuri muuttuja käytetään pitämään kirjaa toistoista.
 
-The following program calculates the product 4\*3 somewhat clumsily, i.e., as the sum 3 + 3 + 3 + 3:
+Seuraava ohjelma laskee tulon 4\*3 hieman kömpelösti, eli summana 3 + 3 + 3 + 3:
 
 ```cpp
 int result = 0;
@@ -172,8 +174,8 @@ int result = 0;
 int i = 0;
 while (true)
 {
-  result += 3; // shorthand for result = result + 3
-  i++;  // shorthand for i = i + 1
+  result += 3; // lyhenne lausekkeelle result = result + 3
+  i++;  // lyhenne lausekkeelle i = i + 1
 
   if (i == 4)
   {
@@ -184,7 +186,7 @@ while (true)
 Console.WriteLine(result);
 ```
 
-The same functionality can be achieved with the following code.
+Sama toiminnallisuus voidaan saavuttaa seuraavalla koodilla.
 
 ```cpp
 int result = 0;
@@ -192,14 +194,14 @@ int result = 0;
 int i = 0;
 while (i < 4)
 {
-  result += 3; // shorthand for result = result + 3
-  i++;  // shorthand for i = i + 1
+  result += 3; // lyhenne lausekkeelle result = result + 3
+  i++;  // lyhenne lausekkeelle i = i + 1
 }
 
 Console.WriteLine(result);
 ```
 
-Or by using a for-loop as seen in the following.
+Tai käyttämällä for-silmukkaa kuten seuraavassa nähdään.
 
 ```cpp
 int result = 0;
@@ -212,13 +214,13 @@ for (int i = 0; i < 4; i++)
 Console.WriteLine(result);
 ```
 
-The program execution using a while-loop is visualized below.
+While-silmukan suoritus on visualisoitu alla.
 
-When the number of variables increases, understanding a program becomes harder. Simulating program execution can help in understanding it.
+Kun muuttujien määrä kasvaa, ohjelman ymmärtäminen vaikeutuu. Ohjelman suorituksen simulointi voi auttaa ymmärtämään sitä.
 
-You can simulate program execution by drawing a table containing a column for each variable and condition of a program, and a separate space for program output. You then go through the source code line by line, and write down the changes to the state of the program (the values of each variable or condition), and the program output.
+Voit simuloida ohjelman suoritusta piirtämällä taulukon, jossa on sarakkeet jokaiselle muuttujalle ja ehdolle, ja erillinen tila ohjelman tulostukselle. Käyt sitten läpi lähdekoodin rivi riviltä, ja kirjoitat muutokset ohjelman tilaan (jokaisen muuttujan tai ehtolauseen arvon), ja ohjelman tulostuksen.
 
-The values of variables **result** and **i** from the previous example have been written out onto the table below at each point the condition **i < 4** is evaluated.
+Arvot muuttujille **result** ja **i** edellisestä esimerkistä on kirjoitettu taulukkoon alla jokaisella kerralla kun ehto **i < 4** arvioidaan.
 
 | result |  i  | i < 4 |
 | :----: | :-: | :---: |
@@ -228,15 +230,15 @@ The values of variables **result** and **i** from the previous example have been
 |   9    |  3  | true  |
 |   12   |  4  | false |
 
-## On the Structure of Programs Using Loops
+## Ohjelman rakenteesta silmukoiden avulla
 
-In the previous examples, we have concentrated on cases where the loop is executed a predetermined number of times. The number of repetitions can be based on user input -- in these cases, the for-loop is quite handy.
+Edellisissä esimerkeissä, olemme keskittyneet tapauksiin joissa silmukka suoritetaan ennalta määrätyn määrän kertoja. Toistojen määrä voi perustua käyttäjän syötteeseen -- näissä tapauksissa for-silmukka on kätevä.
 
-In programs where the loop body has to be executed until the user gives certain input, the for-loop is not too great. In these cases, the while-true loop we practiced earlier works well.
+Ohjelmissa joissa silmukka suoritetaan kunnes käyttäjä antaa tietyn syötteen, for-silmukka ei ole paras vaihtoehto. Tällaisissa tapauksissa, while-true silmukka jota harjoittelimme aiemmin toimii hyvin.
 
-Let's take a look at a somewhat more complex program that reads integers from the user. The program handles negative numbers as invalid, and zero stops the loop. When the user enters zero, the program prints the sum of valid numbers, the number of valid numbers and the number of invalid numbers.
+Katsotaan vähän monimutkaisempaa ohjelmaa, joka lukee kokonaislukuja käyttäjältä. Ohjelma käsittelee negatiiviset luvut virheellisinä, ja nolla lopettaa silmukan. Kun käyttäjä antaa nollan, ohjelma tulostaa kelvollisten lukujen summan, kelvollisten lukujen määrän ja virheellisten lukujen määrän.
 
-A possible solution is detailed below. However, the style of the example is not ideal.
+Mahdollinen ratkaisu on esitetty alla. Kuitenkin, esimerkin tyyli ei ole ihanteellinen.
 
 ```cpp
 Console.Write("Write numbers, negative numbers are invalid: ");
@@ -266,28 +268,29 @@ while (true)
 }
 ```
 
-In the code above, the computation executed after the loop has ended has been implemented inside of the loop. This approach is not recommended as it can easily lead to very complex program structure. If something else --e.g., reading more input -- is to be done when the loop ends, it could also easily end up being placed inside of the loop. As more and more functionality is needed, the program becomes increasingly harder to read.
+Yllä olevassa koodissa, laskenta joka tulisi suorittaa silmukan päättymisen jälkeen, suoritetaan silmukan sisällä. Tämä lähestymistapa ei ole suositeltava, koska se voi johtaa hyvin monimutkaiseen ohjelman rakenteeseen. Jos jotain muuta -- esimerkiksi lisää syötteen lukemista -- pitäisi tehdä silmukan päättymisen jälkeen, se voisi helposti päätyä silmukan sisälle. Mitä enemmän toiminnallisuutta tarvitaan, ohjelman rakenteesta tulee yhä hankalampi lukea.
 
-Let's stick to the following loop structure:
+Pysytellään seuraavassa silmukkarakenteessa:
 
 ```cpp
-// Create variables needed for the loop
+// Luo tarvittavat muuttujat
 
 while (true)
 {
-  // read input
+  // lue syöte
 
-  // end the loop --break
+  // lopeta silmukka --break
 
-  // check for invalid input -- continue
+  // tarkista syötteen virheellisyys -- continue
 
-  // handle valid input
+  // käsittele kelvollinen syöte
 }
 
-// functionality to execute after the loop ends
+// toiminnallisuus silmukan päättymisen jälkeen
 ```
 
-In other words, the program structure is cleaner if the things to be done after the loop ends are placed outside of it.
+Toisin sanoen, ohjelman rakenne on puhtaampi jos asiat jotka pitää tehdä silmukan päättymisen jälkeen, sijoitetaan sen ulkopuolelle.
+
 
 ```cpp
 Console.Write("Write numbers, negative numbers are invalid: ");
@@ -321,9 +324,9 @@ Console.WriteLine("Invalid numbers: " + invalidNumbers);
 
 <Exercise title={'005 Iterating to input'}>
 
-Write a program that reads an integer from the user. Then the program prints numbers from 0 to the number given by the user. You can assume that the user always gives a positive number. Below is some examples of the wanted functionality. 
+Kirjoita ohjelma joka lukee käyttäjältä kokonaisluvun. Ohjelma tulostaa luvusta 0 alkaen kaikki luvut käyttäjän antamaan lukuun asti. Voit olettaa, että käyttäjä antaa positiivisen luvun. Alla on muutamia esimerkkejä ohjelman toiminnasta.
 
-<Note>You can use either a while-loop with a condition, or a for-loop.</Note>
+<Note>Voit käyttää while-silmukkaa ehdolla, tai for-silmukkaa</Note>
 
 ```console
 > 4
@@ -344,7 +347,8 @@ Write a program that reads an integer from the user. Then the program prints num
 
 <Exercise title={'006 Iterating to hundred'}>
 
-Write a program, which reads an integer from the user. Then the program prints numbers from that number to 100. You can assume that the user always gives a number less than 100. Below are some examples of the wanted functionality.
+Kirjoita ohjelma, joka lukee käyttäjältä kokonaisluvun. Ohjelma tulostaa numerot siitä luvusta numeroon 100. Voit olettaa, että käyttäjä antaa aina numeron joka on pienempi kuin 100. Alla on muutamia esimerkkejä halutusta toiminnasta.
+
 
 ```console
 > 99
@@ -370,21 +374,21 @@ Write a program, which reads an integer from the user. Then the program prints n
 
 <Note>
 
-From now on, the exercises might be in multiple sections in the instructions, to make it easier to comprehend. In the end, you should still have only one program per exercise to return.  
+Tästä lähtien tehtävät saattavat olla useassa osassa ohjeissa, jotta niiden ymmärtäminen olisi helpompaa. Lopuksi sinulla pitäisi olla vain yksi ohjelma per tehtävä.
 
-Each section is counted separately, when calculating the total amount of points done. For example, the next exercise with 2 sections, counts as 2 points in the total sum you have done. 
+Jokainen osio on laskettu erikseen, kun lasketaan tehtävän kokonaispistemäärää. Esimerkiksi seuraava tehtävä, jossa on 2 osaa, lasketaan 2 pisteeksi kokonaispistemäärästä.
 
 </Note>
 
 <Note>
-When all the tests pass, you have done all the sections.
+Kun kaikki testit menevät läpi, olet tehnyt kaikki osat. Tehtävästä on mahdollista saada myös vain osa pisteistä, jos vain osa testeistä menee läpi.
 </Note>
 
 <Exercise title={'007 Where to and from'}>
 
-- Section 1
+- Osa 1
 
-Write a program, which prints integers from 1 to a number given by the user.
+Kirjoita ohjelma, joka tulostaa kokonaisluvut 1:stä annettuun numeroon.
 
 ```console
 Where to? 
@@ -403,11 +407,11 @@ Where to?
 4 
 5
 ```
-<Note>The number read from the user is now the upper limit of the condition. Remember that a &lt;= b means a is smaller or equal to b.</Note>
+<Note>Käyttäjältä annettu numero on nyt ehdon yläraja. Muista, että a &lt;= b tarkoittaa a on pienempi tai yhtä suuri kuin b.</Note>
 
-- Section 2
+- Osa 2 2
 
-Ask the user for the starting point as well.
+Kysy käyttäjältä myös lähtönumero. Tulosta kaikki numerot lähtönumerosta ylärajaan.
 
 ```console
 Where to? 
@@ -420,7 +424,7 @@ Where from?
 8
 ```
 
-If the upper limit is larger than the starting point, nothing is printed:
+Jos yläraja on pienempi kuin lähtönumero, ei mitään tulosteta:
 
 ```
 Where to? 
@@ -428,15 +432,15 @@ Where to?
 Where from? 
 > 16
 ```
-<Note>Remember that the lower and the upper limits can be negative!</Note>
+<Note>Muista, että yläraja ja alaraja voivat olla negatiivisia, ja yläraja kysytään ensin!</Note>
 
 </Exercise>
 
 <Exercise title={'008 Numbers and calculations'}>
 
-- Section 1
+- Osa 1
 
-Implement a program that asks the user for numbers(the program first prints "Give numbers: ") until the user gives the number -1, When the user writes -1, the program prints "Thx! Bye!" and ends.
+Luo ohjelma, joka kysyy käyttäjältä numeroita (alussa tulostetaan "Give numbers:") kunnes käyttäjä antaa luvun -1. Kun käyttäjä antaa -1, ohjelma tulostaa "Thx! Bye!" ja ohjelma lopettaa.
 
 ```console
 Give numbers: 
@@ -447,9 +451,10 @@ Give numbers:
 Thx! Bye!
 ```
 
-- Section 2
+- Osa 2
 
-Extend the program so, that it prints the sum of the numbers (not including the -1) the user has written.
+Laajenna ohjelmaa siten, että se laskee ja tulostaa käyttäjän antamien lukujen summan (ei sisällä -1).
+
 
 ```console
 Give numbers: 
@@ -461,9 +466,9 @@ Thx! Bye!
 Sum: 11
 ```
 
-- Section 3 
+- Osa 3 
 
-Extend the program so, that it also prints the number of numbers (not including the -1) the user has written.
+Laajenna ohjelmaa siten, että se laskee ja tulostaa käyttäjän antamien lukujen lukumäärän (ei sisällä -1).
 
 ```console
 Give numbers: 
@@ -476,9 +481,9 @@ Sum: 11
 Numbers: 3
 ```
 
-- Section 4
+- Osa 4
 
-Extend the program so, that it prints the average of the numbers (not including the -1) the user has written.
+Laajenna ohjelma siten, että se tulostaa laskee ja tulostaa käyttäjän antamien lukujen keskiarvon (ei sisällä -1).
 
 ```console
 Give numbers: 
@@ -492,9 +497,9 @@ Numbers: 3
 Average: 3.666666666666
 ```
 
-- Section 5
+- Osa 5
 
-Extend the program so that it prints the number of even and odd numbers (excluding the -1).
+Laajenna ohjelma siten, että se tulostaa käyttäjän antamien lukujen parillisten ja parittomien lukujen lukumäärän (ei sisällä -1).
 
 ```console
 Give numbers: 
@@ -513,9 +518,9 @@ Odd: 1
 </Exercise>
 
 <Note>
-When you are writing a program, whether it's an exercise or a personal project, figure out the types of parts the program needs to function and proceed by implementing them one part at a time. Make sure to test the program right after implementing each part.
+Kun kirjoitat ohjelmaa, oli se sitten harjoitustehtävä tai oma projekti, mieti millaisia osia ohjelma tarvitsee toimiakseen. Jaa ohjelma osiin ja toteuta ne yksi kerrallaan. Muista testata ohjelmaa jokaisen osan jälkeen.
 
-Never try solving the whole problem at once, because that makes running and testing the program in the middle of the problem-solving process difficult. Start with something easy that you know you can do. When one part works, you can move on to the next.
+Älä koskaan yritä ratkaista koko ongelmaa kerralla, koska se tekee ohjelman testaamisesta ja suorittamisesta kesken ongelmanratkaisun vaikeaa. Aloita jostain helposta, josta tiedät että osaat tehdä sen. Kun yksi osa toimii, voit siirtyä seuraavaan.
 
-Some of the exercises are already split into parts. However, it's often the case in programming that these parts need to be split into even smaller parts. You should almost always run the program after every new line of code. This ensures that the solution is moving in the right direction.
+Osa tehtävistä on jo jaettuna osiin. Kuitenkin, on tyypillistä ohjelmoinnissa että nämä osat pitää jakaa vielä pienempiin osiin. Sinun pitäisi melkeinpä aina ajaa koodia jokaisen uuden rivin jälkeen. Tämä varmistaa että ratkaisu on menossa oikeaan suuntaan.
 </Note>
