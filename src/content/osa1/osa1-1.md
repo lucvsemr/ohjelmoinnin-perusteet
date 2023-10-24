@@ -330,7 +330,7 @@ Give a message: I want to print this
 Your message was: I want to print this
 ```
 
-# Harjoitukset
+# Tehtävät
 
 <Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 

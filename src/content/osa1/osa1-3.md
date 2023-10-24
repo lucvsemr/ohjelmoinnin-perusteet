@@ -79,7 +79,8 @@ The magic number is 42.
 ```
 
 Esimerkissämme yhdistimme merkkijonon, muuttujan arvon ja toisen merkkijonon. 
-<Note>Ensimmäinen merkkijono päättyy tyhjätilaan, joten sanan "on" ja arvon välissä on väli. Piste lopussa ei sisällä tyhjätilaa, joten se on suoraan numeron vieressä.</Note>
+
+<Note>Ensimmäinen merkkijono päättyy välilyöntiin, joten sanan "is" ja arvon välissä on väli. Piste lopussa ei sisällä välilyöntiä, joten se on suoraan numeron vieressä.</Note>
 
 
 ```cpp
@@ -173,8 +174,7 @@ double average = (first + second + third) / 3.0; //divide by the amount of numbe
 Console.WriteLine(average);  // prints 20.333333333333332
 ```
 
-<Note> Keskiarvon jakaja on 3.0, joka on desimaaliluku. Vaikka julistamme keskiarvon desimaaliluvuksi, jos kaikki operandit ovat kokonaislukuja, keskiarvon arvo lasketaan 20:ksi.
-</Note>
+<Note> Keskiarvon jakaja on 3.0, joka on desimaaliluku. Vaikka julistamme keskiarvon desimaaliluvuksi, jos kaikki operandit ovat kokonaislukuja, keskiarvon arvo lasketaan 20:ksi.</Note>
 
 ## Yleisiä väärinkäsityksiä muuttujista
 
@@ -206,7 +206,7 @@ Voisit ajatella, että mikä tahansa muutos **second**-muuttujaan vaikuttaa myö
 42 = 21;
 ```
 
-Mikä tietysti ei toimi. Muuttujien käyttäytymisen koodissa ymmärtämiseksi voi olla tarpeellista ottaa kynä ja paperin, ja kirjoittaa ylös mitä koodissa tapahtuu, rivi riviltä. Esimerkiksi tässä koodissa tapahtuu melko paljon:
+Mikä ei tietenkään toimi. Muuttujien käyttäytymisen koodissa ymmärtämiseksi voi olla tarpeellista ottaa kynä ja paperin, ja kirjoittaa ylös mitä koodissa tapahtuu, rivi riviltä. Esimerkiksi tässä koodissa tapahtuu melko paljon:
 
 
 ```cpp
@@ -259,7 +259,7 @@ rivi 9: tulostetaan arvo 28
 
 ```
 
-# Harjoitukset
+# Tehtävät
 
 <Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 

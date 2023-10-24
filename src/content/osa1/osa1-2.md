@@ -4,14 +4,14 @@ nav_order: 2
 hidden: false
 ---
 
-Edellisessä osiossa esittelimme ensimmäisen **muuttujan**, **merkkijonomuuttujan**. Merkkijono ei ole ainoa muuttuja koodauksessa. Muuttujat ovat perustietovarastoja koodissa. Muuttujat voivat olla esimerkiksi tuttuja **merkkijonoja** tekstille, mutta myös **int** kokonaisluvuille, **double** desimaaliluvuille tai **boolean** totuusarvoille. Kuten aiemmin mainittiin, muuttujan arvo asetetaan käyttäen **yhtäsuuruusmerkkiä, =**.
+Edellisessä osiossa esittelimme ensimmäisen **muuttujan** (englanniksi **variable**), **merkkijonomuuttujan** (**string**). Merkkijono ei ole ainoa muuttuja koodauksessa. Muuttujat ovat perustietovarastoja koodissa. Muuttujat voivat olla esimerkiksi tuttuja **merkkijonoja** tekstille, mutta myös **int**  kokonaisluvuille (**integer**), **double** desimaaliluvuille tai **boolean** totuusarvoille. Kuten aiemmin mainittiin, muuttujan arvo asetetaan käyttäen **yhtäsuuruusmerkkiä, =**.
 
 
 ```cpp
 int truth = 42;
 ```
 
-Yllä olevassa esimerkissä **esitellään** muuttuja nimeltä **totuus** ja **annetaan sille arvo** **42**.
+Yllä olevassa esimerkissä **esitellään** muuttuja nimeltä **truth** ja **annetaan sille arvo** **42**.
 
 Tätä kokonaislukua voidaan liittää yhteen merkkijonon kanssa ohjelmassamme.
 
@@ -152,7 +152,7 @@ Molemmat tuottavat saman tuloksen. Toisaalta toinen on paljon helpompi lukea, ja
 Muuttujien nimille on tietyt rajoitukset sekä käytänteet. Muuttujien nimet...
 
 - eivät voi sisältää erikoismerkkejä, kuten **!**, **?**, **å** tai **ö**
-- eivät voi sisältää tyhjiä välejä, myös kutsutaan **whitespaceksi**
+- eivät voi sisältää tyhjiä välejä (englanniksi **whitespace**)
 - alkavat pienellä alkukirjaimella
 - tulisi kirjoittaa camelCasella
 
@@ -175,7 +175,7 @@ string camelCase = "Camels are nice"; // Ei toimi, koska muuttuja jo esitelty yl
 
 ## Erilaisten muuttujien lukeminen käyttäjältä
 
-Aiemmin tutustuimme, miten **string muuttuja** kysytään käyttäjältä
+Aiemmin tutustuimme, miten **merkkijonomuuttuja** kysytään käyttäjältä
 
 ```cpp
 public class Program
@@ -253,7 +253,7 @@ False
 **Convert-luokkaa** voidaan käyttää muuntamaan merkkijonoja myös moniin muihin tyyppeihin. Käsittelemme niitä niiden ilmetessä, mutta uteliaisuudesta kiinnostuneille, lisätietoja löytyy [** täältä**](https://learn.microsoft.com/en-us/dotnet/api/system.convert?view=net-7.0).
 
 
-# Harjoitukset
+# Tehtävät
 
 <Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 
@@ -302,7 +302,7 @@ Give a number!
 You gave 42
 ```
 
-<Note>Käytä WriteLine tulostukseen, ei pelkkä Write! </Note>
+<Note>Käytä WriteLine tulostukseen, ei pelkkä Write!</Note>
 
 </Exercise>
 

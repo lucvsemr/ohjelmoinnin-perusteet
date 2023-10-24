@@ -6,7 +6,7 @@ hidden: false
 
 Tähän asti ohjelmamme ovat olleet melko lineaarisia, edeten vaiheittain järjestyksessä ilman vaihtoehtoja tai vaihtoehtoja. Usein haluamme vaihtoehtoja ohjelmistoomme, mikä tarkoittaa, että toiminnallisuus riippuu ohjelman muuttujien tilasta.
 
-Jotta ohjelma voisi haarautua esimerkiksi käyttäjän syötteen perusteella, tarvitsemme **ehtolauseen** ohjelmaan. Yksinkertaisin ehtolause on
+Jotta ohjelma voisi haarautua esimerkiksi käyttäjän syötteen perusteella, tarvitsemme **ehtolauseen** (englanniksi **conditional statement**) ohjelmaan. Yksinkertaisin ehtolause on
 
 
 ```cpp
@@ -38,9 +38,9 @@ Hello world!
 
 Tämä on tietysti aivan tarpeeton, vaikka mahdollinen.
 
-Ehtolause alkaa avainsanalla **if**, jota seuraa **hakasulkeet ( )**. Hakasulkujen sisällä on lauseke, joka arvioidaan. Arvioinnin tulos on totuusarvo. Yllä olevissa esimerkeissä ei ollut tarvetta arvioinnille, koska ne olivat jo totuusarvoja.
+Ehtolause alkaa avainsanalla **if**, jota seuraa **kaarisulkeet ( )**. Kaarisulkujen sisällä on lauseke, joka arvioidaan. Arvioinnin tulos on totuusarvo. Yllä olevissa esimerkeissä ei ollut tarvetta arvioinnille, koska ne olivat jo totuusarvoja.
 
-Hakasulkeiden jälkeen tulee koodilohko, joka on ympäröity **{ }**. Lohkon sisällä oleva koodi suoritetaan, jos hakasulkujen sisällä oleva lauseke arvioidaan todeksi.
+Kaarisulkujen jälkeen tulee koodilohko, joka on ympäröity **{ }**. Lohkon sisällä oleva koodi suoritetaan, jos kaarisulkujen sisällä oleva lauseke arvioidaan todeksi.
 
 Tutkitaan esimerkki, jossa vertailemme kokonaislukuja.
 
@@ -63,7 +63,6 @@ Jos lause olisi epätosi, koodin suoritus siirtyisi seuraavalle riville koodiloh
 
 Koodin sisällä oleva lohko tulee sisentää. Esimerkiksi, if-lauseen sisällä oleva koodi tulee olla sisennetty enemmän kuin avainsana **if** koodissa. Lopetus **}** tulee olla samalla tasolla kuin if.
 
-
 ```cpp
 int number = 11;
 if (number > 10) 
@@ -80,7 +79,9 @@ if (number > 10)
 }
 ```
 
-## Relational operators
+<Note>Muista ALT + SHIFT + F, joka muotoilee koodin automaattisesti.</Note>
+
+## Vertailuoperaattorit (Relational operators)
 
 Seuraavassa taulukossa on lueteltu vertailuoperaattorit:
 
@@ -112,7 +113,7 @@ if (number >= 1000)
 Number is at least 1000.
 ```
 
-## Vaihtoehdot, ELSE
+## Vaihtoehdot (else)
 
 Jos if-lauseen sisällä oleva lauseke arvioidaan epätodeksi, koodin suoritus jatkuu seuraavaan lausuntoon. Tämä ei aina ole toivottavaa, mutta haluamme vaihtoehdon niille tilanteille, joissa if-lause arvioidaan epätodeksi.
 
@@ -139,7 +140,7 @@ Number is 5 or smaller!
 Jos ehtolauseella on else-haara, ehdollisen lauseen määrittelemä koodilohko suoritetaan, jos if-lause arvioidaan epätodeksi. Huomaa sisennys ja rivit!
 
 
-## Vaihtoehdot, ELSE IF
+## Vaihtoehdot (else if)
 
 Jos haluat useita vaihtoehtoja, käytä **else-if-rakennetta**. Se on samanlainen kuin else, mutta sillä on if-ehto. Niitä voi olla useita, ja ne tulevat if:n jälkeen, ennen elseä.
 
@@ -203,7 +204,7 @@ Number is greater than 0.
 
 Esimerkissä ehto **number > 0** arvioidaan **todeksi**, joten suoritamme siihen liittyvän koodilohkon ja lopetamme vertailun. Vaikka seuraava lause arvioitaisi myös todeksi, emme saavuta sitä osaa koodista (ja emme koskaan voi).
 
-## Ehtolause ja bool-luokka
+## Ehtolause ja bool-tyyppi
 
 If-lauseen hakasulkujen sisällä olevan lauseen arvioidun arvon on oltava **bool**-tyyppiä. Bool on totuusarvon edustus ja se voi olla joko **true** tai **false**.
 
@@ -258,7 +259,7 @@ if (isFirstSmallerThanSecond)
 1 is less than 3!
 ```
 
-## Jakojäännös
+## Jakojäännös (modulus)
 
 Jakojäännöstä ei tarvita kovin usein, mutta se on hyvä työkalu jos halutaan selvittää onko jokin jaollinen jollain toisella numerolla. 
 
@@ -292,7 +293,7 @@ else
 
 ## Ehtolauseet ja muuttujien yhdenvertaisuus
 
-Useimmissa ohjelmointikielissä, mukaan lukien C#, merkkijono on viittausmuotoinen (reference type), kun taas esimerkiksi kokonaisluku, totuusarvo ja liukuluku ovat arvotyyppejä (value types).
+Useimmissa ohjelmointikielissä, mukaan lukien C#, merkkijono on **viittausmuotoinen** (englanniksi **reference type**), kun taas esimerkiksi kokonaisluku, totuusarvo ja liukuluku ovat **arvotyyppejä** (englanniksi **value types**).
 
 Joissakin ohjelmointikielissä tämä tarkoittaa, että merkkijonojen vertailu on tehtävä eri tavalla kuin muiden muuttujien. **C# on anteeksiantavampi.** Voimme vertailla kahta merkkijonoa **==** -operaattorilla, ainakin tässä kurssin vaiheessa.
 
@@ -323,7 +324,7 @@ Console.WriteLine(a.Equals(b));
 True
 ```
 
-# Harjoitukset
+# Tehtävät
 
 <Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 

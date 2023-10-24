@@ -50,7 +50,7 @@ Console.WriteLine("Sum is " + sum);
 
 Tämä saa tehtävän hoidettua, mutta kuten huomaat, siinä on paljon toistoa ja monta riviä koodia näin yksinkertaiseen tehtävään. Entä jos haluaisimme pyytää käyttäjältä 10 numeroa? Tai 1000? Voisimme toistaa samat rivit, mutta se olisi melko hullua.
 
-Helpompi ja siistimpi tapa ratkaista tämä ongelma on käyttää **silmukoita**, erityisesti **while-silmukkaa**, johon tutustuimme hieman aiemmissa osissa.
+Helpompi ja siistimpi tapa ratkaista tämä ongelma on käyttää **silmukoita** (englanniksi **loops**), erityisesti **while-silmukkaa**, johon tutustuimme hieman aiemmissa osissa.
 
 
 ```cpp
@@ -75,7 +75,7 @@ Tutkitaan while-silmukkaa hieman tarkemmin.
 ## While-silmukka
 
 ```cpp
-while (expression)
+while (lauseke)
 {
     // Your code is here
     // Here can be any amount of code
@@ -512,7 +512,7 @@ Input an integer, 0 quits
 Amount of ones: 2
 ```
 
-# Harjoitukset
+# Tehtävät
 
 <Note>Huom! Tee harjoitukset englanniksi, katso mallia harjoitusten esimerkeistä, miten koodin tulee toimia ja mitä sen tulee tulostaa (englanniksi)</Note>
 
