@@ -41,19 +41,20 @@ public class Program
 
 ```
 
-Creating a new list is done with the command List<type\> list = new List<type\>(), where type is the type of the values to be stored in the list (e.g. int). We create a list for storing strings in the example below.
+Uusi lista luodaan komennolla **List<tyyppi\> list = new List<tyyppi\>()**, jossa tyyppi on listaan tallennettavien arvojen tyyppi (esim. int). Luodaan esimerkiksi lista joka sisältää merkkijonoja.
 
 ```cpp
 List<string> strings = new List<string>();
 ```
 
-The type of the List variable is **List**. When a list variable is initialized, the type of the values to be stored is also defined in addition to the variable type -- all the variables stored in a given list are of the same type. As such, the type of an List that stores strings is **List<string\>**. A new list is created with the command new List<\>();.
+Listan itsensä tyyppi on **List**. Kun lista alustetaan, määritellään muuttujan tyypin lisäksi myös listaan tallennettavien arvojen tyyppi -- kaikki listaan tallennettavat muuttujat ovat saman tyyppisiä. Tällöin merkkijonoja sisältävä lista on **List<string\>**. Uusi lista luodaan komennolla **new List<\>();**.
 
-## Defining the Type of Values That a List Can Contain
+## Listan arvojen tyypin määrittäminen
 
-When defining the type of values that a list can include, the type is written the same way as when declaring variables. A list that includes int-type variables has to be defined in the form **List<int\>**; and a list that includes double-type variables is defined in the form **List<double\>**.
+Kun määrittelemme listan sisältämien arvojen tyyppiä, kirjoitetaan tyyppi samalla tavalla kuin muuttujia määriteltäessä. Lista, joka sisältää int-tyyppisiä muuttujia, määritellään muodossa **List<int\>**; ja lista, joka sisältää double-tyyppisiä muuttujia, määritellään muodossa **List<double\>**.
 
-You'll find examples below of creating lists that contain different types of values.
+Alla on esimerkkejä erilaisten arvojen sisältävien listojen luomisesta.
+
 
 ```cpp
 List<int> list = new List<int>();
@@ -75,7 +76,7 @@ List<string> list = new List<string>();
 lista.Add("String is text");
 ```
 
-Once a list has been created, List assumes that all the variables contained in it are of the correct type. Of course, you can store variables with the correct type in them, as well. Then the value of said variable is stored.
+Kun lista on kerran luotu, List olettaa että kaikki siihen lisättävät muuttujat ovat oikeaa tyyppiä. Tietysti voit lisätä listaan myös oikeaa tyyppiä olevia muuttujia. Tällöin muuttujan arvo tallentuu listaan.
 
 ```cpp
 List<int> integers = new List<int>();
@@ -87,83 +88,87 @@ double d = 4.2;
 doubles.Add(d);
 ```
 
-## Adding to a List and Retrieving a Value from a Specific Place
+## Arvojen lisääminen ja hakeminen tietystä paikasta Listassa
 
-The next example demonstrates the addition of a few strings into an List containing strings. Addition is done with the list method **Add**, which takes the value to be added as a parameter. We then print the value at position zero. To retrieve a value from a certain position, you use a special annotation of **list[index]**, where list is your list, and index is the position from where to get the data. 
+Seuraava esimerkki demonstroi muutaman merkkijonon lisäämistä Listaan, joka sisältää merkkijonoja. Lisääminen tapahtuu listan metodia **Add** käyttämällä, jolle annetaan parametrina lisättävä arvo. Tämän jälkeen tulostetaan arvo paikassa 0. Arvon hakeminen tietystä paikasta tapahtuu erikoismerkinnällä **list[index]**, jossa list on listan nimi ja index on paikka, josta arvo haetaan.
+
 
 ```cpp
 public class WordListExample 
 {
   public static void Main(string[] args) 
   {
-    // create the word list for storing strings
+    // luodaan wordList, joka sisältää merkkijonoja
     List<string> wordList = new List<string>();
 
-    // add two values to the word list
+    // lisätään wordListiin kaksi arvoa
     wordList.Add("First");
     wordList.Add("Second");
 
-    // retrieve the value from position 0 of the word list, and print it
+    // haetaan arvo paikasta 0 ja tulostetaan se
     Console.WriteLine(wordList[0]);
   }
 }
 ```
 
-Program writes:
+Ohjelmamme tulostaa:
 
 ```console
 First
 ```
 
-As can be seen, the latter method retrieves the first value from the list when it is given the parameter **0**. This is because list positions are counted starting from zero. The first value is found by wordList[0], the second by wordList[1], and so on.
+Kuten näkyy, jälkimmäinen metodi hakee listasta ensimmäisen arvon, kun sille annetaan parametriksi **0**. Tämä johtuu siitä, että listan paikat lasketaan nollasta alkaen. Ensimmäinen arvo löytyy siis kohdasta wordList[0], toinen kohdasta wordList[1] jne.
+
 
 ```cpp
 public class WordListExample 
 {
   public static void Main(string[] args) 
   {
-    // create the word list for storing strings
+    // luodaan wordList, joka sisältää merkkijonoja
     List<string> wordList = new List<string>();
 
-    // add two values to the word list
+    // lisätään wordListiin kaksi arvoa
     wordList.Add("First");
     wordList.Add("Second");
 
-    // retrieve the value from position 0 of the word list, and print it
+    // haetaan arvo paikasta 1 ja tulostetaan se
     Console.WriteLine(wordList[1]);
   }
 }
 ```
 
-Program writes:
+Ohjelma tulostaa:
 
 ```console
 Second
 ```
 
-## Retrieving Information from a "Non-Existent" Place
+## Tiedon hakeminen "olemattomasta" kohdasta
 
-If you try to retrieve information from a place that does not exist on the list, the program will print a **ArgumentOutOfRangeException** error. In the example below, two values are added to a list, after which there is an attempt to print the value at place two on the list.
+Jos yrität hakea tietoa paikasta, jota ei ole olemassa, ohjelma tulostaa **ArgumentOutOfRangeException** -virheen. Seuraavassa esimerkissä listalle lisätään kaksi arvoa, minkä jälkeen yritetään tulostaa arvo paikasta 2.
 
 ```cpp
 public class WordListExample 
 {
   public static void Main(string[] args) 
   {
-    // create the word list for storing strings
+  public static void Main(string[] args) 
+  {
+    // luodaan wordList, joka sisältää merkkijonoja
     List<string> wordList = new List<string>();
 
-    // add two values to the word list
+    // lisätään wordListiin kaksi arvoa
     wordList.Add("First");
     wordList.Add("Second");
 
-    // retrieve the value from position 0 of the word list, and print it
+    // haetaan arvo paikasta 2 ja tulostetaan se
     Console.WriteLine(wordList[2]);
   }
 }
 ```
 
-Since the numbering (i.e., indexing) of the list elements starts with zero, the program isn't able to find anything at place two and its execution ends with an error. Below is a description of the error message caused by the program.
+Koska numerointi (eli indeksointi) listan alkioissa alkaa nollasta, ohjelma ei löydä mitään paikasta kaksi ja sen suoritus päättyy virheeseen. Alla on kuvaus virheestä, jonka ohjelma aiheuttaa.
 
 ```console
 Unhandled exception. System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
@@ -171,21 +176,22 @@ Unhandled exception. System.ArgumentOutOfRangeException: Index was out of range.
    at WordListExample.Program.Main(String[] args) in ... Program.cs:line 13
 ```
 
-The error message tells exactly what and where happened. First, the error contains the error type, **ArgumentOutOfRangeException**. Then it gives a possible correction. Next, the error contains which method caused the error. In this case, it would be the **get_Item(Int32 index)**. Last, the error tells us which part of our code triggered the error.
+Virheviesti kertoo tarkalleen, mitä ja missä tapahtui. Ensin, virhe sisältää virheen tyypin, **ArgumentOutOfRangeException**. Sen jälkeen se antaa mahdollisen korjauksen. Seuraavaksi virhe sisältää, mikä metodi aiheutti virheen. Tässä tapauksessa se olisi **get_Item(Int32 index)**. Viimeiseksi virhe kertoo, mikä osa koodistamme aiheutti virheen.
 
-As you can see, when calling for List[index], we are actually calling method **System.Collections.Generic.List`1.get_Item(Int32 index)**, which is a more complex method, already built in. This is the advantage of built-in methods: We do not have to worry about how to implement a method for data retrieval from a list, as it already exists.
+Kuten huomataan, kun kutsutaan List[index], kutsutaan itse asiassa metodia **System.Collections.Generic.List`1.get_Item(Int32 index)**, joka on monimutkaisempi metodi, joka on jo valmiiksi rakennettu. Tämä on valmiiden metodien etu: meidän ei tarvitse huolehtia siitä, miten toteutamme metodin datan hakemiseksi listasta, koska se on jo valmiina.
 
-## Numbering and index
+## Numerointi ja indeksi
 
-Numbering places, i.e., indexing, always begins with zero. The list's first value is located at index 0, the second value at index 1, the third value at index 2, and so on. In programs, an index is denoted with a variable called **i**.
+Numerointi eli indeksointi alkaa aina nollasta. Listan ensimmäinen arvo sijaitsee indeksissä 0, toinen indeksissä 1, kolmas indeksissä 2 jne. Ohjelmissa indeksiä merkitään muuttujalla **i**.
 
-Example list called numbers could contain something like this...
+Esimerkiksi lista, joka sisältää kokonaislukuja, voisi sisältää seuraavaa:
 
 |i|0|1|2|3|4|5|6|...|
 |-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |value|6|1|2| 4| 4| 3||
 
-In the list above, the first value is 6 and the second value 1. If a new value was added to the list by calling the **Add method** of numbers with 8 as parameter, the number 8 would be placed at index 6. It would be the seventh number in the list.
+Yllä olevassa listassa ensimmäinen arvo on 6 ja toinen arvo 1. Jos listaan lisättäisiin uusi arvo kutsumalla **Add-metodia** parametrinaan 8, luku 8 sijoittuisi indeksiin 6. Se olisi listan seitsemäs luku.
+
 
 ```cpp
 numbers.Add(8);
@@ -195,9 +201,10 @@ numbers.Add(8);
 |-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |value|6|1|2| 4| 4| 3|8|
 
-Similarly, by calling the method **numbers[index]** with the parameter 4 the fifth number in the list would be retrieved.
+Samoin, kutsumalla **numbers[index]** parametrilla 4, saataisiin listan viides luku.
 
-Each tool offered by C# has a name and location. The program can use a tool after it has been imported with the **using** command. The command is given the location and the name of the desired class. For example, the use of a **Console** from System necessitates placing the command **using System;** to the top of the program.
+Jokaisella C#:n tarjoamalla työkalulla on nimi ja sijainti. Ohjelma voi käyttää työkalua sen jälkeen, kun se on tuotu käyttöön **using** -komennolla. Komennolle annetaan halutun luokan sijainti ja nimi. Esimerkiksi **Console** löytyy **System** -luokasta, joten se tuodaan käyttöön komennolla **using System;** koodin alussa.
+
 
 ```cpp
 using System;
@@ -211,7 +218,7 @@ public class Program
 }   
 ```
 
-The same usually applies to all C# classes. **Console** is called directly from system, so we can import it with just **using System;**. If we want to use Lists, we have to go deeper, and use **using System.Collections.Generic;**.
+Sama pätee yleensä kaikkiin C#:n luokkiin. **Console** kutsutaan suoraan järjestelmästä, joten voimme tuoda sen käyttöön pelkällä **using System;** -komennolla. Jos haluamme käyttää Listoja, joudumme menemään syvemmälle ja käyttämään **using System.Collections.Generic;** -komennolla.
 
 ```cpp
 using System;
@@ -228,9 +235,14 @@ public class Program
 }   
 ```
 
-## Iterating Over a List
+<Note>
+Nykyään C#:n kääntäjä ei välttämättä kaipaa yleisimpiä tuonteja, kuten System tai System.Colletions.Generic.
+On kuitenkin tärkeää ymmärtää näiden olemassaolosta ja toiminnasta, jotta vanhempaa koodia lukiessa ei tule yllätyksiä.
+</Note>
 
-We'll next be examining methods that can be used to go through the values on a list. Let's start with a simple example where we print a list containing four values.
+## Listan läpikäyminen
+
+Seuraavaksi tutustumme metodeihin, joilla voidaan käydä läpi listan arvoja. Aloittakaamme yksinkertaisesta esimerkistä, jossa tulostetaan lista, joka sisältää neljä arvoa.
 
 ```cpp
 List<string> teachers = new List<string>();
