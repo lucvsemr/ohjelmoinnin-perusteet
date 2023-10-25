@@ -4,7 +4,7 @@ nav_order: 1
 hidden: false
 ---
 
-We've so far been practicing the fundamentals of the language, such as variables, conditionals, loops, and methods. Let's now move on to look at some of the factors affecting the understandability of programs, and how errors are found.
+Olemme tähän mennessä harjoitelleet ohjelmointikielen perusteita, kuten muuttujia, ehtoja, silmukoita ja metodeja. Siirrytään seuraavaksi katsomaan ohjelmien ymmärrettävyyteen vaikuttavia tekijöitä ja virheiden löytämistä.
 
 ## A Programmer Is Blind to Their Own Code
 
