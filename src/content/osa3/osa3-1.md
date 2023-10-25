@@ -6,19 +6,19 @@ hidden: false
 
 Olemme tähän mennessä harjoitelleet ohjelmointikielen perusteita, kuten muuttujia, ehtoja, silmukoita ja metodeja. Siirrytään seuraavaksi katsomaan ohjelmien ymmärrettävyyteen vaikuttavia tekijöitä ja virheiden löytämistä.
 
-## A Programmer Is Blind to Their Own Code
+## Ohjelmoija on sokea omalle koodilleen
 
-A programmer often becomes blind to their code. Let's familiarize ourselves with this effect with the aid of the short video below. Count how many times the white-shirted players pass the ball between each other. The video contains instructions in English.
+Ohjelmoija sokeutuu usein omalle koodilleen. Tutustutaan tähän ilmiöön alla olevan videon avulla. Laske kuinka monta kertaa valkopaitaiset pelaajat syöttävät palloa toisilleen. Videolla on ohjeet englanniksi.
 
 [![Link to video: https://www.youtube.com/watch?v=Ahg6qcgoay4](https://img.youtube.com/vi/Ahg6qcgoay4/mqdefault.jpg)](http://www.youtube.com/watch?v=Ahg6qcgoay4)
 
-There's something else that also happens in the video that may go unnoticed at first. This effect is known as perceptual blindness, and is explained by the fact that as we focus on a specific task, our brains tend to filter out information that is irrelevant to that task. However, we don't always know what information is, in fact, essential and what is not - an example of this being when we study. Concentrating on a specific part of a study exercise can lead to relevant information being filtered out.
+Videolla tapahtuu myös jotain muuta, joka saattaa jäädä huomaamatta. Tätä ilmiötä kutsutaan havaintosokeudeksi, ja se selittyy sillä, että keskittyessämme johonkin tiettyyn tehtävään aivomme suodattavat pois tehtävän kannalta epärelevanttia tietoa. Emme kuitenkaan aina tiedä mikä tieto on itse asiassa olennaista ja mikä ei -- esimerkkinä tästä on opiskelu. Tietyn opiskelutehtävän keskittyminen johonkin tiettyyn osa-alueeseen voi johtaa siihen, että olennainen tieto suodattuu pois.
 
-Fortunately, applying oneself to a given task lessens the occurrence of perceptual blindness. In other words, practice develops one's ability to distinguish between relevant and irrelevant information.
+Onneksi tehtävään keskittyminen vähentää havaintosokeuden esiintymistä. Toisin sanoen harjoittelu kehittää kykyä erottaa olennainen epäolennaisesta.
 
-One way in which perceptual blindness manifests itself in programming practice is when concentrating on a specific part of a program draws attention away from seemingly correct, yet erroneous parts. For instance, while inspecting the correctness of a program's output, a programmer may fixate on the print statements, and mistakenly neglect some aspects of the logic.
+Yksi tapa miten havaintosokeus ilmenee ohjelmoinnin harjoittelussa on se, että keskittyminen tiettyyn osaan ohjelmaa saattaa johtaa siihen, että huomiota ei kiinnitetä näennäisesti oikealta vaikuttaviin, mutta virheellisiin osiin. Esimerkiksi ohjelman tulostuksen oikeellisuutta tarkastaessaan ohjelmoija saattaa keskittyä tulostuslauseisiin ja erehtyä jättämään huomiotta ohjelman logiikkaan liittyviä asioita.
 
-Likewise, a programmer may focus on the most complicated aspect of a program featuring a loop, when in fact the error lies somewhere else completely. An example of this is the program below, which is used to calculate the average of user-inputted values. It contains an error, and when searching for it, the loop is typically the first target of focus.
+Samoin ohjelmoija voi keskittyä ohjelman monimutkaisimpaan kohtaan jossa on silmukka, vaikka virhe on jossain aivan muualla. Esimerkkinä tästä on alla oleva ohjelma, joka laskee käyttäjän syöttämien lukujen keskiarvon. Ohjelmassa on virhe, ja virhettä etsiessä silmukka on tyypillisesti ensimmäinen kohde. 
 
 ```cpp
 
@@ -48,43 +48,43 @@ else
 }
 ```
 
-Question: Can you spot what is wrong with the code above? We will find the error later on in this part. The answer is also at the bottom of the page. DON'T SPOIL YOURSELF, read the whole part first!
+Kysymys: Huomaatko mikä koodissa on vialla? Vastaus on myös sivun alalaidassa. ÄLÄ HUIJAA, lue koko osa ensin!
 
-Perceptual blindness is something that one cannot be eliminated completely. However, there are ways by which a programmer can lessen its effect - the first one being taking breaks, which requires that work is begun early. Code comments, proper naming of things, and "debugging" prints are additional examples of things that are also helpful.
+Havaintosokeus on jotain mitä emme voi kokonaan eliminoida. Ohjelmoija voi kuitenkin vähentää sen vaikutusta, ja yksi keino on pitää taukoja. Taukojen pitäminen vaatii, että työ aloitetaan ajoissa. Koodikommentit, asioiden nimeäminen oikein ja "debuggaus"-tulosteet ovat myös esimerkkejä asioista jotka auttavat.
 
-## Commenting the Source Code
+## Koodin kommentointi
 
-Comments have many purposes, and one of them is explaining how the code works to oneself when searching for bugs. The execution of a relatively simple program is described below through the use of comments.
+Kommenteilla on monia tarkoituksia, ja yksi niistä on selittää koodin toimintaa itselleen virheitä etsiessä. Alla on kuvattu melko yksinkertaisen ohjelman suoritus kommenttien avulla.
 
 ```cpp
 /*
- Prints the numbers from ten to one.
-Each number is printed on its own line.
+Tulostaa luvut yhdestä kymmeneen.
+Jokainen luku tulostetaan omalle rivilleen.
 */
 
-// We create an integer variable named value,
-// assigning the value 10 to it.
+// luomme muuttujan nimeltä value ja annamme sille arvon 10
 int value = 10;
 
-// The loop execution continues until
-// the value of the variable named value is less than or equal to
-// zero. The excution doesn't stop _immediately_ when the value zero
-// is assigned to the variable, but only when the condition of the
-// loop is evaluated the following time.
-// This always happens after the loop has executed
+// Silmukkaa suoritetaan kunnes
+// muuttujan value arvo on pienempi tai yhtäsuuri kuin
+// nolla. Suoritus ei lopu _välittömästi_ kun muuttujalle
+// annetaan arvoksi nolla, vaan vasta kun silmukan ehto
+// vaan vasta kun silmukan ehto tarkistetaan seuraavan kerran.
+// Tämä tapahtuu aina silmukan suorituksen jälkeen.
 while (value > 0) {
-    // we print out the value in the variable and a new line
+    // tulostamme muuttujan arvon ja uuden rivin
     Console.WriteLine(value);
-    // we decrement the value by one
+    // vähennämme muuttujan arvoa yhdellä
     value = value - 1;
 }
 ```
 
-Comments have no impact on the execution of the program, i.e. the program works in the same way with the comments as it does without them.
+Kommenteilla ei ole vaikutusta ohjelman suoritukseen, eli ohjelma toimii samalla tavalla kommenttien kanssa kuin ilman niitä.
 
-The comment style displayed above that is intended for learning purposes is, however, too elaborate for real development, where the goal is for the source code to be self documenting. This means that the functionality of the program should be evident from the way classes, methods, and variables are named.
+Kommenttien tyyli yllä olevassa esimerkissä on tarkoitettu oppimistarkoituksiin, mutta se on liian yksityiskohtainen oikeaan ohjelmointiin, jossa tavoitteena on, että lähdekoodi on itsessään dokumentoivaa. Tämä tarkoittaa sitä, että ohjelman toiminnallisuus pitäisi olla ilmeistä luokkien, metodien ja muuttujien nimistä.
 
-The example can be "commented out" by encapsulating the code into an appropriately named method. Below are two examples of methods that do this - one of the methods is more general in its purpose compared to the other. The more general method assumes, however, that the user knows which of the two parameters is assigned the higher value and which the lower.
+Esimerkki voidaan myös "kommentoida pois" kapseloimalla koodin sopivasti nimettyyn metodiin. Alla on kaksi esimerkkiä tästä -- toinen metodi on toista monikäyttöisempi. Monikäyttöisempi metodi olettaa kuitenkin, että käyttäjä tietää kumpi parametreista on suurempi ja kumpi pienempi.
+
 
 ```cpp
 public static void PrintValuesFromTenToOne()
@@ -108,11 +108,11 @@ public static void PrintValuesFromLargestToSmallest(int start, int end)
 }
 ```
 
-## Searching for Errors with Print Debugging
+## Virheiden etsintä tulostus-debuggauksella (print debugging)
 
-One required skill in programming is the ability to test and debug when searching for errors. The simplest way to search for errors is to use so-called print debugging, which in practice involves adding messages to certain lines of code. These messages are used to follow the flow of the program's execution, and can also contain values of variables that live in the program.
+Yksi tarpeellinen taito ohjelmoinnissa on kyky testata ja debugata eli etsiä virheitä. Yksinkertaisin tapa etsiä virheitä on käyttää niin kutsuttua tulostus-debuggausta, joka käytännössä tarkoittaa viestien lisäämistä koodin tiettyihin kohtiin. Nämä viestit käytännössä seuraavat ohjelman suoritusta, ja voivat sisältää myös muuttujien arvoja.
 
-Let's inspect the program already familiar to us from the previous question that was used to calculate the average of non-negative values.
+Tarkastellaan jo aiemmin tuttua ohjelmaa, joka laskee käyttäjän antamien positiivisten lukujen keskiarvon.
 
 ```cpp
 
@@ -142,7 +142,8 @@ else
 }
 ```
 
-Had the program contained an error, print debugging could have been used to unravel its functionality by adding print statements in the appropriate places. The example below contains one possible example of a program containing print-debug statements.
+Jos koodissa olisi virhe, tulostus-debuggausta voisi käyttää ohjelman toiminnan selvittämiseen lisäämällä tulostuslauseita oikeisiin paikkoihin. Alla olevassa esimerkissä on yksi mahdollinen tapa lisätä tulostuslauseita.
+
 
 ```cpp
 
@@ -151,13 +152,13 @@ int sum = 0;
 
 while (true)
 {
-  Console.WriteLine("-- values: " + values + ", sum: " + sum);
+  Console.WriteLine("-- values-muuttuja: " + values + ", sum-muuttuja: " + sum);
 
   Console.WriteLine("Provide a value, a negative value ends the program");
   int value = Convert.ToInt32(Console.ReadLine());
   if (value < 0)
   {
-    Console.WriteLine("-- value is negative, exiting loop");
+    Console.WriteLine("-- arvo oli negatiivinen, lopetetaan silmukka");
     break;
   }
 
@@ -165,8 +166,8 @@ while (true)
   sum = sum + value;
 }
 
-Console.WriteLine("-- loop exited");
-Console.WriteLine("-- values: " + values + ", sum: " + sum);
+Console.WriteLine("-- silmukka loppui");
+Console.WriteLine("-- values-muuttuja: " + values + ", sum-muuttuja: " + sum);
 
 if (sum == 0)
 {
@@ -178,9 +179,9 @@ else
 }
 ```
 
-When a program is executed multiple times with appropriate inputs the hidden error is often found. Coming up with relevant inputs is a skill in its own right. It's essential to test the so-called corner cases, i.e., circumstances where the program execution could be exceptional. An example scenario would be one where the user does not enter a single acceptable value or enters zeros or very large values.
+Kun ohjelma suoritetaan monta kertaa sopivilla syötteillä, piilotettu virhe löytyy usein. Sopivien syötteiden keksiminen on taito sinänsä. On tärkeää testata niin sanotut kulma- ja reunatapaukset, eli tilanteet joissa ohjelman suoritus voisi olla poikkeuksellista. Esimerkkinä tästä on tilanne, jossa käyttäjä ei syötä yhtään hyväksyttävää arvoa tai syöttää pelkkiä nollia tai hyvin suuria arvoja.
 
-
-
-Answer: The last variable in the code is called **value**, when it should be called **values**. We are calling for a variable which was defined inside the loop, rather than the one we want.
-
+<Note>
+VASTAUS: 
+Viimeinen muuttuja koodissa on nimeltään **value**, kun sen pitäisi olla nimeltään **values**. Kutsuimme muuttujaa, joka oli määritelty silmukan sisällä, emmekä sitä jota halusimme.
+</Note>
