@@ -4,45 +4,46 @@ nav_order: 3
 hidden: false
 ---
 
-We've gotten familiar with List, which has a lot of functionality to make the life of a programmer easier. Perhaps the most important is about adding elements: From the point of view of the programmer the size of the List is unlimited. In reality there are no magic tricks in the List -- they have been programmed like any programs or tools offered by the programming language. When you create a list, a limited space is reserved in the memory of the computer. When the List runs out of space, larger space is reserved and the data from the previous space is copied to the new one.
+Olemme tutustuneet listoihin, joilla on paljon toiminnallisuutta ohjelmoijan elämää helpottamaan. Ehkä tärkein ominaisuus on lisääminen: Ohjelmoijan näkökulmasta listan koko on rajaton. Todellisuudessa listoissa ei ole mitään taikatemppuja -- ne on ohjelmoitu kuten mikä tahansa ohjelma tai työkalu, jonka ohjelmointikieli tarjoaa. Kun luot listan, tietokoneen muistista varataan rajoitettu määrä tilaa. Kun lista loppuu, varataan suurempi tila ja edellisen tilan tiedot kopiodaan uuteen.
 
-Even though List is simple to use, sometimes we need the ancestor of the List, the Array.
+Vaikka lista on helppo käyttää, joskus tarvitsemme listan esivanhempaa, taulukkoa (englanniksi **Array**).
 
-An Array contains a limited amount of numbered spots (indices) for values. The length (or size) of an Array is the amount of these spots, i.e. how many values can you place in the Array. The values in an Array are called elements.
+Taulukko sisältää rajallisen määrän kohtia (indeksejä) arvoille. Taulukon koko (tai pituus) on näiden kohtien määrä, eli kuinka monta arvoa taulukkoon voi sijoittaa. Taulukon arvoja kutsutaan elementeiksi (englanniksi **elements**).
 
-## Creating an Array
+## Taulukon luominen
 
-There are two ways to create an Array. In the first one you have to explicitly define the size upon the creating. This is how you create an Array to hold three integers:
+On kaksi tapaa luoda taulukko. Ensimmäisessä täytyy määritellä taulukon koko luomisen yhteydessä. Näin luodaan taulukko, joka sisältää kolme kokonaislukua:
 
 ```cpp
 int[] numbers = new int[3];
 ```
 
-An array is declared by adding square brackets after the type of the elements it contains (typeofelements[]). A new Array is created by calling new followed by the type of the elements, square brackets and the number of the elements in the square brackets.
+Taulukko luodaan käyttämällä lisäämällä hakasulkeet sen sisältämän elementtien tyypin perään (**elementtiTyyppi[]**). Uusi taulukko luodaan kutsumalla **new** jota seuraa elementtien tyyppi, hakasulkeet ja taulukon koko hakasulkeissa.
 
-An array to hold 5 Strings can be created like this:
+Taulukko johon mahtuu 5 merkkijonoa luodaan seuraavasti:
 
 ```cpp
 string[] strings = new string[5];
 ```
 
-## Assigning and accessing elements
+## Taulukon elementtien sijoittaminen ja lukeminen
 
-An element of an array is referred to by its index. In the example below we create an array to hold 3 integers, and then assigning values to the indices 0 and 2. After that we print the values.
+Taulukon elementtiin viitataan sen indeksillä. Seuraavassa esimerkissä luodaan taulukko, joka sisältää kolme kokonaislukua ja sijoitetaan indekseihin 0 ja 2 arvot. Tämän jälkeen tulostetaan taulukon arvot.
+
 
 ```cpp
 int[] numbers = new int[3];
 numbers[0] = 2;
 numbers[2] = 5;
-// numbers[1] is empty
+// numbers[1] on tyhjä, tai oikeammin arvoltaan 0
 
 Console.WriteLine(numbers[0]);
 Console.WriteLine(numbers[2]);
 ```
 
-Assigning a value to a specific spot of an Array works much like assigning a value in a normal variable, but in the Array you must specify the index, i.e. to which spot you want to assign the value. The index is specified in in square brackets. You might notice, that the method is exactly the same as for Lists.
+Muuttujan arvon sijoittaminen tiettyyn kohtaan taulukossa toimii hyvin samankaltaisesti kuin minkä tahansa muuttujan arvon sijoittaminen. Taulukossa täytyy kuitenkin määritellä indeksi, eli mihin kohtaan taulukkoa arvo sijoitetaan. Indeksi määritellään hakasulkeissa. Huomaa, että tämä on täsmälleen sama tapa kuin listoissa.
 
-The index is an integer, and it's value is between [0, length of the Array - 1]. For example an Array to hold 5 elements has indices 0, 1, 2, 3, and 4.
+Indeksi on kokonaisluku, jonka arvo on välillä [0, taulukon koko - 1]. Esimerkiksi taulukko, joka sisältää 5 elementtiä, sisältää indeksit 0, 1, 2, 3 ja 4.
 
 ```cpp
 int[] numbers = new int[5];
@@ -58,7 +59,7 @@ int index = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine(numbers[index]);
 ```
 
-The value held in an Array can also be assigned to be the value of another variable
+Taulukossa olevan arvon voi myös sijoittaa toisen muuttujan arvoksi.
 
 ```cpp
 int[] numbers = new int[5];
@@ -75,9 +76,9 @@ int number = numbers[index];
 Console.WriteLine(number);
 ```
 
-## Size of an array and iterating
+## Taulukon koko ja iterointi
 
-You can find out the size of the array through the property **Length**. You can access this property by writing name of the array dot name of the variable, i.e. numbers.Length. Note, that this is not a method call, so numbers.Length() doesn't work.
+Saat selville taulukon koon käyttämällä taulukon ominaisuutta **Length**. Pääset tähän käsiksi kirjoittamalla taulukon nimen, pisteen ja ominaisuuden, eli esimerkiksi **numbers.Length**. Huomaa, että tämä ei ole metodikutsu, lopussa ei ole sulkeita.
 
 ```cpp
 int[] numbers = new int[4];
@@ -102,11 +103,12 @@ The array has 4 elements:
 9
 ```
 
-The example above iterates over indices 0, 1, 2 and 3, and at each index prints the value held in the index. So first it prints **numbers[0]**, then **numbers[1]** etc. The iteration stops, once the condition of the loop **i < numbers.Length** is false, i.e. once the index variable is greater or equal to the length of the array. NB! The iteration doesn't stop the moment the index variable grows too big; the condition is evaluated only in the beginning of the while loop.
+Yllä olevassa esimerkissä iteroimme indeksit 0, 1, 2 ja 3, ja jokaisen indeksin jälkeen tulostimme arvon joka oli talletettu indeksiin. Ensimmäisenä koodi tulostaa **numbers[0]**, sitten **numbers[1]** ja niin edelleen. Iterointi loppuu, kun silmukan ehto **i < numbers.Length** on epätosi, eli indeksille varatun muuttujan arvo on suurempi tai yhtä suuri kuin taulukon pituus. Huomaa, että iterointi ei lopu sillä hetkellä kun indeksin arvo on liian suuri; ehto evaluoidaan vain silmukan alussa.
 
-If the index is pointing outside the Array, i.e. the element doesn't exist, we get an **IndexOutOfRangeException**. This error tells, that the Array doesn't contain the given index. You cannot access outside of the Array, i.e. index that's less than 0 or greater or equal to the size of the Array.
+Jos indeksi osoittaa taulukon ulkopuolelle, eli elementtiä ei ole olemassa, saamme **IndexOutOfRangeException** -virheen. Tämä virhe kertoo, että taulukossa ei ole olemassa haluttua indeksiä. Et voi hakea tietoa taulukon ulkopuolelta, eli indeksistä joka on alle nollan, tai enemmän kuin taulukon koko.
 
-The next example is a program that first asks the user to enter how many numbers, and then enter the numbers. Finally it prints back the numbers in the same order. The numbers are stored in an Array.
+Seuraavassa esimerkissä on ohjelma joka ensin kysyy käyttäjältä kuinka monta lukua hän haluaa syöttää, sitten kysyy käyttäjältä luvut ja lopuksi tulostaa luvut samassa järjestyksessä. Luvut tallennetaan taulukkoon.
+
 
 ```cpp
 Console.WriteLine("How many numbers? ");
@@ -131,7 +133,7 @@ while (index < numbers.length) {
     index = index + 1;
 }
 ```
-An execution of the program might look like this:
+Ohjelman suoritus näyttäisi kutakuinkin tältä:
 
 ```console
 How many numbers? 
@@ -148,9 +150,10 @@ Here are the numbers again:
 1
 ```
 
-## Type of the elements
+## Elementtien tyypit
 
-You can create an array stating the type of the elements of the array followed by square brackets (typeofelements[]). Therefore the elements of the array can be of any type. Here's a few examples:
+Vuit luoda taulukon lisäämällä hakasulkeet sen sisältämän elementtien tyypin perään (**elementtiTyyppi[]**). Tämän takia taulukon elementit voivat olla mitä tahansa tyyppiä. Tässä pari esimerkkiä:
+
 
 ```cpp
 string[] months = new string[12];
@@ -160,17 +163,17 @@ months[0] = "January";
 approximations[0] = 3.14;
 ```
 
-Every programmer should know a bit about the structure of the memory used by a computer program. Each variable -- let it be primitive or reference type -- is saved in the memory. Each variable has size i.e. a defined number of bits (zeros and ones) it takes in the memory. The value of the variable is also represented in bits.
+Jokaisen ohjelmoijan tulisi tietää hieman tietokoneohjelman muistin rakenteesta. Jokainen muuttuja -- oli se sitten primitiivi tai viittaus -- tallennetaan muistiin. Jokaisella muuttujalla on koko, eli määritelty määrä bittejä (nollia ja ykkösiä) jotka se vie muistissa. Muuttujan arvo on myös esitetty bittejä.
 
-The reference of the array object is actually information about the location of the data. By stating **array[0]** we're referring to the first element of the array. The statement **array[0]** can also be read *"Go to the beginning of the array and move forward 0 times the size of the variable contained in the array -- and return a chunk of data the size of the variable."*
+Viittaus taulukkoon on itseasiassa tietoa datan sijainnista. Komennolla **taulukko[0]** viittaamme taulukon ensimmäiseen elementtiin. Tämä voidaan myös lukea muodossa *"Mene taulukon alkuun ja siirry eteenpäin 0 kertaa muuttujan kokoisia bittejä -- ja palauta pala dataa muuttujan kokoisena."*
 
-The size of an int variable in C# is 32 bits. One bit is reserved for the (plus or minus) sign, so the largest possible number to present in int is 2^31 -1. When you create an int array of 4 elements, 4 * 32 bits of memory is allocated to hold the integers. When you access **array[2]**, 32 bits are read starting from beginning of the array + 2 * 32 bits.
+Muuttujan int koko C#:ssa on 32 bittiä. Yksi bitti on varattu etumerkille (plus tai miinus), joten suurin mahdollinen luku int muuttujalle on 2^31 -1. Kun luot int taulukon, joka sisältää 4 elementtiä, varataan muistista 4 * 32 bittiä muistia. Kun käytät **taulukko[2]**, luetaan 32 bittiä alkaen taulukon alusta + 2 * 32 bittiä.
 
-Some programming languages try to make sure the programmer doesn't go "in the wrong area". If compiler didn't cause the exception when we say **array[-1]**, we would find out the data located just before the array in the memory of the program. In such case there there wouldn't also be anything preventing us from writing a program reading the whole memory reserved for the program.
+Jotkin ohjelmointikielet yrittävät varmistaa, että ohjelmoija ei mene *"väärälle alueelle"*. Jos kääntäjä ei aiheuttaisi poikkeusta kun sanomme **taulukko[-1]**, voisimme lukea datan joka sijaitsee juuri ennen taulukkoa ohjelman muistissa. Tässä tapauksessa ei olisi mitään estettä kirjoittaa ohjelma, joka lukee koko ohjelman muistin.
 
-## Array as a parameter of a method
+## Taulukko metodin parametrina
 
-You can use arrays as a parameter of a method just like any other variable. Because array is reference type, the value of the array is a reference to the information contained in the array. When you use array as a parameter of a method, the method receives a copy of the reference to the array.
+Voit käyttää taulukoita parametrina metodissa aivan kuten mitä tahansa muuttujaa. Koska taulukko on viittaus tyyppi, taulukon arvo on viittaus taulukon sisältämään informaatioon. Kun käytät taulukkoa parametrina metodissa, metodi saa kopion viittauksesta taulukkoon.
 
 ```cpp
 public static void ListElements(int[] integerArray)
@@ -188,7 +191,8 @@ public static void ListElements(int[] integerArray)
 }
 ```
 
-In action:
+Käytännössä:
+
 ```cpp
 int[] numbers = new int[3];
 numbers[0] = 1;
@@ -203,19 +207,19 @@ the elements of the array are:
 1 2 3 
 ```
 
-As noticed before, you can freely choose the name of the parameter inside the method, the name doesn't have to be the same as the name of the variable when you call the method. Above we call the array **integerArray**, meanwhile the caller of the method has named the same array **numbers**.
+Kuten jo aiemmin todettiin, voit vapaasti valita parametrin nimen metodissa, nimi ei tarvitse olla sama kuin muuttujan nimi kun kutsut metodia. Yllä olevassa esimerkissä kutsuja on nimennyt taulukon **integerArray**, kun taas metodia kutsuttaessa parametrin nimi on **numbers**.
 
-Array is an object, so when you change the array inside the method, the changes persist also after the execution of the method.
+Array on **olio** (englanniksi **object**), eli kun muutat taulukkoa metodissa, muutokset säilyvät myös metodin suorituksen jälkeen.
 
-## The shorter way to create an array
+## Lyhyempi tapa luoda taulukko
 
-There's also a shortcut to create an array. Here we create an array to hold 3 integers, and initiate it with values 100, 1 and 42 in it:
+On olemassa myös oikotie taulukon luomiseen. Tässä luodaan taulukko, joka sisältää kolme kokonaislukua ja alustetaan se arvoilla 100, 1 ja 42:
 
 ```cpp
 int[] numbers = {100, 1, 42};
 ```
 
-So apart from calling for **new**, we can also initialize an array with a block, that contains comma-separated values to be assigned in the array. This works for all the types: below we initialize an array of strings, then an array of floating-point numbers. Finally the values are printed.
+Eli osana **new** kutsua, voimme myös alustaa taulukon arvot antamalla pilkuilla erotetut arvot. Tämä toimii kaikille tyypeille: alla luodaan taulukko merkkijonoja, sitten taulukko liukulukuja. Lopuksi arvot tulostetaan.
 
 ```cpp
 string[] arrayOfStrings = {"Mike L.", "Mike P.", "Mike V."};
@@ -232,19 +236,20 @@ Mike P. 3.14
 Mike V. 100
 ```
 
-When you initialize an array with a block, the length of the array is precisely the number of the values specified in the block. The values of the block are assigned to the array in the order, eg. the first value is assigned to the index 0, the second value to the index 1 etc.
+Kun alustat taulukon arvojen kanssa, taulukon pituus on tarkalleen ottaen arvojen määrä. Arvot sijoitetaan taulukkoon järjestyksessä, eli ensimmäinen arvo sijoitetaan indeksiin 0, toinen indeksiin 1 jne.
 
 ```cpp
-// index           0   1    2    3   4   5     6     7
+// indeksi         0   1    2    3   4   5     6     7
 int[] numbers = {100,  1,  42,  23,  1,  1, 3200, 3201};
 
-// prints the number at index 0, i.e. number 100
+// tulostaa numeron indeksissä 0, eli numeron 100
 Console.WriteLine(numbers[0]);
-// prints the number at index 2, i.e. number 42
+// tulostaa numeron indeksissä 2, eli numeron 42
 Console.WriteLine(numbers[2]);
 ```
 
-Just like in Lists, you can't access an index outside of the array. You can try out the following example on your own computer.
+Kuten listoissa, et voi käyttää indeksiä joka on taulukon ulkopuolella. Voit kokeilla seuraavaa esimerkkiä omalla koneellasi.
+
 
 ```cpp
 string[] arrayOfStrings = {"Mike L.", "Mike P.", "Mike V."};
@@ -259,7 +264,8 @@ for (int i = 0; i < arrayOfFloatingpoints.Length; i++) {
 
 <Exercise title={'017 Swap indices'}>
 
-The exercise template already contains a program, that creates an array and prints the values of the array twice. Modify the program to do following: After the first printing, the program should ask for two indices from the user. The values in these two indices should be swapped, and in the end the values of the array should be printed once again.
+Tehtäväpohjassa on valmiina ohjelma, joka luo taulukon ja tulostaa sen arvot kahdesti. Muokkaa ohjelmaa niin, että ensimmäisen tulostuksen jälkeen ohjelma kysyy käyttäjältä kaksi indeksiä. Ohjelma vaihtaa näiden indeksien arvot keskenään ja tulostaa taulukon arvot uudelleen.
+
 
 ```console
 1 
@@ -297,15 +303,19 @@ Give two indices to swap:
 9
 ```
 
-You can assume the array to contain the given indices.   
+Voit olettaa, että käyttäjä antaa oikeanlaisia indeksejä.
 
-<Note>You'll need an additional variable to store one of the values for little while.</Note>
+
+<Note>
+Tarvitset lisämuuttujan, johon tallennat toisen arvon hetkeksi.
+</Note>
 
 </Exercise>
 
 <Exercise title={'018 Searching array'}>
 
-The exercise template has already an array containing numbers. Complete the program to ask the user for a number to search in the array. If the array contains the given number, the program tells the index containing the number. If the array doesn't contain the given number, the program will tell the number wasn't found.
+Tehtäväpohjassa on valmiina taulukko jossa on numeroita. Täydennä ohjelmaa siten, että ohjelma kysyy käyttäjältä lukua, jonka jälkeen ohjelma kertoo löytyykö luku taulukosta. Jos luku löytyy, ohjelma kertoo myös monennellako indeksillä luku on taulukossa. Jos lukua ei löydy, ohjelma kertoo, ettei lukua löytynyt.
+
 
 ```console
 Search for? 
@@ -329,9 +339,9 @@ Search for?
 
 <Exercise title={'019 Sum of numbers in array'}>
 
-The template has a method `public static int SumOfNumbersInArray(int[] array)`. Complete the method so, that it computes and returns the sum of the numbers in the array it receives as parameter.
+Tehtäväpohjassa on metodi `public static int SumOfNumbersInArray(int[] array)`. Täydennä metodia siten, että se laskee ja palauttaa taulukon arvojen summan.
 
-You can try out the computation of the sum with this example:
+Voit testata toiminnallisuutta tällä:
 
 ```cpp
 int[] numbers = {5, 1, 3, 4, 2};
@@ -347,11 +357,13 @@ Console.WriteLine(sum);
 
 <Exercise title={'020 Print neatly'}>
 
-Complete the method `public static void PrintNeatly(int[] array)` in the template to make it print the numbers of the array it receives more neatly. There should be a whitespace and a comma between each number. don't put a comma after the last number, but a line change instead.
 
-Print the numbers on one line using `Console.Write`.
+Täydennä metodi `public static void PrintNeatly(int[] array)` siten, että se tulostaa taulukon arvot siististi. Taulukon arvot tulostetaan yhdelle riville ja jokaisen arvon perään tulee pilkku ja välilyönti. Viimeisen arvon perään ei tule pilkkua, vaan rivinvaihto.
 
-You can try out your printing with this example:
+Tulosta numerot yhdelle riville käyttämällä `Console.Write`.
+
+Voit kokeilla tulostusta tällä:
+
 
 ```cpp
 int[] array = {5, 1, 3, 4, 2};
@@ -366,9 +378,9 @@ PrintNeatly(array);
 
 <Exercise title={'021 Array in stars'}>
 
-Complete the method `public static void PrintArrayInStars(int[] array)` in the template to make it print a row of stars for each number in the array. The amount of stars on each row is defined by the corresponding number in the array.
+Täydennä metodi `public static void PrintArrayInStars(int[] array)` siten, että se tulostaa taulukon arvot tähtinä. Taulukon arvon suuruinen rivi tähtiä tulostetaan jokaiselle arvolle.
 
-You can try out the printing with this example:
+Voit kokeilla tulostusta tällä:
 
 ```cpp
 int[] array = {5, 1, 3, 4, 2};
@@ -383,6 +395,6 @@ PrintArrayInStars(array);
 **
 ```
 
-The 0th element of the array is 5, so the first line has 5 stars. The next one has 1 etc.
+Taulukon nollas elementti on 5, joten ensimmäisellä rivillä on 5 tähteä. Seuraavalla rivillä on 1 tähti, sitten 3 tähteä jne.
 
 </Exercise>
