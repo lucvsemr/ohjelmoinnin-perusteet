@@ -478,9 +478,9 @@ Tässä metodin kutsu suoritetaan ensin ja se palauttaa arvon 5.0. Tämän jälk
 
 ## Paluuarvon laskeminen metodin sisällä
 
-The value to be returned need not be fully pre-defined - it can also be calculated. The return command that returns a value from the method can also be given an expression that is evaluated before the returning.
+Palautettavan arvon ei tarvitse olla kokonaan määritelty etukäteen -- se voidaan myös laskea: **return**-käskyä joka palauttaa arvon metodista voidaan käyttää myös lausekkeen kanssa. 
 
-In the following example we'll define the method sum that adds together the values of two variables and returns the sum. The values of the variables that are summed are received as method parameters.
+Seuraavassa esimerkissä määritellään metodi **Sum** joka laskee kahden muuttujan arvon yhteen ja palauttaa summan. Summattavien muuttujien arvot saadaan metodin parametreina.
 
 ```cpp
 public static int Sum(int first, int second)
@@ -489,16 +489,17 @@ public static int Sum(int first, int second)
 }
 ```
 
-When the execution of the method reaches the statement **return first + second;**, the expression **first + second** is evaluated, and later its value will be returned.
+Kun metodin suoritus saavuttaa lausekkeen **return first + second;**, lauseke **first + second** evaluoidaan, ja sen arvo palautetaan myöhemmin.
 
-The method is called in the following manner. Below the numbers 2 and 7 are added together with the method **Sum**. The return value produces by the method call is placed into the variable **sumOfNumbers**.
+Metodia kutsutaan seuraavalla tavalla. Metodin **Sum** avulla lasketaan yhteen luvut 2 ja 7. Metodin palauttama arvo sijoitetaan muuttujaan **sumOfNumbers**.
+
 
 ```cpp
 int sumOfNumbers = Sum(2, 7);
-// sumOfNumbers is now 9
+// sumOfNumbers on nyt 9
 ```
 
-Let's expand the previous example so that the numbers are entered by the user:
+Laajennetaan edellistä esimerkkiä niin, että luvut annetaan käyttäjän syötteinä:
 
 ```cpp
 public static void Main(String[] args)
@@ -518,9 +519,9 @@ public static int Sum(int first, int second)
 }
 ```
 
-In the example above the return value of the method is not stored in a variable, but rather is directly used as part of the print.
+Yllä olevassa esimerkissä metodin palauttamaa arvoa ei tallenneta muuttujaan, vaan se käytetään suoraan osana tulostusta.
 
-The values passed to a method are copied to its paremeters. Due to this the names of the parameters and the names of the variables defined on the side of the caller really have nothing to do with each other. In the previous example both the variables of the Main program and the method parameters were named similarly (**first** and **second**) "by accident". The code below will function in exactly the same manner even though the variables are named differently:
+Metodille annetut arvot kopioidaan sen parametreihin. Tämän vuoksi metodin parametrien nimillä ja metodin kutsun yhteydessä määriteltyjen muuttujien nimillä ei ole mitään tekemistä toistensa kanssa. Edellisessä esimerkissä sekä **Main**-ohjelman muuttujat että metodin parametrit olivat nimetty samalla tavalla (**first** ja **second**) "sattumalta". Seuraava koodi toimii täysin samalla tavalla vaikka muuttujat olisivat nimetty eri tavalla:
 
 ```cpp
 public static void Main(String[] args)
@@ -540,15 +541,17 @@ public static int Sum(int first, int second)
 }
 ```
 
-Now the value of the variable **number1** is copied as the value of the method parameter **first**, and the value of the variable **number2** copied as the value of the parameter **second**.
+Nyt muuttujan **number1** arvo kopioidaan parametrin **first** arvoksi ja muuttujan **number2** arvo kopioidaan parametrin **second** arvoksi.
 
-## Execution of method calls and the call stack
 
-How does the computer remember where to return after the execution of a method?
+## Metodikutsujen suorittaminen ja kutsupino (call stack)
 
-The execution environment of C# source code keeps track of the method being executed in the call stack. The call stack contains frames, each of which includes information about a specific method: its internal variables and their values. When a method is called, a new frame containing its variables is created in the call stack. When the execution of a method ends, the frame relating to that method is removed from the call stack, which leads to execution resuming at the previous method of the stack.
+Miten tietokone muistaa, mihin palataan metodin suorituksen jälkeen?
 
-When a method is called, the execution of the calling method await the execution of the called method. This can be visualized with the call stack. The call stack refers to the stack formed by the method calls -- the method that is currently being executed is always on the top of the stack, and on ending the execution of a method execution is resumed in the method that is next on the stack. Let's examine the following program:
+C#:n lähdekoodin suoritusympäristö pitää kirjaa siitä, mikä metodi on suorituksessa kutsupinossa (englanniksi **call stack**). Kutsupino sisältää kehyksiä, joista jokainen sisältää tietoa yhdestä metodista: sen sisäiset muuttujat ja niiden arvot. Kun metodia kutsutaan, kutsupinoon luodaan uusi kehys (englanniksi **frame**), joka sisältää kyseisen metodin muuttujat. Kun metodin suoritus päättyy, kyseinen kehys poistetaan kutsupinosta, ja suoritus jatkuu edellisessä metodissa.
+
+Kun metodia kutsutaan, suoritus odottaa kutsutun metodin suorituksen päättymistä. Tämä voidaan visualisoida kutsupinolla. Kutsupino viittaa metodikutsujen muodostamaan pinoon -- suorituksessa oleva metodi on aina pinon päällimmäisenä, ja metodin suorituksen päättyessä suoritus jatkuu pinon seuraavassa metodissa. Tutkitaan seuraavaa ohjelmaa:
+
 
 ```cpp
 public static void Main(String[] args)
@@ -563,28 +566,29 @@ public static void PrintNumber() {
 }
 ```
 
-The execution begins from the first line of the method **Main** when the program is started. The text "Hello world!" is printed with the command on this line. The call stack of the program looks like this:
+Suoritus alkaa **Main**-metodista, kun ohjelma käynnistetään. Teksti "Hello world!" tulostetaan komennolla ensimmäisellä rivillä. Kutsupino näyttää tältä:
 
 ```console
 Main
 ```
 
-Once the print command has been executed, the next line that calls the method **PrintNumber** is in turn. Calling that method moves the execution of the program to the beginning of the method PrintNumber. Meanwhile the Main method will wait until the execution of the method PrintNumber ends. While inside the method PrintNumber the call stack looks like this:
+Kun tulostuskomento on suoritettu, seuraava rivi kutsuu metodia **PrintNumber**. Metodin kutsu siirtää ohjelman suorituksen metodin **PrintNumber** alkuun. Tällä välin **Main**-metodi odottaa, että **PrintNumber**-metodin suoritus päättyy. Metodin **PrintNumber** suorituksen aikana kutsupino näyttää tältä:
 
 ```console
 PrintNumber
 Main
 ```
 
-Once the method PrintNumber completes, we return to the method that is immediately below the method PrintNumber in the call stack -- in this case the method Main. PrintNumber is removed from the call stack, and the execution continues on the line after the PrintNumber method call in the Main method. The state of the call stack is now the following:
+Kun metodin **PrintNumber** suoritus päättyy, palataan metodin **PrintNumber** alla olevaan metodiin kutsupinossa -- tässä tapauksessa metodiin **Main**. Metodi **PrintNumber** poistetaan kutsupinosta, ja suoritus jatkuu **Main**-metodin **PrintNumber**-kutsun jälkeisellä rivillä. Kutsupinon tilanne on nyt seuraava:
+
 
 ```console
 Main
 ```
 
-## Call stack and method parameters
+## Kutsupino ja metodin parametrit
 
-Let's examine the call stack in a situation where there are parameters defined for the method.
+Tarkastellaan seuraavaksi kutsupinoa tilanteessa, jossa metodille on määritelty parametreja.
 
 ```cpp
 public static void Main(String[] args)
@@ -598,40 +602,43 @@ public static void Main(String[] args)
 public static void PrintStars(int beginning, int end) {
   while (beginning < end) {
       Console.Write("*");
-      beginning++; // equal to beginning = beginning + 1
+      beginning++; // sama kuin beginning = beginning + 1
   }
 }
 ```
 
-The execution of the program begins on the first line of the **Main** method. The next two lines create the variables beginning and end and place values to them. The state of the program prior to calling the method PrintStars:
+Ohjelman suoritus alkaa **Main**-metodin ensimmäiseltä riviltä. Seuraavat kaksi riviä luovat muuttujat **beginning** ja **end** ja asettavat niille arvot. Ohjelman tilanne ennen metodin **PrintStars** kutsumista:
+
 
 ```console
 Main beginning = 1 end = 5
 ```
 
-When **PrintStars** is called, the Main method enters waiting state. The method call causes new variables beginning and end to be created for the method PrintStars; the values passed as parameters are assigned to them. These values are copied from the variables beginning and end of the Main method. The state of the program on the first line of the execution of the method PrintStars is illustrated below.
+Kun metodia **PrintStars** kutsutaan, **Main**-metodi siirtyy odottamaan. Metodin kutsu aiheuttaa uusien muuttujien **beginning** ja **end** luomisen metodille **PrintStars**; parametreina annetut arvot kopioidaan niihin. Nämä arvot kopioitiin muuttujista **beginning** ja **end** **Main**-metodissa. Ohjelman tilanne metodin **PrintStars** suorituksen ensimmäisellä rivillä:
 
 ```console
 PrintStars beginning = 1 end = 5
 Main beginning = 1 end = 5
 ```
 
-When the command beginning++ is executed within the repeat statement, the value of the variable beginning that belongs to the method currently being executed is altered.
+Kun komento beginning++ suoritetaan toistolauseessa, muuttujan **beginning**, joka kuuluu tällä hetkellä suoritettavalle metodille, arvo muuttuu.
 
 ```console
 PrintStars beginning = 2 end = 5
 Main beginning = 1 end = 5
 ```
 
-So the values of the variables in the method Main remain unchanged. The execution of the method printStart would continue for some time after this. When the execution of that method ends, the execution resumes inside the Main method.
+Eli muuttujien arvot **Main**-metodissa pysyvät muuttumattomina. Metodin **PrintStars** suoritus jatkuu jonkin aikaa. Kun sen metodin suoritus päättyy, suoritus jatkuu **Main**-metodissa.
+
 
 ```console
 Main beginning = 1 end = 5
 ```
 
-## Call stack and returning a value from a method
+## Kutsupino ja metodin palauttama arvo
 
-Let's next study an example where the method returns a value. The **Main** method of the program calls a separate **Start** method, inside of which two variables are created, the **Sum** method is called, the the value returned by the Sum method is printed.
+Tarkastellaan seuraavaksi tilannetta, jossa metodi palauttaa arvon. **Main** -metodi kutsuu metodia **Start**, jonka sisällä luodaan kaksi muuttujaa, kutsutaan metodia **Sum** ja tulostetaan palautettu arvo.
+
 
 ```cpp
 public static void Main(String[] args)
@@ -654,21 +661,22 @@ public static int Sum(int number1, int number2) {
 }
 ```
 
-At the beginning of executing the method **Start** the call stack looks like the following illustration, since it was called from the **Main** method. The method Main has no variables of its own in this example:
+Metodin **Start** suorituksen alussa kutsupino näyttää seuraavalta, sillä metodia **Start** kutsutaan **Main**-metodista. Metodilla **Main** ei ole omia muuttujia tässä esimerkissä:
 
 ```console
 Start
 Main
 ```
 
-When variables first and second have been created in the Start method (the first two rows of that method have been executed, in other words), the situation resembles the following:
+Kun muuttujat **first** ja **second** on luotu metodissa **Start** (metodin ensimmäiset kaksi riviä on suoritettu), tilanne näyttää seuraavalta:
 
 ```console
 Start first = 5 second = 6
 Main
 ```
 
-The command **int sum = Sum(first, second);** creates the variable sum in the method Start, and calls the method sum. The method Start enters a waiting state. Since the parameters number1 and number2 are defined in the method Sum, they are created right at the beginning of the method's execution, and then the values of the variables given as parametes are copied into them.
+Komento **int sum = Sum(first, second);** luo muuttujan **sum** metodissa **Start**, ja kutsuu metodia **Sum**. Metodi **Start** siirtyy odottamaan. Koska parametrit **number1** ja **number2** on määritelty metodissa **Sum**, ne luodaan heti metodin suorituksen alussa, ja niiden arvot kopioidaan parametreiksi annetuista muuttujista.
+
 
 ```console
 Sum number1 = 5 number2 = 6
@@ -677,7 +685,7 @@ sum // no value
 Main
 ```
 
-The execution of the method sum adds together the values of the variables number1 and number2. The command return returns the sum of the numbers to the method that is one lower in the call stack, so the method Start in this case. The returned value is set as the value of the variable sum.
+Metodin **Sum** suoritus laskee yhteen muuttujien **number1** ja **number2** arvot. Komento **return** palauttaa summattujen muuttujien arvon metodille, joka on seuraavaksi kutsupinossa, eli tässä tapauksessa metodi **Start**. Palautettu arvo asetetaan arvoksi muuttujalle **sum**.
 
 ```console
 Start first = 5 second = 6
@@ -685,9 +693,9 @@ sum = 11
 Main
 ```
 
-After that the print command is executed, and then we return to the Main method. Once the execution reaches the end of the Main method, the execution of the program ends.
+Tämän jälkeen suoritetaan tulostuskoment, ja palataan **Main** -metodiin. Kun suoritus saavuttaa metodin **Main** lopun, kutsupino on tyhjä ja ohjelman suoritus loppuu.
 
-## Method calling another method
+## Metodi kutsuu toista metodia
 
 As we noticed before, you can call other methods from inside methods. An additional example of this technique is given below. We'll create the method MultiplicationTable that prints the multiplication table of the given number. The multiplication table prints the rows with the help of the method PrintMultiplicationTableRow.
 
