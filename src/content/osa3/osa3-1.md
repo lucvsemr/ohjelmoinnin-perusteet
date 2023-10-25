@@ -8,7 +8,7 @@ Olemme tähän mennessä harjoitelleet ohjelmointikielen perusteita, kuten muutt
 
 ## Ohjelmoija on sokea omalle koodilleen
 
-Ohjelmoija sokeutuu usein omalle koodilleen. Tutustutaan tähän ilmiöön alla olevan videon avulla. Laske kuinka monta kertaa valkopaitaiset pelaajat syöttävät palloa toisilleen. Videolla on ohjeet englanniksi.
+Ohjelmoija tulee usein sokeaksi omalle koodilleen. Tutustutaan tähän ilmiöön alla olevan videon avulla. Laske kuinka monta kertaa valkopaitaiset pelaajat syöttävät palloa toisilleen. Videolla on ohjeet englanniksi.
 
 [![Link to video: https://www.youtube.com/watch?v=Ahg6qcgoay4](https://img.youtube.com/vi/Ahg6qcgoay4/mqdefault.jpg)](http://www.youtube.com/watch?v=Ahg6qcgoay4)
 
@@ -183,7 +183,6 @@ else
 
 Kun ohjelma suoritetaan monta kertaa sopivilla syötteillä, piilotettu virhe löytyy usein. Sopivien syötteiden keksiminen on taito sinänsä. On tärkeää testata niin sanotut kulma- ja reunatapaukset, eli tilanteet joissa ohjelman suoritus voisi olla poikkeuksellista. Esimerkkinä tästä on tilanne, jossa käyttäjä ei syötä yhtään hyväksyttävää arvoa tai syöttää pelkkiä nollia tai hyvin suuria arvoja.
 
-<Note>
-VASTAUS: 
+VASTAUS:  
 Viimeinen muuttuja koodissa on nimeltään **value**, kun sen pitäisi olla nimeltään **values**. Kutsuimme muuttujaa, joka oli määritelty silmukan sisällä, emmekä sitä jota halusimme.
-</Note>
+

@@ -4,8 +4,7 @@ nav_order: 2
 hidden: false
 ---
 
-
-In programming, we often encounter situations where we want to handle many values. The only method we've used so far has been to define a separate variable for storing each value. This is impractical.
+Ohjelmoinnissa törmää usein tilanteisiin, joissa halutaan käsitellä useita arvoja. Tähän mennessä olemme käyttäneet ratkaisuna erillisiä muuttujia, mutta tämä on epäkäytännöllistä.
 
 ```cpp
 string word1;
@@ -15,18 +14,18 @@ string word3;
 string word10;
 ```
 
-The solution presented above is useless in effect -- consider a situation in which there are thousands of words to store.
+Yllä esitelty ratkaisu on käytönnössä hyödytön -- kuvittele tilanne, jossa sanoja on tuhansia.
 
-Programming languages offer tools to assist in storing a large quantity of values. We will next take a peek at the List, which is used for storing many values that are of the same type.
+Ohjelmointikielet tarjoavat työkaluja suurten määrien arvojen käsittelyyn. Seuraavaksi kurkistamme listaan (**List**), joka on tarkoitettu samantyyppisten arvojen säilyttämiseen.
 
-List is a pre-made tool in C# that helps dealing with lists. It offers various methods, including ones for adding values to the list, removing values from it, and also for the retrieval of a value from a specific place in the list. The concrete implementations -- i.e., how the list is actually programmed -- has beed abstracted behind the methods, so that a programmer making use of a list doesn't need to concern themselves with its inner workings.
+**List** on valmiiksi tehty työkalu C#:ssa, joka auttaa listojen käsittelyssä. Se tarjoaa erilaisia metodeja, joilla voi lisätä arvoja listaan, poistaa arvoja listasta ja hakea arvoja listan tietyltä paikalta. Listan toteutus -- eli se, miten lista on ohjelmoitu -- on abstrahoitu metodien taakse, joten listaa käyttävän ohjelmoijan ei tarvitse huolehtia listan sisäisestä toiminnasta.
 
-## Using and Creating Lists
+## Listojen käyttäminen ja luominen
 
+Jotta listaa voidaan käyttää, se täytyy ensin ottaa käyttöön ohjelmassa. Tämä tapahtuu **using System.Collections.Generic;** -komennolla ohjelman alussa. Alla on esimerkki ohjelmasta, jossa **List** on otettu käyttöön.
 
-For a List to be used, it first needs be imported into the program. This is achieved by including the command **using System.Collections.Generic;** at the top of the program. Below is an example program where an List is imported into the program.
+Jotta listaa voidaan käyttää, se täytyy ensin alustaa. Alla on esimerkkki jossa luodaan List joka sisältää kokonaislukuja, nimeltään **numbers**.
 
-To use a List, it also has to be initialized. Below is an example where we create a List that holds integers, called **numbers**.
 
 ```cpp
 using System.Collections.Generic;
@@ -36,7 +35,7 @@ public class Program
     public static void Main(string[] args) 
     {
       List<int> numbers = new List<int>();
-      // Rest of the code...
+      // Loput koodista...
     }
 }
 
