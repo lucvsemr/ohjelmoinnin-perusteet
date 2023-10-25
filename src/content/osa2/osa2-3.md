@@ -96,7 +96,7 @@ public class Program
 }
 ```
 
-Ohjelman suoritu tuottaa seuraavan tulosteen:
+Ohjelman suoritus tuottaa seuraavan tulosteen:
 
 ```console
 Let's try if we can travel to the method world: 
@@ -134,9 +134,9 @@ public static void ThisMethodSaysWoof()
 
 ## Metodin parametrit
 
-**Parameters** are values given to a method that can be used in its execution. The parameters of a method are defined on the uppermost row of the method within the parentheses following its name. The values of the parameters that the method can use are copied from the values given to the method when it is executed.
+**Parametrit** (englanniksi **Parameters**) ovat metodille annettuja arvoja joita voidaan käyttää sen suorituksessa. Metodin parametrit määritellään metodin yläreunassa, metodin nimen perässä olevissa sulkumerkeissä. Parametreja voi olla useita tai ei yhtään. Parametrit ovat muuttujia, joiden arvot kopioidaan metodin suorituksen ajaksi.
 
-In the following example a parameterized method **Greet** is defined. It has an int type parameter called **numOfTimes**.
+Seuraavassa esimerkissä on määritelty parametrillinen metodi **Greet**. Metodin parametri on int -tyypinen muuttuja nimeltä **numOfTimes**.
 
 ```cpp
 public static void Greet(int numOfTimes)
@@ -150,7 +150,7 @@ public static void Greet(int numOfTimes)
 }
 ```
 
-We will call the method greet with different values. The parameter **numOfTimes** is assigned the value **1** on the first call, and **3** on the second.
+Kutsumme metodia eri arvoilla. Parametri **numOfTimes** saa arvon **1** ensimmäisellä kutsulla ja **3** toisella.
 
 ```cpp
   public static void Main(string[] args)
@@ -169,7 +169,7 @@ Greetings!
 Greetings!
 ```
 
-Just like when calling the predefined method **Console.WriteLine()**, you can pass an expression as a paratmeter.
+Aivan kuten valmiita metodeja kuten **Console.WriteLine()** kutsuttaessa, parametriksi voidaan antaa lauseke.
 
 ```cpp
   public static void Main(string[] args)
@@ -184,11 +184,11 @@ Greetings!
 Greetings!
 ```
 
-If an expression is used as a parameter for a method, that expression is evaluated prior to the method call. Above, the expression **evaluates to 3** and the final method call is of the form Greet(3);.
+Jos parametrina käytetään lauseketta, se evaluoidaan ennen metodikutsua. Yllä olevassa esimerkissä lauseke **evaluoituu arvoon 3** ja lopullinen metodikutsu on muotoa **Greet(3)**.
 
-## Multiple parameters
+## Monta parametria 
 
-A method can be defined with multiple parameters. When calling such a method, the parameters are passed in the same order.
+Metodille voidaan antaa useita parametreja. Kun sellaista metodia kutsutaan, parametrit annetaan samassa järjestyksessä kuin ne on määritelty. 
 
 ```cpp
 public static void Sum(int first, int second)
@@ -211,9 +211,9 @@ The sum of numbers 3 and 5 is 8
 The sum of numbers 2 and 4 is 6
 ```
 
-## The values of the parameters are copied in the method call
+## Parametrien arvot kopioidaan metodia kutsuttaessa
 
-When calling a method **the values of the parameters are copied**. In practice this means that both the Main method and the method to be called can use similarly named variables, but changing the value of the parameter inside the method does not affect the value of the variable with the same name in the Main method. Let's examine this behavior with the following program.
+Kun metodia kutsutaan, **parametrien arvot kopioidaan**. Käytännössä tämä tarkoittaa sitä, että sekä **Main**-metodin että kutsuttavan metodin voi käyttää samannimisiä muuttujia, mutta parametrin arvon muuttaminen kutsuttavassa metodissa ei vaikuta samannimiseen muuttujaan **Main**-metodissa. Tutkitaan tätä seuraavassa esimerkissä.
 
 ```cpp
 public class Example {
@@ -240,7 +240,7 @@ public class Example {
 }
 ```
 
-The output of the program is:
+Ohjelman tuloste on seuraava:
 
 ```console
 5
