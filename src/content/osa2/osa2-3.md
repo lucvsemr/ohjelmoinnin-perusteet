@@ -253,14 +253,14 @@ Ohjelman tuloste on seuraava:
 9
 ```
 
-Changing the values of the variables in the method PrintNumbers does not affect the values in the Main method, even though they have the same exact names.
+Muuttujan arvon muuttaminen **PrintNumbers**-metodissa ei vaikuta **Main**-metodissa olevan muuttujan arvoon, vaikka muuttujat ovat samannimisiä.
 
-So even if they had the same exact name, method parameters are distinct from the variables (or parameters) of different methods. When during a method call a variable is passed to a method, the value of that variable is copied to be used as the value of the parameter variable that is declared in the method definition. These two variables in different methods are different from each other.
+Eli vaikka niillä on täsmälleen sama nimi, metodin parametrit ovat eri kuin muiden metodien muuttujat (tai parametrit). Kun metodikutsun yhteydessä muuttuja annetaan metodille parametrina, muuttujan arvo kopioidaan metodille parametrimuuttujaan, joka määritellään samalla kun metodi määritellään. Nämä kaksi muuttujaa ovat eri muuttujia, vaikka niillä olisikin sama nimi.
 
-As a further demonstration, let's consider the following example. We define a variable called **number** in the Main method. That variable is passed as a parameter to the method **IncrementByThree**.
+Tämä on helpointa ymmärtää esimerkin avulla. Määritellään **Main**-metodissa muuttuja **number** ja annetaan se parametrina metodille **IncrementByThree**.
 
 ```cpp
-// Main program
+// Main-metodi
 public static void Main(String[] args)
 {
   int number = 1;
@@ -269,7 +269,7 @@ public static void Main(String[] args)
   Console.WriteLine("The value of the variable 'number' in the Main program: " + number);
 }
 
-// method
+// Oma metodi
 public static void IncrementByThree(int number)
 {
   Console.WriteLine("The value of the method parameter 'number': " + number);
@@ -278,7 +278,7 @@ public static void IncrementByThree(int number)
 }
 ```
 
-The execution of the program produces the following output.
+Ohjelman tuloste on seuraava:
 
 ```console
 The value of the variable 'number' in the Main program: 1
@@ -287,13 +287,14 @@ The value of the method parameter 'number': 4
 The value of the variable 'number' in the Main program: 1
 ```
 
-Incrementing the variable **number** inside the method poses no problem. This does not cause changes in the variable **number** inside the Main program. This latter number residing in the Main is different from the one in the method.
+Muuttujan **number** arvon kasvattaminen metodin sisällä ei aiheuta ongelmaa. Tämä ei aiheuta muutoksia muuttujan **number** arvoon **Main**-ohjelmassa. Tämä jälkimmäinen **number** on eri muuttuja kuin **IncrementByThree**-metodissa oleva **number**.
 
-The parameter **numbe** ris copied for the method to use -- in other words, a new variable called **number** is created for the **incrementByThree** method, and the value of the variable number in the Main program is copied as its value when the method is called. The variable **number** inside the method **incrementByThree** exists only for the duration of the method execution, and it has no relation to the similarly named variable in the Main program.
+Parametri **number** kopioidaan metodia kutsuttaessa -- eli uusi muuttuja nimeltä **number** luodaan metodille **IncrementByThree** ja sille annetaan arvoksi kutsun yhteydessä annettu muuttujan **number** arvo. Metodin **IncrementByThree** sisällä oleva muuttuja **number** on olemassa vain metodin suorituksen ajan, eikä sillä ole mitään tekemistä **Main**-ohjelman samannimisen muuttujan kanssa.
 
-## Methods can return values
+## Metodit voivat palauttaa arvoja
 
-The definition of a method indicates whether that method returns a value. If it does, the method definition is to express to type of the return value. Otherwise the keyword **void** is used in the definition. The methods we've created thus far have been defined with the keyword **void** so they have returned no values.
+Metodin määrittely kertoo, palauttaako metodi arvoja. Jos metodi palauttaa arvoja, määrittelyssä ilmaistaan palautettavan arvon tyyppi. Muuten määrittelyssä käytetään avainsanaa **void**. Tähän mennessä luomamme metodit ovat määritelty avainsanalla **void**, joten ne eivät ole palauttaneet mitään arvoja.
+
 
 ```cpp
 public static void IncrementByThree()
@@ -302,9 +303,9 @@ public static void IncrementByThree()
 }
 ```
 
-The keyword **void** indicates that the method returns nothing. If we want the method to return a value, the keyword must be replaced with the type of the return variable. In the following example there is a method called **AlwaysReturnsTen** which returns an integer-type (**int**) variable (in this case the value 10).
+Avainsana **void** tarkoittaa, että metodi ei palauta mitään. Jos haluamme metodin palauttavan arvon, avainsana **void** korvataan palautettavan muuttujan tyypillä. Seuraavassa esimerkissä on metodi **AlwaysReturnsTen**, joka palauttaa kokonaislukutyyppisen (**int**) muuttujan arvon 10.
 
-In concrete terms, returning the value happens with the command **return** followed by the value to be returned (or the name of the variable whose value is to be returned).
+Konkreettisemmin, arvon palauttaminen tapahtuu komennolla **return** ja sen perässä olevalla palautettavalla arvolla (tai muuttujan nimellä, jonka arvo palautetaan).
 
 ```cpp
 public static int AlwaysReturnsTen()
@@ -313,7 +314,8 @@ public static int AlwaysReturnsTen()
 }
 ```
 
-The method defined above returns an **int** type value **10** when it is called. The return value must be stored if it is to be used. This is done the same way as normal assignment of a variable value -- with the equality sign.
+Yllä määritelty metodi palauttaa **int**-tyyppisen arvon **10** sitä kutsuttaessa. Palautettava arvo täytyy tallentaa, jotta sitä voidaan käyttää. Tämä tapahtuu samalla tavalla kuin muuttujan arvon tallentaminen -- yhtäsuuruusmerkillä.
+
 
 ```cpp
 public static void Main(String[] args)
@@ -324,7 +326,8 @@ public static void Main(String[] args)
 }
 ```
 
-The return value of the method is placed in an **int** type variable as any other int value. The return value can also used as a part of any expression.
+Metodin palauttama arvo sijoitetaan **int**-tyyppiseen muuttujaan aivan kuten mikä tahansa **int**-arvo. Palautettu arvo voidaan käyttää myös osana mitä tahansa lauseketta.
+
 
 ```cpp
 double number = 4 * AlwaysReturnsTen() + (alwaysReturnsTen() / 2.0) - 8;
@@ -332,20 +335,21 @@ double number = 4 * AlwaysReturnsTen() + (alwaysReturnsTen() / 2.0) - 8;
 Console.WriteLine("the result of the calculation " + number);
 ```
 
-All the variable types seen so far can be returned from a method.
+Kaikki tähän mennessä näkemämme muuttujatyypit voidaan palauttaa metodista.
 
-| Type of return value                    | Example                                      |
-| --------------------------------------- | -------------------------------------------- |
-| Method returns nothing                  | public static void ReturnsNothing()          |
-| Method returns **int** type variable    | public static int ReturnsInt()               |
-| Method returns **string** type variable | public static string ReturnsString()         |
-| Method returns **double** type variable | public static double ReturnsDouble()         |
-| Method returns **bool** type variable   | public static bool ReturnsBool()             |
-| Method returns **varible type**         | public static "variable type" NameOfMethod() |
+| Metodin paluuarvo                       | Esimerkki                                     |
+| --------------------------------------- | ----------------------------------------------|
+| Metodi ei palauta mitään                | public static void ReturnsNothing()           |
+| Metodi palauttaa **int** -muuttujan     | public static int ReturnsInt()                |
+| Metodi palauttaa **string** -muuttujan  | public static string ReturnsString()          |
+| Metodi palauttaa **double** -muuttujan  | public static double ReturnsDouble()          |
+| Metodi palauttaa **bool** -muuttujan    | public static bool ReturnsBool()              |
+| Metodi palauttaa **muuttujaTyypin**     | public static "muuttujaTyyppi" NameOfMethod() |
 
-The lines of source code following the command **return** are never executed. Should the programmer add source code in a place after the return command, always unreachable in the execution of the method, the IDE will produce an error message.
+Lähdekoodin rivit jotka ovat rivin **return** jälkeen ei koskaan suoriteta. Jos ohjelmoija lisää lähdekoodia **return**-käskyn jälkeen, jota ei voi koskaan suorittaa, IDE tuottaa virheilmoituksen.
 
-From the point of view of an IDE the a method like the following is faulty.
+IDEn näkökulmasta seuraava metodi on virheellinen.
+
 
 ```cpp
 public static int FaultyMethod()
@@ -355,7 +359,7 @@ public static int FaultyMethod()
 }
 ```
 
-The next method works since it is possible to reach every statement in it -- even though there is source code below the return command.
+Seuraava metodi toimii, koska jokainen lauseke voidaan saavuttaa -- vaikka **return** jälkeen onkin lähdekoodia.
 
 ```cpp
 public static int FunctioningMethod(int parameter)
@@ -369,7 +373,7 @@ public static int FunctioningMethod(int parameter)
 }
 ```
 
-If the method is of the form **public static void NameOfMethod()** it is possible to return from it -- in other words to stop its execution in that place -- by using the command return without following it by any value. For instance:
+Jos metodi on muotoa **public static void NameOfMethod()** siitä on mahdollista palata (return) -- eli lopettaa sen suoritus siinä kohdassa -- käyttämällä komentoa **return** ilman mitään arvoa. Esimerkiksi:
 
 ```cpp
 public static void PrintEmptyLines(int parameter)
@@ -385,11 +389,12 @@ public static void PrintEmptyLines(int parameter)
 }
 ```
 
-This would print up to 10 empty lines. If the **parameter** is more than 10, the method will return and not print any lines. It might not be the best of examples, but shows the idea...
+Tämä tulostaisi enintään 10 tyhjää riviä. Jos **parameter** on yli 10, metodi palaa eikä tulosta mitään. Esimerkki ei ehkä ole paras mahdollinen, mutta havainnollistaa ideaa...
 
-## Defining variables inside methods
+## Muuttujien määrittäminen metodien sisällä
 
-Defining variables inside methods is done in the same manner as in the "Main program". The method that follows calculates the average of the numbers it receives as parameters. Variables **sum** and **avg** are used to help in the calculation.
+Muuttujan määrittäminen metodin sisällä tapahtuu samalla tavalla kuin **Main**-metodissa. Seuraavassa esimerkissä lasketaan kolmen luvun keskiarvo. Metodin sisällä määritellään muuttujat **sum** ja **avg** jotka auttavat laskennassa.
+
 
 ```cpp
 public static double Average(int number1, int number2, int number3)
@@ -401,7 +406,7 @@ public static double Average(int number1, int number2, int number3)
 }
 ```
 
-One way to call the method is the following:
+Yksi tapa kutsua metodia on seuraavanlainen:
 
 ```cpp
 public static void Main(String[] args)
@@ -421,7 +426,8 @@ public static void Main(String[] args)
 }
 ```
 
-Variables defined in a method are only visible inside that method. In the example above, this means that the variables **sum** and **avg** defined inside the method **average** are not visible in the Main program. A typical mistake for a learning programmer is to try and use a method in the following way.
+Metodissa määritellyt muuttujat ovat näkyvissä vain kyseisessä metodissa. Yllä olevassa esimerkissä tämä tarkoittaa sitä, että metodissa **Average** määritellyt muuttujat **sum** ja **avg** eivät ole näkyvissä **Main**-ohjelmassa. Tyypillinen virhe aloittelevalla ohjelmoijalla on yrittää käyttää metodia seuraavalla tavalla.
+
 
 ```cpp
 public static void Main(String[] args)
@@ -432,14 +438,14 @@ public static void Main(String[] args)
 
   Average(first, second, third);
 
-  // trying to use a method's internal variable, DOES NOT WORK!
+  // metodin sisäinen muuttuja avg yritetään tulostaa, EI TOIMI!
   Console.Write("The average of the numbers: " + avg);
 }
 ```
 
-Above the programmer tries to use the variable **avg** that is defined **inside the method average**, and then print its value. However, the variable **avg only exists inside the method average**, and it cannot be accessed from outside it.
+Yllä ohjelmoija yrittää käyttää muuttujaa **avg** joka on määritelty **metodin Average sisällä**, ja tulostaa sen arvon. Muuttuja **avg** on kuitenkin olemassa vain **metodin Average sisällä**, eikä sitä voi käyttää sen ulkopuolella.
 
-The following mistakes are also commonplace.
+Myös seuraavanlainen virhe on yleinen.
 
 ```cpp
 public static void Main(String[] args)
@@ -448,14 +454,13 @@ public static void Main(String[] args)
   int second = 8;
   int third = 4;
 
-  // trying to use the method name only, DOES NOT WORK!
+  // yritetään käyttää vain metodin nimeä, EI TOIMI!
   Console.Write("The average of the numbers: " + Average);
 }
 ```
 
-In the example above there is an attempt to use the name of the method **average** as if it were a variable. A method has to be called, however.
-
-In addition to placing the result of the method into a help variable, another working solution is to execute the method call directly inside the print statement:
+Yllä olevassa esimerkissä yritetään käyttää metodin **Average** nimeä ikään kuin se olisi muuttuja. Metodia täytyy kuitenkin kutsua.
+Metodin tuloksen voi kuitenkin tallentaa muuttujaan, ja käyttää sitä myöhemmin. Toinen toimiva tapa on suorittaa metodikutsu suoraan tulostuksen yhteydessä.
 
 ```cpp
 public static void Main(String[] args)
@@ -464,14 +469,14 @@ public static void Main(String[] args)
   int second = 8;
   int third = 4;
 
-  // calling the method inside the print statement, DOES WORK!
+  // metodin kutsuminen tulostuksen sisällä, TOIMII!
   Console.Write("The average of the numbers: " + average(first, second, third));
 }
 ```
 
-Here the method call occurs first and it returns the value 5.0. After this that value is printed with the help of the print statement.
+Tässä metodin kutsu suoritetaan ensin ja se palauttaa arvon 5.0. Tämän jälkeen kyseinen arvo tulostetaan tulostuskomennossa.
 
-## Calculating the return value inside a method
+## Paluuarvon laskeminen metodin sisällä
 
 The value to be returned need not be fully pre-defined - it can also be calculated. The return command that returns a value from the method can also be given an expression that is evaluated before the returning.
 
