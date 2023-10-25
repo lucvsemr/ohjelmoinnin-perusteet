@@ -20,6 +20,8 @@ Yksi tapa miten havaintosokeus ilmenee ohjelmoinnin harjoittelussa on se, että 
 
 Samoin ohjelmoija voi keskittyä ohjelman monimutkaisimpaan kohtaan jossa on silmukka, vaikka virhe on jossain aivan muualla. Esimerkkinä tästä on alla oleva ohjelma, joka laskee käyttäjän syöttämien lukujen keskiarvon. Ohjelmassa on virhe, ja virhettä etsiessä silmukka on tyypillisesti ensimmäinen kohde. 
 
+<Note>Muista ALT + SHIFT + F, joka muotoilee koodin automaattisesti.</Note>
+
 ```cpp
 
 int values = 0;
