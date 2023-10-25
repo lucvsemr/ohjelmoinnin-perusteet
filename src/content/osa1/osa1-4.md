@@ -206,7 +206,7 @@ Esimerkissä ehto **number > 0** arvioidaan **todeksi**, joten suoritamme siihen
 
 ## Ehtolause ja bool-tyyppi
 
-If-lauseen hakasulkujen sisällä olevan lauseen arvioidun arvon on oltava **bool**-tyyppiä. Bool on totuusarvon edustus ja se voi olla joko **true** tai **false**.
+If-lauseen hakasulkujen sisällä olevan lauseen arvioidun arvon on oltava **bool** -tyyppiä. Bool on totuusarvon edustus ja se voi olla joko **true** tai **false**.
 
 
 ```cpp
@@ -310,7 +310,7 @@ Console.WriteLine(a == b);
 True
 ```
 
-Toinen tapa verrata merkkijonoja on käyttää **Equals-metodia**. Tämä metodi vertailee objektin arvoa. Palaamme tähän aiheeseen tarkemmin myöhemmin; nyt riittää, että tiedät tällaisen metodin olemassaolosta.
+Toinen tapa verrata merkkijonoja on käyttää **Equals -metodia**. Tämä metodi vertailee objektin arvoa. Palaamme tähän aiheeseen tarkemmin myöhemmin; nyt riittää, että tiedät tällaisen metodin olemassaolosta.
 
 
 ```cpp

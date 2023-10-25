@@ -201,7 +201,7 @@ All done!
 
 ## Paluu while-silmukan alkuun
 
-Palaamme while-silmukan alkuun, kun kaikki koodilohkon sisällä oleva koodi on suoritettu. On myös mahdollista palata alkuun muista kohdista koodia. Teemme sen **continue**-avainsanalla.
+Palaamme while-silmukan alkuun, kun kaikki koodilohkon sisällä oleva koodi on suoritettu. On myös mahdollista palata alkuun muista kohdista koodia. Teemme sen **continue** -avainsanalla.
 
 Alla olevassa esimerkissä pyydämme käyttäjältä positiivisia kokonaislukuja. Jos käyttäjä antaa negatiivisen kokonaisluvun, tulostamme viestin "Ei ole positiivinen kokonaisluku" ja palaamme silmukan alkuun. Jos käyttäjä antaa nollan, ohjelma päättyy.
 

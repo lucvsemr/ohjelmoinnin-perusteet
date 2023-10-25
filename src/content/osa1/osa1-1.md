@@ -154,7 +154,7 @@ public class Program
 } // Luokan koodilohko päättyy
 ```
 
-Esimerkki näyttää lohkon toisen lohkon sisällä. Lohkoja voidaan käyttää ohjelman rakenteen määrittämiseen. **class**-lohko sisältää koko ohjelman rakenteen, kun taas **main**-lohko sisältää lähdekoodin, joka suoritetaan, kun ohjelma käynnistyy.
+Esimerkki näyttää lohkon toisen lohkon sisällä. Lohkoja voidaan käyttää ohjelman rakenteen määrittämiseen. **class** -lohko sisältää koko ohjelman rakenteen, kun taas **main** -lohko sisältää lähdekoodin, joka suoritetaan, kun ohjelma käynnistyy.
 
 Lohko avataan aina **{** ja suljetaan **}**. Jos jompikumpi niistä puuttuu, koodi ei käänny ja sitä ei suoriteta.
 

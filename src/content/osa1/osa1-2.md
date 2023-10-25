@@ -69,7 +69,7 @@ Tulostaa
 21
 ```
 
-Ensimmäisellä rivillä esitellään muuttuja ja annamme sille arvon. Tällä tiedolla kääntäjä luo **int**-muuttujan ja tallentaa arvon.
+Ensimmäisellä rivillä esitellään muuttuja ja annamme sille arvon. Tällä tiedolla kääntäjä luo **int** -muuttujan ja tallentaa arvon.
 
 Toisella rivillä käytämme muuttujaa tallennetun tiedon hakemiseen. Voitaisiin sanoa, että muuttujan nimi on viittaus arvoon. Kun olemme saaneet arvon, komento tulostaa sen pyydettynä.
 
@@ -78,7 +78,7 @@ Aiemmin mainittiin, että muuttujan voi esitellä vain kerran. Tällä kertaa em
 
 ## Muuttujien tyypitys
 
-Muuttujat **C#**-koodissa ovat staattisesti tyypitettyjä. Tämä tarkoittaa, että kun muuttuja on esitelty tiettyyn tyyppiin, tyyppi ei muutu\*.
+Muuttujat **C#** -koodissa ovat staattisesti tyypitettyjä. Tämä tarkoittaa, että kun muuttuja on esitelty tiettyyn tyyppiin, tyyppi ei muutu\*.
 
 \* Nykypäivänä C#:ssa on avainsana **dynamic**, mutta se ei ole relevantti peruskoodauksessa. Tarkoituksiimme käsittelemme C#:aa staattisena tyypityksenä.
 

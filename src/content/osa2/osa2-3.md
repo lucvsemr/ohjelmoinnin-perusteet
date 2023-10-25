@@ -4,7 +4,7 @@ nav_order: 3
 hidden: false
 ---
 
-Ruudulle tulostaminen ja lukeminen on tehty **Console.WriteLine()** -käskyllä ja lukeminen **Console.ReadLine()** -käskyllä. Ehtolauseet ovat käyttäneet **if**-rakennetta, toistolauseet **while**- ja **for**-rakenteita. Huomaamme, että tulostaminen ja lukeminen eroavat hieman **if**-, **while**- ja **for**-rakenteista; tulostamis- ja lukemiskäskyt päättyvät sulkeisiin, ja välillä sulkeissa on myös käskyn parametreja. Nämä sulkeisiin päättyvät käskyt eivät ole varsinaisesti käskyjä, vaan metodeja.
+Ruudulle tulostaminen ja lukeminen on tehty **Console.WriteLine()** -käskyllä ja lukeminen **Console.ReadLine()** -käskyllä. Ehtolauseet ovat käyttäneet **if** -rakennetta, toistolauseet **while** - ja **for** -rakenteita. Huomaamme, että tulostaminen ja lukeminen eroavat hieman **if** -, **while** - ja **for** -rakenteista; tulostamis- ja lukemiskäskyt päättyvät sulkeisiin, ja välillä sulkeissa on myös käskyn parametreja. Nämä sulkeisiin päättyvät käskyt eivät ole varsinaisesti käskyjä, vaan metodeja.
 
 Teknisesti ottaen, **metodi** on nimetty joukko lauseita - osa ohjelmaa, jota voidaan kutsua muualta ohjelmakoodista käyttämällä metodin nimeä. Esimerkiksi koodirivi
 
@@ -21,7 +21,7 @@ Tähän mennessä kaikki metodit joita olemme käyttäneet ovat olleet C#:n valm
 
 Metodi tarkoittaa nimettyä joukkoa lauseita, jota voidaan kutsua muualta ohjelmakoodista sen nimellä. Ohjelmointikielten mukana tulee valmiita metodeja, mutta ohjelmoija voi myös kirjoittaa omiaan. Olisi itse asiassa melko erikoista, jos ohjelma ei käyttäisi lainkaan ohjelmoijan kirjoittamia metodeja, sillä metodit auttavat ohjelman rakenteen hahmottamisessa. Tästä eteenpäin lähes jokainen kurssilla tehtävä ohjelma sisältää siis ohjelmoijan kirjoittamia metodeja.
 
-Koodin mallipohjassa metodit on kirjoitettu **Main**-metodin aaltosulkujen ulkopuolelle, mutta uloimpien aaltosulkujen sisälle. Ne voivat sijaita joko **Main**-metodin ylä- tai alapuolella.
+Koodin mallipohjassa metodit on kirjoitettu **Main** -metodin aaltosulkujen ulkopuolelle, mutta uloimpien aaltosulkujen sisälle. Ne voivat sijaita joko **Main** -metodin ylä- tai alapuolella.
 
 ```cpp
 using System;
@@ -69,7 +69,7 @@ public class Program
 
 Metodin määritelmä koostuu kahdesta osasta. Ensimmäisen rivi sisältää metodin nimen, eli **Greet**. Nimen vasemmalla puolella ovat avainsanat **public static void**. Nimen alla on aaltosulkeiden ympäröimä koodilohko, jonka sisällä on metodin koodi -- käskyt, jotka suoritetaan kun metodia kutsutaan. Metodimme tekee vain yhden asian: kirjoittaa ruudulle yhden rivin tekstiä.
 
-Oman metodin kutsuminen on yksinkertaista: kirjoitetaan metodin nimi, perään sulkumerkit ja puolipiste. Seuraavassa koodissa **Main**-metodi kutsuu **Greet**-metodia neljä kertaa.
+Oman metodin kutsuminen on yksinkertaista: kirjoitetaan metodin nimi, perään sulkumerkit ja puolipiste. Seuraavassa koodissa **Main** -metodi kutsuu **Greet** -metodia neljä kertaa.
 
 
 ```cpp
@@ -107,13 +107,13 @@ Greetings from the method world!
 Greetings from the method world!
 ```
 
-Suoritusjärjestykseen kannattaa kiinnittää huomiota. Ohjelman suoritus tapahtuu suorittamalla **Main**-metodin (eli **Main**) rivit järjestyksessä ylhäältä alas, yksi kerrallaan. Käskyn ollessa metodikutsu, ohjelman suoritus siirtyy kutsuttavan metodin sisälle. Metodin käskyt suoritetaan ylhäältä alas, yksi kerrallaan. Tämän jälkeen suoritus palaa takaisin siihen kohtaan, josta metodikutsu tapahtui, ja jatkaa seuraavalla käskyllä.
+Suoritusjärjestykseen kannattaa kiinnittää huomiota. Ohjelman suoritus tapahtuu suorittamalla **Main** -metodin (eli **Main**) rivit järjestyksessä ylhäältä alas, yksi kerrallaan. Käskyn ollessa metodikutsu, ohjelman suoritus siirtyy kutsuttavan metodin sisälle. Metodin käskyt suoritetaan ylhäältä alas, yksi kerrallaan. Tämän jälkeen suoritus palaa takaisin siihen kohtaan, josta metodikutsu tapahtui, ja jatkaa seuraavalla käskyllä.
 
-Tarkalleen ottaen **Main**-metodi itsessään on myös metodi. Kun ohjelma käynnistyy, käyttöjärjestelmä kutsuu **Main**-metodia. **Main**-metodi on siis ohjelman aloituspiste, sillä suoritus alkaa sen ensimmäiseltä riviltä. Ohjelman suoritus päättyy **Main**-metodin viimeiselle riville. 
+Tarkalleen ottaen **Main** -metodi itsessään on myös metodi. Kun ohjelma käynnistyy, käyttöjärjestelmä kutsuu **Main** -metodia. **Main** -metodi on siis ohjelman aloituspiste, sillä suoritus alkaa sen ensimmäiseltä riviltä. Ohjelman suoritus päättyy **Main** -metodin viimeiselle riville. 
 
 ## Metodien nimeämisestä
 
-Kävimme läpi muuttujien nimeämistä edellisessä osassa. Myös metodien nimeämiseen on oma käytäntönsä. Metodien nimet kirjoitetaan **PascalCase**-tyylillä. Tämä tarkoittaa, että metodin nimi alkaa isolla kirjaimella, ja jokaisen sanan ensimmäinen kirjain on iso. Se on hyvin samankaltainen kuin camelCase jota käytetään muuttujille. Suurin ero on, että PascalCase **metodin nimet alkavat isolla kirjaimella**.
+Kävimme läpi muuttujien nimeämistä edellisessä osassa. Myös metodien nimeämiseen on oma käytäntönsä. Metodien nimet kirjoitetaan **PascalCase** -tyylillä. Tämä tarkoittaa, että metodin nimi alkaa isolla kirjaimella, ja jokaisen sanan ensimmäinen kirjain on iso. Se on hyvin samankaltainen kuin camelCase jota käytetään muuttujille. Suurin ero on, että PascalCase **metodin nimet alkavat isolla kirjaimella**.
 
 Alla olevassa esimerkissä metodi on huonosti nimetty. Se alkaa pienellä alkukirjaimella ja sanat on eroteltu \_ merkillä. Metodin nimen perässä olevissa sulkumerkeissä on väli ja metodin sisällä oleva koodilohko on sisennetty väärin.
 
@@ -213,7 +213,7 @@ The sum of numbers 2 and 4 is 6
 
 ## Parametrien arvot kopioidaan metodia kutsuttaessa
 
-Kun metodia kutsutaan, **parametrien arvot kopioidaan**. Käytännössä tämä tarkoittaa sitä, että sekä **Main**-metodin että kutsuttavan metodin voi käyttää samannimisiä muuttujia, mutta parametrin arvon muuttaminen kutsuttavassa metodissa ei vaikuta samannimiseen muuttujaan **Main**-metodissa. Tutkitaan tätä seuraavassa esimerkissä.
+Kun metodia kutsutaan, **parametrien arvot kopioidaan**. Käytännössä tämä tarkoittaa sitä, että sekä **Main** -metodin että kutsuttavan metodin voi käyttää samannimisiä muuttujia, mutta parametrin arvon muuttaminen kutsuttavassa metodissa ei vaikuta samannimiseen muuttujaan **Main** -metodissa. Tutkitaan tätä seuraavassa esimerkissä.
 
 ```cpp
 public class Example {
@@ -253,11 +253,11 @@ Ohjelman tuloste on seuraava:
 9
 ```
 
-Muuttujan arvon muuttaminen **PrintNumbers**-metodissa ei vaikuta **Main**-metodissa olevan muuttujan arvoon, vaikka muuttujat ovat samannimisiä.
+Muuttujan arvon muuttaminen **PrintNumbers** -metodissa ei vaikuta **Main** -metodissa olevan muuttujan arvoon, vaikka muuttujat ovat samannimisiä.
 
 Eli vaikka niillä on täsmälleen sama nimi, metodin parametrit ovat eri kuin muiden metodien muuttujat (tai parametrit). Kun metodikutsun yhteydessä muuttuja annetaan metodille parametrina, muuttujan arvo kopioidaan metodille parametrimuuttujaan, joka määritellään samalla kun metodi määritellään. Nämä kaksi muuttujaa ovat eri muuttujia, vaikka niillä olisikin sama nimi.
 
-Tämä on helpointa ymmärtää esimerkin avulla. Määritellään **Main**-metodissa muuttuja **number** ja annetaan se parametrina metodille **IncrementByThree**.
+Tämä on helpointa ymmärtää esimerkin avulla. Määritellään **Main** -metodissa muuttuja **number** ja annetaan se parametrina metodille **IncrementByThree**.
 
 ```cpp
 // Main-metodi
@@ -287,9 +287,9 @@ The value of the method parameter 'number': 4
 The value of the variable 'number' in the Main program: 1
 ```
 
-Muuttujan **number** arvon kasvattaminen metodin sisällä ei aiheuta ongelmaa. Tämä ei aiheuta muutoksia muuttujan **number** arvoon **Main**-ohjelmassa. Tämä jälkimmäinen **number** on eri muuttuja kuin **IncrementByThree**-metodissa oleva **number**.
+Muuttujan **number** arvon kasvattaminen metodin sisällä ei aiheuta ongelmaa. Tämä ei aiheuta muutoksia muuttujan **number** arvoon **Main** -ohjelmassa. Tämä jälkimmäinen **number** on eri muuttuja kuin **IncrementByThree** -metodissa oleva **number**.
 
-Parametri **number** kopioidaan metodia kutsuttaessa -- eli uusi muuttuja nimeltä **number** luodaan metodille **IncrementByThree** ja sille annetaan arvoksi kutsun yhteydessä annettu muuttujan **number** arvo. Metodin **IncrementByThree** sisällä oleva muuttuja **number** on olemassa vain metodin suorituksen ajan, eikä sillä ole mitään tekemistä **Main**-ohjelman samannimisen muuttujan kanssa.
+Parametri **number** kopioidaan metodia kutsuttaessa -- eli uusi muuttuja nimeltä **number** luodaan metodille **IncrementByThree** ja sille annetaan arvoksi kutsun yhteydessä annettu muuttujan **number** arvo. Metodin **IncrementByThree** sisällä oleva muuttuja **number** on olemassa vain metodin suorituksen ajan, eikä sillä ole mitään tekemistä **Main** -ohjelman samannimisen muuttujan kanssa.
 
 ## Metodit voivat palauttaa arvoja
 
@@ -314,7 +314,7 @@ public static int AlwaysReturnsTen()
 }
 ```
 
-Yllä määritelty metodi palauttaa **int**-tyyppisen arvon **10** sitä kutsuttaessa. Palautettava arvo täytyy tallentaa, jotta sitä voidaan käyttää. Tämä tapahtuu samalla tavalla kuin muuttujan arvon tallentaminen -- yhtäsuuruusmerkillä.
+Yllä määritelty metodi palauttaa **int** -tyyppisen arvon **10** sitä kutsuttaessa. Palautettava arvo täytyy tallentaa, jotta sitä voidaan käyttää. Tämä tapahtuu samalla tavalla kuin muuttujan arvon tallentaminen -- yhtäsuuruusmerkillä.
 
 
 ```cpp
@@ -326,7 +326,7 @@ public static void Main(String[] args)
 }
 ```
 
-Metodin palauttama arvo sijoitetaan **int**-tyyppiseen muuttujaan aivan kuten mikä tahansa **int**-arvo. Palautettu arvo voidaan käyttää myös osana mitä tahansa lauseketta.
+Metodin palauttama arvo sijoitetaan **int** -tyyppiseen muuttujaan aivan kuten mikä tahansa **int** -arvo. Palautettu arvo voidaan käyttää myös osana mitä tahansa lauseketta.
 
 
 ```cpp
@@ -346,7 +346,7 @@ Kaikki tähän mennessä näkemämme muuttujatyypit voidaan palauttaa metodista.
 | Metodi palauttaa **bool** -muuttujan    | public static bool ReturnsBool()              |
 | Metodi palauttaa **muuttujaTyypin**     | public static "muuttujaTyyppi" NameOfMethod() |
 
-Lähdekoodin rivit jotka ovat rivin **return** jälkeen ei koskaan suoriteta. Jos ohjelmoija lisää lähdekoodia **return**-käskyn jälkeen, jota ei voi koskaan suorittaa, IDE tuottaa virheilmoituksen.
+Lähdekoodin rivit jotka ovat rivin **return** jälkeen ei koskaan suoriteta. Jos ohjelmoija lisää lähdekoodia **return** -käskyn jälkeen, jota ei voi koskaan suorittaa, IDE tuottaa virheilmoituksen.
 
 IDEn näkökulmasta seuraava metodi on virheellinen.
 
@@ -393,7 +393,7 @@ Tämä tulostaisi enintään 10 tyhjää riviä. Jos **parameter** on yli 10, me
 
 ## Muuttujien määrittäminen metodien sisällä
 
-Muuttujan määrittäminen metodin sisällä tapahtuu samalla tavalla kuin **Main**-metodissa. Seuraavassa esimerkissä lasketaan kolmen luvun keskiarvo. Metodin sisällä määritellään muuttujat **sum** ja **avg** jotka auttavat laskennassa.
+Muuttujan määrittäminen metodin sisällä tapahtuu samalla tavalla kuin **Main** -metodissa. Seuraavassa esimerkissä lasketaan kolmen luvun keskiarvo. Metodin sisällä määritellään muuttujat **sum** ja **avg** jotka auttavat laskennassa.
 
 
 ```cpp
@@ -426,7 +426,7 @@ public static void Main(String[] args)
 }
 ```
 
-Metodissa määritellyt muuttujat ovat näkyvissä vain kyseisessä metodissa. Yllä olevassa esimerkissä tämä tarkoittaa sitä, että metodissa **Average** määritellyt muuttujat **sum** ja **avg** eivät ole näkyvissä **Main**-ohjelmassa. Tyypillinen virhe aloittelevalla ohjelmoijalla on yrittää käyttää metodia seuraavalla tavalla.
+Metodissa määritellyt muuttujat ovat näkyvissä vain kyseisessä metodissa. Yllä olevassa esimerkissä tämä tarkoittaa sitä, että metodissa **Average** määritellyt muuttujat **sum** ja **avg** eivät ole näkyvissä **Main** -ohjelmassa. Tyypillinen virhe aloittelevalla ohjelmoijalla on yrittää käyttää metodia seuraavalla tavalla.
 
 
 ```cpp
@@ -478,7 +478,7 @@ Tässä metodin kutsu suoritetaan ensin ja se palauttaa arvon 5.0. Tämän jälk
 
 ## Paluuarvon laskeminen metodin sisällä
 
-Palautettavan arvon ei tarvitse olla kokonaan määritelty etukäteen -- se voidaan myös laskea: **return**-käskyä joka palauttaa arvon metodista voidaan käyttää myös lausekkeen kanssa. 
+Palautettavan arvon ei tarvitse olla kokonaan määritelty etukäteen -- se voidaan myös laskea: **return** -käskyä joka palauttaa arvon metodista voidaan käyttää myös lausekkeen kanssa. 
 
 Seuraavassa esimerkissä määritellään metodi **Sum** joka laskee kahden muuttujan arvon yhteen ja palauttaa summan. Summattavien muuttujien arvot saadaan metodin parametreina.
 
@@ -521,7 +521,7 @@ public static int Sum(int first, int second)
 
 Yllä olevassa esimerkissä metodin palauttamaa arvoa ei tallenneta muuttujaan, vaan se käytetään suoraan osana tulostusta.
 
-Metodille annetut arvot kopioidaan sen parametreihin. Tämän vuoksi metodin parametrien nimillä ja metodin kutsun yhteydessä määriteltyjen muuttujien nimillä ei ole mitään tekemistä toistensa kanssa. Edellisessä esimerkissä sekä **Main**-ohjelman muuttujat että metodin parametrit olivat nimetty samalla tavalla (**first** ja **second**) "sattumalta". Seuraava koodi toimii täysin samalla tavalla vaikka muuttujat olisivat nimetty eri tavalla:
+Metodille annetut arvot kopioidaan sen parametreihin. Tämän vuoksi metodin parametrien nimillä ja metodin kutsun yhteydessä määriteltyjen muuttujien nimillä ei ole mitään tekemistä toistensa kanssa. Edellisessä esimerkissä sekä **Main** -ohjelman muuttujat että metodin parametrit olivat nimetty samalla tavalla (**first** ja **second**) "sattumalta". Seuraava koodi toimii täysin samalla tavalla vaikka muuttujat olisivat nimetty eri tavalla:
 
 ```cpp
 public static void Main(String[] args)
@@ -566,20 +566,20 @@ public static void PrintNumber() {
 }
 ```
 
-Suoritus alkaa **Main**-metodista, kun ohjelma käynnistetään. Teksti "Hello world!" tulostetaan komennolla ensimmäisellä rivillä. Kutsupino näyttää tältä:
+Suoritus alkaa **Main** -metodista, kun ohjelma käynnistetään. Teksti "Hello world!" tulostetaan komennolla ensimmäisellä rivillä. Kutsupino näyttää tältä:
 
 ```console
 Main
 ```
 
-Kun tulostuskomento on suoritettu, seuraava rivi kutsuu metodia **PrintNumber**. Metodin kutsu siirtää ohjelman suorituksen metodin **PrintNumber** alkuun. Tällä välin **Main**-metodi odottaa, että **PrintNumber**-metodin suoritus päättyy. Metodin **PrintNumber** suorituksen aikana kutsupino näyttää tältä:
+Kun tulostuskomento on suoritettu, seuraava rivi kutsuu metodia **PrintNumber**. Metodin kutsu siirtää ohjelman suorituksen metodin **PrintNumber** alkuun. Tällä välin **Main** -metodi odottaa, että **PrintNumber** -metodin suoritus päättyy. Metodin **PrintNumber** suorituksen aikana kutsupino näyttää tältä:
 
 ```console
 PrintNumber
 Main
 ```
 
-Kun metodin **PrintNumber** suoritus päättyy, palataan metodin **PrintNumber** alla olevaan metodiin kutsupinossa -- tässä tapauksessa metodiin **Main**. Metodi **PrintNumber** poistetaan kutsupinosta, ja suoritus jatkuu **Main**-metodin **PrintNumber**-kutsun jälkeisellä rivillä. Kutsupinon tilanne on nyt seuraava:
+Kun metodin **PrintNumber** suoritus päättyy, palataan metodin **PrintNumber** alla olevaan metodiin kutsupinossa -- tässä tapauksessa metodiin **Main**. Metodi **PrintNumber** poistetaan kutsupinosta, ja suoritus jatkuu **Main** -metodin **PrintNumber** -kutsun jälkeisellä rivillä. Kutsupinon tilanne on nyt seuraava:
 
 
 ```console
@@ -607,14 +607,14 @@ public static void PrintStars(int beginning, int end) {
 }
 ```
 
-Ohjelman suoritus alkaa **Main**-metodin ensimmäiseltä riviltä. Seuraavat kaksi riviä luovat muuttujat **beginning** ja **end** ja asettavat niille arvot. Ohjelman tilanne ennen metodin **PrintStars** kutsumista:
+Ohjelman suoritus alkaa **Main** -metodin ensimmäiseltä riviltä. Seuraavat kaksi riviä luovat muuttujat **beginning** ja **end** ja asettavat niille arvot. Ohjelman tilanne ennen metodin **PrintStars** kutsumista:
 
 
 ```console
 Main beginning = 1 end = 5
 ```
 
-Kun metodia **PrintStars** kutsutaan, **Main**-metodi siirtyy odottamaan. Metodin kutsu aiheuttaa uusien muuttujien **beginning** ja **end** luomisen metodille **PrintStars**; parametreina annetut arvot kopioidaan niihin. Nämä arvot kopioitiin muuttujista **beginning** ja **end** **Main**-metodissa. Ohjelman tilanne metodin **PrintStars** suorituksen ensimmäisellä rivillä:
+Kun metodia **PrintStars** kutsutaan, **Main** -metodi siirtyy odottamaan. Metodin kutsu aiheuttaa uusien muuttujien **beginning** ja **end** luomisen metodille **PrintStars**; parametreina annetut arvot kopioidaan niihin. Nämä arvot kopioitiin muuttujista **beginning** ja **end** **Main** -metodissa. Ohjelman tilanne metodin **PrintStars** suorituksen ensimmäisellä rivillä:
 
 ```console
 PrintStars beginning = 1 end = 5
@@ -628,7 +628,7 @@ PrintStars beginning = 2 end = 5
 Main beginning = 1 end = 5
 ```
 
-Eli muuttujien arvot **Main**-metodissa pysyvät muuttumattomina. Metodin **PrintStars** suoritus jatkuu jonkin aikaa. Kun sen metodin suoritus päättyy, suoritus jatkuu **Main**-metodissa.
+Eli muuttujien arvot **Main** -metodissa pysyvät muuttumattomina. Metodin **PrintStars** suoritus jatkuu jonkin aikaa. Kun sen metodin suoritus päättyy, suoritus jatkuu **Main** -metodissa.
 
 
 ```console
@@ -661,7 +661,7 @@ public static int Sum(int number1, int number2) {
 }
 ```
 
-Metodin **Start** suorituksen alussa kutsupino näyttää seuraavalta, sillä metodia **Start** kutsutaan **Main**-metodista. Metodilla **Main** ei ole omia muuttujia tässä esimerkissä:
+Metodin **Start** suorituksen alussa kutsupino näyttää seuraavalta, sillä metodia **Start** kutsutaan **Main** -metodista. Metodilla **Main** ei ole omia muuttujia tässä esimerkissä:
 
 ```console
 Start
@@ -697,7 +697,8 @@ Tämän jälkeen suoritetaan tulostuskoment, ja palataan **Main** -metodiin. Kun
 
 ## Metodi kutsuu toista metodia
 
-As we noticed before, you can call other methods from inside methods. An additional example of this technique is given below. We'll create the method MultiplicationTable that prints the multiplication table of the given number. The multiplication table prints the rows with the help of the method PrintMultiplicationTableRow.
+Kuten olemme jo aiemmin huomanneet, metodia voi kutsua toisen metodin sisältä. Lisäesimerkki tästä tekniikasta on annettu alla. Luomme metodin **MultiplicationTable** joka tulostaa kertotaulun annetusta luvusta. Metodi tulostaa rivit **PrintMultiplicationTableRow** -metodin avulla.
+
 
 ```cpp
 public static void MultiplicationTable(int max)

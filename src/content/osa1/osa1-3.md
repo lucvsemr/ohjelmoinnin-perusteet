@@ -4,7 +4,7 @@ nav_order: 3
 hidden: false
 ---
 
-Laskutoimitukset kuten nämä pitäisi olla sinulle jo varsin tuttuja. Niitä suoritetaan samoilla operaattoreilla koodissa kuin matematiikassa: yhteenlasku **+**, vähennyslasku **-**, kertolasku **\*** ja jakolasku **/**. Laskujärjestys on myös hyvin perinteinen. Vasemmalta oikealle, ottaen huomioon mahdolliset sulkeet, ja kertolasku ja jakolasku ennen yhteen- tai vähennyslaskua.
+Laskutoimitukset kuten nämä pitäisi olla sinulle jo varsin tuttuja. Niitä suoritetaan samoilla operaattoreilla koodissa kuin matematiikassa: yhteenlasku **+**, vähennyslasku ** -**, kertolasku **\*** ja jakolasku **/**. Laskujärjestys on myös hyvin perinteinen. Vasemmalta oikealle, ottaen huomioon mahdolliset sulkeet, ja kertolasku ja jakolasku ennen yhteen- tai vähennyslaskua.
 
 
 ```cpp
@@ -65,7 +65,7 @@ first + second;
 
 ## Laskutoimitukset ja tulostus
 
-Tähän mennessä olemme tarkastelleet tulostamisen ja laskutoimitusten perusteita. Nyt yhdistetään ne. Voit tulostaa muuttujan arvon **Console.WriteLine()**-funktiolla. Jos haluat liittää arvon merkkijonoon, se tehdään käyttämällä **\*+**-operaattoria ja asettamalla merkkijono lainausmerkkeihin.
+Tähän mennessä olemme tarkastelleet tulostamisen ja laskutoimitusten perusteita. Nyt yhdistetään ne. Voit tulostaa muuttujan arvon **Console.WriteLine()** -funktiolla. Jos haluat liittää arvon merkkijonoon, se tehdään käyttämällä **\*+** -operaattoria ja asettamalla merkkijono lainausmerkkeihin.
 
 
 ```cpp
@@ -144,7 +144,7 @@ Emme mene syvemmälle kertolaskuun. Jakaminen on kiinnostavampaa.
 
 Kun jaetaan koodissa, jaettavien muuttujien tyyppi määrää myös vastauksen tyypin. Esimerkiksi jos jaat kokonaislukuja, tulos on kokonaisluku.
 
-Kokonaislukutyyppisten operandien osalta **/**-operaattorin tulos on kokonaislukutyyppinen ja vastaa kahden operandin osamaaraa pyöristettynä nollaan:
+Kokonaislukutyyppisten operandien osalta **/** -operaattorin tulos on kokonaislukutyyppinen ja vastaa kahden operandin osamaaraa pyöristettynä nollaan:
 
 
 ```cpp
@@ -187,7 +187,7 @@ Kun tietokone suorittaa lähdekoodia, koodi suoritetaan yksi komento kerrallaan,
 first = second;
 ```
 
-Voisit ajatella, että **second**-muuttujalla ei ole enää arvoa, ja arvo on siirretty **first**-muuttujaan. Tämä on väärin, sillä kun **first = second** arvioidaan, muuttujan **second** viittaama arvo **kopioituu** arvoksi **first**-muuttujalle.
+Voisit ajatella, että **second** -muuttujalla ei ole enää arvoa, ja arvo on siirretty **first** -muuttujaan. Tämä on väärin, sillä kun **first = second** arvioidaan, muuttujan **second** viittaama arvo **kopioituu** arvoksi **first** -muuttujalle.
 
 - Muuttujan arvon asettamisen käsittäminen riippuvuutena sen sijaan, että arvo kopioitaisiin: Sama esimerkki:
 
@@ -196,7 +196,7 @@ Voisit ajatella, että **second**-muuttujalla ei ole enää arvoa, ja arvo on si
 first = second;
 ```
 
-Voisit ajatella, että mikä tahansa muutos **second**-muuttujaan vaikuttaa myös **first**-muuttujaan. Tämä ei pidä paikkaansa. Kun koodirivi on suoritettu, **first** ja **second** välillä ei ole vuorovaikutusta. Arvon kopioiminen tehdään vain kerran.
+Voisit ajatella, että mikä tahansa muutos **second** -muuttujaan vaikuttaa myös **first** -muuttujaan. Tämä ei pidä paikkaansa. Kun koodirivi on suoritettu, **first** ja **second** välillä ei ole vuorovaikutusta. Arvon kopioiminen tehdään vain kerran.
 
 - Kolmas ja yleisin väärinkäsitys on kopioinnin järjestys. Usein koodin alussa on helppo sekoittaa sijoituksen suuntaa. Esimerkiksi, saatat haluta kirjoittaa
 

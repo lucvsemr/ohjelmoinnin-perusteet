@@ -79,7 +79,7 @@ Console.WriteLine("The product of " + first + " and " + second + " is " + produc
 
 ## Vähän vaihtoehtoista toimintaan
 
-Ongelmat sisältävät usein jonkin vaihtoehtoisen toiminnon, ja tällöin käytämme ehtolauseita. Ehtolause alkaa **if**-komennolla, jonka jälkeen tulee sulkujen sisään lauseke. Lauseke arvioi joko todeksi tai epätodeksi. Jos lauseke arvioi todeksi, suoritetaan seuraava aaltosulkeilla rajattu lohko.
+Ongelmat sisältävät usein jonkin vaihtoehtoisen toiminnon, ja tällöin käytämme ehtolauseita. Ehtolause alkaa **if** -komennolla, jonka jälkeen tulee sulkujen sisään lauseke. Lauseke arvioi joko todeksi tai epätodeksi. Jos lauseke arvioi todeksi, suoritetaan seuraava aaltosulkeilla rajattu lohko.
 
 
 ```cpp
