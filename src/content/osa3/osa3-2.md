@@ -611,8 +611,8 @@ We found second!
 
 ## Lista metodin parametrina
 
+Kuten muitakin muuttujia, myös listoja voidaan käyttää metodien parametreina. Kun metodi määritellään ottamaan listan parametrina, parametrin tyyppi määritellään listan tyypiksi ja listassa olevien arvojen tyypiksi. Alla olevassa esimerkissä metodi **Print** tulostaa listan arvot yksi kerrallaan.
 
-Like other variables, a list, too, can be used as a parameter to a method. When the method is defined to take a list as a parameter, the type of the parameter is defined as the type of the list and the type of the values contained in that list. Below, the method **Print** prints the values in the list one by one.
 
 ```cpp
 public static void Print(List<String> list)
@@ -624,7 +624,7 @@ public static void Print(List<String> list)
 }
 ```
 
-We're by now familiar with methods, and it works in the same way here. In the example below we use the method that was implemented above.
+Olemme jo tottuneet metodeihin, ja se toimii samalla tavalla tässäkin. Alla olevassa esimerkissä käytämme yllä määriteltyä metodia.
 
 ```cpp
 List<string> strings = new List<string>();
@@ -642,9 +642,9 @@ Second
 Third
 ```
 
-The chosen parameter in the method definition is not dependent on the list that is passed as parameter in the method call. In the program that calls Print, the name of the list variable is **string**, but inside the method Print the variable is called **list** -- the name of the variable that stores the list could also be **printables**, for instance.
+Valittu parametri metodin määrittelyssä ei ole riippuvainen listasta, joka annetaan parametrina metodin kutsussa. Ohjelmassa, joka kutsuu Print-metodia, listamuuttujan nimi on **strings**, mutta metodissa Print muuttujan nimi on **list** -- muuttujan nimi, joka tallentaa listan, voisi olla myös **printables**.
 
-It's also possible to define multiple variables for a method. In the example the method receives two parameters: a list of numbers and a threshold value. It then prints all the numbers in the list that are smaller than the second parameter.
+On myös mahdollista määritellä useita muuttujia metodin parametreiksi. Esimerkissä metodi saa kaksi parametria: listan numeroita ja raja-arvon. Metodi tulostaa kaikki listan luvut, jotka ovat pienempiä kuin toinen parametri.
 
 ```cpp
 public static void PrintSmallerThan(List<int> numbers, int threshold) 
@@ -659,7 +659,7 @@ public static void PrintSmallerThan(List<int> numbers, int threshold)
 }
 ```
 
-Here we see it in action:
+Tässä näemme sen toiminnassa:
 
 ```cpp
 List<int> list = new List<int>();
@@ -680,7 +680,8 @@ PrintSmallerThan(list, 3);
 1
 ```
 
-As before, a method can also return a value. The methods that return values have the type of the return value in place of the **void** keyword, and the actual returning of the value is done by the **return** command. The method below returns the Count of the list.
+Kuten aiemminkin, metodi voi myös palauttaa arvon. Metodille, joka palauttaa arvon, määritellään palautettavan arvon tyypin kohdalle **void** -sanan sijaan, ja itse palauttaminen tapahtuu **return** -käskyllä. Alla oleva metodi palauttaa listan Countin.
+
 
 ```cpp
 public static void Count(List<string> list)
@@ -689,7 +690,8 @@ public static void Count(List<string> list)
 }
 ```
 
-You can also define own variables for methods. The method below calculates the average of the numbers in the list. If the list is empty, it returns the number -1.
+Voit myös määrittää omia muuttujia metodeille. Alla oleva metodi laskee listan arvojen keskiarvon. Jos lista on tyhjä, se palauttaa luvun -1.
+
 
 ```cpp
 public static double Average(List<int> numbers) 
@@ -708,15 +710,17 @@ public static double Average(List<int> numbers)
   return 1.0 * sum / numbers.Count;
 }
 ```
-## On Copying the List to a Method Parameter
 
-Earlier we have used integers, floating point numbers, etc. as method parameters. When variables such as int are used as method parameters, the value of the variable is copied for the method's use. The same occurs in the case that the parameter is a list.
+## Listan kopioiminen metodin parametriksi
 
-Lists, among practically all the variables that can store large amounts of information, are reference-type variables. This means that the value of the variable is a reference that points to the location that contains the information.
+Aiemmin olemme käyttäneet kokonaislukuja, liukulukuja jne. metodien parametreina. Kun muuttujia, kuten int, käytetään metodin parametreina, muuttujan arvo kopioituu metodin käyttöön. Sama tapahtuu, kun parametrina on lista.
 
-When a list (or any reference-type variable) is copied for a method's use, the method receives the value of the list variable, i.e., a reference. In such a case the **method receives a reference to the real value of a reference-type variable**, and the method is able to modify the value of the original reference type variable, such as a list. In practice, the list that the method receives as a parameter is the same list that is used in the program that calls the method.
+Listat, kuten käytännössä kaikki muuttujat jotka voivat tallentaa suuria määriä tietoa, ovat viittaus-tyyppisiä muuttujia. Tämä tarkoittaa, että muuttujan arvo on viittaus, joka osoittaa paikkaan, jossa tieto sijaitsee.
 
-Let's look at this briefly with the following method.
+Kun lista (tai mikä tahansa viittaus-tyyppinen muuttuja) kopioidaan metodin käyttöön, metodi saa listan arvon, eli viittauksen. Tämä tarkoittaa, että **metodi saa viittauksen muuttujan todelliseen arvoon**. Metodi voi muuttaa alkuperäisen muuttujan arvoa. Käytännössä lista, joka annetaan metodin parametrina, on sama lista, jota käytetään ohjelmassa, joka kutsuu metodia.
+
+Katsotaan tätä nopeasti seuraavassa metodissa.
+
 
 ```cpp
 public static void RemoveFirst(List<int> numbers)
@@ -749,7 +753,7 @@ RemoveFirst(numbers);
 RemoveFirst(numbers);
 
 Console.WriteLine("Third print: ");
-numbers.ForEach(Console.WriteLine);
+numbers.ForEach(Console.WriteLine); // Lyhyempi tapa tehdä listan forEach
 ```
 
 ```console
@@ -765,30 +769,34 @@ Second print:
 Third print: 
 ```
 
-As you can see, the methor **RemoveFirst** affects the list it was given as a parameter, directly.
+Kuten näkyy, metodi **RemoveFirst** vaikuttaa suoraan listaan, joka annetaan parametrina. 
 
-<Note>Instead of doing Console.WriteLine(numbers), to get the values from the list, the annotation is numbers.ForEach(Console.WriteLine); </Note>
 
-## A Summary of List Methods and Properties
+<Note>
+Sen sijaan että käyttäisimme Console.WriteLine(numbers) saadaksemme arvot listasta, käytämme annotaatiota numbers.ForEach(Console.WriteLine);
+</Note>
 
-You can find all the information about [**Lists here**](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netframework-4.8). For the most part, we don't need all that information, but a hand selected part from it.
+## Yhteenveto listan metodeista ja ominaisuuksista
 
-* Adding to a list is done with the method *Add** that receives the value to be added as a parameter.
+Löydät kaiken mahdollisen tiedon [**Listoista täältä**](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=net-7.0). Suurimman osan ajasta emme tarvitse kaikkea tätä tietoa, vaan valikoidun osan siitä.
+
+* Listalle lisääminen tapahtuu **Add** -metodilla, joka saa parametrina lisättävän arvon.
 
 ```cpp
 List<int> numbers = new List<int>();
 numbers.Add(3);
 ```
 
-* The number of elements in a list can be discovered with the property **Count**; it returns an integer.
+* Listan alkioiden määrän saa selville **Count** -ominaisuudella, joka palauttaa kokonaisluvun.
+
 
 ```cpp
 List<int> numbers = new List<int>();
 int amount = numbers.Count;
 Console.WriteLine("Amount of integers in numbers: " + amount);
 ```
+* Voit hakea arvon tietystä indeksistä **list[index]** -lausekkeella, jolle annetaan haluttu indeksi parametrina.
 
-* You can retrieve a value from a certain index with the method **list[index]** that is given the index at which the value resides as a parameter.
 
 ```cpp
 List<int> numbers = new List<int>();
@@ -796,7 +804,7 @@ numbers.Add(3);
 Console.WriteLine(numbers[0]);
 ```
 
-* Removing elements is done with either **Remove** or **RemoveAt**, depending if we remove by value or index.
+* Alkion poistaminen tehdään joko **Remove** tai **RemoveAt** -metodilla, riippuen siitä, poistetaanko arvolla vai indeksillä.
 
 ```cpp
 List<string> list = new List<string>();
@@ -807,7 +815,7 @@ list.RemoveAt(0);
 list.Remove("Third");
 ```
 
-* Checking for the existence of a value is done with the method **Contains**. It's provided the value being searched for as a parameter, and it returns a boolean value.
+* Tarkistaaksemme löytyykö arvo listalta, käytämme **Contains** -metodia, joka saa parametrina arvon, jota etsitään. Metodi palauttaa boolean-arvon.
 
 ```cpp
 List<string> list = new List<string>();
@@ -815,7 +823,7 @@ list.Add("First");
 list.Contains("First");
 ```
 
-* To iterate a list, we use forEach
+* Listan iteroimiseen voidaan käyttää **forEach**
 
 ```cpp
 List<int> numbers = new List<int>();
@@ -828,9 +836,9 @@ numbers.ForEach(Console.WriteLine);
 # Tehtävät
 
 <Exercise title={'001 Third from list'}>
-The exercise contains a base that asks the user for strings and adds them to a list. The program stops reading when the user enters an empty string. The program then prints the first element of the list.
+Tehtävässä on pohja ohjelmalle, joka lukee käyttäjältä merkkijonoja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää tyhjän merkkijonon. Ohjelma tulostaa listan ensimmäisen alkion.
 
-Your assignment is to modify the program so that instead of the first value, the third value on the list is printed. Remember that programmers start counting from zero! The program is allowed to malfunction if there are fewer than three entries on the list, so you don't need to prepare for such an event at all.
+Tehtävänäsi on muokata ohjelmaa siten, että tulostetaan ensimmäisen alkion sijaan kolmas alkio. Muista, että ohjelmoijat aloittavat laskemisen nollasta! Ohjelma saa toimia väärin, jos listalla on vähemmän kuin kolme alkiota, joten sinun ei tarvitse varautua sellaiseen tilanteeseen ollenkaan.
 
 ```console
 > Tom 
@@ -854,9 +862,9 @@ Mary
 
 <Exercise title={'002 Sum of second and third'}>
 
-In the exercise template there is a program that reads integers from the user and adds them to a list. This ends when the user enters 0. The program then prints the first value on the list.
+Ohjelmapohjassa on ohjelma, joka lukee käyttäjältä kokonaislukuja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää luvun 0. Ohjelma tulostaa listan ensimmäisen arvon.
 
-Modify the program so that instead of the first value, the program prints the sum of the second and third numbers. The program is allowed to malfunction if there are fewer than three entries on the list, so you don't need to prepare for such an event at all.
+Muokkaa ohjelmaa siten, että tulostetaan toisen ja kolmannen luvun summa.  Ohjelma saa toimia väärin, jos listalla on vähemmän kuin kolme alkiota, joten sinun ei tarvitse varautua sellaiseen tilanteeseen ollenkaan.
 
 ```console
 > 1 
@@ -879,13 +887,14 @@ Modify the program so that instead of the first value, the program prints the su
 
 <Exercise title={'003 Exception'}>
 
-There is a program that uses a list in the exercise template. Modify it so that its execution always produces the error `ArgumentOutRangeException`. The user should not have to give any inputs to the program (e.g. write something on the keyboard)
+Tehtäväpohjassa on ohjelma joka käyttää listaa. Muokkaa sitä siten, että ohjelma aiheuttaa poikkeuksen `ArgumentOutOfRangeException` aina kun sitä suoritetaan. Käyttäjän ei pitäisi antaa syötettä ohjelmalle (esim. kirjoittamalla jotain näppäimistöllä).
 
 </Exercise>
 
 <Exercise title={'004 Counting names'}>
 
-In the exercise template is a program that reads input from the user. Modify its working so that when the program quits reading (with an empty line), the program prints the number of values on the list.
+Tehtäväpohjassa on ohjelma joka lukee käyttäjältä merkkijonoja ja lisää ne listalle. Muokkaa sen toimintaa siten, että lopettaessaan lukemisen (antamalla tyhjän syötteen), ohjelma tulostaa listalla olevien alkioiden määrän.
+
 
 ```console
 > Tom 
@@ -912,17 +921,22 @@ In total: 4
 In total: 11
 ```
 
-<Note>Be sure to use the Count property of the list.</Note>
+<Note>
+Muista käyttää listan Count-ominaisuutta.
+</Note>
 
 </Exercise>
 
-<Note>The next exercises are meant for learning to use lists and indices. Even if you could complete the execises without a list, concentrate on training to use lists. The functionality in the exercises is to be implemented after reading the inputs.</Note>
+<Note>
+Seuraavien tehtävien tarkoituksena on oppia käyttämään listoja ja indeksejä. Vaikka tehtävät voisi tehdä ilman listoja, keskity harjoittelemaan listojen käyttöä. Tehtävien toiminnallisuus on toteutettava syötteiden lukemisen jälkeen.
+</Note>
 
 <Exercise title={'005 Last from list'}>
 
-In the exercise template there is a program that reads inputs from the user and adds them to a list. Reading is stopped once the user enters an empty string.
+Tehtäväpohjassa on ohjelma, joka lukee käyttäjältä merkkijonoja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää tyhjän merkkijonon.
 
-Your task is to modify the method to print the last read value after it stops reading. Print the value that was read last from the list. Use the Count to help you. You do not have to take into consideration empty lists, you can assume that the user always gives at least one input.
+Tehtävänäsi on muokata ohjelmaa siten, että tulostetaan viimeisenä luettu merkkijono. Tulosta arvo lukemalla listan viimeisen alkion arvo. Count auttaa tässä. Sinun ei tarvitse huomioida tyhjää listaa, voit olettaa että käyttäjä antaa ainakin yhden syötteen.
+
 
 ```console
 > Tom 
@@ -953,9 +967,9 @@ Oscar
 
 <Exercise title={'006 First and last'}>
 
-In the exercise template there is a program that reads inputs from the user and adds them to a list. Reading is stopped once the user enters an empty string.
+Tehtäväpohjassa on ohjelma, joka lukee käyttäjältä merkkijonoja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää tyhjän merkkijonon.
 
-Modify the program to print both the first and the last values after the reading ends. You may suppose that at least two values are read into the list.
+Muokkaa ohjelmaa siten, että tulostetaan ensimmäinen ja viimeinen luettu merkkijono. Voit olettaa että käyttäjä antaa ainakin kaksi syötettä.
 
 ```console
 > Tom 
@@ -996,9 +1010,10 @@ Mary
 
 <Exercise title={'007 Numbers from list'}>
 
-The exercise template contains a base that reads numbers from the user and adds them to a list. Reading is stopped once the user enters the number -1.
+Tehtäväpohja sisältää ohjelman, joka lukee käyttäjältä kokonaislukuja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää luvun -1.
 
-Expand the functionality of the program so that after reading the numbers, it prints all the numbers received from the user. The number used to indicate stopping should not be printed.
+Laajenna toiminnallisuutta siten, että ohjelma tulostaa kaikki luetut luvut. Lukua, joka käytetään lopettamiseen, ei tulosteta.
+
 
 ```console
 > 72
@@ -1016,9 +1031,10 @@ Expand the functionality of the program so that after reading the numbers, it pr
 
 <Exercise title={'008 Numbers from and to'}>
 
-The exercise template contains a base that reads numbers from the user and adds them to a list. Reading is stopped once the user enters the number -1.
+Tehtäväpohja sisältää ohjelman, joka lukee käyttäjältä kokonaislukuja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää luvun -1.
 
-Expand the program to ask for a start and end values once it has finished asking for numbers. After this the program shall prints all the numbers in the list that fall in the specified range (between the values given by the user, inclusive). You may assume that the user gives values that match some numbers in the list.
+Laajenna toiminnallisuutta siten, että käyttäjältä kysytään alku- ja loppuarvot kun numeroiden kysyminen on lopetettu. Tämän jälkeen ohjelma tulostaa kaikki luetut luvut, jotka ovat annetulla välillä (molemmat rajat mukaan lukien). Voit olettaa, että käyttäjä antaa vähintään yhden luvun, joka on annetulla välillä.
+
 
 ```console
 > 72
@@ -1053,9 +1069,10 @@ Where to?
 
 <Exercise title={'009 Greatest number'}>
 
-The exercise template contains a base that reads numbers from the user and adds them to a list. Reading is stopped once the user enters the number -1.
+Tehtäväpohja sisältää ohjelman, joka lukee käyttäjältä kokonaislukuja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää luvun -1.
 
-Continue developing the program so that it ends the greatest number in the list and prints its value after reading all the numbers. The programming should work in the following manner.
+Jatketaan ohjelman kehittämistä siten, että ohjelma tulostaa listalla olevista luvuista suurimman. Ohjelman tulisi toimia seuraavasti.
+
 
 ```console
 > 72
@@ -1066,12 +1083,14 @@ Continue developing the program so that it ends the greatest number in the list 
 > -1
 The greatest number: 93
 ```
-You can assume that user always gives atleast one viable number.
 
-You can use the source code below as an inspitation. It is used to find the smallest number.
+Voit olettaa, että käyttäjä antaa ainakin yhden luvun, joka on suurempi kuin -1.
+
+Voit käyttää seuraavaa koodia inspiraationa. Se etsii listan pienimmän luvun.
+
 
 ```cpp
-// assume we have a list that contains integers
+// Oletetaan että meillä on lista kokonaislukuja
 
 int smallest = list[0];
 
@@ -1089,9 +1108,11 @@ Console.WriteLine("The smallest number: " + smallest);
 
 <Exercise title={'010 Index'}>
 
-The exercise template contains a base that reads numbers from the user and adds them to a list. Reading is stopped once the user enters the number -1.
+Tehtäväpohja sisältää ohjelman, joka lukee käyttäjältä kokonaislukuja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää luvun -1.
 
-Expand the program that then asks the user for a number, and reports that number's index in the list. If the number is not found, the program should not print anything.
+Laajennetaan toiminnallisuutta siten, että ohjelma kysyy käyttäjältä lukua. Ohjelma tulostaa listalla olevien lukujen indeksin, joka vastaa käyttäjän antamaa lukua. Jos lukua ei löydy, ohjelma ei tulosta mitään.
+
+<Note>Numero voi esiintyä useamminkin kuin kerran</Note>
 
 ```console
 > 72 
@@ -1122,7 +1143,10 @@ Search for?
 
 <Exercise title={'011 Smallest and index'}>
 
-Write a program that reads numbers from the user. When number 9999 is entered, the reading process stops. After this the program will print the smallest number in the list, and also the indices where that number is found. Notice: the smallest number can appear multiple times in the list.
+Luo ohjelma joka lukee käyttäjältä kokonaislukuja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää luvun 9999. Tämän jälkeen ohjelma tulostaa listalla olevista luvuista pienimmän sekä kaikki indeksit, joissa pienin luku esiintyy. 
+
+<Note>Pienin numero voi esiintyä useamminkin kuin kerran</Note>
+
 
 ```console
 > 72
@@ -1147,15 +1171,18 @@ Found at index: 2
 Found at index: 3
 ```
 
-<Note> You can combine the programs you wrote for the exercises "Greatest number in the list" and "Index of the requested number". First find the smallest number, and then find the index of that number. </Note>
+<Note> 
+Voit aiempia tehtäviä inspiraationa, yhdistämällä niiden toiminnallisuutta. Etsi ensin pienin numero, sen jälkeen sen kaikki indeksit.
+</Note>
 
 </Exercise>
 
 <Exercise title={'012 Sum of list'}>
 
-The exercise template contains a base that reads numbers from the user and adds them to a list. Reading is stopped once the user enters the number -1.
+Tehtäväpohja sisältää ohjelman, joka lukee käyttäjältä kokonaislukuja ja lisää ne listalle. Lukeminen lopetetaan kun käyttäjä syöttää luvun -1.
 
-Modify the program so that after reading the numbers it calculates and prints the sum of the numbers in the list.
+
+Muokkaa ohjelmaa siten, että ohjelma tulostaa listalla olevien lukujen summan.
 
 ```console
 > 72
@@ -1170,7 +1197,8 @@ Sum: 93
 
 <Exercise title={'013 Finding names'}>
 
-In the exercise template there is a program that reads inputs from the user until an empty string is entered. Add the following functionality to it: after reading the inputs one more string is requested from the user. The program then tell whether that string was found in the list or not.
+Tehtäväpohjassa on ohjelma, joka lukee käyttäjältä merkkijonoja kunnes käyttäjä syöttää tyhjän merkkijonon. Lisää seuraava toiminnallisuus: ohjelma kysyy käyttäjältä vielä yhtä merkkijonoa. Ohjelma kertoo käyttäjälle, löytyikö merkkijono listalta vai ei.
+
 
 ```
 > Tom
@@ -1196,7 +1224,7 @@ Logan was not found!
 
 <Exercise title={'014 Numbers in range'}>
 
-Create the method `public static void PrintNumbersInRange(List<int> numbers, int lowerLimit, int upperLimit)` in the exercise template. The method prints the numbers in the given list whose values are in the range [lowerLimit, upperLimit]. A few examples of using the method are supplied below.
+Luo metodi `public static void PrintNumbersInRange(List<int> numbers, int lowerLimit, int upperLimit)` tehtäväpohjaan. Metodi tulostaa listan luvut, joiden arvot ovat annetulla välillä [lowerLimit, upperLimit]. Muutama esimerkki metodin käytöstä on annettu alla.
 
 ```cpp
 List<int> numbers = new List<int>();
@@ -1230,7 +1258,8 @@ The numbers in the range [3, 10]
 
 <Exercise title={'015 Sum method'}>
 
-Create the method `public static int Sum(List<int> numbers)` in the exercise template. The method is to return the sum of the numbers in the parameter list.
+Luo metodi `public static int Sum(List<int> numbers)` tehtäväpohjaan. Metodin tulisi palauttaa parametrina annetun listan lukujen summa.
+
 
 ```cpp
 List<int> numbers = new List<int>();
@@ -1254,7 +1283,7 @@ Console.WriteLine(Sum(numbers));
 
 <Exercise title={'016 Remove last method'}>
 
-create the method `public static void RemoveLast(List<string> strings)` in the exercise template. The method should remove the last value in the list it receives as a parameter. If the list is empty, the method does nothing.
+Luo metodi `public static void RemoveLast(List<string> strings)` tehtäväpohjaan. Metodin tulisi poistaa parametrina annetun listan viimeinen arvo. Jos lista on tyhjä, metodi ei tee mitään.
 
 ```cpp
 List<string> strings = new List<string>();
@@ -1263,7 +1292,7 @@ strings.Add("First");
 strings.Add("Second");
 strings.Add("Third");
 
-// Remember, this is how you print all the items in a list
+// Muista, tällä tavoin voi tulostaa listan kaikkien alkioiden arvot
 strings.ForEach(Console.WriteLine);
 
 RemoveLast(strings);
