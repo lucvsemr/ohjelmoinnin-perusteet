@@ -1076,7 +1076,7 @@ value: 8
 
 Implement the `Decrement()` method in the class body in such a way that it decrements the value variable of the object it's being called on by one. Once you're done with the Decrement() method, the main program of the previous example should work to produce the example output.
 
-* Section 2 : The counter's value cannot be negative
+* Osa 2 : The counter's value cannot be negative
 
 Improve the Decrement() in such a way that the counter's value never becomes negative. This means that if the value of the counter is 0, it cannot be decremented. A conditional statement is useful here.
 
@@ -1102,7 +1102,7 @@ value: 0
 value: 0
 ```
 
-* Section 3: Resetting the counter value
+* Osa 3: Resetting the counter value
 
 Create the method `public void Reset()` for the counter that resets the value of the counter to 0. For example:
 
@@ -1355,7 +1355,7 @@ Expand the program as follows:
 
 In this exercise, a class called PaymentCard is created which aims to mimic a cafeteria's payment process.
 
-* Section 1
+* Osa 1
 
 The template includes the `Program.cs` and `PaymentCard.cs` files.
 
@@ -1398,7 +1398,7 @@ public static void Main(string[] args)
 The card has a balance of 50 euros
 ```
 
-* Section 2
+* Osa 2
 
 Expand your answer by adding two methods:
 - Method `public void EatLunch()`
@@ -1428,7 +1428,7 @@ The card has a balance of 39.4 euros
 The card has a balance of 37.4 euros
 ```
 
-* Section 3
+* Osa 3
 
 xpand your previous answers, so that when an item is bought the balance is checked. If there is not enough money to buy, the balance does not change.
 
@@ -1454,7 +1454,7 @@ The card has a balance of 8 euros
 
 Notice how EatLunch did not change the balance, as there was not enough money. DrinkCoffee still worked, as it should.
 
-* Section 4
+* Osa 4
 
 Expand your previous answers, so that you can charge money on your card:
 

@@ -1128,15 +1128,15 @@ Implement a program that causes the `NullReferenceException` error. The error sh
 
 In the exercise base there is the class `Person`, which we are already quite familiar with. There is also an outline for the class `HealthStation`. Health station objects process people in different ways, they e.g. weigh and feed people. In this exercise we will construct a health station. The code of the Person class should not be modified in this exercise!
 
-* Section 1 - Weighing people
+* Osa 1 - Weighing people
 
 The `Weigh` method receives a person as a parameter, and it is meant to return to its caller the weight of that person. The weight information can be found by calling a suitable property of the Person person. So your task is to complete the code of the method!
 
-* Section 2 - Feeding people
+* Osa 2 - Feeding people
 
 It is possible to modify the state of the object that is received as a parameter. Fill in the method called `public void Feed(Person person)` for the health station. It should increase the weight of the parameter person by one.
 
-* Section 3 - Counting weighings
+* Osa 3 - Counting weighings
 
 Use the variable `public int weighings { get; private set; }` to count weighings - That is, when ever the method `Weigh` is called, the variable should increase by one.
 
@@ -1195,7 +1195,7 @@ However, there was a problem with the PaymentCard class that is implemented in t
 An improved solution is to make the cards "dumb"; unaware of the prices and products that are sold, and only keeping track of their balance. All the intelligence is better placed in separate objects, payment terminals.
 
 
-* Section 1
+* Osa 1
 
 Let's first implement the "dumb" version of the PaymentCard. The card only has ability for asking for the balance, adding money, and taking money. Complete the method `public bool TakeMoney(double amount)` in the class below (and found in the exercise template), using the following as a guide:
 
@@ -1255,7 +1255,7 @@ successfully withdrew: False
 money 2
 ```
 
-* Section 2
+* Osa 2
 
 When visiting a student cafeteria, the customer pays either with cash or with a payment card. The cashier uses a payment terminal to charge the card or to process the cash payment. First, let's create a terminal that's suitable for cash payments.
 
@@ -1321,7 +1321,7 @@ remaining change 9.7
 money: 1015.3, number of sold coffees: 2, number of sold lunches: 1
 ```
 
-* Section 3
+* Osa 3
 
 Let's extend our payment terminal to also support card payments. We are going to create new methods for the terminal. It receives a payment card as a parameter, and decreases its balance by the price of the meal that was purchased. Here are the outlines for the methods, and instructions for completing them.
 
@@ -1369,7 +1369,7 @@ there was enough money: True
 money: 1002.5, number of sold coffees: 2, number of sold lunches: 1
 ```
 
-* Section 4
+* Osa 4
 
 Let's create a method for the terminal that can be used to add money to a payment card. Recall that the payment that is received when adding money to the card is stored in the register (adding cash). The basis for the method:
 

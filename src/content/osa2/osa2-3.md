@@ -724,7 +724,7 @@ public static void PrintMultiplicationTableRow(int number, int coefficient)
 }
 ```
 
-The output of the method call **MultiplicationTable(3)**, for instance, looks like this:
+Tulostus metodikutsulla **MultiplicationTable(3)** näyttää seuraavalta:
 
 ```console
 1 2 3
@@ -736,17 +736,17 @@ The output of the method call **MultiplicationTable(3)**, for instance, looks li
 
 <Exercise title={'009 Print phrase'}>
 
-create a method called PrintPhrase which prints the phrase "In a hole in the ground there lived a method" and a newline (use WriteLine and not just Write).
+Luo metodi **PrintPhrase** joka tulostaa lauseen "In a hole in the ground there lived a method" ja rivinvaihdon (käytä WriteLine eikä Write).
 
 ```cpp
 public static void Main(string[] args)
 {
-  // Call your method here:
+  // Kutsu metodia tässä:
   PrintPhrase();
 
 }
 
-// Write your method here:
+// Kirjoita metodi tähän:
 public static void PrintPhrase() 
 {
 
@@ -761,17 +761,18 @@ In a hole in the ground there lived a method
 
 <Exercise title={'010 How many times'}>
 
-Expand the previous program so that the main program asks the user for the number of times the phrase will be printed (i.e. how many times the method will be called).
+Laajenna edellistä ohjelmaa siten, että Main-metodi kysyy käyttäjältä kuinka monta kertaa ("How many times?") lause tulostetaan (eli kuinka monta kertaa metodia kutsutaan).
 
 ```cpp
 public static void Main(string[] args)
 {
-  // ask the user for the number of times that the phrase will be printed
-  // use the while command to call the method a suitable number of times
+  // kysy käyttäjältä kuinka monta kertaa lause tulostetaan
+  // käytä while-komentoa kutsuaksesi metodia sopiva määrä kertoja
+  
 
 }
 
-// Write your method here:
+// Kirjoita metodisi tähän:
 public static void PrintPhrase() 
 {
 
@@ -788,11 +789,15 @@ In a hole in the ground there lived a method
 
 </Exercise>
 
-<Note>From here on out, when introducing methods, we might not explicitly mention they must be located in the correct place. Methods cannot be defined e.g. inside other methods.</Note>
+
+<Note>
+Tästä lähtien, kun esittelemme metodeja, emme välttämättä mainitse erikseen, että ne täytyy sijoittaa oikeaan paikkaan. Metodeja ei voi määritellä esim. toisten metodien sisällä.
+</Note>
 
 <Exercise title={'011 Print until number'}>
 
-Create the following method in the exercise template: `public static void PrintUntilNumber(int number)`. It should print the numbers from one to the number passed as a parameter. Two examples of the method's usage are given below.
+Luo seuraava metodi: `public static void PrintUntilNumber(int number)`. Se tulostaa numerot yhdestä annettuun lukuun asti. Kaksi esimerkkiä metodin käytöstä on annettu alla.
+
 
 ```cpp
 public static void Main(string[] args) 
@@ -826,7 +831,7 @@ public static void Main(string[] args)
 
 <Exercise title={'012 From number to one'}>
 
-Create the following method in the exercise template: `public static void PrintFromNumberToOne(int number)`. It should print the numbers from the number passed as a parameter down to one. Two examples of the method's usage are given below.
+Luo tehtäväpohjaan seuraava metodi: `public static void PrintFromNumberToOne(int number)`. Se tulostaa numerot annetusta luvusta alaspäin yhteen. Kaksi esimerkkiä metodin käytöstä on annettu alla.
 
 ```cpp
 public static void Main(string[] args) 
@@ -859,13 +864,14 @@ public static void Main(string[] args)
 
 <Exercise title={'013 Division'}>
 
-Write a method `public static void Division(int numerator, int denominator)` that prints the result of the division of the numerator by the denominator. Keep in mind that the result of the division of the integers is an integer -- in this case we want the result to be a floating point number (double).
+Kirjoita metodi `public static void Division(int numerator, int denominator)` joka tulostaa jakolaskun tuloksen (numerator / denominator). Muista että kokonaislukujen jakolasku palauttaa kokonaisluvun -- tässä tapauksessa haluamme tuloksen olevan liukuluku (double).
+
 
 </Exercise>
 
 <Exercise title={'014 Divisible in range'}>
 
-Write a method `public static void DivisibleByThreeInRange(int beginning, int end)` that prints all the numbers divisible by three in the given range. The numbers are to be printed in order from the smallest to the greatest.
+Kirjoita metodi `public static void DivisibleByThreeInRange(int beginning, int end)` joka tulostaa kaikki luvut annetulta väliltä jotka ovat jaollisia kolmella. Luvut tulostetaan pienimmästä suurimpaan.
 
 ```cpp
 public static void Main(string[] args) 
@@ -896,26 +902,27 @@ public static void Main(string[] args)
 
 <Exercise title={'015 Number uno'}>
 
-Write a method `public static int NumberUno()` that returns the value 1.
+Kirjoita metodi `public static void NumberUno()` joka palauttaa arvon 1.
 
 </Exercise>
 
 <Exercise title={'016 Word'}>
 
-Write a method `public static string Word()`. The method must return a string of your choice.
+Kirjoita metodi `public static string Word()` joka palauttaa haluamasi merkkijonon (string).
 
 </Exercise>
 
 <Exercise title={'017 Sum'}>
 
-Expand the method `Sum`  in the exercise template so that it calculates and returns the sum of the numbers that are given as the parameters.
-create the method using the following structure:
+Laajennetaan metodia `Sum` tehtäväpohjassa siten, että se laskee ja palauttaa parametreina annettujen lukujen summan.
+Käytä seuraavaa rakennetta:
+
 
 ```cpp
 public static int Sum(int number1, int number2, int number3, int number4) 
 {
-  // write your code here
-  // remember to include return (at the end)!
+  // Kirjoita koodisi tänne
+  // Muista palauttaa arvo (return)!
 }
 
 public static void Main(string[] args) 
@@ -924,7 +931,7 @@ public static void Main(string[] args)
     Console.WriteLine("Sum: " + answer);
 }
 ```
-Output of the example:
+Esimerkin tuloste:
 
 ```console
 Sum: 14
@@ -934,15 +941,15 @@ Sum: 14
 
 <Exercise title={'018 Smallest'}>
 
-Define a two-parameter method `Smallest` that returns the smaller of the two numbers passed to it as parameters.
+Luo metodi `Smallest` kahdella parametrilla, joka palauttaa pienemmän parametrina annetuista arvoista.
 
 ```cpp
 public static int Smallest(int number1, int number2) 
 {
-  // write your code here
-  // do not print anything inside the method
+  // Kirjoita koodisi tänne
+  // Älä tulosta metodin sisällä mitään
 
-  // there must be a return command at the end
+  // Loppuun return!
 }
 
 public static void Main(string[] args) 
@@ -952,7 +959,7 @@ public static void Main(string[] args)
 }
 ```
 
-The output of the program:
+Esimerkkituloste:
 
 ```console
 Smallest: 2
@@ -962,15 +969,15 @@ Smallest: 2
 
 <Exercise title={'019 Greatest'}>
 
-Define a three-parameter method `Greatest` that returns the greatest of the three numbers passed to it as parameters.
+Luo metodi `Greatest` kolmella parametrilla, joka palauttaa suurimman parametrina annetuista arvoista.
 
 ```cpp
 public static int Greatest(int number1, int number2, int number3) 
 {
-  // write your code here
-  // do not print anything inside the method
+  // Kirjoita koodisi tänne
+  // Älä tulosta metodin sisällä mitään
 
-  // there must be a return command at the end
+  // Loppuun return!
 }
 
 public static void Main(string[] args) 
@@ -980,7 +987,7 @@ public static void Main(string[] args)
 }
 ```
 
-The output of the program:
+Esimerkkituloste:
 
 ```console
 Greatest: 7
@@ -990,19 +997,19 @@ Greatest: 7
 
 <Exercise title={'020 Stars'}>
 
-* Section 1
+* Osa 1
 
-Define a method called `PrintStars` that prints the given number of stars and a line break.
+Luo metodi `PrintStars(int number)` joka tulostaa annetun määrän tähtiä ja rivinvaihdon. 
 
-Write the method in the following template:
+Kirjoita metodi seuraavaan pohjaan:
 
 ```cpp
 public static void PrintStars(int number)
 {
-  // you can print one star with the command
+  // Voit tulostaa yhden tähden komennolla
   // Console.Write("*");
-  // call the print command n times
-  // in the end print a line break with the comand
+  // Kutsu komentoa number kertaa
+  // Loppuun rivinvaihto komennolla
   // Console.WriteLine("");
 }
 
@@ -1014,16 +1021,17 @@ public static void Main(string[] args)
 }
 ```
 
-The output of the program:
+Esimerkkituloste:
+
 ```console
 ***** 
 *** 
 *********
 ```
 
-* Section 2
+* Osa 2
 
-Define a method called `PrintSquare(int size)` that prints a suitable square with the help of the printStars method. So the method call `PrintSquare(4)` results in the following output:
+Määritä metodi `PrintSquare(int size)` joka tulostaa sopivan neliön metodin `PrintStars` avulla. Eli metodi kutsu `PrintSquare(4)` tuottaa seuraavan tulostuksen:
 
 ```console
 ****
@@ -1032,9 +1040,10 @@ Define a method called `PrintSquare(int size)` that prints a suitable square wit
 ****
 ```
 
-* Section 3
+* Osa 3
 
-Write a method called `PrintRectangle(int width, int height)` that prints the correct rectangle by using the PrintStars method. So the method call `PrintRectangle(17, 3)` should produce the following output:
+Kirjoita metodi `PrintRectangle(int width, int height)` joka tulostaa sopivan suorakulmion metodin `PrintStars` avulla. Eli metodi kutsu `PrintRectangle(17, 3)` tuottaa seuraavan tulostuksen:
+
 
 ```console
 ***************** 
@@ -1042,9 +1051,10 @@ Write a method called `PrintRectangle(int width, int height)` that prints the co
 *****************
 ```
 
-* Section 4
+* Osa 4
 
-Create a method called `PrintTriangle(int size)` that prints a triangle by using the PrintStars method. So the call `PrintTriangle(4)` should print the following:
+Luo metodi `PrintTriangle(int size)` joka tulostaa kolmion metodin `PrintStars` avulla. Eli metodi kutsu `PrintTriangle(4)` tuottaa seuraavan tulostuksen:
+
 
 ```console
 *
@@ -1057,35 +1067,42 @@ Create a method called `PrintTriangle(int size)` that prints a triangle by using
 
 <Exercise title={'021 Christmas tree'}>
 
-* Section 1
+* Osa 1
 
-Define a method called `PrintSpaces(int number)` that produces the number of spaces specified by number. The method does not print the line break.
+Luo metodi `PrintSpaces(int number)` joka tulostaa parametrina annetun määrän välilyöntejä. Metodi ei tulosta rivinvaihtoa.
 
-You will also have to either copy the `PrintStars` method from your previous answer or reimplement it in this exercise template.
+Sinun tarvitsee myös joko kopioida `PrintStars` metodi edellisestä tehtävästä tai toteuttaa se uudelleen tässä tehtävässä.
 
-* Section 2
+* Osa 2
 
-Create a method called `PrintRightTriangle(int size)` that uses PrintSpaces and PrintStars to print the correct triangle. So the method call `PrintRightTriangle(4)` should print the following:
+<Note> 
+Kommentti tässä ja seuraavissa esimerkeissä ei ole osa tulostusta, vaan vain korostamassa eroa edelliseen tehtävään.
+</Note>
 
+Luo metodi `PrintRightTriangle(int size)` joka käyttää metodeja `PrintSpaces` ja `PrintStars` oikealle nojaavan suorakulmaisen kolmion tulostamiseen. Eli metodi kutsu `PrintRightTriangle(4)` tuottaa seuraavan tulostuksen:
 
 ```cpp  
-// NOTICE THE AMOUNT OF WHITESPACE    
-   *  
-  **  
- ***  
-****  
+// HUOMAA VÄLILYÖNTIEN MÄÄRÄ    
+   *  // Kolme välilyöntiä alussa
+  **  // Kaksi
+ ***  // Yksi
+****  // Ei yhtään 
 ```  
+<Note> 
+Jos kolmio ei näytä nojaavan oikealle, kokeile toisella selaimella. Välillä Safari ja mobiiliselaimet eivät näytä merkkejä oikein.
+</Note>
 
-<Note> The comments in this and next examples are not part of the print, but only to emphasize the difference to previous work.</Note>
 
-* Section 3
 
-Define a method called `ChristmasTree(int height)` that prints the correct Christmas tree. The Christmas tree consists of a triangle with the specified height and the base. The base is two stars high and three stars wide, and is placed at the center of the triangle's bottom. The tree is to be constructed by using the methods PrintSpaces and PrintStars.
+* Osa 3
 
-For example, the call ChristmasTree(4) should work as following:
+Määritä metodi `ChristmasTree(int height)` joka tulostaa oikeanlaisen joulukuusen. Joulukuusi koostuu kolmiosta, jonka korkeus on parametrina annettu luku, sekä kuusen jalasta. Jalka on kaksi tähteä korkea ja kolme tähteä leveä, ja se sijaitsee kolmion pohjalla keskellä. Puu rakennetaan käyttämällä metodeja `PrintSpaces` ja `PrintStars`.
+
+Esimerkiksi kutsu `ChristmasTree(4)` tuottaa seuraavan tulostuksen:
+
 
 ```cpp
-// NOTICE THE AMOUNT OF WHITESPACE
+// HUOMAA VÄLILYÖNTIEN MÄÄRÄ
    * 
   *** 
  *****
@@ -1093,10 +1110,12 @@ For example, the call ChristmasTree(4) should work as following:
   *** 
   ***
 ```
-The call ChristmasTree(10) should work like this:
+
+Kutsu `ChristmasTree(10)` tuottaa seuraavan tulostuksen:
+
 
 ```cpp
-// NOTICE THE AMOUNT OF WHITESPACE
+// HUOMAA VÄLILYÖNTIEN MÄÄRÄ
          * 
         *** 
        ***** 
@@ -1110,6 +1129,10 @@ The call ChristmasTree(10) should work like this:
         *** 
         ***
 ```
-<Note> Heights shorter that 3 don't have to work correctly! </Note>
+<Note> 
+Alle 3 korkeiden puiden ei tarvitse toimia oikein!
+</Note>
+
+
 
 </Exercise>

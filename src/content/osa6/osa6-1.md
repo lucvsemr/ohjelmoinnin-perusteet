@@ -887,7 +887,7 @@ public class UserInterface
 
 The exercise base contains the `GradeRegister` from the material. In this exercise you will further develop the program, so that it can calculate the average of grades and exam results.
 
-* Section 1 - Average grade
+* Osa 1 - Average grade
 
 create the method `public double AverageOfGrades()` for the class `GradeRegister`. It should return the average of the grades, rounded to 2 decimals. If the register contains no grades, the method should return `-1`. Use the `grades` list to calculate the average. Example:
 
@@ -905,7 +905,7 @@ Console.WriteLine(register.AverageOfGrades());
 4.75
 ```
 
-* Section 2 - Average points
+* Osa 2 - Average points
 
 Give the class GradeRegister a new object variable: a list where you will store the exam points every time that the method `AddGradeBasedOnPoints` is called. After this addition, create a method `public double AverageOfPoints()` that calculates and returns the average of the exam points, rounded to 2 decimals. If there are no points added to the register, the method should return the number -1. Example:
 
@@ -922,7 +922,7 @@ Console.WriteLine(register.AverageOfPoints());
 92
 ```
 
-* Section 3 - Prints in the user interface
+* Osa 3 - Prints in the user interface
 
 As a final step, add the methods implemented above as parts of the user interface. When the program prints the grade distribution, it should also print the averages of the points and the grades.
 
@@ -1030,7 +1030,7 @@ namespace Exercise002
 
 The application is in practice a storage for jokes. You can add jokes, get a randomized joke, and the stored jokes can be printed. In this exercise the program is divided into parts in a guided manner.
 
-* Section 1 - Joke manager
+* Osa 1 - Joke manager
 
 Create a class called `JokeManager` and move the functionality to manage jokes in it. The class must have a parameter-free constructor, and the following methods:
 
@@ -1071,7 +1071,7 @@ What is red and smells of blue paint? - Red paint.
 What is blue and smells of red paint? - Blue paint.
 ```
 
-* Section 2 - User Interface
+* Osa 2 - User Interface
 
 Create a class called `UserInterface` and move the UI functionality of the program there. The class must have a constructor with one parameter: an instance of the JokeManager class. In addition, the class should have the method `public void Start()` that can be used to start the user interface.
 
