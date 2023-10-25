@@ -49,11 +49,11 @@ List<string> strings = new List<string>();
 
 Listan itsensä tyyppi on **List**. Kun lista alustetaan, määritellään muuttujan tyypin lisäksi myös listaan tallennettavien arvojen tyyppi -- kaikki listaan tallennettavat muuttujat ovat saman tyyppisiä. Tällöin merkkijonoja sisältävä lista on **List<string\>**. Uusi lista luodaan komennolla **new List<\>();**.
 
-## Listan arvojen tyypin määrittäminen
+## Listan alkioiden tyypin määrittäminen
 
-Kun määrittelemme listan sisältämien arvojen tyyppiä, kirjoitetaan tyyppi samalla tavalla kuin muuttujia määriteltäessä. Lista, joka sisältää int-tyyppisiä muuttujia, määritellään muodossa **List<int\>**; ja lista, joka sisältää double-tyyppisiä muuttujia, määritellään muodossa **List<double\>**.
+Kun määrittelemme listan sisältämien alkioiden (eli listassa olevien asioiden) tyyppiä, kirjoitetaan tyyppi samalla tavalla kuin muuttujia määriteltäessä. Lista, joka sisältää int-tyyppisiä alkioita, määritellään muodossa **List<int\>**; ja lista, joka sisältää double-tyyppisiä muuttujia, määritellään muodossa **List<double\>**.
 
-Alla on esimerkkejä erilaisten arvojen sisältävien listojen luomisesta.
+Alla on esimerkkejä erilaisia tyyppejä sisältävien listojen luomisesta.
 
 
 ```cpp
@@ -76,7 +76,7 @@ List<string> list = new List<string>();
 lista.Add("String is text");
 ```
 
-Kun lista on kerran luotu, List olettaa että kaikki siihen lisättävät muuttujat ovat oikeaa tyyppiä. Tietysti voit lisätä listaan myös oikeaa tyyppiä olevia muuttujia. Tällöin muuttujan arvo tallentuu listaan.
+Kun lista on kerran luotu, List olettaa että kaikki siihen lisättävät alkiot ovat oikeaa tyyppiä. Tietysti voit lisätä listaan myös oikeaa tyyppiä olevia **muuttujia**. Tällöin muuttujan arvo tallentuu listan alkioksi.
 
 ```cpp
 List<int> integers = new List<int>();
@@ -90,7 +90,7 @@ doubles.Add(d);
 
 ## Arvojen lisääminen ja hakeminen tietystä paikasta Listassa
 
-Seuraava esimerkki demonstroi muutaman merkkijonon lisäämistä Listaan, joka sisältää merkkijonoja. Lisääminen tapahtuu listan metodia **Add** käyttämällä, jolle annetaan parametrina lisättävä arvo. Tämän jälkeen tulostetaan arvo paikassa 0. Arvon hakeminen tietystä paikasta tapahtuu erikoismerkinnällä **list[index]**, jossa list on listan nimi ja index on paikka, josta arvo haetaan.
+Seuraava esimerkki demonstroi muutaman merkkijonon lisäämistä Listaan, joka sisältää merkkijonoja. Lisääminen tapahtuu listan metodia **Add** käyttämällä, jolle annetaan parametrina lisättävä arvo. Tämän jälkeen tulostetaan arvo paikassa 0. Alkion arvon hakeminen tietystä paikasta tapahtuu erikoismerkinnällä **list[index]**, jossa **list** on listan nimi ja **index** on paikka, josta arvo haetaan.
 
 
 ```cpp
@@ -265,9 +265,10 @@ Ann
 Anna
 ```
 
-The example is obviously clumsy. What if there were more values on the list? Or fewer? What if we didn't know the number of values on the list?
+Esimerkki on huomattavan kömpelö. Entä jos listassa olisi enemmän arvoja? Tai vähemmän? Entä jos emme tiedä, montako arvoa listalla on?
 
-The number of values on a list is provided by the list's **Count** property which returns the number of elements the list contains. The number is an integer (int), and it can be used as a part of an expression or stored in an integer variable for later use.
+Listan alkioiden määrä saadaan selville listan **Count** -ominaisuudella, joka palauttaa listan sisältämien alkioiden määrän. Määrä on kokonaisluku (int), ja sitä voidaan käyttää osana lauseketta tai tallentaa kokonaislukumuuttujaan myöhempää käyttöä varten.
+
 
 ```cpp
 List<string> list = new List<string>();
@@ -288,10 +289,11 @@ Number of values on the list: 1
 Number of values on the list: 1
 ```
 
-<Note> The Count is not a method but a property. This means that when calling Count, we do not add brackets in the end! </Note>
+<Note> 
+Count ei ole metodi vaan ominaisuus. Tämä tarkoittaa, että Countia kutsuttaessa ei lisätä sulkeita loppuun!
+</Note>
 
-Let's make a new version of the program that prints each index manually. In this intermediate version we use the **index** variable to keep track of the place that is to be outputted.
-
+Tehdään ohjelmastamme uusi versio joka tulostaa jokaisen arvon listalta. Tässä väliversiossa käytämme **index** -muuttujaa pitämään kirjaa siitä, mikä paikka tulostetaan.
 
 ```cpp
 List<string> teachers = new List<string>();
@@ -329,15 +331,15 @@ if (index < teachers.Count)
 
 if (index < index.Count) 
 {
-  // this will not be executed since index = 4 and teachers.Count = 4
+  // tätä ei suoriteta sillä index = 4 ja teachers.Count = 4
   Console.WriteLine(teachers[index]);
   index = index + 1;
 }
 ```
 
-We can see that there's repetition in the program above.
+Huomaamme, että yllä olevassa koodissa on paljon toistoa.
 
-We can convert the if statements into a while loop that is repeated until the condition index < teachers.Count no longer holds (i.e., the value of the variable index grows too great).
+Voimme muuttaa if-lauseet while-silmukoiksi, jotka toistuvat niin kauan kuin ehto index < teachers.Count pitää paikkansa (eli muuttujan index arvo ei kasva liian suureksi).
 
 ```cpp
 List<string> teachers = new List<string>();
@@ -348,8 +350,8 @@ teachers.Add("Ann");
 teachers.Add("Anna");
 
 int index = 0;
-// Repeat for as long as the value of the variable `index`
-// is smaller than the size of the teachers list
+// Toista niin kauan kuin muuttujan `index`
+// arvo on pienempi kuin teachers-listan koko
 while (index < teachers.Count) 
 {
   Console.WriteLine(teachers[index]);
@@ -357,9 +359,9 @@ while (index < teachers.Count)
 }
 ```
 
-Now the printing works regardless of the number of elements.
+Nyt tulostus toimii riippumatta siitä, kuinka monta alkiota listalla on.
 
-The for-loop is extremely handy here. We can convert the loop above to a for-loop, after which the program looks like this.
+For-silmukka on erittäin kätevä tässä. Voimme muuttaa yllä olevan silmukan for-silmukaksi, jonka jälkeen ohjelma näyttää tältä.
 
 ```cpp
 List<string> teachers = new List<string>();
@@ -382,7 +384,7 @@ Ann
 Anna
 ```
 
-The index variable of the for-loop is typically labelled **i**:
+Indeksin muuttuja for-silmukassa on tyypillisesti nimetty **i**:
 
 ```cpp
 for (int i = 0; i < teachers.Count; i++) 
@@ -391,7 +393,7 @@ for (int i = 0; i < teachers.Count; i++)
 }
 ```
 
-Let's consider using a list to store integers. The functionality is largely the same as in the previous example. The greatest difference has to do with the initialization of the list -- the type of value to be stored is defined as int, and the value to be printed is stored in a variable called number before printing.
+Mietitään tilannetta jossa haluamme käsitellä listaa, joka sisältää kokonaislukuja. Toiminnallisuus on pitkälti sama kuin edellisessä esimerkissä. Suurin ero on listan alustamisessa -- listan sisältämän arvon tyyppi määritellään int:ksi, ja tulostettava arvo tallennetaan muuttujaan nimeltä number ennen tulostamista.
 
 ```cpp
 List<int> numbers = new List<int>();
@@ -405,7 +407,7 @@ for (int i = 0; i < numbers.Count; i++)
 {
     int number = numbers[i];
     Console.WriteLine(number);
-    // alternatively: Console.WriteLine(numbers[i]);
+    // vaihtoehtoisesti: Console.WriteLine(numbers[i]);
 }
 ```
 
@@ -416,7 +418,7 @@ for (int i = 0; i < numbers.Count; i++)
 4
 ```
 
-Printing the numbers in the list in reverse order would also be straightforward.
+Numeroiden tulostaminen päinvastaisessa jäjestyksessä olisi myös suoraviivaista.
 
 ```cpp
 List<int> numbers = new List<int>();
@@ -442,12 +444,11 @@ while (index >= 0)
 1
 ```
 
-Try and recreate the previous example with the for loop!
+Kokeile toteuttaa edellinen esimerkki for-silmukalla!
 
-## Iterating Over a List with a For-Each Loop
+## Listan iterointi For-Each -silmukalla
 
-If you don't need to keep track of the index as you're going through a list's values, you can make use of the **for-each** loop. It differs from the previous loops in that it has no separate condition for repeating or incrementing.
-
+Jos ei ole tarvetta pitää kirjaa indeksistä, jolla ollaan menossa listan arvoja läpi käydessä, voidaan käyttää **for-each** -silmukkaa. Se eroaa edellisistä silmukoista siinä, että siinä ei ole erillistä ehtoa toistolle tai inkrementaatiolle.
 
 ```cpp
 List<string> teachers = new List<string>();
@@ -463,7 +464,7 @@ foreach (string teacher in teachers)
 }
 ```
 
-In practical terms, the for-each loop described above hides some parts of the for-loop we practiced earlier.The for-each loop would look like this if implemented as a for-loop:
+Käytännössä, for-each -silmukka kätkee osan for-silmukosta, jota harjoittelimme aiemmin. For-each -silmukka näyttäisi tältä, jos se toteutettaisiin for-silmukkana:
 
 ```cpp
 List<string> teachers = new List<string>();
@@ -480,25 +481,26 @@ for (int i = 0; i < teachers.Count; i++)
 }
 ```
 
-In practice, the for-each loop examines the values of the list in order one at a time. The expression is defined in the following format: **for (typeOfVariable nameOfVariable: nameOfList)**, where **typeOfVariable** is the list's element type, and **nameOfVariable** is the variable that is used to store each value in the list as we go through it.
+Käytännössä for-each -silmukka tarkastelee listan arvoja yksi kerrallaan. Lausekkeessa **foreach (muuttujaTyyppi muuttujaNimi in listanNimi)**, **muuttujaTyyppi** on listan elementin tyyppi, ja **muuttujaNimi** on muuttuja, joka käytetään listan arvon tallentamiseen, kun käydään sitä läpi.
 
-## Removing from a List and Checking the Existence of a Value
+## Listasta poistaminen ja arvon olemassaolon tarkistaminen
 
-The list's **RemoveAt(index)** method removes the value that is located at the index that's given as the parameter. The parameter is an integer.
+Listan metodi **RemoveAt(index)** poistaa parametrina annetussa indeksissä olevan arvon. Parametrina annetaan kokonaisluku.
+
 
 ```cpp
-// create the list for storing strings
+// luo lista merkkijonoja varten
 List<string> list = new List<string>();
 
-// add three values to the list
+// lisää listaan kolme arvoa
 list.Add("First");
 list.Add("Second");
 list.Add("Third");
 
-// Remove from index 1
+// poista arvo indeksistä 1
 list.RemoveAt(1);
 
-// retrieve the value from positions 0 and 1 of the list, and print them
+// hae arvot indekseistä 0 ja 1 ja tulosta ne
 Console.WriteLine(list[0]);
 Console.WriteLine(list[1]);
 ```
@@ -508,21 +510,21 @@ First
 Third
 ```
 
-We can also use the method **Remove** if we know the value of the item we want to remove:
+Voimme myös käyttää metodia **Remove**, jos tiedämme poistettavan arvon:
 
 ```cpp
-// create the list for storing strings
+// luo lista merkkijonoja varten
 List<string> list = new List<string>();
 
-// add three values to the list
+// lisää listaan kolme arvoa
 list.Add("First");
 list.Add("Second");
 list.Add("Third");
 
-// Remove with value "Second"
+// poista arvo jonka sisältö on "Second"
 list.Remove("Second");
 
-// retrieve the value from positions 0 and 1 of the list, and print them
+// hae arvot indekseistä 0 ja 1 ja tulosta ne
 Console.WriteLine(list[0]);
 Console.WriteLine(list[1]);
 ```
@@ -532,21 +534,21 @@ First
 Third
 ```
 
-The methods work exactly the same way with integers, so be careful, which method you use!
+Metodi toimii täsmälleen samoin numeroilla, joten ole varovainen mitä metodia käytät!
 
 ```cpp
-// create the list for storing integers
+// luo lista kokonaislukuja varten
 List<int> list = new List<int>();
 
-// add three values to the list
+// lisää listaan kolme arvoa
 list.Add(1);
 list.Add(3);
 list.Add(2);
 
-// Remove with value "Second"
+// poista arvo indeksistä 1
 list.RemoveAt(1);
 
-// retrieve the value from positions 0 and 1 of the list, and print them
+// hae arvot indekseistä 0 ja 1 ja tulosta ne
 Console.WriteLine(list[0]);
 Console.WriteLine(list[1]);
 ```
@@ -557,18 +559,18 @@ Console.WriteLine(list[1]);
 ```
 
 ```cpp
-// create the list for storing integers
+// luo lista kokonaislukuja varten
 List<int> list = new List<int>();
 
-// add three values to the list
+// lisää listaan kolme arvoa
 list.Add(1);
 list.Add(3);
 list.Add(2);
 
-// Remove with value 
+// poista arvolla
 list.Remove(1);
 
-// retrieve the value from positions 0 and 1 of the list, and print them
+// hae arvot indekseistä 0 ja 1 ja tulosta ne
 Console.WriteLine(list[0]);
 Console.WriteLine(list[1]);
 ```
@@ -578,16 +580,17 @@ Console.WriteLine(list[1]);
 2
 ```
 
-<Note> The method Remove removes the first match it finds. So, if your list would contain multiples of the same value, only the first one would be removed! </Note>
+<Note> 
+Metodi Remove poistaa ensimmäisen osuman jonka se löytää. Eli jos listassasi on monta alkiota samalla arvolla, vain ensimmäinen poistetaan!
+</Note>
 
-
-The list method **Contains** can be used to check the existence of a value in the list. The method receives the value to be searched as its parameter, and it returns a boolean type value (True or False) that indicates whether or not that value is stored in the list.
+Listan metodia **Contains** voidaan käyttää tarkistamaan arvon olemassaoloa listassa. Metodi saa parametrinaan arvon, jota etsitään, ja se palauttaa boolean-tyyppisen arvon (True tai False), joka kertoo, löytyikö arvo listasta vai ei.
 
 ```cpp
-// create the list for storing strings
+// luo lista merkkijonoja varten
 List<string> list = new List<string>();
 
-// add three values to the list
+// lisää listaan kolme arvoa
 list.Add("First");
 list.Add("Second");
 list.Add("Third");
@@ -606,7 +609,8 @@ Can we find First: True
 We found second!
 ```
 
-## List as a Method Parameter
+## Lista metodin parametrina
+
 
 Like other variables, a list, too, can be used as a parameter to a method. When the method is defined to take a list as a parameter, the type of the parameter is defined as the type of the list and the type of the values contained in that list. Below, the method **Print** prints the values in the list one by one.
 
