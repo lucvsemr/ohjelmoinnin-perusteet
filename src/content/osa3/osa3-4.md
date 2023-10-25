@@ -4,14 +4,14 @@ nav_order: 4
 hidden: false
 ---
 
-
-Let's first revise what we already know about strings and see how to split them. Below we create a string variable magicWord, that contains value "abracadabra".
+Kerrataan alkuun mitä tiedämme merkkijonoista ja katsotaan sen jälkeen miten niitä voidaan jakaa. Luodaan ensin merkkijonon sisältävä muuttuja magicWord, joka saa arvon "abracadabra".
 
 ```cpp
 string magicWord = "abracadabra";
 ```
 
-Passing a string as a parameter to a print command (or, for that matter, any method that takes a string parameter) happens in the familiar way:
+Merkkijonon antaminen parametrina tulostuskomennolle (tai muillekin merkkijonoparametrin ottaville metodeille) tapahtuu tuttuun tapaan:
+
 
 ```cpp
 string magicWord = "abracadabra";
@@ -22,13 +22,14 @@ Console.WriteLine(magicWord);
 abracadabra
 ```
 
-## Reading and Printing Strings
+## Merkkijonon lukeminen ja tulostaminen
 
-You can read a string using the ReadLine-method offered by Console. The program below reads the name of the user and prints it:
+Voit lukea merkkijonon ReadLine-metodilla, jota Console tarjoaa. Alla oleva ohjelma lukee käyttäjän nimen ja tulostaa sen:
+
 
 ```cpp
 Console.WriteLine("What's your name?");
-// reading a line from the user and assigning it to the name variable
+// luetaan käyttäjän syöte ja sijoitetaan se name-muuttujaan
 string name = Console.ReadLine();
 
 Console.WriteLine(name);
@@ -40,7 +41,7 @@ What's your name?
 Hank
 ```
 
-Strings can also be concatenated. If you place a +-operator between two strings, you get a new string that's a combination of those two strings. Be mindful of any white spaces in your variables!
+Merkkijonoja voi myös konkatenoida (eli yhdistää). Jos laitat + -operaattorin kahden merkkijonon väliin, saat uuden merkkijonon, joka on näiden kahden merkkijonon yhdistelmä. Kiinnitä huomiota välilyönteihin!
 
 ```cpp
 string greeting = "Hi ";
@@ -56,9 +57,9 @@ Console.WriteLine(phrase);
 Hi Lily and see you later!
 ```
 
-## String comparisons
+## Merkkijonojen vertailu
 
-Strings can be compared with **==** just like any other variable.
+Merkkijonoa voidaan verrata toiseen merkkijonoon **==** -operaattorilla kuten muihinkin muuttujiin.
 
 ```cpp
 string text = "Hello";
@@ -78,7 +79,7 @@ else
 Boo
 ```
 
-As we've come to know, a boolean value can be inverted through negation - **!**.
+Kuten olemme jo tottuneet, boolean-arvo voidaan kääntää negaatiolla **!**.
 
 ```cpp
 string text = "Hello";
@@ -94,7 +95,7 @@ else
 }
 ```
 
-Or by negating the comparison
+Tai vertailun negaatiolla **!=**.
 
 ```cpp
 string text = "Hello";
@@ -110,9 +111,9 @@ else
 }
 ```
 
-## Splitting a String
+## Merkkijonon jakaminen
 
-You can split a string to multiple pieces with the **Split-method** of the string class. The method takes as a parameter a string denoting the place around which the string should be split. The split method returns an array of the resulting sub-parts. In the example below, the string has been split around a space.
+Voit jakaa merkkijonon useampaan osaan merkkijonon **Split-metodilla**. Metodi ottaa parametrina merkkijonon, jonka kohdalta merkkijono jaetaan. Split-metodi palauttaa taulukon, jossa on jaetun merkkijonon osat (englanniksi **substring**). Alla olevassa esimerkissä merkkijono on jaettu välilyönnin kohdalta.
 
 ```cpp
 string text = "first second third fourth";
@@ -122,7 +123,7 @@ Console.WriteLine(pieces[1]);
 Console.WriteLine(pieces[2]);
 Console.WriteLine(pieces[3]);
 
-// For empty line print
+// Tulostetaan tyhjä rivi väliin
 Console.WriteLine();
 
 for (int i = 0; i < pieces.Length; i++)
@@ -143,9 +144,9 @@ third
 fourth
 ```
 
-## Data of Fixed Format
+## Kiinteän muotoisen datan käsittely
 
-Splitting strings is used particularly when the data is of a fixed format. This refers to data that adheres to some predefined format. An example of this of this is the comma-separated values (csv) format, where commas are used to separate values. Below you'll find an example of data in csv form containing names and ages. The first column contains names and the second one ages. The columns are separed by a comma.
+Merkkijonon jakaminen on kätevää erityisesti silloin, kun data on kiinteässä muodossa. Tällä tarkoitetaan dataa, joka noudattaa jotain ennalta määriteltyä formaattia. Esimerkki tällaisesta on pilkuilla erotettu data (englanniksi **comma-separated values**, csv), jossa pilkut erottavat arvot toisistaan. Alla on esimerkki csv-muotoisesta datasta, jossa on nimiä ja ikä. Ensimmäisessä sarakkeessa on nimiä ja toisessa ikä. Saraakkeet on erotettu pilkulla.
 
 ```console
 sebastian,2 
@@ -153,9 +154,11 @@ lucas,2
 lily,1
 ```
 
-Let's assume the user enters the data above row by row, ending with an empty line.
+Oletetaan että käyttäjä syöttää yllä olevan datan rivi riviltä, lopettaen tyhjällä rivillä.
 
-A program to print the names and ages looks like the following:
+
+Ohjelma tulostaa nimet ja iät seuraavasti:
+
 
 ```cpp
 while (true)
@@ -179,9 +182,10 @@ Name: lucas, age: 2
 Name: lily, age: 1
 ```
 
-## Using Diverse Text
+## Monimuotoisen tekstin käyttäminen
 
-We've printed strings in the examples above. Some of the data contained in a fixed-format string can be numerical. In the previous data we used that contained names and ages, the ages were integers.
+
+Olemme tulostaneet merkkijonoja aiemmissa esimerkeissä. Kiinteässä muodossa olevassa merkkijonossa voi olla myös numeerista dataa. Yllä olevassa esimerkissä, jossa oli nimiä ja ikä, ikä oli kokonaisluku.
 
 ```console
 sebastian,2 
@@ -189,9 +193,9 @@ lucas,2
 lily,1
 ```
 
-Splitting a string always produces an array of strings. If the text is of fixed format, we can assume the data in a specific index to always be of the a specific type -- e.g., in the example above, age at index 1 is an integer.
+Merkkijonon jakaminen tuottaa aina taulukon merkkijonoja. Jos teksti on kiinteässä muodossa, voimme olettaa tietyn indeksin olevan aina tietyn tyyppinen. Esimerkiksi yllä olevassa esimerkissä ikä indeksissä 1 on kokonaisluku.
 
-The program below computes the sum of ages in this fixed format data. In order to compute the sum, the age must first be converted to a number (the familiar command Convert.ToInt32).
+Alla oleva ohjelma laskee summan tästä datasta. Jotta voisimme laskea summan, meidän pitää ensin muuttaa ikä kokonaisluvuksi (tuttu komento Convert.ToInt32).
 
 ```cpp
 int sum = 0;
@@ -217,7 +221,7 @@ Console.WriteLine("Sum of the ages is " + sum);
 Sum of the ages is 5
 ```
 
-We can write a program to compute the average of the ages in the same way:
+Voimme kirjoittaa ohjelman myös niin, että se laskee keskiarvon. 
 
 ```cpp
 int sum = 0;
@@ -256,7 +260,8 @@ Age average: 1.6666666666666667
 
 <Exercise title={'022 String three times'}>
 
-Write a program, that reads a string from the user and then prints it three times.
+Kirjoita ohjelma, joka lukee käyttäjältä merkkijonon ja tulostaa sen kolme kertaa peräkkäin.
+
 
 ```console
 Give a word: cake
@@ -264,13 +269,13 @@ Give a word: cake
 cakecakecake
 ```
 
-<Note>The program should ask for only one string. Don't use a loop here.</Note>
+<Note>Ohjelman tulisi kysyä merkkijonoa vain kerran. Älä käytä silmukkaa tässä.</Note>
 
 </Exercise>
 
 <Exercise title={'023 True string'}>
 
-Write a program that asks the user for a string. If the user writes the string "true", the program prints "You got it right!", otherwise it prints "Try again!".
+Kirjoita ohjelma, joka kysyy käyttäjältä merkkijonon. Jos käyttäjä kirjoittaa merkkijonon "true", ohjelma tulostaa "You got it right!", muussa tapauksessa ohjelma tulostaa "Try again!".
 
 ```console
 Give a string: true 
@@ -287,15 +292,16 @@ Try again!
 
 <Exercise title={'024 Login'}>
 
-Write a program that recognizes the following users:
+Kirjoita ohjelma joka tunnistaa seuraavat käyttäjät:
 
 
-|username	|password|
+|käyttäjänimi	|salasana|
 |--|--|
 |alex|	sunshine|
 |emma|	haskell|
 
-The program either shows a login message or informs of incorrect username or password.
+Ohjelman pitäisi näyttää joko kirjautumisviesti tai ilmoitus virheellisestä käyttäjänimestä tai salasanasta.
+
 
 ```console
 Enter username: 
@@ -304,6 +310,8 @@ Enter password:
 > sunshine 
 You have successfully logged in!
 ```
+
+
 ```console
 Enter username: 
 > emma 
@@ -320,14 +328,17 @@ Enter password:
 Incorrect username or password!
 ```
 
-<Note>In read life login should not be implemented like this! This is just an exercise.</Note>
+<Note>
+Todellisuudessa kirjautuminen ei toimi näin! Tämä on vain harjoitus.
+</Note>
 
 
 </Exercise>
 
 <Exercise title={'025 String split'}>
 
-Write a program that reads strings from the user. If the input is empty, the program stops reading input and halts. For each non-empty input it splits the string input by whitespaces and prints each part of the string on a new line.
+Kirjoita ohjelma joka lukee käyttäjältä merkkijonoja. Jos käyttäjä syöttää tyhjän merkkijonon, ohjelma lopettaa lukemisen ja ohjelman suoritus päättyy. Jos käyttäjä syöttää muun merkkijonon, ohjelma jakaa merkkijonon välilyöntien kohdalta ja tulostaa osat yksi kerrallaan.
+
 
 ```console
 > once upon a time 
@@ -348,7 +359,7 @@ halted
 
 <Exercise title={'026 Split contains av'}>
 
-Write a program, that reads user input until an empty line. For each non-empty string, the program splits the string by spaces and then prints the pieces that contain `av`, each on a new line.
+Kirjoita ohjelma, joka lukee käyttäjältä merkkijonoja. Jos käyttäjä syöttää tyhjän merkkijonon, ohjelma lopettaa lukemisen. Jos käyttäjä syöttää muun merkkijonon, ohjelma jakaa merkkijonon välilyöntien kohdalta ja tulostaa osat, jotka sisältävät merkkijonon `av`.
 
 ```console
 > navy blue shirt
@@ -361,7 +372,9 @@ flavour
 >
 ```
 
-Tip! Strings have a Contains method, which tells if a string contains another string. It works like this:
+<Note>
+Merkkijonolla on Contains-metodi, joka kertoo, sisältääkö merkkijono toisen merkkijonon. Se toimii näin:
+
 
 ```cpp
 string text = "volcanologist";
@@ -381,12 +394,14 @@ if (!text.Contains("tin"))
 can was found 
 tin wasn't found
 ```
+</Note>
+
 
 </Exercise>
 
 <Exercise title={'027 First part split'}>
 
-Write a program, that reads user input until an empty line. For each non-empty line the program splits the string by spaces and prints the first part of the string.
+Kirjoita ohjelma joka lukee käyttäjältä merkkijonoja. Jos käyttäjä syöttää tyhjän merkkijonon, ohjelma lopettaa lukemisen. Jos käyttäjä syöttää muun merkkijonon, ohjelma jakaa merkkijonon välilyöntien kohdalta ja tulostaa ensimmäisen osan.
 
 ```console
 > one two three four 
@@ -400,7 +415,7 @@ this
 
 <Exercise title={'028 Last part split'}>
 
-Write a program, that reads user input until an empty line. For each non-empty line the program splits the string by spaces and prints the last part of the string.
+Kirjoita ohjelma joka lukee käyttäjältä merkkijonoja. Jos käyttäjä syöttää tyhjän merkkijonon, ohjelma lopettaa lukemisen. Jos käyttäjä syöttää muun merkkijonon, ohjelma jakaa merkkijonon välilyöntien kohdalta ja tulostaa viimeisen osan.
 
 ```console
 > one two three four 
@@ -411,7 +426,7 @@ message
 ```
 
 <Note>
-You can find out the length of the array like this:
+Löydät taulukon pituuden Length-metodilla. Se toimii näin:
 
 ```cpp
 string[] parts = {"one", "two", "three"};
@@ -427,9 +442,10 @@ Number of parts: 3
 
 <Exercise title={'029 CSV age'}>
 
-Write a program that reads names and ages from the user until an empty line is entered. The name and age are separed by a comma.
+Kirjoita ohjelma joka lukee käyttäjältä nimiä ja ikiä kunnes käyttäjä syöttää tyhjän merkkijonon. Nimi ja ikä on erotettu pilkulla.
 
-After reading the program prints the age of the oldest person. You can assume, that the user enters at least one person, and that one of the users is older than the others.
+Lukemisen jälkeen ohjelma tulostaa vanhimman henkilön iän. Voit olettaa, että käyttäjä syöttää ainakin yhden henkilön ja että ainakin yksi henkilö on vanhempi kuin muut.
+
 
 ```console
 > sebastian,2 
@@ -445,9 +461,9 @@ Age of the oldest: 10
 
 <Exercise title={'030 CSV name'}>
 
-Write a program that reads names and ages from the user until an empty line is entered. The name and age are separed by a comma.
+Kirjoita ohjelma joka lukee käyttäjältä nimiä ja ikiä kunnes käyttäjä syöttää tyhjän merkkijonon. Nimi ja ikä on erotettu pilkulla.
 
-After reading the program prints the name of the oldest person. You can assume, that the user enters at least one person, and that one of the users is older than the others.
+Lukemisen jälkeen ohjelma tulostaa vanhimman henkilön nimen. Voit olettaa, että käyttäjä syöttää ainakin yhden henkilön ja että ainakin yksi henkilö on vanhempi kuin muut.
 
 ```console
 > sebastian,2 
@@ -463,9 +479,9 @@ Name of the oldest: gabriel
 
 <Exercise title={'031 Maximum name and age'}>
 
-Write a program that reads names and birth years from the user until an empty line is entered. The name and birth year are separed by a comma.
+Kirjoita ohjelma joka lukee käyttäjältä nimiä ja syntymävuosia kunnes käyttäjä syöttää tyhjän merkkijonon. Nimi ja syntymävuosi on erotettu pilkulla.
 
-After that the program prints the longest name and the highest age. If multiple names are equally longest, you can print any of them. You can assume the user to enter at least one person, and the current year to be the current year.
+Lukemisen jälkeen ohjelma tulostaa pisimmän nimen ja korkeimman iän. Jos useilla henkilöillä on yhtä pitkä nimi, voit tulostaa minkä tahansa niistä. Voit olettaa, että käyttäjä syöttää ainakin yhden henkilön, ja meneillään on tämä vuosi.
 
 ```console
 > sebastian,2017 
