@@ -6,7 +6,7 @@ hidden: false
 
 Tervetuloa ohjelmoinnin perusteisiin C#:lla (_C-Sharp_)!
 
-<Note>Tämän sivun käännöstyö on vielä kesken. Englanninkielinen materiaali on valmis!</Note>
+<Note>Tämän sivun käännöstyö on vielä kesken. Englanninkielinen materiaali on valmis! Sivu löytyy osoitteesta https://centria.github.io/basic-csharp/</Note>
 
 ## Jos haluat vain oppia
 
