@@ -427,14 +427,14 @@ namespace Exercise005
     {
         public static void Main(string[] args)
         {
-            string name = "Ada Lovelace";
+            string name = "Ada LoveLace";
             // Write your code here:           
         }
     }
 }
 ```
 
-Muokkaa koodia että se tulostaa `Hello Ada Lovelace!`
+Muokkaa koodia että se tulostaa `Hello Ada LoveLace!`
 Älä muokkaa muuttujaa!
 
 </Exercise>
