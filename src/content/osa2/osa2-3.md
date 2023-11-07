@@ -902,7 +902,7 @@ public static void Main(string[] args)
 
 <Exercise title={'015 Number uno'}>
 
-Kirjoita metodi `public static void NumberUno()` joka palauttaa arvon 1.
+Kirjoita metodi `public static int NumberUno()` joka palauttaa arvon 1.
 
 </Exercise>
 
