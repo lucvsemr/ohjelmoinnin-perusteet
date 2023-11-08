@@ -408,12 +408,12 @@ Esimerkkitulos:
 
 ```console
 Give the first number!
-> 3
-Give the second number!
 > 2
-Give the third number!
+Give the second number!
 > 1
-The average is 2.0
+Give the third number!
+> 5
+The average is 2.6666666666666665
 ```
 
 </Exercise>
