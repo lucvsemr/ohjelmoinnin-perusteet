@@ -350,7 +350,7 @@ Give the second number!
 
 ```console
 Give the first number!
-> 5
+> 3
 Give the second number!
 > -1
 3 + -1 = 2
