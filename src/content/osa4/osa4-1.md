@@ -35,15 +35,16 @@ Console.WriteLine(integers.Count);
 
 Olio alustetaan aina kutsumalla metodia joka luo objektin, eli konstruktoria käyttäen **new**-avainsanaa.
 
-Luokka määrittelee piirrustukset oliolle, joka alustetaan siitä. Piirretään analogia luokasta ja oliosta johonkin muuhun kuin tietokoneohjelmointiin. Omakotitalo on todennäköisesti tuttu monille, ja voimme olettaa että olemassa on piirrustukset jotka määrittelevät mitä omakotitalo on. Luokka on piirrustus. Toisin sanottuna se määrittelee mitä luokasta luodut oliot ovat:
+Luokka määrittelee piirrustukset oliolle, joka alustetaan siitä. Piirretään analogia luokasta ja oliosta johonkin muuhun kuin tietokoneohjelmointiin. Rintamamiestalo on todennäköisesti tuttu monille, ja voimme olettaa että olemassa on piirrustukset jotka määrittelevät mitä rintamamiestalo on. Luokka on piirrustus. Toisin sanottuna se määrittelee mitä luokasta luodut oliot ovat:
 
 ![Talon piirrustukset](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/houses.jpg)
 
-Individual objects, detached houses in this case, are all created based on the same blueprints - they're instances of the same class. The states of individual objects, i.e., their attributes (such as the wall color, the building material of the roof, the color of its foundations, the doors' materials and color, ...) may all vary, however. The following is an "object of a detached-house class":
+Yksittäiset oliot, tässä tapauksessa rintamamiestalot, luodaan samoilla piirrustuksilla -- ne ovat saman luokan instansseja. Yksittäisten olioiden tila, eli ominaisuudet (kuten seinien väri, katon rakennusmateriaali, perustusten väri, ovien materiaali ja väri,...) voivat kuitenkin vaihdella. Seuraava on "rintamamiestalo-luokan olio":
 
-![Single house](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/singlehouse.jpg)
+![Yksittäinen talo](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/singlehouse.jpg)
 
-## Creating Classes
+## Luokkien luominen
+
 
 A class specifies what the objects instantiated from it are like.
 
