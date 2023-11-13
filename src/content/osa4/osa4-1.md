@@ -45,18 +45,17 @@ Yksittäiset oliot, tässä tapauksessa rintamamiestalot, luodaan samoilla piirr
 
 ## Luokkien luominen
 
+Luokka määrittää millaisia siitä luodut oliot ovat.
 
-A class specifies what the objects instantiated from it are like.
+* **olion muuttujat (instanssin muuttujat, englanniksi instance variables)** määrittävät olion sisäistä tilaa
+* **olion metodit** määrittävät mitä olio tekee
 
-* The **object's variables (instance variables)** specify the internal state of the object
-* The **object's methods** specify what the object does
+Tutustaan nyt luokkien luomiseen ja niiden muuttujien ja metodien määrittämiseen.
 
-We'll now familiarize ourselves with creating our own classes and defining the variable that belong to them.
+Luokka on tarkoitettu esittämään jotain merkityksellistä kokonaisuutta, jossa "merkityksellinen kokonaisuus" viittaa usein johonkin reaalimaailman objektiin tai käsitteeseen. Jos tietokoneohjelma käsittelee henkilötietoja, olisi ehkä merkityksellistä määritellä luokka Person, joka sisältää henkilöön liittyviä metodeja ja muuttujia.
 
-A class is defined to represent some meaningful entity, where a "meaningful entity" often refers to a real-world object or concept. If a computer program had to process personal information, it would perhaps be meaningful to define a seperate class Person consisting of methods and attributes related to an individual.
+Aloitetaan. Esimerkissä käytämme **Exercise001** pohjaa tehtävistä, joten voit seurata mukana. Oletammekin että meillä on projektipohja, jossa on tyhjä pääohjelma, eli **Program.cs**.
 
-Let's begin. The example is using the **Exercise001** from the exercises, so you can follow the instructions along. We'll assume that we have a project template that has an empty main program, called 
-**Program.cs**. 
 
 ```cpp
 using System;
@@ -72,23 +71,23 @@ namespace Exercise001
 }
 ```
 
-The next part is meant for creating new classes in Visual Studio Code. You can, of course, use any editor you wish. This course material is intended for Visual Studio Code.
+Seuraava olsio on tarkoitettu uusien luokkien luomiseen Visual Studio Codessa. Voit toki käyttää mitä tahansa editoria, mutta tämä materiaali on luotu Visual Studio Codelle.
 
-### Creating a new class
+### Uuden luokan luominen
 
-1. To add a new class, right click in the VSCode Explorer and select New File. This adds a new file to the folder you have open in VSCode.
+1. Luodaksemme uuden luokan, klikkaa hiiren oikealla painikkeella VSCode Explorerissa ja valitse New File. Tämä luo uuden tiedoston kansioon, joka on auki VSCode:ssa.
 
-As with variables and methods, the name of a class should be as descriptive as possible. It's usual for a class to live on and take on a different form as a program develops. As such, the class may have to be renamed at some later point
+Kuten muuttujilla ja metodeilla, luokan nimellä tulisi olla mahdollisimman kuvaava nimi. On tavallista, että luokka elää ja muuttaa muotoaan ohjelman kehittyessä. Tästä syystä luokan nimeä voi joutua muuttamaan myöhemmin.
 
-2. Name your file **Person.cs**. You must save it with a .cs extension at the end for it to be recognized as a csharp file.
+2. Nimeä tiedostosi **Person.cs**. Tiedoston tulee päättyä .cs-päätteeseen, jotta se tunnistetaan C#-tiedostoksi.
 
-Make sure the file Person.cs is in the same folder as **Program.cs**
+Varmista, että tiedosto **Person.cs** on samassa kansiossa kuin **Program.cs**
 
-3. Make sure to include the correct **namespace** so you can reference it from your Program.cs file. 
+3. Varmista, että tiedostossa on oikea **namespace**, jotta voit viitata siihen **Program.cs**-tiedostosta.
 
-We'll get to namespaces later. For now, whenever you create a new class, **use the same namespace as existing classes**.
+Käsittelemme namespacet myöhemmin. Tällä hetkellä, kun luot uuden luokan, **käytä samaa namespacea kuin olemassa olevilla luokilla**.
 
-4. Add this code to your file:
+4. Lisää tämä koodi tiedostoosi:
 
 ```cpp
 using System;
@@ -102,7 +101,7 @@ namespace Exercise001
 }
 ```
 
-A class defines the attributes and behaviors of objects that are created from it. Let's decide that each person object has a name and an age. It's natural to represent the name as a string, and the age as an integer. We'll go ahead and add these to our blueprint:
+Luokka määrittää olion ominaisuudet ja metodit. Päätetään antaa Person-luokalle kaksi ominaisuutta: nimi ja ikä. On luonnollista että nimi on merkkijono, ja ikä on numero. Lisätään nämä "piirrustuksiimme":
 
 ```cpp
 public class Person {
@@ -111,19 +110,20 @@ public class Person {
 }
 ```
 
-We specify above that each object created from the Person class has a name and an age. Variables defined inside a class are called instance variables, or object fields or object attributes. Other names also seem to exist.
+Yllä määrittelimme, että jokaisella oliolla joka luodaan Person luokasta, on nimi ja ikä. Luokan sisällä määritellyt muuttujat ovat **instanssimuuttujia**, tai olion attribuutteja. Muitakin nimiä saattaa esiintyä. 
 
-Instance variables are written on the lines following the class definition **public class Person {**. Each variable is preceded by the keyword private. The keyword private means that the variables are "hidden" inside the object. This is known as encapsulation.
+Instanssimuuttujat kirjoitetaan luokan määrittelyn jälkeen, eli rivin **public class Person {** jälkeen. Jokainen muuttuja on edeltävänä **private**-avainsanalla. **private**-avainsana tarkoittaa, että muuttujat ovat "piilossa" olion sisällä. Tätä kutsutaan **kapseloinniksi** (englanniksi **encapsulation**).
 
-In the class diagram, the variables associated with the class are defined as "variableName: variableType". The minus sign before the variable name indicates that the variable is encapsulated (it has the keyword private).
+Luokkakaaviossa, muuttujat jotka liittyvät luokkaan, määritellään muodossa **"muuttujanNimi: muuttujanTyyppi"**. Miinusmerkki muuttujan nimen edessä tarkoittaa, että muuttuja on kapseloitu (sillä on private-avainsana).**
 
-![Class Diagram](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/person.jpg)
+![Luokkakaavio](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/person.jpg)
 
-We have now defined a blueprint -- a class -- for the person object. Each new person object has the variables **name** and **age**, which are able to hold object-specific values. The "state" of a person consists of the values assigned to their name and age.
+Olemme nyt määrittäneet piirrustukset -- luokan -- person -oliolle. Jokainen uusi person-olio sisältää muuttujat **name** ja **age**, jotka voivat pitää sisällään oliokohtaisia arvoja. Person-olion "tila" koostuu sen name- ja age-muuttujien arvoista.
 
-The person doesn't do anything yet, but we'll get there.
+Person ei tee vielä mitään, mutta pääsemme sinne kyllä.
 
-## Defining a Constructor
+## Konstruktorin määrittäminen
+
 
 We want to set an initial state for an object that's created. Custom objects are created the same way as objects from pre-made classes, such as List, using the **new** keyword. It'd be convenient to pass values ​​to the variables of that object as it's being created. For example, when creating a new person object, it's useful to be able to provide it with a name:
 
