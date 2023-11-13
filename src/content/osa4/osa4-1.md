@@ -124,8 +124,7 @@ Person ei tee vielä mitään, mutta pääsemme sinne kyllä.
 
 ## Konstruktorin määrittäminen
 
-
-We want to set an initial state for an object that's created. Custom objects are created the same way as objects from pre-made classes, such as List, using the **new** keyword. It'd be convenient to pass values ​​to the variables of that object as it's being created. For example, when creating a new person object, it's useful to be able to provide it with a name:
+Haluamme asettaa alkutilan luotavalle oliolle. Omat oliomme luodaan samalla tavalla kuin valmiitkin oliot, kuten List, käyttäen **new**-avainsanaa. Olisi kätevää pystyä antamaan oliolle luodessa sen muuttujille alkuarvot. Esimerkiksi person oliolle olisi kätevää pystyä antamaan nimi:
 
 ```cpp
     public static void Main(string[] args)
@@ -135,7 +134,44 @@ We want to set an initial state for an object that's created. Custom objects are
     }
 ```
 
-This is achieved by defining the method that creates the object, i.e., its **constructor**. The constructor is defined after the instance variables. In the following example, a constructor is defined for the Person class, which can be used to create a new Person object. The constructor sets the age of the object being created to 0, and the string passed to the constructor as a parameter as its name:
+Tämä saadaan tehtyä määrittämällä metodi, joka luo olion, eli **konstruktori**. Konstruktori määritellään instanssimuuttujien jälkeen. Seuraavassa esimerkissä määritellään konstruktori Person-luokalle, jota voidaan käyttää uuden Person-olion luomiseen. Konstruktori asettaa olion iän 0:aan ja merkkijonon joka sille annetaan parametrina olion nimeksi:
+
+
+```cpp
+public class Person
+{
+  private string name;
+  private int age;
+
+  public Person(string initialName) 
+  {
+    this.age = 0;
+    this.name =  initialName;
+  }
+}
+```
+
+Konstruktorin nimi on aina sama kuin luokan nimi. Yllä olevassa esimerkissä luokan nimi on Person, joten konstruktorin nimi on myös Person. Konstruktori saa parametrina nimen luotavalle oliolle. Parametri on sulkujen sisällä ja seuraa konstruktorin nimeä. Sulkeita seuraa aaltosulkeet. Näiden sisällä on lähdekoodi, jota ohjelma suorittaa kun konstruktoria kutsutaan (esim. new Person("Ada")).
+
+**Oliot luodaan aina käyttämällä konstruktoria.**
+
+Muutamia huomioita: konstruktori sisältää lausekkeen **this.age = 0**. Tämä lauseke asettaa vasta luodun olion (eli "tämän" , englanniksi **this** olion) age-instanssimuuttujan arvoksi 0. Toinen lauseke **this.name = initialName** asettaa parametrina annetun merkkijonon olion luodessaan.
+
+![Luokkakaavio konstruktorin kanssa](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/personconstructor.jpg)
+
+Jos ohjelmoija ei määritä luokalle konstruktoria, C#-kääntäjä luo luokalle oletuskonstruktorin. Oletuskonstruktori on konstruktori, joka ei tee mitään muuta kuin luo olion. Olion muuttujat pysyvät alustamattomina (yleensä olion viittaukset ovat null-arvoisia, eli ne eivät osoita mihinkään).
+
+Esimerkiksi olio voidaan luoda alla olevasta luokasta kutsumalla **new Person()**
+
+```cpp
+public class Person
+{
+  private string name;
+  private int age;
+}
+```
+
+Jos konstruktori on määritelty, oletuskonstruktoria ei ole olemassa. Alla olevalle luokalle, kutsu new Person() aiheuttaisi virheen, koska konstruktoria ilman parametreja ei ole määritelty.
 
 
 ```cpp
@@ -151,44 +187,10 @@ public class Person
 }
 ```
 
-The constructor's name is always the same as the class name. The class in the example above is named Person, so the constructor will also have to be named Person. The constructor is also provided, as a parameter, the name of the person object to be created. The parameter is enclosed in parentheses and follows the constructor's name. The parentheses that contain optional parameters are followed by curly brackets. In between these brackets is the source code that the program executes when the constructor is called (e.g., new Person ("Ada")).
+## Metodin määrittäminen oliolle
 
-**Objects are always created using a constructor.**
+Osaamme nyt luoda olion ja alustaa sen muuttujat. Olio tarvitsee kuitenkin myös metodeja, jotta se voi tehdä jotain. Kuten olemme oppineet, **metodi** on nimetty lähdekoodin osa luokassa, jota voidaan kutsua.
 
-A few things to note: the constructor contains the expression **this.age = 0**. This expression sets the instance variable age of the newly created object (i.e., "this" object's age) to 0. The second expression **this.name = initialName** likewise assigns the string passed as a parameter to the instance variable name of the object created.
-
-![Class Diagram With Constructror](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/personconstructor.jpg)
-
-If the programmer does not define a constructor for a class, the C# compiler automatically creates a default one for it. A default constructor is a constructor that doesn't do anything apart from creating the object. The object's variables remain uninitialized (generally, the value of any object references will be null, meaning that they do not point to anything).
-
-For example, an object can be created from the class below by making the call **new Person()**
-
-```cpp
-public class Person
-{
-  private string name;
-  private int age;
-}
-```
-
-If a constructor has been defined for a class, no default constructor exists. For the class below, calling new Person would cause an error, as the compiler cannot find a constructor in the class that has no parameters.
-
-```cpp
-public class Person
-{
-  private string name;
-  private int age;
-
-  public Person(string initialName) {
-    this.age = 0;
-    this.name =  initialName;
-  }
-}
-```
-
-## Defining Methods For an Object
-
-We know how to create an object and initialize its variables. However, an object also needs methods to be able to do anything. As we've learned, a **method** is a named section of source code inside a class which can be invoked.
 
 ```cpp
 public class Person
@@ -207,19 +209,19 @@ public class Person
 }
 ```
 
-A method is written inside of the class beneath the constructor. The method name is preceded by **public void**, since the method is intended to be visible to the outside world (**public**), and it does not return a value (**void**).
+Metodi kirjoitetaan luokassa konstruktorin alapuolelle. Metodin nimi alkaa **public void**, sillä metodin tarkoitus on olla saatavilla ulkopuolisille (**public**) ja se ei palauta mitään arvoa (**void**).
 
-We've used the modifier **static** in some of the methods that we've written. The static modifier indicates that the method in question does not belong to an object and thus cannot be used to access any variables that belong to objects.
+Olemme käyttäneet määritelmää **static** joissain metodeissa joita olemme kirjoittaneet. **Static**-määritelmä tarkoittaa, että metodi ei kuulu mihinkään olioon, eikä sitä voi käyttää olioiden muuttujien arvojen hakemiseen.
 
-Going forward, our methods **will not include the static keyword** if they're used to process information about objects created form a given class. If a method receives as parameters all the variables whose values ​​it uses, it can have static modifier.
+Tästä eteenpäin, metodeissamme **ei tule olemaan static-määritelmää**, jos ne käsittelevät tietoa oliosta, joka on luotu jostain luokasta. Jos metodi saa parametreina kaikki ne muuttujat joiden arvoja se käyttää, se voi olla static-metodi.
 
-In addition to the class name, instance variables, and constructor, the class diagram now also includes the method PrintPerson. Since the method comes with the **public** modifier, the method name is prefixed with a plus sign. No parameters are defined for the method, so nothing is put inside the method's parentheses. The method is also marked with information indicating that it does not return a value, here **void**.
+Luokan nimen, instanssimuuttujien ja konstruktorin lisäksi luokkakaaviossa on nyt myös metodi PrintPerson. Koska metodi tulee **public**-määritelmän kanssa, metodi on merkitty plus-merkillä. Metodin nimen perässä ei ole sulkujen sisällä mitään, koska metodi ei ota parametreja. Metodille on myös merkitty sen palautusarvo (tai tällä kertaa, ettei se palauta mitään), **void**.
 
-![Class Diagram With Print](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/printperson.jpg)
+![Luokkaakaavio tulostusmetodin kanssa](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/printperson.jpg)
 
-The method **PrintPerson** contains one line of code that makes use of the instance variables **name** and **age** -- the class diagram says nothing about its internal implementations. Instance variables are referred to with the prefix this. All of the object's variables are visible and available from within the method.
+Metodi **PrintPerson** sisältää yhden rivin lähdekoodia, joka käyttää instanssimuuttujia **name** ja **age**. Luokkakaaviossa ei ole mitään tietoa siitä, mitä metodi tekee. Instanssimuuttujiin viitataan etuliitteellä this. Kaikki olion muuttujat ovat näkyvissä ja käytettävissä metodin sisällä.
 
-Let's create three persons in the main program and request them to print themselves:
+Luodaan kolme henkilöä pääohjelmassa ja pyydetään heitä tulostamaan itsensä:
 
 ```cpp
 class Program
