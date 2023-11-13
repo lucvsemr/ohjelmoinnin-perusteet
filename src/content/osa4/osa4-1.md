@@ -4,43 +4,44 @@ nav_order: 1
 hidden: false
 ---
 
-We'll now begin our journey in to the world of object-oriented programming. We'll start with focusing on describing concepts and data using objects. From there on, we'll learn how to add functionality, i.e., methods to our program.
+Aloitamme nyt matkamme **olio-ohjelmoinnin** (englanniksi **Object Oriented Programming**, usein lyhennetty **OOP**) maailmaan. Ensin keskitymme kuvailemaan käsitteitä ja dataa käyttäen olioita. Siitä eteenpäin opimme lisäämään toiminnallisuutta, eli metodeja ohjelmaamme.
 
-Object-oriented programming is concerned with isolating concepts of a problem domain into separate entities and then using those entities to solve problems. Concepts related to a problem can only be considered once they've been identified. In other words, we can form abstractions from problems that make those problem easier to approach.
+Olio-ohjelmointi keskittyy ongelmien ratkaisemiseen eristämällä ongelma-alueen käsitteet erillisiksi entiteeteiksi ja käyttämällä näitä entiteettejä ongelmien ratkaisemiseen. Ongelmaan liittyvät käsitteet voidaan ottaa huomioon vasta kun ne on tunnistettu. Toisin sanoen on mahdollista muodostaa ongelmasta abstraktio, joka tekee ongelman lähestymisestä helpompaa.
 
-Once concepts related to a given problem have been identified, we can also begin to build constructs that represent them them into programs. These constructs, and the individual instances that are formed from them, i.e., objects, are used in solving the problem. The statement "programs are built from small, clear, and cooperative objects" may not make much sense yet. However, it will appear more sensible as we progress through the course, perhaps even self-evident.
+Kun ongelmaan liittyvät käsitteet on tunnistettu, voimme myös alkaa rakentaa ohjelmia, jotka edustavat niitä. Nämä rakenteet, ja niistä muodostetut yksittäiset instanssit, eli oliot, ovat käytössä ongelman ratkaisemisessa. Lause "ohjelmat rakennetaan pienistä, selkeistä ja yhteistyökykyisistä olioista" ei välttämättä vielä tarkoita paljoakaan. Se alkaa kuitenkin tuntua järkevältä, kun kurssin edetessä pääsemme käsittelemään konkreettisia esimerkkejä.
 
-## Classes and objects
+## Luokat ja oliot
 
-We've already used some of the classes and objects provided by C#. A class defines the attributes of objects, i.e., the information related to them (instance variables and properties), and their commands, i.e., their methods. The values of instance (i.e., object) variables define the internal state of an individual object, whereas methods define the functionality it offers.
+Olemme jo käyttäneet C#-kielen tarjoamia luokkia ja olioita. Luokka määrittelee olioiden ominaisuudet, eli niiden tietoon liittyvät asiat (instanssimuuttujat ja olion ominaisuudet), sekä niiden käyttäytymisen, eli metodit. Olioiden instanssimuuttujien arvot määrittelevät yksittäisen olion sisäisen tilan, kun taas metodit määrittelevät sen tarjoaman toiminnallisuuden.
 
-A **Method** is a piece of source code written inside a class that's been named and has the ability to be called. A method is always part of some class and is often used to modify the internal state of an object instantiated from a class.
+**Metodi** on osa lähdekoodia joka on nimetty ja jota voidaan kutsua. Metodi on aina jonkin luokan osa ja sitä käytetään usein muokkaamaan olion sisäistä tilaa.
 
-As an example, List is a class offered by C#, and we've made use of objects instantiated from it in our programs. Below, an List object named integers is created and some integers are added to it.
+Esimerkiksi, Lista on C#-kielen tarjoama luokka, ja olemme käyttäneet sen tarjoamia olioita ohjelmissamme. Alla luodaan Lista-luokasta olio nimeltä integers ja lisätään siihen muutamia kokonaislukuja.
+
 
 ```cpp
-// we create an object from the List class named integers
+// luomme List-luokasta integers-olion
 List<int> integers = new List<int>();
 
-// let's add the values 15, 34, 65, 111 to the integers object
+// lisätään arvot 15, 34, 65, 111 integers-olioon
 integers.Add(15);
 integers.Add(34);
 integers.Add(65);
 integers.Add(111);
 
-// we print the size of the integers object
+// tulostetaan integers-olion koko
 Console.WriteLine(integers.Count);
 ```
 
-An object is always instantiated by calling a method that created an object, i.e., a constructor by using the new keyword.
+Olio alustetaan aina kutsumalla metodia joka luo objektin, eli konstruktoria käyttäen **new**-avainsanaa.
 
-A class lays out a blueprint for any objects that are instantiated from it. Let's draw from an analogy from outside the world of computers. Detached houses are most likely familiar to most, and we can safely assume the existence of drawings somewhere that determine what exactly a detached house is to be like. A class is a blueprint. In other words, it specifies what kinds of objects can be instantiated from it:
+Luokka määrittelee piirrustukset oliolle, joka alustetaan siitä. Piirretään analogia luokasta ja oliosta johonkin muuhun kuin tietokoneohjelmointiin. Omakotitalo on todennäköisesti tuttu monille, ja voimme olettaa että olemassa on piirrustukset jotka määrittelevät mitä omakotitalo on. Luokka on piirrustus. Toisin sanottuna se määrittelee mitä luokasta luodut oliot ovat:
 
-![House blueprints](https://github.com/centria/basic-csharp/raw/master/src/images/houses.jpg)
+![Talon piirrustukset](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/houses.jpg)
 
 Individual objects, detached houses in this case, are all created based on the same blueprints - they're instances of the same class. The states of individual objects, i.e., their attributes (such as the wall color, the building material of the roof, the color of its foundations, the doors' materials and color, ...) may all vary, however. The following is an "object of a detached-house class":
 
-![Single house](https://github.com/centria/basic-csharp/raw/master/src/images/singlehouse.jpg)
+![Single house](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/singlehouse.jpg)
 
 ## Creating Classes
 
@@ -115,7 +116,7 @@ Instance variables are written on the lines following the class definition **pub
 
 In the class diagram, the variables associated with the class are defined as "variableName: variableType". The minus sign before the variable name indicates that the variable is encapsulated (it has the keyword private).
 
-![Class Diagram](https://github.com/centria/basic-csharp/raw/master/src/images/person.jpg)
+![Class Diagram](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/person.jpg)
 
 We have now defined a blueprint -- a class -- for the person object. Each new person object has the variables **name** and **age**, which are able to hold object-specific values. The "state" of a person consists of the values assigned to their name and age.
 
@@ -155,7 +156,7 @@ The constructor's name is always the same as the class name. The class in the ex
 
 A few things to note: the constructor contains the expression **this.age = 0**. This expression sets the instance variable age of the newly created object (i.e., "this" object's age) to 0. The second expression **this.name = initialName** likewise assigns the string passed as a parameter to the instance variable name of the object created.
 
-![Class Diagram With Constructror](https://github.com/centria/basic-csharp/raw/master/src/images/personconstructor.jpg)
+![Class Diagram With Constructror](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/personconstructor.jpg)
 
 If the programmer does not define a constructor for a class, the C# compiler automatically creates a default one for it. A default constructor is a constructor that doesn't do anything apart from creating the object. The object's variables remain uninitialized (generally, the value of any object references will be null, meaning that they do not point to anything).
 
@@ -213,7 +214,7 @@ Going forward, our methods **will not include the static keyword** if they're us
 
 In addition to the class name, instance variables, and constructor, the class diagram now also includes the method PrintPerson. Since the method comes with the **public** modifier, the method name is prefixed with a plus sign. No parameters are defined for the method, so nothing is put inside the method's parentheses. The method is also marked with information indicating that it does not return a value, here **void**.
 
-![Class Diagram With Print](https://github.com/centria/basic-csharp/raw/master/src/images/printperson.jpg)
+![Class Diagram With Print](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/printperson.jpg)
 
 The method **PrintPerson** contains one line of code that makes use of the instance variables **name** and **age** -- the class diagram says nothing about its internal implementations. Instance variables are referred to with the prefix this. All of the object's variables are visible and available from within the method.
 
@@ -275,7 +276,7 @@ The method is written inside the Person class just as the printPerson method was
 
 The class diagram also gets an update.
 
-![Class Diagram With Growth](https://github.com/centria/basic-csharp/raw/master/src/images/persongrow.jpg)
+![Class Diagram With Growth](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/persongrow.jpg)
 
 Let's call the method and see what happens:
 
@@ -482,7 +483,7 @@ public class Person
 }
 ```
 
-![Class Diagram With Return](https://github.com/centria/basic-csharp/raw/master/src/images/personreturn.jpg)
+![Class Diagram With Return](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/personreturn.jpg)
 
 Let's illustrate how the method works:
 
@@ -962,7 +963,7 @@ Add the variables
 - private int age   
 to the class. As a class diagram, the class looks like this:
 
-![Dog class diagram](https://github.com/centria/basic-csharp/raw/master/src/images/dogclass.jpg)
+![Dog class diagram](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/dogclass.jpg)
 
 
 </Exercise>
@@ -971,7 +972,7 @@ to the class. As a class diagram, the class looks like this:
 
 Create a class named `Room` (and file `Room.cs`). Add the variables `private string code` and `private int seats` to the class. Then create a constructor `public Room(string classCode, int numberOfSeats)` through which values are assigned to the instance variables.
 
-![Room class diagram](https://github.com/centria/basic-csharp/raw/master/src/images/roomclass.jpg)
+![Room class diagram](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/roomclass.jpg)
 
 
 </Exercise>
