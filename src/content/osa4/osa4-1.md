@@ -247,9 +247,10 @@ Antti, age 0 years
 Martin, age 0 years
 ```
 
-## Changing an Instance Variable's Value in a Method
+## Instanssimuuttujien arvojen muuttaminen metodissa
 
-Let's add a method to the previously created person class that increments the age of the person by a year.
+Lisätään metodi aiemmin luotuun luokkaan Person, joka kasvattaa henkilön ikää yhdellä vuodella.
+
 
 ```cpp
 public class Person
@@ -275,13 +276,13 @@ public class Person
 }
 ```
 
-The method is written inside the Person class just as the printPerson method was. The method increments the value of the instance variable age by one.
+Metodi on kirjoitettu luokan sisälle, kuten PrintPerson-metodikin. Metodi kasvattaa instanssimuuttujan **age** arvoa yhdellä.
 
-The class diagram also gets an update.
+Myös luokkakaavio saa päivityksen.
 
 ![Class Diagram With Growth](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/persongrow.jpg)
 
-Let's call the method and see what happens:
+Kutsutaan metodia ja katsotaan mitä tapahtuu:
 
 ```cpp
 static void Main(string[] args)
@@ -306,7 +307,7 @@ static void Main(string[] args)
 }
 ```
 
-Prints
+Tulostaa
 
 ```console
 Ada, age 0 years
@@ -318,9 +319,10 @@ Antti, age 2 years
 Martin, age 0 years
 ```
 
-That is to say that when the two objects are "born" they're both zero-years old (**this.age = 0**; is executed in the constructor). The **ada** object's GrowOlder method is called once, and **antti** object's GrowOlder is called twice.. As the print output demonstrates, the age of Ada is 1 years after growing older, for Antti it is 2. Calling the method on an object corresponding to Ada or Antti has no impact on the age of the other person object since each object instantiated form a class has its own instance variables, as can be seen from Martin.
+Kun nämä kaksi oliota "syntyvät" niillä on molemmilla ikä 0 (**this.age = 0;** suoritetaan konstruktorissa). **ada**-olion GrowOlder-metodia kutsutaan kerran, ja **antti**-olion GrowOlder-metodia kutsutaan kahdesti. Kuten tulostus osoittaa, Adan ikä on 1 vuosi kasvun jälkeen, Antin ikä on 2. Metodin kutsuminen olion kohdalla vastaavasti ei vaikuta toisen henkilö-olion ikään, koska jokainen luokasta instanssioidut oliot ovat omia instanssejaan, kuten Martin.
 
-The method can also contain conditional statements and loops. The GrowOlder method below limits aging to 100 years.
+Metodi voi myös sisältää ehtolauseita tai silmukoita. Alla GrowOlder -metodi on muutettu niin, että se rajoittaa ikääntymisen 100 vuoteen.
+
 
 ```cpp
 public class Person
@@ -349,9 +351,10 @@ public class Person
 }
 ```
 
-## Returning a Value From a Method
+## Arvon palauttaminen metodista
 
-A method can return a value. The methods we've created in our objects haven't so far returned anything. This has been marked by typing the keyword **void** in the method definition.
+Metodi voi palauttaa arvon. Tähän mennessä luomamme metodit eivät ole palauttaneet mitään. Tämä on merkitty kirjoittamalla metodin määrittelyn yhteyteen **void**-avainsana.
+
 
 ```cpp
 public class Door 
@@ -363,9 +366,10 @@ public class Door
 }
 ```
 
-The keyword **void** means that the method does not return a value.
+Avainsana **void** tarkoittaa, että metodi ei palauta mitään arvoa.
 
-If we want the method to return a value, we need to replace the void keyword with the type of the variable to be returned. In the following example, the Teacher class has a method **Grade** that always returns an integer-type (**int**) variable (in this case, the value 10). The value is always returned with the **return** command:
+Jos haluamme metodin palauttavan arvon, meidän tulee korvata **void**-avainsana muulla. Seuraavassa esimerkissä luokkaan Teacher on lisätty metodi **Grade**, joka palauttaa aina kokonaislukumuuttujan arvon 10. Arvo palautetaan aina **return**-käskyllä:
+
 
 ```cpp
 public class Teacher 
@@ -377,7 +381,7 @@ public class Teacher
 }
 ```
 
-The method above returns an **int** type variable of value 10 when called. For the return value to be used, it needs to be assigned to a variable. This happens the same way as regular value assignment, i.e., by using the equals sign:
+Metodi yllä palauttaa **int** tyyppisen muuttujan, jonka arvo on 10. Jotta paluuarvoa voidaan käyttää, se tulee sijoittaa muuttujaan. Tämä tapahtuu samalla tavalla kuin muuttujan arvon sijoittaminen, eli käyttämällä yhtäsuuruusmerkkiä:
 
 ```cpp
 class Program
@@ -397,7 +401,8 @@ class Program
 The grade received is 10
 ```
 
-The method's return value is assigned to a variable of type **int** value just as any other int value would be. The return value could also be used to form part of an expression.
+Metodin paluuarvo sijoitetaan **int** -muuttujaan aivan kuten mikä tahansa muukin **int** -arvo. Paluuarvoa voitaisiin käyttää myös osana lauseketta.
+
 
 ```cpp
 static void Main(string[] args)
@@ -416,9 +421,9 @@ Console.WriteLine("Grading average " + average);
 Grading average 10
 ```
 
-All the variables we've encountered so far can also be returned by a method. To sum:
+Kaikki muuttujat joita olemme tähän mennessä käyttäneet, voidaan palauttaa myös metodista. Yhteenvetona:
 
-* A method that returns nothing has the **void** modifier as the type of variable to be returned.
+* Metodi joka ei palauta mitään arvoa, on määritelty **void**-avainsanalla.
 
 ```cpp
 public void MethodThatReturnsNothing() {
@@ -426,7 +431,8 @@ public void MethodThatReturnsNothing() {
 }
 ```
 
-* A method that returns an integer variable has the **int** modifier as the type of variable to be returned.
+* Metodi joka palauttaa kokonaisluvun, on määritelty **int**-avainsanalla.
+
 
 ```cpp
 public int MethodThatReturnsAnInteger() {
@@ -434,7 +440,7 @@ public int MethodThatReturnsAnInteger() {
 }
 ```
 
-* A method that returns a string has the **string** modifier as the type of the variable to be returned
+* Metodi joka palauttaa merkkijonon, on määritelty **string**-avainsanalla.
 
 ```cpp
 public string MethodThatReturnsAString() {
@@ -442,7 +448,8 @@ public string MethodThatReturnsAString() {
 }
 ```
 
-* A method that returns a double-precision number has the **double** modifier as the type of the variable to be returned.
+* Metodi joka palauttaa liukuluvun, on määritelty **double**-avainsanalla.
+
 
 ```cpp
 public double MethodThatReturnsADouble() {
@@ -450,8 +457,7 @@ public double MethodThatReturnsADouble() {
 }
 ```
 
-
-Let's continue with the Person class and add a **ReturnAge** method that returns the person's age.
+Jatketaan Person-luokan kehittämistä ja lisätään siihen **ReturnAge**-metodi, joka palauttaa henkilön iän.
 
 ```cpp
 public class Person
@@ -486,9 +492,9 @@ public class Person
 }
 ```
 
-![Class Diagram With Return](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/personreturn.jpg)
+![Luokkakaavio palauttavan metodin kanssa](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/personreturn.jpg)
 
-Let's illustrate how the method works:
+Katsotaan miten metodi toimii:
 
 ```cpp
 static void Main(string[] args)
@@ -515,14 +521,15 @@ Antti's age: 1
 Pekka's and Antti's combined age 3 years
 ```
 
-As we came to notice, methods can contain source code in the same way as other parts of our program. Methods can have conditionals or loops, and other methods can also be called from them.
+Kuten huomasimme, metodi voi sisältää lähdekoodia samalla tavalla kuin muutkin koodimme osat. Metodit voivat sisältää ehtolauseita tai silmukoita, ja muita metodeita voidaan kutsua niiden sisällä.
 
-Let's now write a method for the person that determines if the person is of legal age. The method returns a boolean - either **true** or **false**:
+Kirjoitetaan nyt metodi, joka määrittää onko henkilö täysi-ikäinen. Metodi palauttaa boolean-arvon, joka on joko **true** tai **false**:
+
 
 ```cpp
 class Person
 {
-  //... The existing code could be up here
+  //... Kaikki aiempi koodi on tässä välissä
 
   public bool IsOfLegalAge()
   {
@@ -535,8 +542,7 @@ class Person
   }
 
   /*
-  The method could have been written more succintly in the following way:
-
+  Metodi olisi voinut olla kirjoitettu myös seuraavasti:
   public bool IsOfLegalAge() 
   {
     return this.age >= 18;
@@ -545,7 +551,7 @@ class Person
 }
 ```
 
-And let's test it out:
+Kokeillaanpa:
 
 ```cpp
 static void Main(string[] args)
@@ -591,15 +597,16 @@ underage: Antti, age 1 years
 of legal age: Pekka, age 27 years
 ```
 
-Let's fine-tune the solution a bit more. In its current form, a person can only be "printed" in a way that includes both the name and the age. Situations exist, however, where we may only want to know the name of an object. 
+Hienosäädetään ratkaisua vielä hieman. Nykyisellään henkilö voidaan "tulostaa" vain siten, että tulostetaan sekä nimi että ikä. Tilanteita kuitenkin esiintyy, joissa halutaan tietää vain henkilön nimi.
 
-In many programming languages, you would write a **get method** for this. In C#, properties, such as our Person's **age** and **name**, can be used with [**Auto Implementation Property**](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/auto-implemented-properties). 
+Monessa ohjelmointikielessä tähän käytetään **get-metodia**. C#-kielellä, olioiden ominaisuuksia, kuten henkilön **age** ja **name**, voidaan käyttää automaattisesti toteutettujen ominaisuuksien, eli [**Auto Implementation Property**](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/auto-implemented-properties) kautta.
+
 
 ```cpp
 public string name { get; }
 ```
 
-Let's open this up a bit. "Under the hood", the code above tells our **C# compiler** that our property **name** has kind of "built-in" methods for getting an setting the value. The code above is equal in functionality to:
+Avataan tätä hieman. "Konepellin alla", yllä oleva koodi kertoo **C#-kääntäjälle** että meidän **name**-ominaisuudella on "sisäänrakennettu" metodi arvon hakemiseen ja asettamiseen. Koodi yllä on toiminnallisesti sama kuin:
 
 ```cpp
 string _name;
@@ -612,10 +619,9 @@ public string name
 }
 ```
 
-In this example, there is now also a line **string _name;**, and on both our original **string name** is now **public**. The **string _name;** is known as a [**Backing field**](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties#properties-with-backing-fields), you can read more about them from the link. We do not have to worry about them now.
+Tässä esimerkissä, meillä on nyt myös rivi **string _name;**, ja molemmilla meidän alkuperäisellä **string name** on nyt **public**. **string _name;** tunnetaan englanninkielisellä termillä [**Backing field**](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties#properties-with-backing-fields), josta voit lukea lisää linkistä. Meidän ei tarvitse huolehtia niistä nyt.
 
-
-Rather than having a method like we did with our **age**:
+Metodin kirjoittamisen sijaan, kuten teimme **age** kanssa:
 
 ```cpp
 public string ReturnAge() {
@@ -623,15 +629,17 @@ public string ReturnAge() {
 }
 ```
 
-We have a very short solution
+Meillä on nyt hyvin lyhyt vaihtoehto:
 
 ```cpp
 public string name { get; }
 ```
 
-<Note> We have to change our string name into public (from private), so it can be accessed from the Main program, or any other class. There are ways of protecting the property, but we'll get to that later. </Note>
+<Note> 
+Meidän pitää muuttaa merkkijonan nimi julkiseksi (private -> public), jotta se on käytettävissä pääohjelmassa, tai muissa luokissa. On tapoja suojata ominaisuus, mutta palaamme siihen myöhemmin.
+</Note>
 
-Let's use this way of getting age:
+Käytetään tätä uutta tapaa iälle:
 
 ```cpp
 static void Main(string[] args)
@@ -673,7 +681,7 @@ Antti is underage
 Pekka is of legal age
 ```
 
-You can see, that now we can call our **Person's** name with simply adding **.name** after the object, such as **antti.name**. Let's update our **age** to have a **get method** as well, and remove the old ReturnAge-method. Now our class looks like this:
+Kuten huomataan, nyt voimme kutsua henkilön nimeä suoraan lisäämällä **.name** olion nimen perään, kuten **antti.name**. Päivitetään vielä **age** omaamaan myös **get-metodi**, ja poistetaan vanha **ReturnAge**-metodi. Nyt luokkamme näyttää tältä:
 
 
 ```cpp
@@ -708,11 +716,12 @@ public class Person
 }
 ```
 
-You can see that **age** has also a method for **set**. This is because we are changing the age of **Person** in our method **GrowOlder**. We will get into **set method** later.
+Huomataan, että nyt **age**-muuttujalla on myös **set-metodi**. Tämä johtuu siitä, että muutamme **Person**-luokan **age**-muuttujan arvoa **GrowOlder**-metodissa. Palaamme **set-metodiin** myöhemmin.
 
-## A string representation of an object and the ToString-method
+## Olion merkkijonoesitys ja ToString-metodi
 
-We are guilty of programming in a somewhat poor style by creating a method for printing the object, i.e., the **PrintPerson** method. A preferred way is to define a method for the object that returns a "string representation" of the object. The method returning the string representation is always **ToString** in C#. Let's define this method for the person in the following example:
+Olemme nyt syyllistyneet huonoon ohjelmointityyliin, luomalla metodin tulostamista varten, eli **PrintPerson** metodin. Parempi tapa on määritellä metodi oliolle, joka palauttaa olion "merkkijonoesityksen". Metodi joka palauttaa merkkijonoesityksen on aina **ToString** C#:ssa. Määritellään tämä metodi person-oliolle seuraavassa esimerkissä:
+
 
 ```cpp
 public class Person
@@ -725,9 +734,10 @@ public class Person
 }
 ```
 
-The **ToString** functions as **PrintPerson** does. However, it doesn't itself print anything but instead **returns** a string representation, which the calling method can execute for printing as needed.
+Metodi **ToString** toimii kuten **PrintPerson**. Kuitenkin, se ei tulosta mitään, vaan **palauttaa** merkkijonoesityksen, jonka kutsuva metodi voi tulostaa tarvittaessa.
 
-The method is used in a somewhat surprising way:
+Metodia voidaan käyttää vähän yllättävälläkin tavalla:
+
 
 ```cpp
 static void Main(string[] args)
@@ -744,28 +754,29 @@ static void Main(string[] args)
 
   antti.GrowOlder();
 
-  Console.WriteLine(pekka); // Same as Console.WriteLine(pekka.ToString() )
-  Console.WriteLine(antti); // Same as Console.WriteLine(antti.ToString() )
+  Console.WriteLine(pekka); // Sama kuin Console.WriteLine(pekka.ToString() )
+  Console.WriteLine(antti); // Sama kuin Console.WriteLine(antti.ToString() )
 }
 ```
 
-In principle, the **Console.WriteLine** method requests the object's string representation and prints it. The call to the **ToString** method returning the string representation does not have to be written explicitly, as C# adds it automatically. When a programmer writes:
+Periaatteessa, **Console.WriteLine**-metodi pyytää olion merkkijonoesitystä ja tulostaa sen. Kutsu **ToString**-metodiin, joka palauttaa merkkijonoesityksen, ei tarvitse olla kirjoitettu erikseen, koska C# lisää sen automaattisesti. Kun ohjelmoija kirjoittaa:
+
 
 ```cpp
 Console.WriteLine(antti);
 ```
 
-C# extends the call at run time to the following form:
+C# laajentaa kutsun ajonaikana seuraavaan muotoon:
 
 ```cpp
 Console.WriteLine(antti.ToString());
 ```
 
-As such, the call **Console.WriteLine(antti)** calls the **ToString** method of the **antti object** and prints the string returned by it.
+Sellaisenaan, kutsu **Console.WriteLine(antti)** kutsuu **antti**-olion **ToString**-metodia ja tulostaa sen palauttaman merkkijonoesityksen.
 
-We can remove the now obsolete printPerson method from the Person class.
+Voimme nyt poistaa turhan **PrintPerson**-metodin **Person**-luokasta.
 
-## Method parameters
+## Metodin parametrit
 
 Let's continue with the **Person** class once more. We've decided that we want to calculate people's body mass indexes. To do this, we write methods for the person to set both the height and the weight, and also a method to calculate the body mass index. The new and changed parts of the Person object are as follows:
 
