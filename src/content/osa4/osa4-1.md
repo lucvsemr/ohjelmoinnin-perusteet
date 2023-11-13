@@ -83,9 +83,9 @@ Kuten muuttujilla ja metodeilla, luokan nimellä tulisi olla mahdollisimman kuva
 
 Varmista, että tiedosto **Person.cs** on samassa kansiossa kuin **Program.cs**
 
-3. Varmista, että tiedostossa on oikea **namespace**, jotta voit viitata siihen **Program.cs**-tiedostosta.
+3. Varmista, että tiedostossa on oikea **nimiavaruus** (englanniksi **namespace**), jotta voit viitata siihen **Program.cs**-tiedostosta.
 
-Käsittelemme namespacet myöhemmin. Tällä hetkellä, kun luot uuden luokan, **käytä samaa namespacea kuin olemassa olevilla luokilla**.
+Käsittelemme nimiavaruudet myöhemmin. Tällä hetkellä, kun luot uuden luokan, **käytä samaa nimiavaruuta (namespace) kuin olemassa olevilla luokilla**.
 
 4. Lisää tämä koodi tiedostoosi:
 
@@ -778,7 +778,7 @@ Voimme nyt poistaa turhan **PrintPerson**-metodin **Person**-luokasta.
 
 ## Metodin parametrit
 
-Let's continue with the **Person** class once more. We've decided that we want to calculate people's body mass indexes. To do this, we write methods for the person to set both the height and the weight, and also a method to calculate the body mass index. The new and changed parts of the Person object are as follows:
+Jatketaan vielä luokan Person kehittämistä. Olemme päättäneet, että haluamme laskea ihmisten painoindeksit. Tätä varten kirjoitamme metodit henkilön pituuden ja painon asettamiseksi, ja myös metodin painoindeksin laskemiseksi. Person-olion uudet ja muutetut osat ovat seuraavat:
 
 ```cpp
 public class Person
@@ -805,7 +805,9 @@ public class Person
   // ...
 }
 ```
-The instance variables **height** and **weight** were added to the person. We can now see the **{ get; set; };** on both of these new variables. We will use them next to be able to tell our program, how tall or heavy a person is.
+
+Instanssimuuttujat **height** ja **weight** lisättiin person-oliolle. Nyt näemme **{ get; set; };** molemmilla näillä uusilla muuttujilla. Käytämme niitä seuraavaksi kertomaan ohjelmalle, kuinka pitkä tai painava henkilö on.
+
 
 ```cpp
 static void Main(string[] args)
@@ -825,16 +827,16 @@ static void Main(string[] args)
 }
 ```
 
-This prints us 
+Tämä tulostaa
 
 ```console
 Matti, body mass index is 26.54320987654321
 Juhana, body mass index is 20.897959183673468
 ```
 
-## A parameter and instance variable having the same name!
+## Parametrilla ja instanssimuuttujalla voi olla sama nimi!
 
-In our constructor, we use the variable **initialName** rather than just **name**.
+Konstruktorissamme, olemme käyttäneet muuttujaa **initialName** sen sijaan, että olisimme käyttäneet **name**. 
 
 ```cpp
 public Person(string initialName)
@@ -846,7 +848,7 @@ public Person(string initialName)
 }
 ```
 
-The parameter's name could also be the same as the instance variable's, so the following would also work:
+Parametrin nimi voisi olla myös sama kuin instanssimuuttujan nimi, joten seuraava toimisi myös:
 
 ```cpp
 public Person(string name)
@@ -858,7 +860,8 @@ public Person(string name)
 }
 ```
 
-In this case, **name** in the method refers specifically to a parameter named **name** and this.name to an instance variable of the same name. For example, the following example would not work as the code does not refer to the instance variable **name** at all. What the code does in effect is set the **name** variable received as a parameter to the value it already contains:
+Tässä tapauksessa **name** metodissa viittaa nimenomaan parametriin nimeltä **name** ja **this.name** instanssimuuttujaan samalla nimellä. Esimerkiksi seuraava esimerkki ei toimisi, koska koodi ei viittaa instanssimuuttujaan **name** ollenkaan. Koodi asettaa parametrina saadun **name**-muuttujan arvoksi sen arvon, joka sillä jo on:
+
 
 ```cpp
 public Person(string name)
@@ -866,7 +869,7 @@ public Person(string name)
   this.age = 0;
   this.weight = 0;
   this.height = 0;
-  // DO NOT DO THIS!
+  // EI IKINÄ NÄIN!
   name = name;
 }
 ```
@@ -877,14 +880,14 @@ public Person(string name)
   this.age = 0;
   this.weight = 0;
   this.height = 0;
-  // DO THIS INSTEAD!
+  // TÄMÄ ON OIKEIN!
   this.name = name;
 }
 ```
 
-## Calling an internal method
+## Sisäisen metodin kutsuminen
 
-The object may also call its methods. For example, if we wanted the string representation returned by ToString to also tell of a person's body mass index, the object's own BodyMassIndex method should be called in the ToString method:
+Olio voi myös kutsua omia metodeitaan. Esimerkiksi jos haluamme merkkijonoesityksen sisältävän myös painoindeksin, olisi **ToString**-metodin kutsuttava **BodyMassIndex**-metodia:
 
 ```cpp
 public override string ToString()
@@ -893,7 +896,8 @@ public override string ToString()
 }
 ```
 
-So, when an object calls an internal method, the **name of the method** and **this** prefix suffice. An alternative way is to call the object's own method in the form BodyMassIndex(), whereby no emphasis is placed on the fact that the object's own bodyMassIndex method is being called:
+Eli kun olio kutsuu omaa metodiaan, metodin nimi ja etuliite **this** riittävät. Vaihtohteinena olisi kutsua olion omaa **BodyMassIndex**-metodia muodossa **BodyMassIndex()**, jolloin ei korosteta sitä, että kutsutaan olion omaa **BodyMassIndex**-metodia:
+
 
 ```cpp
 public override string ToString()
@@ -905,14 +909,14 @@ public override string ToString()
 # Tehtävät
 
 <Note>
-When creating own classes, make sure to include the correct namespace so you can reference it from your Program.cs file. We'll get to namespaces later. For now, whenever you create a new class, use the same namespace as the Program.cs has.
+Kun luodaan omia luokkia, varmista, että sisällytät oikean nimiavaruuden, jotta voit viitata siihen Program.cs-tiedostosta. Palaamme nimiavaruuksiin myöhemmin. Toistaiseksi, kun luot uuden luokan, käytä samaa nimiavaruutta kuin Program.cs-tiedostossa on.
 
-Some of the exercises require you to make changes to the Main program. Be sure to read the instructions carefully!
+Joissain tehtävissä sinun tulee muuttaa Main-metodia. Lue ohjeet huolellisesti!
 </Note>
 
 <Exercise title={'001 First account'}>
 
-The exercise template comes with a ready-made class named Account. The Account object represents a bank account that has balance (i.e. one that has some amount of money in it). The accounts could be used as follows:
+Tehtäväpohjassa on valmiina luokka nimeltä Account. Account-olio edustaa pankkitiliä, jolla on saldoa (eli tilillä on rahaa). Tiliä voisi käyttää seuraavasti:
 
 ```cpp
 Account heikkisAccount = new Account("Heikki's account", 100.00);
@@ -932,30 +936,31 @@ Console.WriteLine(heikkisAccount);
 Console.WriteLine(heikkisSwissAccount);
 ```
 
-Write a program that 
-- creates an account with a balance of 100.0, 
-- deposits 20.0 in it, 
-- and finally prints the balance. 
+Kirjoita ohjelma, joka
+- luo tilin, jolla on saldoa 100.0,
+- tallettaa tilille 20.0,
+- ja tulostaa tilin saldon.
+
 
 ```console
 120
 ```
 
-<Note>Perform all the operations in this exact order.</Note>
+<Note>Suorita operaatiot tarkasti oikeassa järjestyksessä</Note>
 
 </Exercise>
 
 <Exercise title={'002 First transfer'}>
 
-The Account from the previous exercise class is also available in this exercise.
+Edellisestä tehtävästä tuttu Account on käytettävissä tässäkin tehtävässä.
 
-Write a program that:
+Kirjoita ohjelma, joka
 
-- Creates an account named "Heikki's account" with the balance 1000.0
-- Creates an account named "Personal account" with the balance 0
-- Withdraws 100.0 from Heikki's account
-- Deposits 100.0 to its own personal account
-- Prints account information (ToString) on both, first Heikki's, then Personal:
+- Luo tilin nimellä "Heikki's account" saldolla 1000.0
+- Luo tilin nimellä "Personal account" saldolla 0.0
+- Nostaa tililtä "Heikki's account" 100.0
+- Tallettaa tilille "Personal account" 100.0
+- Tulostaa molempien tilien tiedot, ensin Heikin tilin ja sitten Personal tilin
 
 ```console
 Heikki's account balance: 900
@@ -966,34 +971,38 @@ Personal account balance: 100
 
 <Exercise title={'003 First class'}>
 
-In this exercise, you'll practice creating a class.
+Tässä tehtävässä harjoitellaan luokan luomista.
 
-Name the class `Dog` (and the file `Dog.cs`)
+Nimeä luokka `Dog` (ja tiedosto `Dog.cs`)
 
-You have now created a class called `Dog`. 
-Add the variables 
+Lisää luokalle oikea namespace, jotta voit käyttää sitä pääohjelmasta.
+Lisää luokalle seuraavat muuttujat:
+
 - private string name,
 - private string breed and 
 - private int age   
-to the class. As a class diagram, the class looks like this:
+
+Luokkakaaviona luokka näyttää tältä:
 
 ![Dog class diagram](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/dogclass.jpg)
 
+Huomaa, että luokka ei vielä oikein tee mitään. Se vain määrittelee mitä tietoja koirasta tallennetaan.
 
 </Exercise>
 
 <Exercise title={'004 Classroom'}>
 
-Create a class named `Room` (and file `Room.cs`). Add the variables `private string code` and `private int seats` to the class. Then create a constructor `public Room(string classCode, int numberOfSeats)` through which values are assigned to the instance variables.
+Luo luokka nimeltä `Room` (ja tiedosto `Room.cs`). Lisää luokkaan muuttujat `private string code` ja `private int seats`. Tämän jälkeen luo konstruktori `public Room(string classCode, int numberOfSeats)`, joilla voidaan antaa arvot luokan muuttujille.
 
-![Room class diagram](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/roomclass.jpg)
+
+![Luokan luokkakaavio](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/roomclass.jpg)
 
 
 </Exercise>
 
 <Exercise title={'005 Whistle'}>
 
-Create a class named `Whistle`. Add the variable `private string sound` to the class. After that, create the constructor `public Whistle(string whistleSound)`, which is used to create a new whistle that's given a sound. After that, create a method `public void Sound()` which prints out the sound (using Console.WriteLine).
+Luodaan luokka `Whistle`. Lisää luokkaan muuttuja `private string sound`. Tämän jälkeen luo konstruktori `public Whistle(string whistleSound)`, jolla voidaan luoda uusi pilli, jolle annetaan ääni. Tämän jälkeen luo metodi `public void Sound()`, joka tulostaa äänen (käyttäen Console.WriteLine).
 
 ```cpp
 Whistle duckWhistle = new Whistle("Kvaak");
@@ -1014,26 +1023,26 @@ Kvaak
 
 <Exercise title={'006 Product'}>
 
-Create a class `Product` that represents a store product. The product should have a `price (double)`, a `quantity (int)` and a `name (string)`.
+Luo luokka `Product` joka edustaa kaupan tuotetta. Tuotteella on hinta `price (double)`, määrä `quantity (int)` ja nimi `name (string)`.
 
-The class should have:
+Luokalla tulee olla:
 
-- the constructor `public Product(string name, double price, int quantity)`
-- a method `public void PrintProduct()` that prints product information in the following format:
+- konstruktori `public Product(string name, double price, int quantity)`
+- metodi `public void PrintProduct()` joka tulostaa tuotteen tiedot seuraavassa muodossa:
 
 ```console
 Banana: price 1.1: 13 pcs
 ```
 
-The output above is based on the product being assigned the name banana, with a price of 1.1, and a quantity of 13 .
+Yllä oleva esimerkki tulostaa tuotteen, jonka **name** on "Banana", **price** on 1.1 ja **quantity** on 13.
 
 </Exercise>
 
 <Exercise title={'007 Counter'}>
 
-This exercise consists of multiple sections. Each section corresponds to one exercise point.
+Tämä tehtävä koostuu useammasta osasta. Jokainen osa on yhden pisteen arvoinen.
 
-The exercise template comes with a partially executed class DecreasingCounter:
+Tehtäväpohjassa on osittain valmiina luokka DecreasingCounter.
 
 ```cpp
 using System;
@@ -1042,7 +1051,7 @@ namespace Exercise007
 {
   public class DecreasingCounter
   {
-    private int value;   // a variable that remembers the value of the counter
+    private int value;   // muuttuja joka sisältää laskurin arvon
 
     public DecreasingCounter(int initialValue)
     {
@@ -1054,18 +1063,18 @@ namespace Exercise007
       Console.WriteLine("value: " + this.value);
     }
 
-    public void decrement()
+    public void Decrement()
     {
-      // write the method implementation here
-      // the aim is to decrement the value of the counter by one
+      // kirjoita metodin toteutus tänne 
+      // tavoite on vähentää laskurin arvoa yhdellä
     }
 
-    // and the other methods go here
+    // muut metodit tulevat tänne
   }
 }
 ```
 
-The following is an example of how the main program uses the decreasing counter:
+Seuraavassa on esimerkki ohjelman käytöstä:
 
 ```cpp
 public static void Main(string[] args)
@@ -1087,13 +1096,13 @@ value: 9
 value: 8
 ```
 
-* *Section 1 : Implementation of the Decrement() method
+* Osa 1 : Implementoi metodi Decrement()
 
-Implement the `Decrement()` method in the class body in such a way that it decrements the value variable of the object it's being called on by one. Once you're done with the Decrement() method, the main program of the previous example should work to produce the example output.
+Toteuta metodi `public void Decrement()` siten, että se vähentää laskurin arvoa yhdellä kun metodia kutsutaan. Kun olet toteuttanut metodin, yllä oleva esimerkki pitäisi toimia kuten esitetty.
 
-* Osa 2 : The counter's value cannot be negative
+* Osa 2 : Laskurin arvo ei voi olla negatiivinen
 
-Improve the Decrement() in such a way that the counter's value never becomes negative. This means that if the value of the counter is 0, it cannot be decremented. A conditional statement is useful here.
+Paranna metodia `Decrement()` siten, että laskurin arvo ei voi koskaan olla negatiivinen. Tämä tarkoittaa sitä, että jos laskurin arvo on 0, sen arvoa ei voi vähentää. Tässä voi olla hyötyä ehtolauseesta.
 
 ```cpp
 public static void Main(string[] args)
@@ -1117,9 +1126,10 @@ value: 0
 value: 0
 ```
 
-* Osa 3: Resetting the counter value
+* Osa 3: Laskurin arvon nollaaminen
 
-Create the method `public void Reset()` for the counter that resets the value of the counter to 0. For example:
+Luo metodi `public void Reset()` joka nollaa laskurin arvon. Tämä tarkoittaa sitä, että metodia kutsuttaessa laskurin arvo muutetaan arvoksi 0.
+
 
 ```cpp
 public static void Main(string[] args)
@@ -1142,13 +1152,9 @@ value: 0
 
 <Exercise title={'008 Debt'}>
 
-Create the class `Debt` that has double-typed instance variables of `balance` and `interestRate`. The balance and the interest rate are passed to the constructor as parameters `public Debt(double initialBalance, double initialInterestRate)`.
+Luodaan luokka `Debt` joka edustaa velkaa. Velalla on saldo `balance (double)` ja korko `interestRate (double)`. Korko ja saldo annetaan konstruktorissa parametreina `public Debt(double initialBalance, double initialInterestRate)`.
 
-In addition, create the methods `public void PrintBalance()` and `public void WaitOneYear()` for the class. The method PrintBalance prints the current balance, and the WaitOneYear method grows the debt amount.
-
-The debt is increased by multiplying the balance by the interest rate.
-
-The class should do the following:
+Lisäksi luodaan metodit `public void PrintBalance()` ja `public void WaitOneYear()` luokalle. Metodi `PrintBalance` tulostaa saldon, ja `WaitOneYear` kasvattaa velan määrää. Velan määrä kasvaa kertomalla saldo korkoprosentilla. Esimerkiksi seuraava koodi:
 
 ```cpp
 public static void Main(string[] args)
@@ -1172,9 +1178,7 @@ public static void Main(string[] args)
 }
 ```
 
-The example above illustrates the development of a mortgage with an interest rate of one percent.
-
-Prints:
+Esimerkki näyttää koron vaikutuksen velan määrään kun korko on yksi prosentti vuodessa.
 
 ```console
 120000
@@ -1186,12 +1190,12 @@ Prints:
 
 <Exercise title={'009 Dalmatian'}>
 
-Create a class called `Dalmatian`. The dalmatian has instance variables `string name` and `int spots`. Both are set in the `public Dalmatian(string name, int spots)` constructor. 
+Luo luokka `Dalmatian` joka edustaa dalmatialaista koiraa. Koiralla on nimi `name (string)` ja täplien määrä `spots (int)`. Nimi ja täplien määrä annetaan konstruktorissa parametreina `public Dalmatian(string name, int spots)`.
 
 <Note>
-Also, give the variables ability for get and set:
+Anna muuttujille myös get ja set:
 
-Make the variables public rather than private, and add \{ get; set; \} on the declaring lines!
+Tee muuttujista public, ja lisää \{ get; set; \} muuttujan määrittelyriviin!
 </Note>
 
 ```cpp
@@ -1207,19 +1211,19 @@ Spot is a very good dog. He has 306 darker spots in his fur
 
 <Exercise title={'010 Gauge'}>
 
-Create the class `Gauge`. The gauge has the instance `public int value`, a constructor without parameters (sets the initial value of the meter variable to 0), and also the following three methods:
+Luodaan mittariluokka `Gauge`. Mittarilla on instanssimuuttuja `public int value`, konstruktori ilman parametreja (asettaa mittarin arvoksi 0), ja seuraavat kolme metodia:
 
-- Method `public void Increase()` grows the value instance variable's value by one. It does not grow the value beyond five.
-- Method `public void Decrease()` decreases the value instance variable's value by one. It does not decrease the value to negative values.
-- Method `public bool Full()` returns `True` if the instance variable value has the value five. Otherwise, it returns `False`.
+- Metodi `public void Increase()` kasvattaa instanssimuuttujan arvoa yhdellä. Arvoa ei voi kasvattaa suuremmaksi kuin viisi.
+- Metodi `public void Decrease()` vähentää instanssimuuttujan arvoa yhdellä. Arvoa ei voi muuttaa negatiiviseksi.
+- Metodi `public bool Full()` palauttaa `True` jos instanssimuuttujan arvo on viisi. Muutoin palautetaan `False`.
 
 <Note>
-Also, give the value ability for get and set:
+Anna muuttujalle myös get ja set:
 
-Make the value public rather than private, and add \{ get; set; \} on the declaring lines!
+Tee muuttujista public, ja lisää \{ get; set; \} muuttujan määrittelyriviin!
 </Note>
 
-An example of the class in use.
+Esimerkki luokan toiminnasta:
 
 ```cpp
 public static void Main(string[] args)
@@ -1252,7 +1256,7 @@ Not full! Value: 4
 
 <Exercise title={'011 Agent'}>
 
-The exercise template defines an Agent class, having a first name and last name. The Main method tries to print the introduction for mister Bond, but with no luck. This is what is should do:
+Tehtäväpohjassa määritellään luokka `Agent`, jolla on etunimi ja sukunimi. Main-metodi yrittää tulostaa esittelyn agentista Bond, mutta ei onnistu. Tämä on mitä sen pitäisi tehdä:
 
 ```cpp
 public static void Main(string[] args)
@@ -1270,19 +1274,20 @@ My name is Bond. James Bond.
 My name is Bourne. Jason Bourne.
 ```
 
-Agent's ToString now returns an empty string. Fix it to introduce international agents in their proper form.
+Agentin ToString palauttaa tällä hetkellä tyhjän merkkijonon. Korjaa se niin, että se esittelee kansainväliset superagentit asiallisesti (kuten yllä).
 
 </Exercise>
 
 <Exercise title={'012 Multiplier'}>
 
-Create a class `Multiplier` that has a:
+Luo luokka `Multiplier` jolla on:
 
-Constructor `public Multiplier(int number)`
-Method `public int Multiply(int number)` which returns the value number passed to it multiplied by the number provided to the constructor.
-You also need to create an instance variable in this exercise. When you call the method Multiply, store the changed value into the instance variable!
+Konstruktori `public Multiplier(int number)`
+Metodi `public int Multiply(int number)` joka palauttaa arvon number kerrottuna konstruktorissa annetulla luvulla.
+Tarvitset myös instanssimuuttujan tässä tehtävässä. Kun kutsut metodia Multiply, tallenna muuttuneet arvot instanssimuuttujaan!
 
-An example of the class in use:
+Esimerkki luokan toiminnasta:
+
 
 ```cpp
 public static void Main(string[] args)
@@ -1308,9 +1313,12 @@ multiplyByFour.Multiply(1): 8
 multiplyByFour.Multiply(3): 24
 ```
 
-<Note>The value stored in the objects is changed during the first calls!</Note>
+<Note>
+Talletettu arvo muuttuu metodin kutsujen aikana!
+</Note>
 
-The calculations are actually (in order):  
+Laskut ovat oikeasti (järjestyksessä):
+
 3 \* 2 = 6  
 4 \* 2 = 8  
 6 \* 1 = 6  
@@ -1321,7 +1329,7 @@ The calculations are actually (in order):
 
 <Exercise title={'013 Statistics'}>
 
-The exercise template includes class `Statistics`
+Tehtäväpohjassa on valmiina luokka `Statistics`
 
 ```cpp
 namespace Exercise013
@@ -1333,17 +1341,17 @@ namespace Exercise013
 
     public NumberStatistics()
     {
-      // initialize the variable count here
+      // alusta muuttuja count täällä
     }
 
     public void AddNumber(int number) {
-        // write code here
+        // lisää koodia
     }
   }
 }
 ```
 
-The following program introduces the class' use:
+Seuraava koodi esittelee valmiin koodin käyttöä:
 
 ```cpp
 Statistics statistics = new Statistics();
@@ -1360,25 +1368,27 @@ Count: 4
 Sum: 11
 ```
 
-Expand the program as follows:
-- When a number is added, `count` is increased by one
-- When a number is added, `sum` is increased by the number's value
+Laajenna ohjelmaa seuraavasti:
+
+- Kun numero lisätään, `count`-muuttujan arvo kasvaa yhdellä
+- Kun numero lisätään, `sum`-muuttujan arvo kasvaa lisättävän numeron arvolla
 
 </Exercise>
 
 <Exercise title={'014 Payment card'}>
 
-In this exercise, a class called PaymentCard is created which aims to mimic a cafeteria's payment process.
+Tässä tehtävässä, luokka nimeltä `PaymentCard` luodaan, joka pyrkii jäljittelemään kahvilan maksuprosessia.
 
 * Osa 1
 
-The template includes the `Program.cs` and `PaymentCard.cs` files.
+Pohjassa on valmiina tiedostot `Program.cs` ja `PaymentCard.cs`.
 
-- Add a new class to the project called `PaymentCard` in the correct file.
-- Fill in the PaymentCard object's constructor, which is passed the opening balance of the card, and which then stores that balance in the object's internal variable. 
+- Lisää luokka `PaymentCard` projektiin oikeaan tiedostoon.
+- Täytä luokalle konstruktori, joka ottaa parametrinaan kortin alkusaldon, ja asettaa sen kortin sisäiseen muuttujaan.
+- Täytä metodi `ToString` joka palauttaa kortin saldon muodossa "The card has a balance of X euros".
 - Fill in the ToString method, which will return the card's balance in the form "The card has a balance of X euros".
 
-Here is the template for the PaymentCard:
+Tässä on luokalle vähän pohjaa:
 
 ```cpp
 namespace Exercise014
@@ -1389,17 +1399,18 @@ namespace Exercise014
 
     public PaymentCard(double openingBalance)
     {
-      // write code here
+      // Kirjoita tähän koodia
     }
 
     public override string ToString()
     {
-      // write code here
+      // Kirjoita tähän koodia
     }
   }
 }
 ```
-The following main program tests the class:
+
+Seuraava koodi testaa luokkaa:
 
 ```cpp
 public static void Main(string[] args)
@@ -1415,13 +1426,13 @@ The card has a balance of 50 euros
 
 * Osa 2
 
-Expand your answer by adding two methods:
-- Method `public void EatLunch()`
-- Method `public void DrinkCoffee()`
+Laajenna vastaustasi lisäämällä kaksi metodia:
+- Metodi `public void EatLunch()`
+- Metodi `public void DrinkCoffee()`
 
-The method `EatLunch` should decrease the card's balance by 10.60 euros. The method `DrinkCoffee` should decrease the card's balance by 2.0 euros.
+Metodi `EatLunch` vähentää kortin saldoa 10.60 eurolla. Metodi `DrinkCoffee` vähentää kortin saldoa 2.0 eurolla.
 
-The following main program tests the class:
+Seuraava koodi testaa luokkaa:
 
 ```cpp
 public static void Main(string[] args)
@@ -1445,7 +1456,8 @@ The card has a balance of 37.4 euros
 
 * Osa 3
 
-xpand your previous answers, so that when an item is bought the balance is checked. If there is not enough money to buy, the balance does not change.
+Laajenna vastaustasi, niin että kun ostoksia tehdään, tarkistetaan myös saldo. Jos kortilla ei ole tarpeeksi rahaa, saldo ei muutu.
+
 
 ```cpp
 public static void Main(string[] args)
@@ -1467,21 +1479,19 @@ The card has a balance of 10 euros
 The card has a balance of 8 euros
 ```
 
-Notice how EatLunch did not change the balance, as there was not enough money. DrinkCoffee still worked, as it should.
+Huomaa kuinka `EatLunch` ei muuttanut saldoa, koska rahaa ei ollut tarpeeksi. `DrinkCoffee` toimi kuten pitää.
 
 * Osa 4
 
-Expand your previous answers, so that you can charge money on your card:
+Laajenna vastaustasi, niin että kortille voi ladata rahaa. 
 
 ```cpp
 public void AddMoney(double amount) {
-    // write code here
+    // Kirjoita tähän koodia
 }
 ```
 
-The purpose of the method is to increase the card's balance by the amount of money given as a parameter. However, the card's balance may not exceed 150 euros. As such, if the amount to be topped up exceeds this limit, the balance should, in any case, become exactly 150 euros.
-
-The following main program tests the class:
+Metodin tarkoituksena on lisätä kortin saldoa parametrina annetulla summalla. Kuitenkin, kortin saldo ei saa ylittää 150 euroa. Jos ladattava summa on suurempi kuin 150, kortin saldo on 150 euroa. Seuraava koodi testaa luokan toimintaa:
 
 ```cpp
 public static void Main(string[] args)
@@ -1507,6 +1517,6 @@ The card has a balance of 150 euros
 The card has a balance of 150 euros
 ```
 
-<Note>You cannot add negative money!</Note>
+<Note>Et voi lisätä negatiivista summaa!</Note>
 
 </Exercise>
