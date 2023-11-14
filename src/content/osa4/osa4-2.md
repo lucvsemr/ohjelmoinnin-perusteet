@@ -4,29 +4,30 @@ nav_order: 2
 hidden: false
 ---
 
-The type parameter used in creating a list defines the type of the variables that are added to the list. For instance, List<string\> includes strings, List<int\> integers, and List<double\> floating point numbers.
+Listan parametri määrittää listan sisältämien muuttujien tyypin. Esimerkiksi `List<string\>` sisältää merkkijonoja, `List<int\>` kokonaislukuja ja `List<double\>` liukulukuja.
 
-In the example below we first Add strings to a list, after which the strings in the list are printed one by one.
+Alla olevassa esimerkissä lisätään merkkijonoja listaan, jonka jälkeen listan merkkijonot tulostetaan yksi kerrallaan.
+
 
 ```cpp
 List<string> names = new List<string>();
 
-// string can first be stored in a variable
+// merkkijono voidaan ensin tallentaa muuttujaan
 string betty = "Betty Jennings";
-// then Add it to the list
+// sitten lisätä listaan
 names.Add(betty);
 
-// strings can also be directly added to the list:
+// merkkijonoja voidaan lisätä suoraan listaan:
 names.Add("Betty Snyder");
 names.Add("Frances Spence");
 names.Add("Kay McNulty");
 names.Add("Marlyn Wescoff");
 names.Add("Ruth Lichterman");
 
-// several different repeat statements can be
-// used to go through the list elements
+// useita erilaisia toistorakenteita voidaan
+// käyttää listan läpikäymiseen
 
-// 1. while loop
+// 1. while-silmukka ehdolla
 int index = 0;
 while (index < names.Count)
 {
@@ -34,25 +35,25 @@ while (index < names.Count)
   index = index + 1;
 }
 
-// 2. for loop with index
+// 2. for-silmukka indeksillä
 for (int i = 0; i < names.Count; i++)
 {
   Console.WriteLine(names[i]);
 }
 
 Console.WriteLine();
-// 3. for each loop (no index)
+// 3. foreach-silmukka (ei indeksiä)
 foreach (string name in names)
 {
   Console.WriteLine(name);
 }
 ```
 
-## Adding object to a list
+## Olioiden lisääminen listaan
 
-Strings are objects, so it should come as no surprise that other kinds of objects can also be found in lists. Next, let's examine the cooperation of lists and objects in more detail.
+Merkkijonot ovat olioita, joten ei pitäisi tulla yllätyksenä, että listoissa voi olla myös muita olioita. Seuraavaksi tarkastellaan listojen ja olioiden yhteispeliä tarkemmin.
 
-Let's assume we have access to the class defined below, describing a person.
+Oletetaan että meillä on käytössä alla oleva luokka, joka kuvaa henkilöä.
 
 ```cpp
 public class Person
@@ -97,21 +98,21 @@ public class Person
 }
 ```
 
-Handling objects in a list is not really different in any way from the previous experience we have with lists. The essential difference is only to define the type for the stored elements when you create the list.
+Olioiden käsittely listassa ei ole mitenkään erilaista kuin aiempi kokemuksemme listoista. Ainoa olennainen ero on vain se, että listaa luodessa määritellään talletettavien olioiden tyyppi.
 
-In the example below we first create a list meant for storing Person type object, after which we add persons to it. Finally the person objects are printed one by one.
+Alla olevassa esimerkissä luodaan ensin lista, johon talletetaan Person-tyypin olioita, jonka jälkeen henkilöitä lisätään listaan. Lopuksi henkilö-oliot tulostetaan yksi kerrallaan.
 
 ```cpp
 static void Main(string[] args)
 {
   List<Person> persons = new List<Person>();
 
-  // a person object can be created first
+  // henkilö-olio voidaan luoda ensin
   Person john = new Person("John");
-  // and then added to the list
+  // ja sitten lisätä listaan
   persons.Add(john);
 
-  // person objects can also be created "in the same sentence" that they are added to the list
+  // henkilö-olioita voidaan luoda myös "samalla lauseella" kun ne lisätään listaan
   persons.Add(new Person("Matthew"));
   persons.Add(new Person("Martin"));
 
@@ -128,16 +129,17 @@ Matthew, age 0 years
 Martin, age 0 years
 ```
 
-## Adding user-inputted objects to a list
+## Käyttäjän syöttämien olioiden lisääminen listaan
 
-The structure we have learned earlier for reading inputs is still very useful.
+Aiemmin oppimamme rakenne syötteen lukemiseen on edelleen hyvin käyttökelpoinen.
+
 
 ```cpp
 static void Main(string[] args)
 {
   List<Person> persons = new List<Person>();
 
-  // Read the names of persons from the user
+  // Lue henkilöiden nimet käyttäjältä
   while (true)
   {
     Console.Write("Enter a name, empty will stop: ");
@@ -147,13 +149,12 @@ static void Main(string[] args)
       break;
     }
 
-
-    // Add to the list a new person
-    // whose name is the previous user input
+    // Lisää listaan uusi henkilö
+    // jonka nimi on edellinen käyttäjän syöte
     persons.Add(new Person(name));
   }
 
-  // Print the number of the entered persons, and their individual information
+  // Tulosta syötettyjen henkilöiden lukumäärä, ja niiden yksilölliset tiedot
   Console.WriteLine();
   Console.WriteLine("Persons in total: " + persons.Count);
   Console.WriteLine("Persons: ");
@@ -178,9 +179,9 @@ Mike, age 0 years
 Bob, age 0 years
 ```
 
-## Multiple constructor parameters
+## Monta konstruktorin parametria
 
-If the constructor demands more than one parameters, you can query the user for more information. Let's assume we have the following constructor for the class **Person**.
+Jos konstruktori vaatii useamman kuin yhden parametrin, voidaan käyttäjältä kysyä lisätietoja. Oletetaan, että luokalla **Person** on seuraava konstruktori.
 
 ```cpp
 public class Person
@@ -198,22 +199,23 @@ public class Person
     this.height = 0;
   }
 
-  // Rest of the Person
+  // Loput koodista on sama kuin aiemmin
 }
 ```
 
-In this case, an object is created by calling the two-parameter constructor.
+Tässä tapauksessa olio luodaan kutsumalla kaksiparametrista konstruktoria.
 
-If we want to query the user for this kind of objects, they must be asked for each parameter separately. In the example below, name and age parameters are asked separately from the user. Entering an empty name will end the reading part.
+Jos haluamme kysyä käyttäjältä tällaisia olioita, niin jokaiselta parametrilta täytyy kysyä erikseen. Esimerkissä alla kysytään ensin nimi ja sitten ikä. Tyhjä nimi lopettaa lukemisen.
 
-The persons are printed after they have been read.
+Henkilöt tulostetaan sen jälkeen kun ne on luettu.
+
 
 ```cpp
 static void Main(string[] args)
 {
   List<Person> persons = new List<Person>();
 
-  // Read the names of persons from the user
+  // Lue henkilöiden nimet käyttäjältä
   while (true)
   {
     Console.Write("Enter a name, empty will stop: ");
@@ -223,16 +225,17 @@ static void Main(string[] args)
       break;
     }
 
+    // Lue henkilön ikä
     Console.Write("Enter the age of the person " + name + ": ");
 
     int age = Convert.ToInt32(Console.ReadLine());
 
-    // Add to the list a new person
-    // whose name is the previous user input
+    // Lisää listaan uusi henkilö
+    // jonka nimi ja ikä ovat edellinen käyttäjän syötteet
     persons.Add(new Person(name, age));
   }
 
-  // Print the number of the entered persons, and their individual information
+  // Tulosta syötettyjen henkilöiden lukumäärä, ja niiden yksilölliset tiedot
   Console.WriteLine();
   Console.WriteLine("Persons in total: " + persons.Count);
   Console.WriteLine("Persons: ");
@@ -260,16 +263,17 @@ Nelson M, age 1000 years
 Harry Booter, age 1 years
 ```
 
-In the example below, the required information was entered line by line. By no means is it impossible to ask for input in a specific format, e.g. separated by a comma.
+Yllä olevassa esimerkissä vaadittiin käyttäjältä tietoja rivi riviltä. Ei missään nimessä ole mahdotonta kysyä syötettä tietynlaisessa muodossa, esim. pilkulla eroteltuna.
 
-If the name and age were separated by a comma, the program could work in the following manner.
+Jos nimi ja ikä olisivat eroteltu pilkulla, niin ohjelma voisi toimia seuraavasti.
+
 
 ```cpp
 static void Main(string[] args)
 {
   List<Person> persons = new List<Person>();
 
-  // Read the names of persons from the user
+  // Lue henkilön tiedot käyttäjältä
   while (true)
   {
     Console.WriteLine("Enter the person details separated by a comma, e.g.: Randall, 2");
@@ -285,7 +289,7 @@ static void Main(string[] args)
     persons.Add(new Person(name, age));
   }
 
-  // Print the number of the entered persons, and their individual information
+  // Tulosta syötettyjen henkilöiden lukumäärä, ja niiden yksilölliset tiedot
   Console.WriteLine();
   Console.WriteLine("Persons in total: " + persons.Count);
   Console.WriteLine("Persons: ");
@@ -313,22 +317,21 @@ Matt, age 23 years
 Mike Pence, age 3 years
 ```
 
-## Filtered printing from the list
+## Valikoiva tulostus listasta
 
-You can also examine the objects on the list as you go through it. In the example below, we first ask the user for an age restriction, after which we print all the objects whose age is at least the number given by the user.
-
+Voit myös tarkastella listan sisältöä, kun käyt listaa läpi. Alla olevassa esimerkissä kysytään ensin ikärajaa, jonka jälkeen tulostetaan kaikki ne oliot, joiden ikä on vähintään käyttäjän antama luku.
 
 ```cpp
-// Let's make a list with couple of entries
+// Tehdään lista, jossa on pari henkilöä
 List<Person> persons = new List<Person>();
 persons.Add(new Person("Martin", 11));
 persons.Add(new Person("Matthew", 12));
 
-// Ask for age limit
+// Kysytään ikäraja
 Console.Write("What is the age limit? ");
 int ageLimit = Convert.ToInt32(Console.ReadLine());
 
-// Print only those who are above the limit
+// Tulostetaan vain ne, joiden ikä on vähintään ikäraja
 foreach (Person person in persons) {
   if (person.age >= ageLimit)
   { 
@@ -346,17 +349,18 @@ Matthew, age 12 years
 
 <Exercise title={'015 Main class'}>
 
-Implement the class `Main` described here.
+Luo luokka `Main`, joka kuvaillaan alla.
 
-<Note>Do not modify the class Item.</Note>
+<Note>Älä muokkaa luokkaa Item</Note>
 
-Write a program that reads names of items from the user. If the name is empty, the program stops reading. Otherwise, the given name is used to create a new item, which you will then add to the items list.
+Kirjoita ohjelma, joka lukee käyttäjältä esineiden nimiä. Jos nimi on tyhjä, ohjelma lopettaa lukemisen. Muussa tapauksessa annettu nimi käytetään uuden esineen luomiseen, jonka lisäät sitten esineiden listaan.
 
-Having read all the names, print all the items by using the ToString method of the Item class. The implementation of the Item class keeps track of the time of creation, in addition to the name of the item.
+Kun kaikki nimet on luettu, tulosta kaikki esineet käyttämällä Item-luokan ToString-metodia. Item-luokan toteutus pitää kirjaa esineen luomisajasta, lisäksi esineellä on nimi.
 
-<Note>The list has to be called "items" for the tests to work!</Note>
+<Note>Listan nimen on pakko olla "items" jotta testit toimivat!</Note>
 
-Example print:
+Esimerkkituloste:
+
 ```console
 Name: Hammer
 Name: Radio
@@ -372,15 +376,17 @@ Hot Potato (created at: 9.2.2020 13.48.21)
 
 <Exercise title={'016 Personal information'}>
 
-The program described here should be implemented in the class `Main`. 
+Tässä kuvailtu ohjelma tulee toteuttaa luokkaan `Main`.
 
-<Note>Do not modify the class PersonalInformation.</Note>
+<Note>Älä muokkaa luokkaa PersonalInformation</Note>
 
-After the user has entered the last set of details (they enter an empty first name), exit the repeat statement. 
+Kun käyttäjä on syöttänyt kaikki tiedot, eli tyhjän merkkijonon, poistu toistorakenteesta.
 
-Print one empty line here for reading clarity.
+Tulosta yksi tyhjä rivi selkeyden vuoksi.
 
-Then print the collected personal information so that each entered object is printed in the following format: first and last names separated by a space (you don't print the identification number). An example of the working program is given below:
+Sitten tulosta kaikkien henkilöiden tiedot siten, että ne tulostetaan oikeassa formaatissa: etunimi ja sukunimi välilyönnillä erotettuna (älä tulosta henkilötunnusta). Esimerkki ohjelman toiminnasta on annettu alla:
+
+
 
 ```console
 First name: 
@@ -402,17 +408,19 @@ Jean Bartik
 Betty Holberton
 ```
 
-You can (and should) ask the identification number as a string.
+Voit (ja kannattaa) pyytää henkilötunnusta merkkijonona.
 
 </Exercise>
 
 <Exercise title={'017 Television guide'}>
 
-In the exercise template there is a ready-made class `TelevisionProgram`, representing a television program. The class has object variables name and duration, a constructor, and a few methods.
+Tehtäväpohjassa on valmiina luokka `TelevisionProgram`, joka kuvaa televisio-ohjelmaa. Luokalla on oliomuuttujat `name` ja `duration`, konstruktori sekä muutama metodi.
 
-Implement a program (in the `Main` class) that begins by reading television programs from the user. When the user inputs an empty string as the name of the program, the program stops reading programs.
+Luo ohjelma (`Main` luokassa) joka lukee käyttäjältä televisio-ohjelmia ja niiden pituuksia. Kun käyttäjä syöttää tyhjän merkkijonon, lukeminen lopetetaan.
 
-After this the user is queried for a maximum duration. Once the maximum is given, the program proceeds to list all the programs whose duration is smaller or equal to the specified maximum duration.
+Tämän jälkeen käyttäjältä kysytään ohjelman maksimikestoa. Kun maksimikesto on saatu, ohjelma listaa kaikki ne ohjelmat, joiden kesto on pienempi tai yhtä suuri kuin maksimikesto.
+
+Ohjelman tulee toimia kuten alla:
 
 ```console
 Name: Rick and Morty 
@@ -434,16 +442,16 @@ Two and a Half Men, 30 minutes
 
 <Exercise title={'018 Book class'}>
 
-This exercise is worth 2 points, without separate sections.
+<Note>Tämä tehtävä on 2 pisteen arvoinen, ilman erillisiä osioita.</Note>
 
-Write a program which first reads book information from the user. The details to be asked for each book include the title, the number of pages, and the publication year. Entering an empty string as the name of the book ends the reading process.
+Kirjoita ohjelma joka lukee käyttäjältä kirjoja. Kysyttäviin tietoihin kuuluu kirjan nimi, sivumäärä sekä julkaisuvuosi. Syötteen lukeminen lopetetaan kun käyttäjä syöttää tyhjän merkkijonon.
 
-After this the user is asked for what is to be printed. If the user inputs "everything", all the details are printed: the book titles, the numbers of pages, and the publication years. However, if the user enters the string "title", only the book titles are printed. If something else than "everything" or "title" is given, the program should not print anything.
+Tämän jälkeen käyttäjältä kysytään, mitä halutaan tulostaa. Jos käyttäjä antaa "everything", kaikki yksityiskohdat tulostetaan: kirjojen nimet, sivumäärät ja julkaisuvuodet. Jos käyttäjä antaa syötteen "title", vain kirjojen nimet tulostetaan. Jos tuloste on jotain muuta, ohjelma ei tulosta mitään.
 
-- Implement the class Book.
-- Implement the functionality in the Main method.
+- Toteuta luokka Book.
+- Toteuta toiminnallisuus Main-metodissa.
 
-Example of how the program in Main should work:
+Esimerkki ohjelman Main-metodin toiminnasta:
 
 ```console
 
