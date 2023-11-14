@@ -4,11 +4,11 @@ nav_order: 3
 hidden: false
 ---
 
-A considerable amount of software is in one way or another based on handling data. Software created for playing music handles music files and those created for the purpose of image manipulation handle image files. Applications that run on the internet and mobile devices, such as Facebook, WhatsApp, and Telegram, handle user information that is stored in file-based databases. What these all have in common is that they read and manipulate data in one way or another. Also, the data being handled is ultimately stored in some format in one or more files.
+Huomattava osuus ohjelmistoista käsittelee tavalla tai toisella dataa. Musiikkia soittava ohjelmisto käsittelee musiikkitiedostoja ja kuvankäsittelyohjelmisto kuvatiedostoja. Internetissä ja mobiililaitteilla toimivat sovellukset, kuten Facebook, WhatsApp ja Telegram, käsittelevät käyttäjätietoja, jotka tallennetaan tiedostopohjaisiin tietokantoihin. Näitä kaikkia yhdistää se, että ne lukevat ja käsittelevät dataa tavalla tai toisella. Lisäksi käsiteltävä data tallennetaan lopulta johonkin muotoon yhteen tai useampaan tiedostoon.
 
-## Reading From the Keyboard
+## Näppäimistöltä lukeminen
 
-We've been using the **Console.ReadLine** since the beginning of this course to read user input. The block in which data is read has been a while-true loop where the reading ends at a specific input.
+Olemme käyttäneet **Console.ReadLine** -komentoa kurssin alusta alkaen käyttäjän syötteiden lukemiseen. Lukeminen on tapahtunut while-true -silmukassa, jossa lukeminen loppuu tiettyyn syötteeseen.
 
 ```cpp
 while (true) {
@@ -18,15 +18,15 @@ while (true) {
         break;
     }
 
-    // add the read line to a list for later
-    // handling or handle the line immediately
+    // lisää luetun rivin listaan myöhempää
+    // käsittelyä varten tai käsittele rivi heti
 
 }
 ```
 
-In text-based user interfaces, the input of the user is directed into the input stream one line at a time, which means that the information is sent to be handled every time the user enters a new line.
+Tekstipohjaisissa käyttöliittymissä käyttäjän syöte ohjataan syötevirtaan rivi kerrallaan, jolloin tiedot käsitellään aina kun käyttäjä syöttää uuden rivin.
 
-The user input is read in string form. If we wanted to handle the input as integers, for instance, we'd have to convert it to another form. An example program has been provided below - it reads input from the user until the user inputs "end". As long as the user input is not "end" the inputs are handled as integers -- in this case, the number is simply printed.
+Käyttäjän syöte luetaan merkkijonona. Jos haluaisimme käsitellä syötteen esimerkiksi kokonaislukuina, pitäisi se muuttaa toiseen muotoon. Alla on esimerkkiohjelma, joka lukee käyttäjältä syötettä niin kauan kunnes käyttäjä syöttää "end". Niin kauan kun syöte ei ole "end", käsitellään syöte kokonaislukuna -- tässä tapauksessa luku vain tulostetaan.
 
 ```cpp
 while (true) {
@@ -41,23 +41,24 @@ while (true) {
 }
 ```
 
-## Files and the Filesystem
+## Tiedostot ja tiedostojärjestelmä
 
-**Files** are collections of data that live in computers. These files can contain, among other things, text, images, music, or any combination of these. The file format determines the content of the file as well as the program required to read the file. For example, PDF files are read with a program suited for reading PDF files, and music files are read with a program suited for reading music files. Each of these programs is made by humans, and the creators of these programs -- i.e., programmers -- also specify the file format as part of the work.
+**Tiedostot** (englanniksi **files**) ovat datakokoelmia jotka asuvat tietokoneen sisällä. Nämä tiedostot sisältävät muun muassa tekstiä, kuvia, musiikkia tai näiden yhdistelmiä. Tiedostomuoto määrittää tiedoston sisällön sekä ohjelman, joka osaa lukea tiedoston. Esimerkiksi PDF-tiedostoja luetaan PDF-tiedostoille sopivalla ohjelmalla ja musiikkitiedostoja luetaan musiikkitiedostoille sopivalla ohjelmalla. Nämä ohjelmat ovat ihmisten -- eli ohjelmoijien -- tekemiä, ja he määrittelevät tiedostomuodon osana työtään.
 
-Computers have several different programs for browsing files. These programs are specific to the operating system. All programs used for browsing files make use of the filesystem of the computer in one way or another.
+Tietokoneilla on useita erilaisia ohjelmia tiedostojen selaamiseen. Nämä ohjelmat ovat käyttöjärjestelmäkohtaisia. Kaikki tiedostojen selaamiseen käytettävät ohjelmat käyttävät tietokoneen **tiedostojärjestelmää** (englanniksi **filesystem**) jollain tavalla.
 
-Our development environment provides us with the ability to browse the files of a project. In Visual Studio Code, the whole project and all files associated can be seen in the list on the left side of the screen.
+Meidän kehitysympäristömme tarjoaa mahdollisuuden selata projektin tiedostoja. Visual Studio Codessa koko projekti ja kaikki siihen liittyvät tiedostot näkyvät listassa näytön vasemmalla puolella.
 
-Files exist on the hard drive of a computer, which is, in reality, a large set of ones and zeros, i.e., bits. Information is made up of these bits, e.g., one variable of type int takes up 32 bits (i.e., 32 ones or zeros). Modern terabyte-sized hard drives hold about 8 trillion bits (written out the number is 8,000,000,000,000). On this scale, a single integer is very small.
+Tiedostot sijaitsevat tietokoneen **kovalevyllä** (englanniksi **hard drive**). Kovalevy on suuri kokoelma ykkösiä ja nollia, eli bittejä. Tiedot koostuvat näistä biteistä, esimerkiksi yksi int-tyyppinen muuttuja vie 32 bittiä (eli 32 ykköstä tai nollaa). Nykyaikaiset teratavun kokoiset kovalevyt sisältävät noin 8 biljoonaa bittiä (kirjoitettuna 8 000 000 000 000). Tällä mittakaavalla yksi kokonaisluku on hyvin pieni.
 
-Files can exist practically anywhere on a hard drive, even separated into multiple pieces. The computer's **filesystem** has the responsibility of keeping track of the locations of files on the hard drive as well as providing the ability to create new files and modify them. The filesystem's main responsibility is abstracting the true structure of the hard drive; a user or a program using a file doesn't need to care about the about how, or where, the file is actually stored.
+Tiedostot voivat sijaita kovalevyllä missä tahansa. Tiedostojärjestelmän tehtävä on pitää kirjaa tiedostojen sijainnista kovalevyllä sekä tarjota mahdollisuus luoda uusia tiedostoja ja muokata niitä. Tiedostojärjestelmän päätehtävä on abstrahoida kovalevyn todellista rakennetta; tiedoston käyttäjän tai ohjelman ei tarvitse välittää siitä, miten tai missä tiedosto on todellisuudessa tallennettu.
 
-## Reading From a File
+## Tiedostosta lukeminen
 
-Reading a file is done by using **File class**, which can be found from **System.IO**. We will concentrate on text files, or files that include strings. 
+Tiedoston lukeminen tapahtuu **File**-luokan avulla, joka löytyy **System.IO**-nimisestä nimiavaruudesta. Keskitymme tässä tekstitiedostoihin, eli tiedostoihin jotka sisältävät merkkijonoja.
 
-In our examples (for now), we assume we have a files called **text.txt** and **records.csv** in the same folder as **Program.cs** is. The text.txt contains this:
+Esimerkeissämme (ainakin toistaiseksi) oletamme, että meillä on tiedostot **text.txt** ja **records.csv** samassa kansiossa kuin **Program.cs**. Tiedosto text.txt sisältää seuraavaa:
+
 
 ```console
 This is a line
@@ -66,7 +67,8 @@ This is 3rd
 This includes a double, 3.25
 This has "quotes"
 ```
-And records.csv contains this:
+
+Ja records.csv sisältää seuraavaa:
 
 ```console
 sebastian,22
@@ -74,7 +76,8 @@ matt,21
 rebecca,23
 ```
 
-There are several ways how to read a file. Here's (first) two of them:
+On monia tapoja lukea tiedosto. Tässä (ensimmäiset) kaksi niistä:
+
 
 ```cpp
 
@@ -82,24 +85,24 @@ using System.IO;
 
 static void Main(string[] args)
 {
-  // Example #1
-  // Read the file as one string.
+  // Esimerkki #1
+  // Lue tiedosto yhtenä merkkijonona.
   string text = File.ReadAllText("text.txt");
 
-  // Display the file contents to the console. Variable text is a string.
+  // Näytä tiedoston sisältö konsolissa. Muuttuja text on merkkijono.
   Console.WriteLine("This was done with ReadAllText.");
   Console.WriteLine(text);
 
-  //Print empty line for easier reading
+  // Tyhjä rivi helpomman lukemisen vuoksi
   Console.WriteLine();
 
-  // Example #2
-  // Read each line of the file into a string array. 
-  //Each element of the array is one line of the file.
+  // Esimerkki #2
+  // Lue tiedosto rivi kerrallaan ja tallenna jokainen rivi taulukkoon.
+  // Taulukon jokainen alkio on yksi tiedoston rivi.
   Console.WriteLine("This was done with ReadAllLines.");
   string[] lines = File.ReadAllLines("text.txt");
 
-  // Display the file contents by using a foreach loop.
+  // Näytä tiedoston sisältö konsolissa käyttäen foreach-silmukkaa.
   foreach (string line in lines)
   {
     Console.WriteLine(line);
@@ -107,7 +110,7 @@ static void Main(string[] args)
 }
 ```
 
-This program prints out
+Ohjelma tulostaa
 
 ```console
 This was done with ReadAllText.
@@ -125,25 +128,26 @@ This includes a double, 3.25
 This has "quotes"
 ```
 
-Let's look at both of them a bit deeper.
+Katsotaan molempia vähän tarkemmin.
+
 
 ### File.ReadAllText()
 
-The first example is quite self-explanatory. We declare a variable **string text** and use the method **File.ReadAllText()** to read the textfile and save it to the variable. This saves the text from the file to the variable **as it is** in the file, including all the newlines. As you can see, when we print out the variable, it will print each line from the file to a separate line, as it should.
+Ensimmäinen esimerkki on melko itsestäänselvä. Määrittelemme muuttujan **string text** ja käytämme metodia **File.ReadAllText()** (karkeasti suomennettuna **lue kaikki teksti tiedostosta**) lukemaan tekstitiedosto ja tallentamaan sen muuttujaan. Tämä tallentaa tekstin tiedostosta muuttujaan **sellaisena kuin se on** tiedostossa, sisältäen kaikki rivinvaihdot. Kuten näet, kun tulostamme muuttujan, se tulostaa jokaisen rivin erikseen, kuten pitääkin.
 
 ### File.ReadAllLines()
 
-The second example is quite similar to the first one. Rather than saving the information from the file to a single string, we now save it to an array with **File.ReadAllLines()**. Now each element in the array is a line from the text file.
+Toinen esimerkki on melko samanlainen kuin ensimmäinen. Sen sijaan, että tallentaisimme tiedoston sisällön yhtenä merkkijonona, tallennamme sen taulukkoon komennolla **File.ReadAllLines()** (karkeasti suomennettuna **lue kaikki rivit tiedostosta**). Nyt taulukon alkiot ovat tekstin rivejä.
 
-So what's the difference, why do we need two ways? When we want to have easy access to each individual line of the text, we would probably use the latter one. If all the text is saved into a single variable, then finding particular part from there would be more difficult. On the other hand, if we need to have the information in one piece, we would use the first one.
+Mikä on siis ero, miksi tarvitsemme kaksi tapaa? Kun haluamme päästä käsiksi jokaiseen yksittäiseen tekstin riviin, käyttäisimme todennäköisesti jälkimmäistä. Jos kaikki teksti on tallennettu yhteen muuttujaan, sieltä tietyn osan löytäminen olisi vaikeampaa. Toisaalta, jos tarvitsemme tiedon yhtenä kokonaisuutena, käyttäisimme ensimmäistä.
 
-There are also other ways of reading files, such as streams. We will get those later.
+On olemassa muitakin tapoja lukea tiedostoja, kuten datavirrat (englanniksi **streams**). Niistä lisää myöhemmin.
 
-## Reading Data of a Specific Format From a File
+## Tiedon lukeminen tietyssä formaatissa tiedostosta
 
-The world is full of data that are related to other data -- these form collection. For example, personal information includes name, date of birth, phone number. Address information, on the other hand, includes country, city, street address, postal number, and so on.
+Maailma on täynnä dataa joka liittyy toisiin dataan -- nämä muodostavat kokoelmia. Esimerkiksi henkilötiedot sisältävät nimen, syntymäajan, puhelinnumeron. Osoitetiedot taas sisältävät maan, kaupungin, katuosoitteen, postinumeron ja niin edelleen.
 
-Data is often stored in files using a specific format. One such format that's already familiar to us is comma-separated values (CSV) format, i.e., data separated by commas.
+Dataa tallennetaan usein tiedostoihin tietyssä formaatissa. Yksi tällainen formaatti on meille jo tuttu, eli pilkuilla erotetut arvot (englanniksi **comma-separated values**, CSV). Tämä tarkoittaa, että tiedostossa oleva data on eroteltu pilkuilla.
 
 ```cpp
 while (true)
@@ -159,7 +163,7 @@ while (true)
 }
 ```
 
-The program works as follows:
+Ohjelma toimii seuraavasti:
 
 ```console
 Enter name and age separated by a comma:
@@ -171,7 +175,7 @@ Name: matt, age: 21
 Enter name and age separated by a comma:
 ```
 
-Reading the same data from a file called **records.csv** would look like so:
+Saman datan lukeminen tiedostosta nimeltä **records.csv** näyttäisi tältä:
 
 ```cpp
 string[] lines = File.ReadAllLines("records.csv");
@@ -182,7 +186,7 @@ foreach (string line in lines)
 }
 ```
 
-Which prints out
+Tämä tulostaa
 
 ```console
 Name: sebastian, age: 22
@@ -190,15 +194,16 @@ Name: matt, age: 21
 Name: rebecca, age: 23
 ```
 
-As you can see, we now used the **ReadAllLines** method, as we needed to retrieve from each line separately. 
+Kuten näkyy, käytämme nyt metodia **ReadAllLines**, koska haluamme päästä käsiksi jokaiseen rivin erikseen.
+ 
+Olisimme voineet käyttää myös **ReadAllText**, mutta olisimme joutuneet ensin **pilkkomaan merkkijono taulukoksi** päästäksemme käsiksi kaikkiin riveihin... Ja kuten näet, tällä tavalla taulukko on jo olemassa, mikä säästää ylimääräiseltä vaiheelta.
 
-We could have used **ReadAllText**, but we would have had to first **Split the string into an array** to be able to access all the lines... And as you can see, this way the array already exists, saving us from an extra step.
+## Olioiden lukeminen tiedostosta
 
-## Reading Objects From a File
+Olioiden luominen tiedostosta on suoraviivaista. Oletetaan, että meillä on luokka nimeltä **Person** ja sama data kuin aiemmin.
 
-Creating objects from data that is read from a file is straightforward. Let's assume that we have a class called Person, as well as the data from before.
+Olion tietojen lukeminen tiedostosta onnistuu seuraavasti:
 
-Reading objects can be done like so:
 
 ```cpp
 static void Main(string[] args)
@@ -226,9 +231,10 @@ Total amount read: 3
 
 <Exercise title={'019 Reading strings'}>
 
-As a recap, a simple program of reading the input.
+Kertauksena, yksinkertainen ohjelma syötteen lukemiseen.
 
-Write a program that reads strings from the user until the user inputs the string "end". At that point, the program should print how many strings have been read. The string "end" should not be included in the number strings read. You can find some examples below of how the program works.
+Kirjoita ohjelma joka lukee käyttäjältä merkkijonoja kunnes käyttäjä syöttää merkkijonon "end". Kun käyttäjä syöttää "end", ohjelman tulee tulostaa kuinka monta merkkijonoa syötteessä oli. Merkkijono "end" ei kuulu merkkijonojen lukumäärään. Alla on muutamia esimerkkejä ohjelman toiminnasta.
+
 
 ```console
 > I 
@@ -255,7 +261,7 @@ Write a program that reads strings from the user until the user inputs the strin
 
 <Exercise title={'020 Reading integers'}>
 
-Write a program that reads strings from the user until the user inputs the string "end". As long as the input is not "end", the program should handle the input as an integer and print the cube of the number provided (i.e., number \* number \* number). Below are some sample outputs
+Kirjoita ohjelma joka lukee käyttäjältä merkkijonoja kunnes käyttäjä kirjoittaa "end". Niin kauan kun syöte ei ole "end", ohjelman pitäisi käsitellä syöte kokonaislukuna ja tulostaa annetun numeron kuutio (eli numero \* numero \* numero). Alla pari esimerkkiä ohjelman toiminnasta.
 
 ```console
 > 3 
@@ -271,20 +277,21 @@ Write a program that reads strings from the user until the user inputs the strin
 > end
 ```
 
-Remember to convert to integer before calculation!
+Muista muuttaa syöte kokonaisluvuksi ennen kuin käsittelet sitä.
 
 </Exercise>
 
 <Exercise title={'021 Reading file'}>
 
-Write a program that prints the contents of a file called "data.txt", such that each line of the file is printed on its own line.
+Kirjoita ohjelma joka tulostaa tiedoston "data.txt" sisällön siten, että jokainen tiedoston rivi tulostetaan omalle rivilleen.
 
-If the file content looks like so:
+
+Jos tiedoston sisältö on seuraava:
 
 In a world   
 Where code is built   
 
-Then the program should print the following:
+Tulosteen tulisi olla seuraava:
 
 ```console
 In a world
@@ -292,16 +299,17 @@ Where code is built
 ```
 
 <Note>
-You can assume the file is in the same folder as your program.
+Voit olettaa että tiedosto on samassa kansiossa kuin Program.cs
 </Note>
 
 </Exercise>
 
 <Exercise title={'022 File names'}>
 
-Write a program that asks the user for a string, and then prints the contents of a file with a name matching the string provided. You may assume that the user provides a file name that the program can find. You do not have to worry about getting errors when the file does not exist.
+Kirjoita ohjelma joka kysyy käyttäjältä merkkijonoa, ja tulostaa tiedoston jonka nimi on sama kuin käyttäjän syöte. Voit olettaa että käyttäjä syöttää tiedoston nimen joka löytyy. Sinun ei tarvitse huolehtia virheistä, eli tiedoston nimi on aina oikein.
 
-The exercise template contains the files "data.txt" and "song.txt", which you may use when testing the functionality of your program. The output of the program can be seen below for when a user has entered the string "song.txt". The content that is printed comes from the file "song.txt". Naturally, the program should also work with other filenames, assuming the file can be found.
+Tehtäväpohjassa on tiedostot "data.txt" ja "song.txt", joita voit käyttää ohjelman testaamiseen. Ohjelman tulostus näyttää seuraavalta kun käyttäjä syöttää merkkijonon "song.txt". Tulostus tulee tiedostosta "song.txt". Ohjelman tulee toimia myös muilla tiedostonimillä, olettaen että tiedosto löytyy.
+
 
 ```console
 Which file should have its contents printed? 
@@ -323,21 +331,23 @@ Tieto is here allright!
 ```
 
 <Note>
-You can assume the file is in the same folder as your program.
+Voit olettaa että tiedosto on samassa kansiossa kuin Program.cs
 </Note>
 
 </Exercise>
 
 <Exercise title={'023 Guestlist text file'}>
 
-The exercise template comes ready with functionality for the guest list application. It checks whether names entered by the user are on the guest list.
+Tehtäväpohjassa on valmiina toiminallisuus vieraslistasovellukselle. Se tarkistaa onko käyttäjän syöttämä nimi vieraslistalla.
 
-However, the program is missing the functionality needed for reading the guest list. Modify the program so that the names on the guest list are read from the file.
+Ohjelmasta kuitenkin puuttuu toiminnallisuus jolla vieraslista luetaan tiedostosta. Muokkaa ohjelmaa siten että nimet luetaan tiedostosta.
 
     
-<Note>The exercise expects you to have a string called names where you store the file!</Note>    
+<Note>
+Tehtävä olettaa että sinulla on merkkijono nimeltä "names" johon olet tallentanut tiedoston!
+</Note>    
     
-An example of the program use:    
+Esimerkki ohjelman toiminnasta:    
 
 ```console
 Name of the file: 
@@ -356,7 +366,9 @@ The name is on the list.
 Thank you!
 ```
 
-<Note>The exercise template comes with two files, names.txt and other-names.txt, which have the following contents. Do not change the contents of the files!</Note>
+<Note>
+Tehtäväpohjassa on kaksi tiedostoa, "names.txt" ja "other-names.txt", joissa on seuraava sisältö. Älä muuta tiedostojen sisältöä!
+</Note>
 
 names.txt:
 
@@ -375,7 +387,7 @@ mike
 potato  
 
 <Note>
-You can assume the files are in the same folder as your program.
+Voit olettaa että tiedosto on samassa kansiossa kuin Program.cs
 </Note>
 
 </Exercise>
