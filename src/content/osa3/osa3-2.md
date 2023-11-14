@@ -274,12 +274,12 @@ Listan alkioiden määrä saadaan selville listan **Count** -ominaisuudella, jok
 List<string> list = new List<string>();
 Console.WriteLine("Number of values on the list: " + list.Count);
 
-lista.add("First");
+list.Add("First");
 Console.WriteLine("Number of values on the list: " + list.Count);
 
 int values = list.Count;
 
-lista.add("Second");
+list.Add("Second");
 Console.WriteLine("Number of values on the list: " + values);
 ```
 

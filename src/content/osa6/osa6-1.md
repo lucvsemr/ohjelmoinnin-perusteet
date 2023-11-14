@@ -661,7 +661,7 @@ public class GradeRegister
 
   public void AddGradeBasedOnPoints(int points) 
   {
-    this.grades.add(PointsToGrades(points));
+    this.grades.Add(PointsToGrades(points));
   }
 
   public int NumberOfGrades(int grade) 

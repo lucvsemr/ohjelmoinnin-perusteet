@@ -152,7 +152,7 @@ Here are the numbers again:
 
 ## Elementtien tyypit
 
-Vuit luoda taulukon lisäämällä hakasulkeet sen sisältämän elementtien tyypin perään (**elementtiTyyppi[]**). Tämän takia taulukon elementit voivat olla mitä tahansa tyyppiä. Tässä pari esimerkkiä:
+Voit luoda taulukon lisäämällä hakasulkeet sen sisältämän elementtien tyypin perään (**elementtiTyyppi[]**). Tämän takia taulukon elementit voivat olla mitä tahansa tyyppiä. Tässä pari esimerkkiä:
 
 
 ```cpp
