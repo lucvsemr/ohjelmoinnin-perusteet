@@ -167,7 +167,7 @@ Jokaisen ohjelmoijan tulisi tietää hieman tietokoneohjelman muistin rakenteest
 
 Viittaus taulukkoon on itseasiassa tietoa datan sijainnista. Komennolla **taulukko[0]** viittaamme taulukon ensimmäiseen elementtiin. Tämä voidaan myös lukea muodossa *"Mene taulukon alkuun ja siirry eteenpäin 0 kertaa muuttujan kokoisia bittejä -- ja palauta pala dataa muuttujan kokoisena."*
 
-Muuttujan int koko C#:ssa on 32 bittiä. Yksi bitti on varattu etumerkille (plus tai miinus), joten suurin mahdollinen luku int muuttujalle on 2^31 -1. Kun luot int taulukon, joka sisältää 4 elementtiä, varataan muistista 4 * 32 bittiä muistia. Kun käytät **taulukko[2]**, luetaan 32 bittiä alkaen taulukon alusta + 2 * 32 bittiä.
+Muuttujan int koko C#:ssa on 32 bittiä. Yksi bitti on varattu etumerkille (plus tai miinus), joten suurin mahdollinen luku int muuttujalle on 2^31 -1. Kun luot int taulukon, joka sisältää 4 elementtiä, varataan muistista 4 \* 32 bittiä muistia. Kun käytät **taulukko[2]**, luetaan 32 bittiä alkaen taulukon alusta + 2 \* 32 bittiä.
 
 Jotkin ohjelmointikielet yrittävät varmistaa, että ohjelmoija ei mene *"väärälle alueelle"*. Jos kääntäjä ei aiheuttaisi poikkeusta kun sanomme **taulukko[-1]**, voisimme lukea datan joka sijaitsee juuri ennen taulukkoa ohjelman muistissa. Tässä tapauksessa ei olisi mitään estettä kirjoittaa ohjelma, joka lukee koko ohjelman muistin.
 
