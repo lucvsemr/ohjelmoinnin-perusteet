@@ -123,57 +123,58 @@ Muuttujien arvot kopioidaan myös metodikutsuissa. Käytännössä tämä tarkoi
 ## Viittausmuuttujat
 
 C#:n viittaustyyppejä ovat luokka (**class**), rajapinta (**interface**), taulukko (**array**) ja delegaatti (**delegate**).
-C#’s reference type is a class type, an interface type, an array type, or a delegate type. 
 
-A reference type value is a reference to an **instance** of the type, the latter known as an **object**. The special value **null** is compatible with all reference types and indicates the absence of an instance. The programmer is also free to create their own variable types by defining new classes. In practice any object instanced from a class is a reference variable.
+Viittautyyppisen muuttujan arvo on viittaus sentyyppiseen **instanssiin**, joka on **olio** tai **objekti**. Erityinen arvo **null** on yhteensopiva kaikkien viittaustyyppien kanssa ja ilmaisee instanssin puuttumista. Ohjelmoija voi myös luoda omia muuttujatyyppejä määrittelemällä uusia luokkia. Käytännössä mikä tahansa luokasta instansioitu olio on viittausmuuttuja.
 
-Let's re-examine the example at the beginning of the chapter, where we created a variable called john of type Name.
+Tarkastellaan taas esimerkkiä, jossa luomme **Name** luokan instanssin nimeltä John.
+
 
 ```cpp
 Name john = new Name("John");
 ```
 
-The call consists of the following parts:
+Kutsu koostuu seuraavista osista:
 
-* When introducing any new variable, we must first define the type of that variable. Below we introduce a variable of type **Name**. In order for the execution of the program to succeed, there must be a class called **Name** available.
+* Kun uusi muuttuja luodaan, pitää ensin määrittää muuttujan tyyppi. Alla esimerkissä määritämme muuttujan tyypiksi **Name**. Jotta ohjelma voisi suorittaa, pitää **Name** luokan olla saatavilla.
+
 
 ```cpp
 Name ...
 ```
 
-* In the introduction of a variable its name must be included. You can later use the name of the variable to reference its value. Below, the variable name is defined as luke.
+* Muuttujan nimi pitää myös määrittää. Voit myöhemmin käyttää muuttujaa viittaamaan sen arvoon. Alla esimerkissä muuttujan nimi on **john**.
 
 ```cpp
 Name john ...
 ```
 
-* You can store a value in a variable. You can create an instance object from a class by calling the class constructor, which defines the values that are placed in the instance variables of the object that is created. Below we assume that the class **Name** has a constructor that takes a string as parameter.
+* Voit tallettaa muuttujaan arvon. Voit luoda instanssin luokasta kutsumalla luokan konstruktoria, joka määrittää instanssimuuttujien arvot sillä hetkellä, kun olio luodaan. Alla oletamme luokan **Name** konstruktorin ottavan merkkijonon parametrina.
 
 ```cpp
 ... new Name("John");
 ```
 
-* The constructor call returns a value that is a reference to the created object. The equality signs tells the program that the value of the right-side expression is to be copied as the value of the variable on the left side. The reference to the newly-created object, which is returned by the constructor call, is copied as the value of the **john** variable.
+* Konstruktorikutsu palauttaa viittauksen luotuun instanssiin. Yhtäsuuruusmerkki kertoo ohjelmalle, että oikeanpuoleinen arvo talletetaan vasemmanpuolimmaiseen muuttujaan. Viittaus vastaluotuun muuttujaan, jonka konstruktorikutsu on palauttanut, kopioidaan muuttujan **john** arvoksi.
 
 ```cpp
 Name john = new Name("John");
 ```
 
-The greatest difference between value and reference varibales is that the value ones (almost without exception) are unchanging. Conversely, the inner state of reference variables can typically be changed. This phenomenon is explained by the fact that the value of a value variable is directly stored in the variable, whereas the value of a reference variable is a reference to the variable data, i.e. the variable's internal state.
+Suurin ero arvo- ja viittausmuuttujien välillä on se, että arvomuuttujat ovat (lähes poikkeuksetta) muuttumattomia. Toisaalta viittausmuuttujien sisäistä tilaa voidaan tyypillisesti muuttaa. Tämä ilmiö selittyy sillä, että arvomuuttujan arvo tallennetaan suoraan muuttujaan, kun taas viittausmuuttujan arvo on viittaus muuttujan dataan, eli muuttujan sisäiseen tilaan.
 
-Arithmetic operations, such as addition, subtraction, multiplication, can be used with value variables -- these operations do not change the original values of the variables. Arithmetic expressions create new values, which are stored into variables when needed. Notice that the values of reference variables cannot be changed by these arithmetic expressions.
+Aritmeettiset operaatiot, kuten yhteen-, vähennys- ja kertolasku, voidaan suorittaa arvomuuttujilla -- nämä operaatiot eivät muuta muuttujan alkuperäistä arvoa. Aritmeettiset lausekkeet luovat uusia arvoja, jotka tallennetaan muuttujiin tarvittaessa. Huomaa, että viittausmuuttujien arvoja ei voida muuttaa näillä aritmeettisillä lausekkeilla.
 
-The value of a reference variable -- i.e. a reference -- points to a location that contains the information that relates to that variable. Let's assume we have the class Person available, and it contains a definition for the instance variable age. If a person object has been instanced of the class, you can find the variable age by following the object's reference. The value of this age variable can be changed, if so needed.
+Viittausmuuttujan arvo, eli itse viittaus, osoittaa muistipaikkaan, jossa muuttujan data on tallennettuna. Oletetaan että meillä on luokka Person käytössä, ja se sisältää instanssimuuttujan age. Jos luokasta on luotu olio, voimme löytää age muuttujan seuraamalla olion viittausta. Tämän age muuttujan arvoa voidaan muuttaa tarvittaessa.
 
-[**You can read more about variable types from here**](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types). This rabbit hole of information is *very deep* and might take some time to understand.
+[**Voit lukea lisää muuttujatyypeistä täältä**](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types). Tämä tiedon kaninkolo on *hyvin syvä* ja saattaa vaatia aikaa ymmärtää.
 
-## Value or reference type variable as a method parameter
+## Arvomuuttuja tai viittausmuuttuja metodin parametrina
 
-We stated earlier that the value of a value variable is directly stored in that variable, whereas the value of a reference variable contains the reference to an object. We also mentioned that assigning a value with the equality sign copies the value on the right (possibly the value of some variable), and stores it as the value of the left-side variable.
+Aiemmin totesimme, että arvomuuttujan arvo on suoraan tallennettu muuttujaan, kun taas viittausmuuttujan arvo on viittaus muuttujan dataan. Totesimme myös, että yhtäsuuruusmerkki kertoo ohjelmalle, että oikeanpuoleinen arvo kopioidaan vasemmalla olevaan muuttujaan.
 
-A similar copying occurs when a method is called. Regardless of whether the variable is value or reference type, the value given as a method parameter is copied for the method to use. In the case of value variables, the value of the variable is given to the method; with reference type variables, the method receives a reference.
+Samantapainen kopiointi tapahtuu kun metodia kutsutaan. Riippumatta siitä onko muuttuja arvo- vai viittausmuuttuja, sen arvo kopioidaan metodille välitettäessä. Arvomuuttujan tapauksessa arvo kopioidaan suoraan, kun taas viittausmuuttujan tapauksessa viittaus kopioidaan.
 
-Let's take a practical look at the phenomenon. Let's assume we have the following **Person** class available.
+Katsotaan käytännön esimerkkiä. Oletetaan että meillä on seuraava **Person** luokka käytössä.
 
 ```cpp
 public class Person
@@ -194,7 +195,8 @@ public class Person
 }
 ```
 
-Let's take a look at the operation of the program step by step.
+Katsotaan ohjelman toimintaa askel askeleelta.
+
 
 ```cpp
 static void Main(string[] args)
@@ -224,35 +226,38 @@ First (1971)
 First (1972)
 ```
 
-The execution of the program begins on the first line of the Main method. On the first row of the Main, a **Person type variable** first is introduced, and the value returned by the constructor of the Person class is copied as its value. The constructor creates an object whose birth year is set as 1970, and whose name is set to be the value received as the paramter. After the execution of this first row the state of the program is the following -- a Person object has been created in the memory, and there is a reference to it from the first variable defined in the Main method.
+Ohjelman suoritus alkaa **Main** metodin ensimmäiseltä riviltä. Ensimmäisellä rivillä esitellään **Person** tyyppinen muuttuja **first**, ja **Person** luokan konstruktorin palauttama arvo kopioidaan sen arvoksi. Konstruktori luo olion, jonka syntymävuosi on 1970, ja nimi on saatu parametrina. Ensimmäisen rivin suorituksen jälkeen ohjelman tilanne on seuraava -- muistiin on luotu **Person** tyyppinen olio, ja **Main** metodissa on viittaus siihen ensimmäisessä muuttujassa.
 
 
-![Step one](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-1-tm.png)
+![Ensimmäinen askel kuvana](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-1-tm.png)
 
-On the third row of the Main method we print the value of the variable first. The method call **Console.WriteLine** searches for the method ToString from the reference variable that it is given as the parameter. The Person class has the method ToString, so that method is called on the object that is referenced by the first variable. The value of the name variable in that object is "First", and the value of the birth year variable is 1970. What is printed is the string "First (1970)".
+Metodin kolmannella rivillä tulostamme muuttujan first arvon. Metodikutsu **Console.WriteLine** etsii parametrina annetusta viittausmuuttujasta **ToString** metodin. **Person** luokalla on **ToString** metodi, joten se kutsutaan ensimmäisen muuttujan osoittaman olion kohdalla. Olion name muuttujan arvo on "First", ja syntymävuoden arvo on 1970. Tulostettava merkkijono on "First (1970)".
 
-On the fourth row the program calls the MakeYounger method, and the variable first is passed as a parameter to it. When the method MakeYounger is called, the value of the variable passed as the parameter is copied for the method MakeYounger to use. The execution of the Main method remains waiting in the call stack. As the variable first is reference type, the reference created earlier is copied for the method's use. At the end of the method execution the situation is the following -- the method increments by one the birth year of the object it receives as a parameter.
+Neljännellä rivillä ohjelma kutsuu **MakeYounger** metodia, ja sille välitetään parametrina muuttuja **first**. Kun **MakeYounger** metodia kutsutaan, sille välitetyn muuttujan arvo kopioidaan metodin käyttöön. **MakeYounger** metodin suorituksen aikana **Main** metodin suoritus jää odottamaan kutsupinon päälle. Koska muuttuja first on viittausmuuttuja, aiemmin luotu viittaus kopioidaan metodin käyttöön. Metodin suorituksen lopussa tilanne on seuraava -- metodi lisää yhdellä parametrina saamansa olion syntymävuotta.
 
-![Step two](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-2-tm.png)
+![Toinen askel kuvana](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-2-tm.png)
 
-When the execution of the method MakeYounger ends, we return back to the Main method. The information related to the execution of the MakeYounger disappear from the call stack.
+Kun metodin MakeYounger suoritus päättyy, palaamme Main metodiin. Metodin MakeYounger suorituksen aikana tehdyt muutokset katoavat kutsupinon päältä.
 
-![Step three](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-3-tm.png)
 
-After returning from the method call we again execute the printing of the variable first. The object pointed at by the variable first has been modified in the course of executing the method call **MakeYounger**: the **birthYear** variable of the object was incremented by one. The final value that is printed is "First (1971)".
+![Askel kolme](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-3-tm.png)
 
+Kun palataan Main metodiin, tulostetaan vielä muuttujan first arvo. Olio, johon first muuttuja viittaa, on muuttunut MakeYounger metodin suorituksen aikana -- olion syntymävuosi on lisääntynyt yhdellä. Tulostettava merkkijono on "First (1971)".
+
+Tämän jälkeen ohjelma esittelee uuden muuttujan **second**. Muuttujan arvoksi kopioidaan muuttujan first arvo. Toisin sanoen, muuttujan second arvo on viittaus samaan olioon kuin muuttujan first arvo. 
 Then the program introduces a new Person type variable called second. The value of the variable first is copied into the variable second: in other words, the value of the variable second is a reference to the already existing Person object.
 
-![Step four](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-4-tm.png)
+![Askel neljä](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-4-tm.png)
 
-After this the program calls the method MakeYounger, which is given the variable second as the parameter. The value of the given variable is copied as the value of a method variable when the method is called. At the end of the method execution there has been an increment of one in the object referenced by the method variable.
 
-![Step five](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-5-tm.png)
+Tämän jälkeen ohjelma kutsuu MakeYounger metodia, ja sille välitetään parametrina muuttuja second. Metodin suorituksen aikana muuttujan second arvo kopioidaan metodin käyttöön. Metodin suorituksen lopussa tilanne on seuraava -- metodi lisää yhdellä parametrina saamansa olion syntymävuotta.
 
-Finally the method execution ends and the program returns to the Main method. In the Main method the value of the variable first is printed one more time. The final result of the print is "First(1972)".
+![Askel viisi](https://github.com/centria/ohjelmoinnin-perusteet/raw/master/src/images/part5-3-first-5-tm.png)
 
-In the course material the concrete details concerning variables and computer memory are presented simplistically. We introduce memory-related topics on the suitable abstaction level for learning how to program. For instance, from the point of view of the course goals, the following sentence is good enough: **statement int number = 5** reserves a **location** for the variable number **in the memory**, and **copies the value 5 into it**.
+Lopulta metodin suoritus loppuu ja palaamme Main metodiin. Tulostamme vielä muuttujan first arvon. Tulostettava merkkijono on "First (1972)".
 
-From the point of view of the computer operation, there are a great deal more occuring during the execution of the statement int number = 5. The execution calls for reserving a 32-bit location from the memory for the value 5, and another 32-bit location for the variable number. The size of the location is determined by the variable type. After this the contents of the memory location that includes the value 5 are copied into the memory location of the variable number.
+Materiaalissa esitetyt yksityiskohdat muuttujista ja tietokoneen muistista ovat yksinkertaistettuja. Esittelemme muistia koskevia asioita sopivalla abstraktiotasolla ohjelmoinnin oppimisen kannalta. Esimerkiksi kurssin tavoitteiden kannalta seuraava lause on riittävä: **lause int number = 5** varaa **muistista** **paikan** muuttujalle number, ja **kopioi siihen arvon 5**.
 
-In addition to the above, the variable number is not a straightforward memory location or a box. The value of the variable number is a memory address -- the information about the variable type, included in the variable, tells how much data should be retrieved from the specified address. In the case of an integer this amount is 32 bits, for instance.
+Tietokoneen toiminnan kannalta, lauseen int number = 5 suorituksen aikana tapahtuu paljon enemmän. Suoritus vaatii 32-bittisen muistipaikan varaamisen arvolle 5, ja toisen 32-bittisen muistipaikan varaamisen muuttujalle number. Muistipaikan koko määräytyy muuttujan tyypin mukaan. Tämän jälkeen muistipaikassa, jossa on arvo 5, oleva data kopioidaan muuttujan number muistipaikkaan.
+
+Tämän lisäksi, muuttuja number ei ole suoraan muistipaikka tai laatikko, johon tietoa säilötään. Muuttujan arvo on muistipaikan osoite, jossa tieto sijaitsee. Muuttujan tyyppi, joka sisältyy muuttujaan itseensä, kertoo kuinka paljon dataa tulee hakea osoitteesta. Esimerkiksi kokonaisluvun (int) tapauksessa tarvittava määrä on 32 bittiä.
