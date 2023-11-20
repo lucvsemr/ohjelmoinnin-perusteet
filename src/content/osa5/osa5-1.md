@@ -4,15 +4,13 @@ nav_order: 1
 hidden: false
 ---
 
+Mistä olio-ohjelmoinnissa onkaan kyse? Kelataan vähän taaksepäin.
 
-What is object-oriented programming all about? We'll rewind a little.
+Tarkastellaan, kuinka kello toimii. Kellolla on kolme viisaria: tuntiviisari, minuuttiviisari ja sekuntiviisari. Sekuntiviisari etenee yhden sekunnin välein, minuuttiviisari 60 sekuntin välein ja tuntiviisari 60 minuutin välein. Kun sekuntiviisarin arvo on 60, sen arvo asetetaan nollaksi ja minuuttiviisarin arvoa kasvatetaan yhdellä. Kun minuuttiviisarin arvo on 60, sen arvo asetetaan nollaksi ja tuntiviisarin arvoa kasvatetaan yhdellä. Kun tuntiviisarin arvo on 24, se asetetaan nollaksi.
 
-Let's inspect how a clock works. The clock has three hands: hours, minutes and seconds. The second hand increments once every second, the minute hand once every sixty seconds, and the hour hand once in sixty minutes. When the value of the second hand is 60, its value is set to zero and the value of the minute hand is incremented by one. When the minute hand's value is 60, its value is set to zero and the hour hand value is incremented by one. When the hour hand value is 24, it is set to zero.
+Aika esitetään aina muodossa **tunnit:minuutit:sekunnit**, missä tunnit on kahden numeron muodossa (esim. 01 tai 12), minuutit kahden numeron muodossa ja sekunnit myös kahden numeron muodossa.
 
-Time is always printed in the form **hours: minutes: seconds**, where the hours are represented by two digits (eg. 01 or 12), minutes by two digits, and seconds also by two digits.
-
-Below is an implementation of the clock with integer type variables (the printing could be isolated into its own method, but that has not been done here).
-
+Alla on toteutus kellosta kokonaislukumuuttujien avulla (tulostus voisi olla eristetty omaan metodiinsa, mutta sitä ei ole tässä tehty).
 
 ```cpp
 static void Main(string[] args)
@@ -23,7 +21,7 @@ int seconds = 0;
 
 while (true)
 {
-  // 1. Printing the time
+  // 1. Ajan tulostus
   if (hours < 10)
   {
     Console.Write("0");
@@ -47,10 +45,10 @@ while (true)
   Console.Write(seconds);
   Console.WriteLine();
 
-  // 2. The second hand's progress
+  // 2. Sekuntiviisarin liike
   seconds = seconds + 1;
 
-  // 3. The other hand's progress when necessary
+  // 3. Muiden viisareiden liike kun se on tarpeellista
   if (seconds > 59)
   {
     minutes = minutes + 1;
@@ -70,12 +68,12 @@ while (true)
 }
 ```
 
+Kuten yllä on demonstroitu, kolmen kokonaislukumuuttujan avulla toteutetun kellon toiminta ei ole kovin selkeää. Ohjelmakoodia lukiessa ei oikein "näe", mitä tapahtuu. Tunnettu [**ohjelmistokehittäjä**](https://fi.wikipedia.org/wiki/Kent_Beck) on joskus todennut *"Any fool can write code that a computer can understand. Good programmers write code that humans can understand"*.
 
-As demonstrated by reading the example above, the functioning of a  clock made up of three **int** variables is not very clear to someone reading through the source code. It's difficult to "see" what's going on. A famous [**Programmer**](https://en.wikipedia.org/wiki/Kent_Beck) remarked *"Any fool can write code that a computer can understand .Good Programmers write code that humans can understand"*.
+Tarkoitus on tehdä ohjelmasta ymmärrettävämpi.
 
-The aim is to make the program more comprehensible.
+Koska kellon viisari on itsessään selkeä konsepti, hyvä idea ohjelman ymmärrettävyyden kannalta olisi tehdä siitä oma luokkansa. Tehdään **ClockHand**-luokka, joka kuvaa kelloviisaria, joka sisältää tietoa sen arvosta, ylärajasta (eli kohdasta, jossa viisarin arvo palaa nollaan) ja tarjoaa metodeja viisarin eteenpäin siirtämiseen, arvon katsomiseen ja arvon tulostamiseen merkkijonona.
 
-Since a clock hand is a clear concept in and of itself, a good idea with regard to the program's understandability would be to turn it into its own class. Let's create a **ClockHand** class describing a clock hand, which contains information about its value, upper limit (i.e. the point at which the value of the hand returns to zero), and provides methods for advancing the hand, viewing its value and printing the value in string form.
 
 ```cpp
 public class ClockHand
@@ -111,7 +109,8 @@ public class ClockHand
 }
 ```
 
-Once we've created the ClockHand class, our clock becomes clearer. Now, printing the clock, i.e. the clock hand, is straightforward, and the hand's progression is hidden away in the ClockHand class. Since the hand's return to the beginning happens automatically with the help of the upper-limit variable defined by the ClockHand class, the way the hands work together is slightly different than in the program implementation that uses integers. The program that used integers looked at whether the value of the integer that represented the clock hand exceeded the upper limit, after which its value was set to zero and the value of the integer representing the next clock hand was incremented. Using clock-hand objects, the minute hand advances when the second hand's value is zero, and the hour hand advances when the minute hand's value is zero.
+Kun olemme luoneet luokan ClockHand, kellostamme tulee selkeämpi. Nyt kellon, eli viisareiden, tulostaminen on suoraviivaista, ja viisareiden eteneminen on piilotettu ClockHand-luokkaan. Koska viisarin paluu alkuun tapahtuu automaattisesti ClockHand-luokan määrittelemän ylärajamuuttujan avulla, viisareiden yhteistoiminta on hieman erilaista kuin kokonaislukumuuttujien avulla toteutetussa ohjelmassa. Kokonaislukumuuttujia käyttävä ohjelma tarkasteli, ylittyikö viisaria kuvaavan kokonaisluvun arvo ylärajan, jonka jälkeen sen arvo asetettiin nollaksi ja seuraavaa viisaria kuvaavan kokonaisluvun arvoa kasvatettiin. Kelloviisareiden ollessa kyseessä minuuttiviisari etenee, kun sekuntiviisarin arvo on nolla, ja tuntiviisari etenee, kun minuuttiviisarin arvo on nolla.
+
 
 ```cpp
 static void Main(string[] args)
@@ -122,13 +121,13 @@ static void Main(string[] args)
 
   while (true)
   {
-    // 1. Printing the time
+    // 1. Tulostetaan aika
     Console.WriteLine(hours + ":" + minutes + ":" + seconds);
 
-    // 2. Advancing the second hand
+    // 2. Edistetään sekuntiviisaria
     seconds.Advance();
 
-    // 3. Advancing the other hands when required
+    // 3. Edistetään muita viisareita kun tarpeellista
     if (seconds.value == 0)
     {
       minutes.Advance();
@@ -141,11 +140,12 @@ static void Main(string[] args)
   }
 ```
 
-**Object-oriented programming is mainly about isolating concepts into their own entities or, in other words, creating abstractions.** Despite the previous example, one might see it pointless to create an object containing only a number, since the same could be done directly with int variables. However, that is not always the case.
+**Olio-ohjelmointi on pääasiassa erilaisten käsitteiden eristämistä omiin kokonaisuuksiinsa eli abstraktioiden luomista.** Edellisessä esimerkissä saattaa tuntua turhalta luoda olio, joka sisältää vain yhden kokonaisluvun, koska saman asian voisi tehdä suoraan kokonaislukumuuttujilla. Näin ei kuitenkaan ole aina.
 
-Separating a concept into its own class is a good idea in many ways. Firstly, certain details (such as rotating the hand) can be hidden inside the class (i.e. **abstracted**). Instead of typing an if-statement and an assignment operation, it's enough for the user of the clock hand to call a clearly-named method **Advance()**. The produced clock hand may be used as a building block for other programs as well - the class could be named **CounterLimitedFromTop** for instance. That is, a class created from a distinct concept can serve multiple purposes. Another massive advantage is that since the details of the implementation of the clock hand are not visible to its user, they can be changed if desired.
+Konspetin erottaminen omaan luokkaansa on monella tapaa hyvä idea. Ensinnäkin tiettyjä yksityiskohtia (kuten käsien pyörittäminen) voidaan piilottaa luokan sisälle eli **abstrahoida**. Käyttäjän ei tarvitse kirjoittaa if-lausetta ja sijoitusoperaatiota, vaan kellokäden käyttäjän tarvitsee kutsua selkeästi nimettyä metodia **Advance()**. Tuotettua kellokättä voidaan käyttää myös rakennuspalikkana muissa ohjelmissa - luokka voisi olla esimerkiksi nimeltään **CounterLimitedFromTop**. Eli erillisen käsitteen luomalla luokalla voi olla useita käyttötarkoituksia. Toinen valtava etu on, että koska kellokäden toteutuksen yksityiskohdat eivät ole käyttäjän nähtävillä, niitä voidaan muuttaa haluttaessa.
 
-We realized that the clock contains three hands, i.e. it consists of three concepts. In fact, the clock is a concept in and of itself. That is, we can create a class of it as well. Next, we create a class called "Clock" that hides the hands inside of it.
+Ymmärsimme kellon sisältävän kolme viisaria, eli se koostuu kolmesta käsitteestä. Itse asiassa kello on käsite sinänsä. Eli voimme luoda siitäkin luokan. Seuraavaksi luomme luokan **Clock**, joka piilottaa sisäänsä kellon viisarit.
+
 
 ```cpp
 public class Clock
@@ -183,7 +183,8 @@ public class Clock
 }
 ```
 
-The way the program functions becomes increasingly clear. When you compare the program below to the original one composed of integers, you'll find that the program's readability is on a completely different level.
+Täten ohjelmistomme toiminta tulee entistä selkeämmäksi. Kun vertaamme alla olevaa ohjelmaa alkuperäiseen joka toimi kokonaisluvuilla, huomaammekin, että ohjelman luettavuus on aivan eri tasolla.
+
 
 ```cpp
 static void Main(string[] args)
@@ -198,21 +199,21 @@ static void Main(string[] args)
 }
 ```
 
-The clock we implemented above is an object whose functionality is based on "simpler" objects, i.e., the hands. This is exactly **the great idea behind ​​object-oriented programming: a program is built from small and distinct objects that work together.**
+Toteuttamamme kello on olio jonka toiminto perustuu "yksinkertaisempiin" olioihin eli kellon viisareihin. Tämä on juuri **se hieno idea, joka olio-ohjelmoinnissa on: ohjelma rakentuu pienistä ja erillisistä olioista, jotka toimivat yhdessä**.
 
-## Object
+## Olio
 
-An **Object** refers to an independent entity that has data (instance variables) and behavior (methods) attached to it. Objects can differ a lot in structure and function: some may describe concepts of a problem domain, and others coordinate the interaction between various objects. Objects interact with one another through method calls - method calls are used to both request information from objects and give instructions to them. In general, each object has clearly defined boundaries and behaviors, and each object knows only about the objects it needs to perform its task. In other words, the object hides its internal operations and provides access to behavior through clearly defined methods. Also, the object is independent of any objects that it doesn't need to accomplish its task.
+**Olio** viittaa itsenäiseen entiteettiin jolla on dataa (instanssimuuttujat) ja käyttäytymistä (metodit) liitettynä siihen. Oliot voivat erota rakenteeltaan ja toiminnaltaan paljonkin: toiset kuvaavat ongelma-aluetta ja toiset koordinoivat eri olioiden välistä vuorovaikutusta. Oliot vuorovaikuttavat keskenään metodikutsujen avulla - metodikutsuja käytetään sekä tiedon pyytämiseen oliolta että ohjeiden antamiseen sille. Yleisesti ottaen jokaisella oliolla on selkeästi määritellyt rajat ja käyttäytyminen, ja jokainen olio tietää vain ne oliot, joita se tarvitsee tehtävänsä suorittamiseen. Toisin sanoen olio piilottaa sisäiset toimintonsa ja tarjoaa käyttöliittymän käyttäytymiseen selkeästi määriteltyjen metodien avulla. Lisäksi olio on riippumaton niistä olioista, joita se ei tarvitse tehtävänsä suorittamiseen.
 
-In the previous section, we dealt with objects depicting people whose structure was defined in a "Person" class. For review, it's a good idea to remember the purpose of a class: a **class** contains the blueprint needed to create objects, and also defines the objects' variables and methods. An object is instantiated based on the constructor in the class.
+Edellisessä osassa käsittelimme olioiden kuvausta henkilöiden avulla, jotka oli määritelty "Person" luokassa. Kertauksen vuoksi on hyvä muistaa luokan tarkoitus: **luokka** sisältää tarvittavan rakenteen olioiden luomiseen, ja määrittelee myös olioiden muuttujat ja metodit. Olio luodaan luokan konstruktorin perusteella.
 
-Our person objects had a name, age, weight and height, and a few methods. If we thought about the structure of the person object more, we could probably come up with more person-related variables, such as a personal ID number, telephone number, address, and eye color.
+Henkilö-oliollamme oli nimi, ikä, paino ja pituus, sekä muutama metodi. Jos mietimme henkilö-olion rakennetta enemmän, voisimme keksiä sille lisää henkilöön liittyviä muuttujia, kuten henkilötunnuksen, puhelinnumeron, osoitteen ja silmien värin.
 
-In reality, we can relate all kinds of different information and things to a person. However, when building an application that deals with people, the **functionality and features related to a person are gathered based on the application's use case**. For example, a life-management application could keep track of the previously-mentioned age, weight, and height, and provide the ability to calculate body mass index and maximum heart rate. On the other hand, an application focused on communication would store people's email addresses and phone numbers, but would not need information such as weight or height.
+Todellisuudessa henkilöön liittyy kaikenlaista tietoa ja asioita. Kuitenkin kun rakennamme sovellusta, joka käsittelee henkilöitä, **henkilöön liittyvä toiminnallisuus ja ominaisuudet kerätään sovelluksen käyttötarkoituksen mukaan**. Esimerkiksi elämänhallinta-sovellus voisi pitää kirjaa edellä mainitusta iästä, painosta ja pituudesta, ja tarjota mahdollisuuden laskea painoindeksi ja maksimisyke. Toisaalta viestintään keskittyvä sovellus tallentaisi henkilöiden sähköpostiosoitteet ja puhelinnumerot, mutta ei tarvitsisi painoa tai pituutta.
 
-**The state of an object** is the value of its internal variables at any given point in time.
+**Olion tila** on sen sisäisten muuttujien arvo tietyllä hetkellä.
 
-In our example, a Person object that keeps track of name, age, weight, and height, and provides the ability to calculate body mass index and maximum heart rate would look like the following. Below, the height and weight are expressed as doubles - the unit of length is one meter.
+Esimerkissämme henkilö-olio (Person) jolla on nimi, ikä, paino ja pituus, ja metodit jotka mahdollistavat painoindeksin (englanniksi body mass index, BMI) sekä maksimisykkeen (maximum heart rate) laskemisen, näyttää seuraavalta. Alla pituus ja paino on ilmaistu liukulukuina - pituuden yksikkö on metri.
 
 ```cpp
 public class Person
@@ -256,7 +257,8 @@ public class Person
 }
 ```
 
-Determining the maximum heart rate and body mass index of a given person is straightforward using the Person class described above.
+Maksimisykkeen ja painoindeksin laskeminen onnistuu helposti Person-luokan avulla.
+
 
 ```cpp
 static void Main(string[] args)
@@ -287,27 +289,27 @@ What's your height?
 Laura Palmer, BMI: 0.0016762251409825073, maximum heart rate: 191.369
 ```
 
-## Class
+## Luokka
 
-A class defines the types of objects that can be created from it. It contains instance variables describing the object's data, a constructor or constructors used to create it, and methods that define its behavior. A rectangle class is detailed below which defines the functionality of a rectangle:
+Luokka määrittelee olioiden rakenteen. Se sisältää olioiden sisäiset muuttujat jotka kuvaavat olion dataa, konstruktorin tai konstruktoreita joilla olioita luodaan, sekä metodit jotka kuvaavat niiden toimintaa. Rectangle-luokka (suorakaide) kuvattuna alla on hyvä esimerkki luokasta.
 
 ```cpp
-// class
+// luokka
 public class Rectangle
 {
 
-  // instance variables
+  // instanssimuuttujat
   private int width;
   private int height;
 
-  // constructor
+  // konstruktori
   public Rectangle(int width, int height)
   {
     this.width = width;
     this.height = height;
   }
 
-  // methods
+  // metodit
   public void Widen()
   {
     this.width = this.width + 1;
@@ -333,9 +335,10 @@ public class Rectangle
 }
 ```
 
-Some of the methods defined above do not return a value (methods that have the keyword void in their definition), while others do (methods that specify the type of variable to be returned). The class above also defines the toString method, which returns the string used to print the object.
+Jotkin metodit yllä eivät palauta arvoja (metodit joissa on määritelty avainsana void), kun taas toiset palauttavat (metodit joissa on määritelty palautettavan arvon tyyppi). Luokka määrittelee myös toString-metodin, joka palauttaa olion tulostamiseen käytettävän merkkijonon.
 
-Objects are created from the class through constructors by using the new command. Below, you'll create two rectangles and print information related to them.
+Oliot luodaan luokan konstruktorin avulla käyttämällä avainsanaa new. Alla luodaan kaksi suorakaide-oliota ja tulostetaan niiden tietoja.
+
 
 ```cpp
 static void Main(string[] args)
@@ -362,36 +365,38 @@ static void Main(string[] args)
 
 <Exercise title={'001 One minute'}>
 
-The exercise template comes with the `ClockHand` class described in the course material. Implement a `Timer` class based on the material's Clock class.
+Tehtäväpohjassa on valmiina materiaalissa esitelty `ClockHand`-luokka. Toteuta ajastin, eli `Timer`-luokka materiaalissa esiteltyä `Clock`-luokkaa hyödyntäen.
 
-The timer has two hands, one for hundredths of a second and one for seconds. As it progresses, the number of hundredths of a second grows by one. When the hand corresponding to hundredths of a second reaches a value of 100, its value is set to zero, and the number of seconds grows by one. In the same way, when the value of the hand corresponding to seconds reaches the value of sixty, its value is set to zero.
+Ajastimessa on kaksi viisaria, yksi sadasosasekunteille ja toinen sekunneille. Kun ajastin etenee, sadasosasekuntiviisari etenee yhdellä. Kun sadasosasekuntiviisarin arvo saavuttaa arvon 100, sen arvo asetetaan nollaksi ja sekuntiviisarin arvo kasvaa yhdellä. Vastaavasti kun sekuntiviisarin arvo saavuttaa arvon 60, sen arvo asetetaan nollaksi.
 
-- `public Timer()` creates a new timer.
-- `public override string ToString()` returns a string representation of the timer. The string representation should be in the form "seconds: hundredths of a second", where both the seconds and the hundredths of a second are represented by two numbers. For example, "19:83" would represent the time 19 seconds, 83 hundredths of a second.
-- `public void Advance()` moves the timer forward by a hundredth of a second.
+- `public Timer()` luo uuden ajastimen.
+- `public override string ToString()` palauttaa ajastimen merkkijonoesityksen. Tämän tulisi olla muodossa "sekuntit: sadasosasekuntit", jossa molemmat esitetään aina kahdella numerolla. Esimerkiksi "19:83" edustaa aikaa 19 sekuntia, 83 sadasosaa.
+- `public void Advance()` edistää ajastinta yhdellä sadasosasekunnilla.
 
-You can test out the timer's functionality in the main program whenever you like. The example code below provides you with a program where the timer is printed and it advances once every hundredth of a second.
+Voit kokeilla ajastimen toimintaa pääohjelmassa halutessasi. Alla oleva esimerkkikoodi tarjoaa sinulle ohjelman, jossa ajastin tulostetaan ja se etenee yhdellä sadasosasekunnilla.
+
 
 ```cpp
 static void Main(string[] args)
 {
-  // create new timer
+  // Luo uusi ajastin
   Timer timer = new Timer();
-  // Loop until you cancel the loop.
-  // You can cancel with the CTRL + C
+  // Silmukka joka etenee niin kauan kunnes se keskeytetään
+  // Voit keskeyttää silmukan yhdistelmällä CTRL + C
   while (true)
   {
     Console.WriteLine(timer);
     timer.Advance();
-    // Some error proving, we'll talk about this later.
-    // Known as try-catch.
+    // Vähän virheenkorjausta, tämä käsitellään myöhemmin
+    // Tunnetaan nimellä try-catch
     try
     {
-      // Wait 100th of a second. 
-      // Sleep(1000) waits one second, if you want to test at slower pace.
+      // Odota sadasosasekunti
+      // Sleep(1000) odottaa yhden sekunnin, jos haluat testata hitaammalla tahdilla. 
       System.Threading.Thread.Sleep(10);
     }
-    // Other half of try-catch pair. 
+    // Try-catch:n toinen puoli.
+    // Tämäkin käsitellään myöhemmin. 
     catch (Exception e)
     {
       Console.WriteLine("Error happened: +" + e);
@@ -404,27 +409,28 @@ static void Main(string[] args)
 
 <Exercise title={'002 Cube'}>
 
-create a `Cube` class that represents a cube (i.e., a standard hexahedron). create a `public Cube (int edgeLength)` constructor for the class, that takes the length of the cube's edge as its parameter.
+Luo luokka kuutiolle, eli `Cube`-luokka. Luo konstruktori `public Cube(int edgeLength)`, joka ottaa kuution sivun pituuden parametrinaan.
 
-Make a `public int Volume()` method for the cube, which calculates and returns the cube's volume. The volume of the cube is calculated with the formula `edgeLength * edgeLength * edgeLength`. Moreover, make a `public override string ToString()` method for the cube, which returns a string representation of it. The string representation should take the form "The length of the edge is l and the volume v", where `l` is the length and `v` the volume - both the length and volume must be represented as integers.
+Luo metodi `public int Volume()`, joka laskee ja palauttaa kuution tilavuuden. Kuution tilavuus lasketaan kaavalla `edgeLength * edgeLength * edgeLength`. Lisäksi luo metodi `public override string ToString()`, joka palauttaa kuution merkkijonoesityksen. Merkkijonoesityksen tulee olla muodossa "The length of the edge is l and the volume v", jossa `l` on sivun pituus ja `v` on tilavuus - molemmat kokonaislukuina.
 
 </Exercise>
 
 <Exercise title={'003 Fitbyte'}>
 
-[**The Karvonen method**](https://en.wikipedia.org/wiki/Heart_rate#Karvonen_method) allows you to calculate your target heart rate for physical exercise. The target heart rate is calculated with the formula `(maximum heart rate - resting heart rate) * (target heart rate percentage) + resting heart rate`, where the target heart rate is given as a percentage of the maximum heart rate.
+[**Karvosen kaava**](https://fi.wikipedia.org/wiki/Karvosen_kaava) antaa laskukaavan tavoitesykkeelle (target heart rate) harjoittelun aikana. Tavoitesyke lasketaan kaavalla `(maximum heart rate - resting heart rate) * (target heart rate percentage) + resting heart rate`, missä tavoitesyke annetaan prosenttina maksimisykkeestä (maksimum heart rate).
 
-For example, if a person has a maximum heart rate of 200, a resting heart rate of 50, and a target heart rate of 75% of the maximum heart rate, the target heart rate should be about ((200-50) * (0.75) + 50), i.e., 162.5 beats per minute.
+Esimerkiksi, jos henkilön maksimisyke on 200, leposyke 50 ja tavoitesyke 75% maksimisykkeestä, tavoitesyke on noin ((200-50) * (0.75) + 50), eli 162.5 lyöntiä minuutissa.
 
-create an "exercise assistant" class called `Fitbyte`. Its constructor takes both an age and a resting heart rate as its parameters. The exercise assistant should provide a method `TargetHeartRate`, which is passed a number of type double as a parameter that represents a percentual portion of the maximum heart rate. The proportion is given as a number between zero and one. The class should have:
+Luo "harjoitusavustaja", tai ennemmin luokka `FitByte`. Sen konstruktori ottaa parametreina iän ja leposykkeen.  Harjoitusavustajan tulee tarjota metodi `TargetHeartRate`, jolle annetaan parametrina prosentuaalinen osuus maksimisykkeestä (doublena), arvo välillä 0-1. Luokan tulee sisältää:
 
-- A constructor `public Fitbyte(int age, int restingHeartRate)`
-- A method `public double TargetHeartRate(double percentageOfMaximum)` that calculates and returns the target heart rate.
+- Konstruktori `public Fitbyte(int age, int restingHeartRate)`
+- Metodi `public double TargetHeartRate(double percentageOfMaximum)`, joka laskee ja palauttaa tavoitesykkeen.
 
-Use the formula 206.3 - (0.711 \* age) to calculate the maximum heart rate.
-Use the formula (maxHeartRate - restingHeartRate) \* percentageOfMaximum + restingHeartRate to calculate the target heart rate.
+Käytä kaavaa 206.3 - (0.711 \* age) maksimisykkeen laskemiseen.
+Käytä kaavaa (maxHeartRate - restingHeartRate) \* percentageOfMaximum + restingHeartRate tavoitesykkeen laskemiseen.
 
-Use case:
+Esimerkki:
+
 
 ```cpp
 public static void Main(string[] args)
