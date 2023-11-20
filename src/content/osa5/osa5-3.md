@@ -5,13 +5,13 @@ hidden: false
 ---
 
 
-There are two kinds of types in C#: **value types** and **reference types**. Variables of value types directly contain their data whereas variables of reference types store references to their data, the latter being known as **objects**. 
+On olemassa kahdentyyppisiä muuttujia C#:ssa: **arvomuuttujia** ja **viittausmuuttujia**. Arvomuuttujat sisältävät suoraan arvonsa, kun taas viittausmuuttujat sisältävät viittauksen arvoonsa, joka on **olio** tai **objekti**.
 
-With reference types, it is possible for two variables to reference the same object and thus possible for operations on one variable to affect the object referenced by the other variable. 
+Vittausmuuttujilla on mahdollista, että kaksi muuttujaa viittaavat samaan objektiin, ja siten on mahdollista, että toisen muuttujan operaatiot vaikuttavat toisen muuttujan viittaamaan objektiin.
 
-With value types, the variables each have their own copy of the data, and it is not possible for operations on one to affect the other.
+Arvomuuttujilla jokaisella muuttujalla on oma kopio datasta, eikä toisen muuttujan operaatioilla ole mahdollista vaikuttaa toisen muuttujan arvoon.
 
-From the programmer's point of view, the data in a value variable is stored as the value of that variable, whereas the value of a reference type varible is a reference to the data. Let's examine these different types with two examples.
+Ohjelmoijan näkökulmasta arvomuuttujan data on tallennettu muuttujan arvoksi, kun taas viittausmuuttujan data on viittaus dataan. Tutkitaan näitä eri tyyppejä kahdella esimerkillä.
 
 ```cpp
 int number = 10;
@@ -47,11 +47,12 @@ namespace Exercise001
 Exercise001.Name
 ```
 
-In the first example we create a simple **int** variable, and the number 10 is stored as its value. When we pass the variable to the **Console.WriteLine** method, the value 10 is printed. In the second example we create a **reference type** variable named john. A reference to an object, returned by the constructor of the **Name** class when we call it, is stored as the value of the variable. When this latter variable is printed, the string **Exercise001.Name** is what ends up being printed. What is the cause for this?
+Ensimmäisessä esimerkissä luomme yksinkertaisen **int** muuttujan, ja siihen tallennetaan arvoksi numero 10. Kun välitämme muuttujan **Console.WriteLine** metodille, tulostuu arvo 10. Toisessa esimerkissä luomme **viittausmuuttujan** nimeltä john. Kun kutsutaan **Name** luokan konstruktoria, se tallettaa arvon muuttujan arvoksi. Kun tulostamme muuttujan, tulostuu **Exercise001.Name**. Mikä on syynä tähän?
 
-The method call **Console.WriteLine** prints the value of the variable. The value of a simple variable is concrete, whereas the value of a reference type variable is a reference. In the case of a reference type variable, what is printed is the ToString representation of the object. As the default method for any **Object.ToString** is to print in format **namespace.ClassName**, we get **Exercise001.Name**.
+Metodi **Console.WriteLine** tulostaa muuttujan arvon. Arvomuuttujan arvo on konkreettinen, kun taas viittausmuuttujan arvo on viittaus. Viittausmuuttujan tapauksessa tulostetaan olion **ToString** representaatio. Oletusarvoisesti **Object.ToString** metodi tulostaa olion nimen **namespace.ClassName**, joten saamme **Exercise001.Name**.
 
-The previous example is the case when the programmer has not changed a variable's default print format. You can change the default print by defining the method **ToString** in the class of the object in question. The method indicates what string should be printed when an instance of the class is printed. In the example below, we have defined the method **public override string ToString()** in the class Name: it returns the instance variable name. Now when we print an object that is an instance of Name with the Console.WriteLine command, what is printed is the string returned by the ToString method.
+Edellinen esimerkki on tapaus, jossa ohjelmoija ei ole muuttanut muuttujan oletustulostusta. Voit muuttaa oletustulostusta määrittelemällä **ToString** metodin kyseisen olion luokassa. Metodi kertoo, mitä merkkijonoa tulostetaan, kun luokan instanssi tulostetaan. Alla olemme määritelleet **public override string ToString()** metodin **Name** luokassa: se palauttaa instanssimuuttujan **name**. Nyt kun tulostamme **Name** luokan instanssin **Console.WriteLine** komennolla, tulostuu **ToString** metodin palauttama merkkijono.
+
 
 ```cpp
 namespace Exercise001
@@ -81,7 +82,8 @@ Console.WriteLine(john);
 John
 ```
 
-## Value types
+## Arvomuuttujat
+
 
 A value type is either a **struct type** or an **enumeration type**. C# provides a set of predefined struct types called the **simple types**. The simple types are identified through reserved words.
 
