@@ -4,7 +4,8 @@ nav_order: 2
 hidden: false
 ---
 
-Let's get back to the Person class once more. Let's look a bit different version of the class:
+Palataan Person-luokkaan vielä kerran. Katsotaan hieman erilaista versiota luokasta:
+
 
 ```cpp
 public class Person
@@ -50,7 +51,8 @@ public class Person
 }
 ```
 
-Initially all person objects are 0 years old, because the constructor sets the value of the instance variable age to 0:
+Alussa kaikki henkilöt ovat 0-vuotiaita, koska konstruktori asettaa instanssimuuttujan age arvoksi 0:
+
 
 ```cpp
 public Person(string name)
@@ -62,9 +64,10 @@ public Person(string name)
 }
 ```
 
-## Constructor overloading
+## Konstruktorin ylikuormitus
 
-We would like to also be able to create Persons so that the constructor is given the age as well as the name as parameters. This is possible, because a class can have multiple constructors. Let's make an alternative constructor. You don't have to delete the old constructor.
+Haluaisimme pystyä luomaan henkilöitä niin, että konstruktorille annetaan parametrina myös ikä. Tämä on mahdollista, koska luokalla voi olla useita konstruktoreita. Tehdään vaihtoehtoinen konstruktori. Vanhaa konstruktoria ei tarvitse poistaa.
+
 
 ```cpp
 public Person(string name)
@@ -84,7 +87,7 @@ public Person(string name)
 }
 ```
 
-Now we have two alternative ways to create objects:
+Nyt meillä on kaksi vaihtoehtoista tapaa luoda henkilöitä:
 
 ```cpp
 static void Main(string[] args)
@@ -101,22 +104,23 @@ static void Main(string[] args)
 Paul, age: 24
 Ada, age: 0
 ```
-This technique, where a class has two (or more) constructors, is called **constructor overloading**. A class can have multiple constructors which differ on the amount or type of their parameters. It is however not possible to have two constructor with exactly the same parameters. We cannot for example now add a constructor public **Person(String name, int weight)** because it is impossible for the compiler to differentiate this constructor with two parameters from the constructor where the int parameter means age.
 
+Tämä tekniikka, jossa luokalla on kaksi (tai useampi) konstruktori, on nimeltään **konstruktorin ylikuormitus**. Luokalla voi olla useita konstruktoreita, jotka eroavat parametrien määrän tai tyypin perusteella. On kuitenkin mahdotonta olla kaksi konstruktoria, joilla on täsmälleen samat parametrit. Emme esimerkiksi voi lisätä konstruktoria **public Person(string name, int weight)**, koska kääntäjä ei pysty erottamaan tätä konstruktoria kahden parametrin konstruktorista, jossa int-parametri tarkoittaa ikää.e.
 
-## Calling your constructor
+## Konstruktorin kutsuminen
 
-As you might have noticed, there is plenty of "copy-paste" code in our overloaded constructors, meaning that there is repetition of same lines over and over again. When you look at the overloaded constructors above, they have a lot of the same code. We are not happy with this. If we had even more constructors, we would have to have the lines **this.name...** in each constructor.
+Kuten ehkä huomasit, koodissamme on paljon "copy-pastea" ylikuormitetuissa konstruktoreissa, mikä tarkoittaa että samat rivit toistuvat uudelleen ja uudelleen. Kun katsot ylikuormitettuja konstruktoreita yllä, niissä on paljon samaa koodia. Tämä ei ole hyvä. Jos meillä olisi vielä enemmän konstruktoreita, meidän pitäisi olla riveillä **this.name...** jokaisessa konstruktorissa.
 
-The first constructor, the one that is only given a name as a parameter,is actually a special case of the second constructor, which is given both name and age. What if the first constructor could call the second constructor?
+Ensimmäinen konstruktori, se jossa annamme vain nimen, on oikeastaan erikoistapaus jälkimmäisestä konstruktorista, jossa annetaan sekä nimi että ikä. Entä jos ensimmäinen konstruktori voisi kutsua toista konstruktoria?
 
-That is no problem, because you can call a constructor from another constructor using the this keyword tied to this exact object!
+Tämä ei ole ongelma, koska voit kutsua konstruktoria toisesta konstruktorista käyttämällä **this**-avainsanaa, joka on sidottu tähän tarkkaan objektiin!
 
-Let's modify the first constructor so, that it does not do anything itself, but calls the second constructor and asks it to set the age to 0.
+Muokataan ensimmäistä konstruktoria niin, että se ei tee mitään itse, vaan kutsuu toista konstruktoria ja pyytää sitä asettamaan iän 0:ksi.
+
 
 
 ```cpp
-//here the code of the second constructor is run, and the age is set to 0
+// Tässä kutsutaan toista konstruktoria, ja ikäksi asetetaan 0
 public Person(string name) : this(name, 0)
 {
 }
@@ -130,7 +134,8 @@ public Person(string name, int age)
 }
 ```
 
-The constructor call **this(name, 0)** might seem a bit weird. We can use **this** to have one constructor invocation call another constructor method, whic reduces "copy-paste code". In the example above, you could imagine the upper constuctor calling the lower one, with values **name** and **0**. As the lower constructor already defines how those values are to be treated, there is no need to separately define the variables in the upper constructor. This kind of constructor call does not change the code's behavior, and new objects can be created just like before:
+Konstruktorukutsu **this(name, 0)** voi vaikuttaa hieman oudolta. Käytämme avainsanaa **this** saadaksemme yhden konstruktorin kutsumaan toista konstruktoria, mikä vähentää "copy-pastea". Esimerkissä yllä voit kuvitella, että ylempi konstruktori kutsuu alempaa, arvoilla **name** ja **0**. Koska alempi konstruktori jo määrittelee, miten näitä arvoja käsitellään, ei ole tarvetta erikseen määritellä muuttujia ylemmässä konstruktorissa. Tämäntyyppinen konstruktorikutsu ei muuta koodin käyttäytymistä, ja uusia objekteja voidaan luoda kuten ennenkin:
+
 
 ```cpp
 static void Main(string[] args)
@@ -148,9 +153,10 @@ Paul, age: 24
 Ada, age: 0
 ```
 
-## Method overloading
+## Metodin ylikuormitus
 
-Like constructors, methods can also be overloaded, so you can have multiple versions of one method. Again, the parameters of the different versions must be different. Let's make another version of the **GrowOlder** method, which ages the person the amount of years given to it as a parameter.
+Kuten konstruktoreita, myös muita metodeita voidaan ylikuormittaa, joten sinulla voi olla monta versiota samasta metodista. Jälleen, eri versioiden parametrien on oltava erilaisia. Tehdään toinen versio **GrowOlder**-metodista, joka vanhentaa henkilöä sille annetun määrän vuosia.
+
 
 ```cpp
 public void GrowOlder()
@@ -163,7 +169,9 @@ public void GrowOlder(int years)
   this.age += years;
 }
 ```
-Below "Paul" is born 24 years old, first ages one year and then ages 10 years:
+
+Alla "Paul" syntyy 24-vuotiaana, vanhenee vuoden, ja sen jälkeen 10 vuotta:
+
 
 ```cpp
 static void Main(string[] args)
@@ -184,9 +192,9 @@ Paul, age: 25
 Paul, age: 35
 ```
 
-A Person now has two methods called **GrowOlder**. Which one is executed debends on the amount of parameters given.
+Luokalla Person on nyt kaksi **GrowOlder** -metodia. Kumpi niistä suoritetaan riippuu parametrien määrästä.
 
-We can also modify the program so, that the method without parameters is implemented using the method **GrowOlder(int years)**:
+Voimme muokata ohjelmaa niin, että metodi ilman parametreja toteutetaan käyttämällä metodia **GrowOlder(int years)**:
 
 ```cpp
 public void GrowOlder()
@@ -200,23 +208,27 @@ public void GrowOlder(int years)
 }
 ```
 
-The calling of an overloaded method is a bit different than that of an overloaded constructor. The idea is still exactly the same. Rather than having the same code in two places, we use **this** and tell what we are calling. 
+Ylikuormitetun metodin kutsuminen on hieman erilainen kuin ylikuormitetun konstruktorin kutsuminen. Ideana on edelleen täsmälleen sama. Sen sijaan, että koodi toistuisi kahdesti, käytämme **this**-avainsanaa ja kerromme, mitä kutsumme.
 
-<Note>You cannot use the same notation which we used on a constructor, nor can you use this notation on a constructor. You can try what happens (or which kind of errors you get).</Note>
+<Note>
+Et voi käyttä samaa notaatiota kuin konstruktorin kanssa, eikä tämä toimi konstruktorin kanssa. Voit kokeilla, mitä tapahtuu (tai millaisia virheilmoituksia saat).
+</Note>
 
 
 # Tehtävät
 
 <Exercise title={'004 Constructor overload'}>
 
-The exercise template has a class Product, which represents a product in a shop. Every product has a name, location and weight.
+Tehtäväpohjassa on luokka Product, joka kuvaa tuotetta kaupassa. Tuotteella on nimi, sijainti ja paino.
 
-Add the following three constructors to the Product class:
+Lisää seuraavat kolme konstruktoria Product-luokkaan:
 
-- `public Product(string name)` creates a product with the given name. Its location is set to "shelf" and its weight is set to 1.
-- `public Product(string name, string location)` creates a product with the given name and the given location. Its weight is set to 1.
-- `public Product(string name, int weight)` creates a product with the given name and the given weight. Its location is set to "warehouse".
-You can test your program with the following code:
+- `public Product(string name)` luo tuotteen, jonka nimi on annettu parametrina. Tuotteen sijainti on "shelf" ja paino on 1.
+- `public Product(string name, string location)` luo tuotteen, jonka nimi ja sijainti on annettu parametrina. Tuotteen paino on 1.
+- `public Product(string name, int weight)` luo tuotteen, jonka nimi ja paino on annettu parametrina. Tuotteen sijainti on "warehouse".
+
+Voit kokeilla ohjelmaa seuraavalla koodilla:
+
 
 ```cpp
 Product tapeMeasure = new Product("Tape measure");
@@ -238,18 +250,18 @@ Tyre (5 kg) can be found from the warehouse.
 
 <Exercise title={'005 Overloaded counter'}>
 
-Implement a class called `Counter`. The class contains a number, whichs value can be increased and decreased. The class must have the following constructors:
+Luo luokka `Counter`. Luokka sisältää numeron, jonka arvoa voidaan kasvattaa ja pienentää. Luokalla on seuraavat konstruktorit:
 
-- `public Counter(int startValue)` sets the start value of the counter to startValue.
+- `public Counter(int startValue)` asettaa arvon laskurille konstruktorin parametrina annetun arvon mukaan.
 
-- `public Counter()` sets the start value of the counter to 0.
+- `public Counter()` asettaa arvon laskurille arvoksi 0.
 
-And the following methods and properties:
+Seuraavat metodit ja ominaisuudet:
 
 - `public int value { get; set; }`
-- `public void Increase()` increases the value by 1
-- `public void Decrease()` decreases the value by 1
-- `public void Increase(int increaseBy)` increases the value of the counter by the value of increaseBy. If the value of increaseBy is negative, the value of the counter does not change.
-- `public void Decrease(int decreaseBy)` decreases the value of the counter by the value of decreaseBy. If the value of decreaseBy is negative, the value of the counter does not change.
+- `public void Increase()` kasvata arvoa yhdellä
+- `public void Decrease()` vähennä arvoa yhdellä
+- `public void Increase(int increaseBy)` kasvattaa arvoa parametrina annetulla arvolla. Jos parametrin arvo on negatiivinen, arvo ei muutu.
+- `public void Decrease(int decreaseBy)` vähentää arvoa parametrina annetulla arvolla. Jos parametrin arvo on negatiivinen, arvo ei muutu.
 
 </Exercise>
