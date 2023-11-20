@@ -333,7 +333,7 @@ while(true)
 Console.WriteLine("You gave the same word twice!");
 ```
 
-From the point of view of the user interface, the class WordSet should contain the method **bool Contains(string word)**, that checks whether the given word is contained in our set of words, and the method **void Add(String word)**, that adds the given word into the set.
+From the point of view of the user interface, the class WordSet should contain the method **bool Contains(string word)**, that checks whether the given word is contained in our set of words, and the method **void Add(word)**, that adds the given word into the set.
 
 We notice that the readability of the user interface is greatly improved when it's written like this.
 

@@ -116,11 +116,9 @@ Console.WriteLine(first + " " + second + " " + third);
 10 5 10
 ```
 
-The name of the variable tells the memory location where its value is stored. When you assign a value to a value variable with an equality sign, the value on the right side is copied to the memory location indicated by the name of the variable. For example, the statement **int first = 10** reserves a location called first for the variable, and then copies to value 10 into it.
+Muuttujan nimi kertoo muistipaikan, johon sen arvo on tallennettu. Kun muuttujalle annetaan arvo yhtäsuuruusmerkillä, oikeanpuoleinen arvo kopioidaan muuttujan muistipaikkaan. Esimerkissä **int first = 10** varaa muistipaikan nimeltä **first** ja kopioi siihen arvon 10. Vastaavasti **int second = first** varaa muistipaikan nimeltä **second** ja kopioi siihen arvon, joka on muistipaikassa **first**. Lopuksi **int third = second** varaa muistipaikan nimeltä **third** ja kopioi siihen arvon, joka on muistipaikassa **second**.
 
-Similarly, the statement **int second = first;** reserves a location called second for the created variable, and then copies the value stored in the location of first into it.
-
-The values of variables are also copied when they are used in method calls. In practice this means that the value of a variable that is passed as a method parameter is not changed in the method that did the passing / called the other method. 
+Muuttujien arvot kopioidaan myös metodikutsuissa. Käytännössä tämä tarkoittaa sitä, että muuttujan arvoa, joka välitetään metodin parametrina, ei muuteta metodissa, joka kutsuu toista metodia.
 
 ## Reference types
 

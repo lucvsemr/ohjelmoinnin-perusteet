@@ -1386,7 +1386,7 @@ Pohjassa on valmiina tiedostot `Program.cs` ja `PaymentCard.cs`.
 - Lisää luokka `PaymentCard` projektiin oikeaan tiedostoon.
 - Täytä luokalle konstruktori, joka ottaa parametrinaan kortin alkusaldon, ja asettaa sen kortin sisäiseen muuttujaan.
 - Täytä metodi `ToString` joka palauttaa kortin saldon muodossa "The card has a balance of X euros".
-- Fill in the ToString method, which will return the card's balance in the form "The card has a balance of X euros".
+
 
 Tässä on luokalle vähän pohjaa:
 

@@ -143,7 +143,7 @@ static void Main(string[] args)
   while (true)
   {
     Console.Write("Enter a name, empty will stop: ");
-    String name = Console.ReadLine();
+    string name = Console.ReadLine();
     if (name == "")
     {
       break;
@@ -219,7 +219,7 @@ static void Main(string[] args)
   while (true)
   {
     Console.Write("Enter a name, empty will stop: ");
-    String name = Console.ReadLine();
+    string name = Console.ReadLine();
     if (name == "")
     {
       break;
