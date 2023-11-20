@@ -4,7 +4,7 @@ nav_order: 2
 hidden: false
 ---
 
-Listan parametri määrittää listan sisältämien muuttujien tyypin. Esimerkiksi `List<string\>` sisältää merkkijonoja, `List<int\>` kokonaislukuja ja `List<double\>` liukulukuja.
+Listan parametri määrittää listan sisältämien muuttujien tyypin. Esimerkiksi `List<string>` sisältää merkkijonoja, `List<int>` kokonaislukuja ja `List<double>` liukulukuja.
 
 Alla olevassa esimerkissä lisätään merkkijonoja listaan, jonka jälkeen listan merkkijonot tulostetaan yksi kerrallaan.
 
