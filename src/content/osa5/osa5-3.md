@@ -84,24 +84,23 @@ John
 
 ## Arvomuuttujat
 
+Arvomuuttuja on joko tietue (**struct type**) tai  numeroituva (**enumeration type**). C# tarjoaa joukon esimääriteltyjä tietueita, joita kutsutaan **yksinkertaisiksi tyypeiksi**. Yksinkertaiset tyypit tunnistetaan varattujen sanojen avulla.
 
-A value type is either a **struct type** or an **enumeration type**. C# provides a set of predefined struct types called the **simple types**. The simple types are identified through reserved words.
+Tietyn tyyppinen muuttuja sisältää tyyppinsä instanssin. Tämä eroaa viittausmuuttujasta, joka sisältää viittauksen tyypin instanssiin. Oletuksena arvo kopioidaan kun muuttuja alustetaan, parametri välitetään metodille tai metodin paluuarvo palautetaan. Arvomuuttujan tapauksessa vastaava tyyppi instanssi kopioidaan.
 
-A variable of a value type contains an instance of the type. This differs from a variable of a reference type, which contains a reference to an instance of the type. By default, on assignment, passing an argument to a method, or returning a method result, variable values are copied. In the case of value-type variables, the corresponding type instances are copied.
+Mielenkiintoisimpia (ja meille tärkeimpiä) ovat **yksinkertaiset tyypit**. Useimmat muuttujat, joita olemme käsitelleet tähän mennessä, ovat osa yksinkertaista tyyppiä: int, bool ja double ovat kaikki yksinkertaisia tyyppejä. Se tarkoittaa, että ne ovat itse asiassa **avainsanoja**, jotka on **varattu** edustamaan tiettyjä tyyppejä **System namespacesta**.
 
-The most interesting (and maybe most important for us) are the **simple type**. Most of the variables we have handled so far are part of the simple type: int, bool and double are all simple types. It means that they are actually **keywords** that are **reserved** to represent certain types from the **System namespace**. 
-
-Because a simple type aliases a struct type, every simple type has members. For example, **int** has the members declared in **System.Int32** and the members inherited from **System.Object**, and the following statements are permitted:
+Koska yksinkertaiset tyypit aliasoivat tietueen tyypin, jokaisella yksinkertaisella tyypillä on jäseniä. Esimerkiksi **int** sisältää **System.Int32** ja **System.Object** määrittelemät jäsenet, ja seuraavat lauseet ovat sallittuja:
 
 ```cpp
-int i = int.MaxValue;    // System.Int32.MaxValue constant
-string s = i.ToString(); // System.Int32.ToString() instance method
-string t = 123.ToString(); // System.Int32.ToString() instance method
+int i = int.MaxValue;    // System.Int32.MaxValue vakio
+string s = i.ToString(); // System.Int32.ToString() instanssimetodi
+string t = 123.ToString(); // System.Int32.ToString() instanssimetodi
 ```
 
-In other words, all the basic variables we have been using, are actually just easier way of using methods that are hidden inside the System.
+Toisinsanottuna, kaikki perusmuuttujat, joita olemme käyttäneet, ovat itse asiassa vain helpompia tapoja käyttää System:sta löytyviä metodeja.
 
-Introducing a value variable reserves a memory location of fixed size from the memory. The size is determined by the type of the variable, and the memory location is where the value of the variable stored at. In the example below we create three variables. Each one has its own memory location, to where the assigned value is copied.
+Arvomuuttujan alustaminen varaa tietyn kokoisen alueen tietokoneen muistista. Koko määräytyy muuttujan tyypin mukaan, ja muistipaikka on se paikka, johon muuttujan arvo tallennetaan. Alla olevassa esimerkissä luomme kolme muuttujaa. Jokaisella on oma muistipaikka, johon sille annettu arvo kopioidaan.
 
 ```cpp
 int first = 10;
