@@ -120,8 +120,9 @@ Muuttujan nimi kertoo muistipaikan, johon sen arvo on tallennettu. Kun muuttujal
 
 Muuttujien arvot kopioidaan myös metodikutsuissa. Käytännössä tämä tarkoittaa sitä, että muuttujan arvoa, joka välitetään metodin parametrina, ei muuteta metodissa, joka kutsuu toista metodia.
 
-## Reference types
+## Viittausmuuttujat
 
+C#:n viittaustyyppejä ovat luokka (**class**), rajapinta (**interface**), taulukko (**array**) ja delegaatti (**delegate**).
 C#’s reference type is a class type, an interface type, an array type, or a delegate type. 
 
 A reference type value is a reference to an **instance** of the type, the latter known as an **object**. The special value **null** is compatible with all reference types and indicates the absence of an instance. The programmer is also free to create their own variable types by defining new classes. In practice any object instanced from a class is a reference variable.
