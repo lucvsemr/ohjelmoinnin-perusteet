@@ -4,10 +4,10 @@ nav_order: 4
 hidden: false
 ---
 
+Jatketaan olioiden ja viittausten parissa. Oletetaan, että voimme käyttää henkilöä kuvaavaa luokkaa, joka on esitetty alla.
 
-Let's continue working with objects and references. Assume we can use the class that represents a person, shown below. 
+Person-oliolla on oliomuuttujat name, age, weight ja height. Lisäksi sillä on metodeja, joiden avulla voidaan laskea painoindeksi ym. 
 
-Person has object variables name, age, weight, and height; additionally, it offers methods to calculate the body mass index, among other things. 
 
 ```cpp
 namespace Exercise001
@@ -20,18 +20,18 @@ namespace Exercise001
     private int weight;
     private int height;
 
-    // Constructor which only sets the name
+    // Konstruktori, jossa vain nimi
     public Person(string name) : this(name, 0, 0, 0)
     {
     }
 
-    // Constructor to set name and age
+    // Konstruktori, jossa nimi ja ikä
     public Person(string name, int age) :this(name, age, 0, 0)
     {
     }
 
-    // Constructor to set all the variables.
-    // The two constructors above call this when they are used.
+    // Konstruktori, jossa nimi, ikä, paino ja pituus
+    // Ylemmät konstruktorit kutsuvat tätä
     public Person(string name, int age, int weight, int height)
     {
       this.name = name;
@@ -80,24 +80,26 @@ namespace Exercise001
 }
 ```
 
-Precisely what happens when a new object is created?
+Mitä tarkalleenottaen tapahtuu, kun uusi olio luodaan?
 
 ```cpp
 Person joan = new Person("Joan Ball");
 ```
 
-Calling a constructor with the command new causes several things to happen. 
-* First, space is reserved in the computer memory for storing object variables. 
-* Then default or initial values are set to object variables (e.g. an int type variable receives an initial value of 0). 
-* Lastly, the source code in the constructor is executed.
+Konstruktorin kutsu komennolla *new* aiheuttaa useita asioita. 
 
-A constructor call returns a reference to an object. A **reference** is information about the location of object data.
+* Ensin varataan tilaa tietokoneen muistista oliomuuttujien säilyttämiseen.
+* Sitten oliomuuttujille asetetaan alku- tai oletusarvot (esim. int-tyyppinen muuttuja saa alkuarvokseen 0).
+* Lopulta suoritetaan konstruktorin koodi.
 
-So the value of the variable is set to be a reference, i.e. knowledge about the location of related object data. The image above also reveals that strings -- the name of our example person, for instance -- are objects, too.
+Konstruktorikutsu palauttaa viitteen olioon. **Viite** on tietoa oliomuuttujien sijainnista.
 
-## Assigning a reference type variable copies the reference
+Eli muuttujan arvo asetetaan viitteeksi, eli tiedoksi siihen liittyvän olion sijainnista. Merkkijonot -- esimerkiksi henkilön nimi -- ovat myös olioita.
 
-Let's add a Person type variable called **ball** into the program, and assign joan as its initial value. What happens then?
+## Viittausmuuttujan asettaminen kopioi viitteen
+
+Luodaan Person-olio nimeltään **ball** ohjelmassa, ja asetetaan sille alkuarvoksi **joan**-muuttujan arvo. Mitä tapahtuu?
+
 
 ```cpp
 Person joan = new Person("Joan Ball");
@@ -106,9 +108,10 @@ Console.WriteLine(joan);
 Person ball = joan;
 ```
 
-The statement **Person ball = joan;** creates a new Person variable call, and copies the value of the variable joan as its value. As a result, ball refers to the same object as joan.
+Lauseke **Person ball = joan;** luo uuden Person-tyyppisen muuttujan, ja kopioi muuttujan **joan** arvon. Tämän seurauksena **ball** viittaa samaan olioon kuin **joan**.
 
-Let's inspect the same example a little more thoroughly.
+Tarkastellaan esimerkkiä tarkemmin.
+
 
 ```cpp
 Person joan = new Person("Joan Ball");
@@ -126,11 +129,13 @@ Joan Ball, age: 0
 Joan Ball, age: 2
 ```
 
-**Joan Ball** -- i.e. the Person object that the reference in the **joan** variable points at -- starts as 0 years old. After this the value of the joan variable is assigned (so copied) to the **ball** variable. The **Person object ball** is aged by two years, and Joan Ball ages as a consequence!
+**Joan Ball** eli Person-olio johon **joan**-muuttuja viittaa, on aluksi 0-vuotias. Tämän jälkeen **joan**-muuttujan arvo kopioidaan **ball**-muuttujan arvoksi. **Person-olio ball** vanhenee kahdella vuodella, ja Joan Ball vanhenee samalla!
 
-An object's internal state is not copied when a variable's value is assigned. A new object is not being created in the statement **Person ball = joan;** -- the value of the variable ball is assigned to be the copy of joan's value, i.e. a reference to an object.
+Olion sisäistä tilaa ei kopioda, kun muuttujan arvoa asetetaan. Lausekkeessa **Person ball = joan;** ei luoda uutta oliota -- muuttujan arvoa asetetaan kopioimalla **joan**-muuttujan arvo, eli viite olioon.
 
-Next, the example is continued so that a new object is created for the **joan** variable, and a reference to it is assigned as the value of the variable. The variable **ball** still refers to the object that we created earlier.
+Seuraavaksi esimerkkiä jatketaan niin, että **joan**-muuttujalle luodaan uusi olio, ja viite siihen asetetaan muuttujan arvoksi. **ball**-muuttuja viittaa edelleen aiempaan olioon.
+
+
 
 ```cpp
 Person joan = new Person("Joan Ball");
@@ -154,11 +159,12 @@ Joan Ball, age: 2
 Joan B., age: 0
 ```
 
-So in the beginning the variable **joan** contains a reference to one object, but in the end a reference to another object has been copied as its value.
+Joten alussa muuttuja **joan** viittaa yhteen olioon, mutta lopussa sen arvoksi on kopioitu toisen olion viite.
 
-## null value of a reference variable
+## Viittausmuuttujan arvo voi olla null
 
-Let's extend the example further by setting the value of the reference variable **ball** to **null**, i.e. a reference "to nothing". The **null** reference can be set as the value of any reference type variable.
+Laajennetaan esimerkkiä vielä niin, että viittausmuuttujan **ball** arvoksi asetetaan **null**, eli viite "ei mihinkään". **null**-viite voidaan asettaa minkä tahansa viittaustyyppisen muuttujan arvoksi.
+
 
 ```cpp
 Person joan = new Person("Joan Ball");
@@ -182,17 +188,17 @@ Joan Ball, age: 2
 Joan B., age: 0
 ```
 
-The object whose name is Joan Ball is referred to by nobody. In other words, the object has become "garbage". garbage collector manages the allocation and release of memory for your application. 
+Olioon, jonka nimi on Joan Ball, ei viittaa kukaan. Toisin sanoen olio on "roskaa". Roskien kerääjä (englanniksi **garbage collector**) huolehtii sovelluksesi muistin varauksesta ja vapauttamisesta. 
 
-From [**C# Documentation on garbage collection**](https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/):
+[**C# dokumentaatio roskien keräämisestä kertoo seuraavaa**](https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/):
 
-"Each time you create a new object, the common language runtime allocates memory for the object from the managed heap. As long as address space is available in the managed heap, the runtime continues to allocate space for new objects. 
+*"Each time you create a new object, the common language runtime allocates memory for the object from the managed heap. As long as address space is available in the managed heap, the runtime continues to allocate space for new objects.* 
 
-However, memory is not infinite. Eventually the garbage collector must perform a collection in order to free some memory.  If the garbage collection did not happen, the garbage objects would reserve a memory location until the end of the program execution."
+*However, memory is not infinite. Eventually the garbage collector must perform a collection in order to free some memory.  If the garbage collection did not happen, the garbage objects would reserve a memory location until the end of the program execution."*
 
-In other words, when an object is not needed anymore, it will be taken care of, so the memory space will be accesible for other use.
+Toisin sanottuna, kun olio ei ole enää tarpeen, siitä huolehditaan, joten muistitila on käytettävissä muuhun käyttöön.
 
-Let's see what happens when we try to print a variable that references "nothing" i.e. null.
+Katsotaan vielä, mitä tapahtuu, kun yritetään tulostaa viittausmuuttujan arvo, joka viittaa "ei mihinkään".
 
 ```cpp
 Person joan = new Person("Joan Ball");
@@ -218,9 +224,10 @@ Joan B., age: 0
 
 ```
 
-We cannot see anything in the last line of print: That's because **ball** now refers to **null**, or "nothing".
+Emme näe mitään tulostusta viimeisellä tulostuskäskyllä: se johtuu siitä, että **ball** viittaa nyt **null**-arvoon, eli "ei mihinkään".
 
-Let's see what happens if we grow our **ball** older.
+Katsotaan mitä tapahtuu jos yritämme kasvattaa **ball**-muuttujan ikää.
+
 
 ```cpp
 Person joan = new Person("Joan Ball");
@@ -249,15 +256,16 @@ Unhandled exception. System.NullReferenceException: Object reference not set to 
     in /.../src/Exercise001/Program.cs:line 24
 ```
 
-Bad things happen. We get a **NullReferenceException**. The name for the exception is quite self-explanatory (as they aim to be). In the course of the program,there occured an error indicating that we called a method on a variable that refers to nothing.
+Pahoja asioita tapahtuu. Saamme **NullReferenceException**-virheen. Virheen nimi on itsestään selvä (niin kuin virheiden pitääkin olla). Ohjelman suorituksen aikana tapahtui virhe, joka viittaa siihen, että kutsuimme metodia muuttujalla, joka viittaa "ei mihinkään".
 
-We promise that this is not the last time you will encounter the previous error. When you do, the first step is to look for variables whose value could be **null**. Fortunately, the error message is useful: it tells which row caused the error. Try it out yourself!
+Lupaan, ettei tämä ole viimeinen kerta, kun törmäät edelliseen virheeseen. Kun törmäät, ensimmäinen askel on etsiä muuttujia, joiden arvo voi olla **null**. Onneksi virheilmoitus on hyödyllinen: se kertoo, mikä rivi aiheutti virheen. Kokeile itse!
 
-## Object as a method parameter
+## Olio metodin parametrina
 
-We have seen both value and reference variables act as method parameters. Since objects are reference variables, any type of object can be defined to be a method parameter. Let's take a look at a practical demonstration.
+Olemme nähneet sekä arvo- että viittausmuuttujien toimivan metodin parametreina. Koska oliot ovat viittausmuuttujia, mikä tahansa olio voidaan määritellä metodin parametriksi. Katsotaan käytännön esimerkki.
 
-Amusement park rides only permit people who are taller than a certain height. The limit is not the same for all attractions. Let's create a class representing an amusement park ride. When creating a new object, the constructor receives as parameters the name of the ride, and the smallest height that permits entry to the ride.
+Huvipuiston laitteet päästävät vain tietyn pituiset ihmiset laitteisiin. Rajoite ei ole kaikissa laitteissa sama. Luodaan luokka, joka kuvaa huvipuistolaitetta. Kun luodaan uusi olio, konstruktori saa parametreina laitteen nimen ja pienimmän sallitun pituuden.
+
 
 ```cpp
 public class AmusementParkRide
@@ -278,9 +286,9 @@ public class AmusementParkRide
 }
 ```
 
-Then let's write a method that can be used to check if a person is allowed to enter the ride, so if they are tall enough. The method returns true if the person given as the parameter is permitted access, and false otherwise.
+Kirjoitetaan vielä metodi jota voimme käyttää tarkistamaan, onko henkilö laitteeseen pääsyn ikäinen, eli onko hän tarpeeksi pitkä. Metodi palauttaa true, jos parametrina annettu henkilö saa mennä laitteeseen, ja false muuten.
 
-We can safely assume our Person class now has the ability to tell the age outside the class (i.e. the variable **int age** is public).
+Voimme olettaa että henkilöllä on myös ominaisuus kertoa ikä luokan ulkopuolelle (eli muuttuja **int age** on public).
 
 ```cpp
 public bool AllowedToRide(Person person)
@@ -294,15 +302,16 @@ public bool AllowedToRide(Person person)
 }
 ```
 
-So the method AllowedToRide of an AmusementParkRide object is given a Person object as a parameter. Like earlier, the value of the variable -- in this case, a reference -- is copied for the method to use. The method handles a copied reference, and it calls the name property of the person passed as a parameter.
+Joten AmusementParkRide-olion metodi AllowedToRide saa parametrina Person-olion. Kuten aiemmin, muuttujan arvo -- tässä tapauksessa viite -- kopioidaan metodin käyttöön. Metodi käsittelee kopioitua viitettä, ja kutsuu parametrina annetun person-olion age-muuttujaa.
 
-Below is an example main program where the amusement park ride method is called twice: first the supplied parameter is a person object **matt**, and then a person object **jasper**:
+Alla esimerkki pääohjelmasta, jossa huvipuistolaitteen metodia kutsutaan kahdesti: ensin parametrina on person-olio **matt**, ja sitten person-olio **jasper**.
+
 
 ```cpp
 static void Main(string[] args)
 {
 
-  // Our constructor has name, age, weight, height
+  // Konstruktorilla on nimi, ikä, paino ja pituus
   Person matt = new Person("Matt", 15, 86, 180);
 
   Person jasper = new Person("Jasper", 8, 34, 132);
@@ -337,9 +346,10 @@ Jasper may not enter the ride
 Water track, minimum height: 140
 ```
 
-What if we wanted to know how many people have taken the ride?
+Entä jos haluaisimme tietää, kuinka monta ihmistä on käynyt laitteessa?
 
-Let's add an object variable to the amusement park ride. It keeps track of the number of people that were permitted to enter.
+Lisätään huvipuistolaitteeseen oliomuuttuja, joka pitää kirjaa laitteeseen päässeiden ihmisten määrästä.
+
 
 ```cpp
 public class AmusementParkRide
@@ -373,7 +383,7 @@ public class AmusementParkRide
 }
 ```
 
-Now the previously used example program also keeps track of the number of visitors who have experienced the ride.
+Nyt aiemmin käytetty esimerkkiohjelma pitää kirjaa myös siitä, kuinka monta ihmistä on käynyt laitteessa.
 
 ```cpp
 static void Main(string[] args)
@@ -414,11 +424,12 @@ Jasper may not enter the ride
 Water track, minimum height: 140, visitors: 1
 ```
 
-## Object as object variable
+## Olio oliomuuttujana
 
-Objects may contain references to objects.
+Oliolla voi olla viittauksia olioihin.
 
-Let's keep working with people, and add a birthday to the person class. A natural way of representing a birthday is to use a **Date** class. We could use the classname Date, but for the sake of **avoiding confusion with the similarly named existing C# class**, we will use **SimpleDate** here.
+Jatketaan työskentelyä ihmisten parissa, ja lisätään Person-luokkaan syntymäpäivä. Luonnollinen tapa ilmaista syntymäpäivää on **Date** luokka. Voisimme käyttää luokan nimeä Date, mutta **välttääksemme sekaannuksen C#-kielen valmiin Date-luokan kanssa**, käytämme tässä omaa **SimpleDate**-luokkaa.
+
 
 ```cpp
 public class SimpleDate
@@ -442,7 +453,7 @@ public class SimpleDate
 }
 ```
 
-Since we know the birthday, there is no need to store that age of a person as a separate object variable. The age of the person can be inferred from their birthday. Let's assume that the class Person now has the following variables.
+Koska tiedämme syntymäpäivän, ei ole tarpeen säilyttää henkilön ikää erillisenä oliomuuttujana. Henkilön ikä voidaan päätellä syntymäpäivästä. Oletetaan, että Person-luokalla on nyt seuraavat oliomuuttujat.
 
 ```cpp
 public class Person
@@ -453,9 +464,10 @@ public class Person
   public int height;
 
 //  ...
+}
 ```
 
-Let's create a new Person constructor that allows for setting the birthday:
+Luodaan uusi Person-konstruktori, joka mahdollistaa syntymäpäivän asettamisen:
 
 ```cpp
 public Person(string name, SimpleDate date)
@@ -467,7 +479,8 @@ public Person(string name, SimpleDate date)
 }
 ```
 
-Along with the constructor above, we could give Person another constructor where the birthday was given as integers.
+Tämän lisäksi voisimme antaa Person-luokalle toisen konstruktorin, jossa syntymäpäivä annetaan kokonaislukuina.
+
 
 ```cpp
 public Person(string name, int day, int month, int year)
@@ -477,9 +490,9 @@ public Person(string name, int day, int month, int year)
 }
 ```
 
-The constructor receives as parameters the different parts of the date (day, month, year). They are used to create a date object, and finally the reference to that date is copied as the value of the object variable birthday.
+Konstruktori ottaa parametreina päivän, kuukauden ja vuoden, ja luo niiden perusteella uuden SimpleDate-olion. Tämän jälkeen se asettaa viitteen olion birthday-muuttujaan.
 
-Let's modify the ToString method of the Person class so that instead of age, the method returns the birthday:
+Muokataan myös ToString-metodia, jotta se palauttaa syntymäpäivän iän sijaan:
 
 ```cpp
 public override string ToString()
@@ -488,7 +501,8 @@ public override string ToString()
 }
 ```
 
-Let's see how the updated Person class works.
+Katsotaan miten päivitetty Person-luokka toimii.
+
 
 ```cpp
 SimpleDate date = new SimpleDate(1, 1, 780);
@@ -504,15 +518,15 @@ Muhammad ibn Musa al-Khwarizmi, born on 1.1.780
 Blaise Pascal, born on 19.6.1623
 ```
 
-Now a person object has object variables name and birthday. The variable name is a string, which itself is an object; the variable birthday is a **SimpleDate object**.
+Nyt Person-oliolla on muuttujat nimi ja syntymäpäivä. Muuttuja nimi on merkkijono, joka on itsekin olio; muuttuja syntymäpäivä on **SimpleDate-olio**.
 
-Both variables contain a reference to an object. Therefore a person object contains two references. 
+Molemmat muuttujat sisältävät viitteen olioon. Tämän seurauksena Person-oliossa on kaksi viitettä.
 
-So the Main program has is connected to two Person objects by strands. A person has a name and a birthday. Since both variables are objects, these attributes exist at the other ends of the strands.
+Eli Main-metodi sisältää kaksi viitettä Person-olioihin, ja jokainen Person-olio sisältää kaksi viitettä: nimi-merkkijonoon ja syntymäpäivä-olioon.
 
-Birthday appears to be a good extension to the Person class. Earlier we noted that the object variable age can be calculated with birthday, so it was removed.
+Syntymäpäivä vaikuttaa hyvältä laajennukselta Person-luokalle. Aiemmin huomasimme, että henkilön ikä voidaan laskea syntymäpäivän perusteella. Tämän seurauksena ikä-muuttuja voidaan poistaa.
 
-In the section above, we use our own class SimpleDate to represent date, because it is suitable for illustrating and practising the operation of objects. If we want to handle date (and time) in our own programs, we would most probably use [**C#'s DateTime**](https://docs.microsoft.com/en-us/dotnet/api/system.datetime?view=netframework-4.8) rather than code our own version.
+Yllä olevassa osiossa käytimme omaa SimpleDate-luokkaa päivämäärien käsittelyyn, koska se sopii hyvin olioiden toiminnan esittelyyn ja harjoitteluun. Jos haluamme käsitellä päivämääriä (ja aikaa) omassa ohjelmassamme, käyttäisimme todennäköisesti [**C#:n DateTime**](hhttps://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-6.0) -luokkaa emmekä kirjoittaisi omaa versiota.
 
 ```cpp
 DateTime now = DateTime.Now;
@@ -529,11 +543,13 @@ Console.WriteLine("today is  " + day + "." + month + "." + year);
 today is  13.2.2020
 ```
 
-<Note>With C# the output of the first line can differ, depending on the language setting of your environment. This is due to culture in C# environments. We will discuss this later.</Note>
+<Note>
+C#:lla ensimmäinen rivi voi olla erilainen, riippuen käyttöjärjestelmästä ja kieliasetuksista. Tämä johtuu kulttuurista C#-ympäristöissä. Käsittelemme tätä myöhemmin.
+</Note>
 
-## Object of same type as method parameter
+## Samantyyppinen olio metodin parametrina
 
-We will continue working with the **Person** class. We recall that persons know their birthdays:
+Jatkamme edelleen ihmisten parissa. Henkilö tietää edelleen syntymäpäivänsä:
 
 ```cpp
 public class Person
@@ -546,7 +562,7 @@ public class Person
 // ...
 ```
 
-We would like to compare the ages of two people. The comparison can be done in multiple ways. We could, for instance, implement a method called **public int AgeAsYears()** for the Person class; in that case, the comparison would happen in the following manner:
+Haluaisimme vertailla kahden henkilön ikää. Vertailu voidaan tehdä monella tapaa. Voisimme esimerkiksi toteuttaa **public int AgeAsYears()** -metodin Person-luokkaan, joka palauttaa henkilön iän vuosina. Vertailu voitaisiin toteuttaa seuraavasti:
 
 ```cpp
 Person muhammad = new Person("Muhammad ibn Musa al-Khwarizmi", 1, 1, 780);
@@ -557,41 +573,41 @@ if (muhammad.AgeAsYears() > pascal.AgeAsYears()) {
 }
 ```
 
-We are now going to learn a more "object-oriented" way to compare the ages of people.
+Opiskelemme nyt kuitenkin "olio-ohjelmoinnin" tavan vertailla henkilöiden ikää. Luomme uuden metodin **public bool OlderThan(Person compared)** Person-luokkaan. 
 
-We are going to create a new method **public bool OlderThan(Person compared)** for the Person class. It can be used to compare a certain person object to the person supplied as the parameter based on their ages.
+Sitä voidaan käyttää vertailemaan tietyn henkilön ikää toiseen henkilöön verrattuna. Metodi on tarkoitettu käytettäväksi seuraavasti:
 
-The method is meant to be used like this:
+
 
 ```cpp
 Person muhammad = new Person("Muhammad ibn Musa al-Khwarizmi", 1, 1, 780);
 Person pascal = new Person("Blaise Pascal", 19, 6, 1623);
 
-if (muhammad.OlderThan(pascal)) {  //  same as muhammad.OlderThan(pascal)==true
+if (muhammad.OlderThan(pascal)) {  //  sama kuin muhammad.OlderThan(pascal)==true
     Console.WriteLine(muhammad.name + " is older than " + pascal.name);
 } else {
     Console.WriteLine(muhammad.name + " is not older than " + pascal.name);
 }
 ```
 
-The program above tells if al-Khwarizmi older than Pascal. The method **OlderThan** returns true if the object that is used to call the method **(object OlderThan(objectGivenAsParameter))** is older than the object given as the parameter, and false otherwise.
+Yllä oleva ohjelma kertoo, onko Muhammad al-Khwarizmi vanhempi kuin Blaise Pascal. Metodi **OlderThan** palauttaa true, jos sitä kutsuvan olion ikä on suurempi kuin parametrina annetun olion ikä. Muussa tapauksessa se palauttaa false.
 
-In practice, we call the **OlderThan** method of the object that matches "Muhammad ibn Musa al-Khwarizmi", which is referred to by the variable **muhammad**. The reference **pascal**, matching the object "Blaise Pascal", is given as the parameter to that method.
+Käytännössä, kutsutaan **OlderThan**-metodia oliolla, joka vastaa "Muhammad ibn Musa al-Khwarizmi", joka viitataan muuttujalla **muhammad**. Viite **pascal**, joka vastaa oliota "Blaise Pascal", annetaan parametrina tuolle metodille.
 
-The program prints:
+Ohjelma tulostaa:
 
 ```console
 Muhammad ibn Musa al-Khwarizmi is older than Blaise Pascal
 ```
 
-The method OlderThan receives a **person object** as its parameter. More precisely, the variable that is defined as the method parameter receives a copy of the value contained by the given variable. That value is a reference to an object, in this case.
+Metodi OlderThan saa parametrina Person-olion. Tarkemmin sanottuna muuttuja, joka on määritelty metodin parametriksi, saa kopion parametrina annetun muuttujan arvosta. Tämä arvo on viite olioon, tässä tapauksessa Person-olioon.
 
-The implementation of the method is illustrated below. Note that the method may return a value in more than one place -- here the comparison has been divided into multiple parts based on the years, the months, and the days:
+Metodin toteutus on kuvattu alla. Huomaa, että metodi voi palauttaa arvon useammassa kuin yhdessä kohdassa -- tässä vertailu on jaettu useampaan osaan vuosien, kuukausien ja päivien perusteella:
 
 ```cpp
 public bool OlderThan(Person compared)
 {
-  // 1. First compare years
+  // 1. Vertaa ensin ikiä
   int ownYear = this.birthday.year;
   int comparedYear = compared.birthday.year;
 
@@ -605,7 +621,7 @@ public bool OlderThan(Person compared)
     return false;
   }
 
-  // 2. Same birthyear, compare months
+  // 2. Jos vuodet samat, vertaa kuukausia
   int ownMonth = this.birthday.month;
   int comparedMonth = compared.birthday.month;
 
@@ -619,7 +635,7 @@ public bool OlderThan(Person compared)
     return false;
   }
 
-  // 3. Same birth year and month, compare days
+  // 3. Jos vuodet ja kuukaudet samat, vertaa päiviä
   int ownDay = this.birthday.day;
   int comparedDay = compared.birthday.day;
 
@@ -632,9 +648,10 @@ public bool OlderThan(Person compared)
 }
 ```
 
-Let's pause for a moment to consider abstraction, one of the principles of object-oriented programming. The idea behind abstraction is to conceptualize the programming code so that each concept has its own clear responsibilities. When viewing the solution above, however, we notice that the comparison functionality would be better placed inside the SimpleDate class instead of the **Person** class.
+Pysähdytään hetkeksi miettimään abstraktiota, joka on yksi olioperustaisen ohjelmoinnin periaatteista. Abstraktion ideana on konseptualisoida ohjelmakoodi niin, että jokaisella konseptilla on omat selkeät vastuunsa. Katsomalla yllä olevaa ratkaisua huomaamme, että vertailutoiminnallisuus olisi parempi sijoittaa SimpleDate-luokan sisälle Person-luokan sijaan.
 
-We'll create a method called **public boole Before(SimpleDate compared)** for the class SimpleDate. The method returns the value **true** if the date given as the parameter is after (or on the same day as) the date of the object whose method is called.
+Luodaan metodi **public bool Before(SimpleDate compared)** luokkaan SimpleDate. Metodi palauttaa arvon true, jos parametrina annettu päivämäärä on myöhempi (tai sama) kuin kutsuvan olion päivämäärä. Muussa tapauksessa se palauttaa arvon false.
+
 
 ```cpp
 public class SimpleDate
@@ -656,11 +673,11 @@ public class SimpleDate
     return this.day + "." + this.month + "." + this.year;
   }
 
-  // used to check if this date object (`this`) is before
-  // the date object given as the parameter (`compared`)
+  // tarkistetaan onko kutsuvan (this) päivämäärä ennen 
+  // parametrina annettua päivämäärää (compared)
   public bool Before(SimpleDate compared)
   {
-    // first compare years
+    // vertaa ensin vuosia
     if (this.year < compared.year)
     {
       return true;
@@ -671,7 +688,7 @@ public class SimpleDate
       return false;
     }
 
-    // years are same, compare months
+    // sama vuosi, vertaa kuukausia
     if (this.month < compared.month)
     {
       return true;
@@ -682,7 +699,7 @@ public class SimpleDate
       return false;
     }
 
-    // years and months are same, compare days
+    // vuodet ja kuukaudet samat, vertaa päiviä
     if (this.day < compared.day)
     {
       return true;
