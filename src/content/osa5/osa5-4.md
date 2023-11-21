@@ -1550,14 +1550,13 @@ True
 
 <Exercise title={'011 Song'}>
 
-In the exercise base there is a class called `Song` that can be used to create new objects that represent songs. Add to that class the `Equals` method so that the similarity of songs can be examined.
+Tehtäväpohjassa on luokka `Song` josta voidaan luoda olioita jotka kuvaavat kappaleita. Lisää luokkaan metodi `Equals` joka vertailee kappaleiden yhdenvertaisuutta. Kaksi kappaletta ovat samat jos niiden artisti, nimi ja kesto ovat samat.
 
-You can try your code with this:
+Voit kokeilla koodiasi tällä:
 
 ```cpp
 public static void Main(string[] args)
 {
-  // Try your code here, if you want
   Song jackSparrow = new Song("The Lonely Island", "Jack Sparrow", 196);
   Song anotherSparrow = new Song("The Lonely Island", "Jack Sparrow", 196);
 
@@ -1577,11 +1576,12 @@ public static void Main(string[] args)
 
 <Exercise title={'012 Books'}>
 
-In the exercise base is a program which asks for books from the user and adds them to a list.
+Tehtäväpohjassa on ohjelma joka kysyy käyttäjältä kirjoja ja lisää ne listaan. 
 
-Modify the program so that books that are already on the list are not added to it again. Two books should be considered the same if they have the same name and publication year.
+Muokkaa ohjelmaa siten, että kirjoja lisättäessä kirjaa ei lisätä uudelleen, jos se on jo listalla. Kaksi kirjaa ovat samoja, jos niillä on sama nimi ja julkaisuvuosi.
 
-Example print:
+Esimerkkitulostus:
+
 
 ```console
 Name (empty will stop): 
@@ -1607,11 +1607,12 @@ Thank you! Books added: 2
 
 <Exercise title={'013 Archive'}>
 
-The program should read items from the user. When all the items from the user have been read, the program prints the information of each item.
+Ohjelman pitäisi lukea käyttäjältä esineitä. Kun kaikki esineet on luettu, ohjelma tulostaa kaikkien esineiden tiedot.
 
-For each item, its identifier and name should be read. If the identifier or name is empty, the program stops asking for input, and prints all the item information.
+Jokaiselle esineelle luetaan tunniste ja nimi. Jos tunniste tai nimi on tyhjä, lukeminen lopetetaan ja kaikki esineet tulostetaan.
 
-Example print:
+
+Esimerkkitoiminta:
 
 ```console
 Identifier? (empty will stop):
@@ -1638,38 +1639,38 @@ B07H8ND8HH: He-Man figure
 B07NQFMZYG: He-Man figure
 ```
 
+Tulostusformaatti esineelle on muotoa **tunniste: nimi**.
 
-The printing format of the items should be identifier: name.
+Kun esineet on lisätty, jokainen esine tulostetaan korkeintaan kerran. Kaksi esinettä tulkitaan samaksi, jos niiden tunnisteet ovat samat (esineillä voi olla eri nimi eri maissa, esimerkiksi).
 
-After entering the items, each item is printed at most once. Two items should be considered the same if their identifiers are the same (there can be variation in their names in different countries, for instance).
+Jos käyttäjä syöttää saman esineen useammin kuin kerran, tulostetaan vain ensin syötetty esine.
 
-If the user enters the same item multiple times, the print uses the item that was added first.
-
-<Note>It is probably smart to add each item to the list at most once -- compare the equality of the objects based on their identifiers.</Note>
+<Note>
+On todennäköisesti lisätä esine listalle korkeintaan kerran -- vertaile esineiden samankaltaisuutta perustuen niiden tunnisteisiin.</Note>
 
 </Exercise>
 
 <Exercise title={'014 Dating app'}>
 
-This exercise is worth 2 points without individual sections.
+Tämä tehtävä on 2 pisteen arvoinen ilman erillisiä osia.
 
-With the exercise base the class SimpleDate is supplied. The date is stored with the help of the object variables year, month, and day. There are some methods that need fulfilling:
+Tehtäväpohjassa on luokka `SimpleDate` joka kuvaa päivämäärää. Päivämäärä tallennetaan oliomuuttujiin `year`, `month` ja `day`. Luokassa on joitain metodeja jotka pitää toteuttaa:
 
-- `public void Advance()` advances the date by one day.  In this exercise we assume that each month has 30 day. Remember! In certain situations you need to change the values of month and year.
-- `public void Advance(int howManyDays)` advances the date by the amount of days. Use the method Advance() that you implemented to help you in this.
-- `public SimpleDate AfterNumberOfDays(int days)`  It creates a new SimpleDate object whose date is the specified number of days greater than the object that the method was called on. You may still assume that each month has 30 days. Notice that the old date object must remain unchanged!
+- `public void Advance()` siirtää päivämäärää yhdellä päivällä. Tässä tehtävässä oletamme, että jokaisessa kuukaudessa on 30 päivää. Muista, että kuukauden ja vuoden arvoja pitää muuttaa tietyissä tilanteissa.
+- `public void Advance(int howManyDays)` siirtää päivämäärää parametrina annetun määrän päiviä. Käytä metodia Advance() apuna.
+- `public SimpleDate AfterNumberOfDays(int days)` luo uuden SimpleDate-olion jonka päivämäärä on parametrina annetun määrän päiviä myöhemmin. Voit edelleen olettaa, että jokaisessa kuukaudessa on 30 päivää. Huomaa, että vanha päivämäärä-olio ei saa muuttua!
 
-Since the last method must create a new object, the structure of the code should be somewhat similar to this:
+Koska viimeinen metodi luo uuden olion, koodin rakenteen pitäisi olla jotakuinkin tällainen:
 
 ```cpp
 SimpleDate newDate = new SimpleDate( ... );
 
-// Do something here
+// Tee jotain täällä
 
 return newDate;
 ```
 
-The whole class template looks like this:
+Koko luokan pohja näyttää tältä:
 
 ```cpp
 namespace Exercise014
@@ -1688,17 +1689,17 @@ namespace Exercise014
     }
 
     public void Advance() {
-      // Do something here
+      // Tee jotain täällä
     }
 
     public void Advance(int howManyDays) {
-      // Do something here
+      // Tee jotain täällä
     }
 
     public SimpleDate AfterNumberOfDays(int days) {
       SimpleDate newDate = new SimpleDate( ... );
 
-      // Do something here
+      // Tee jotain täällä
 
       return newDate;
     }
@@ -1709,23 +1710,23 @@ namespace Exercise014
       return this.day + "." + this.month + "." + this.year;
     }
 
-    // used to check if this date object (`this`) is before
-    // the date object given as the parameter (`compared`)
+    // tarkistetaan onko tämä (this) aiemmin kuin verrattava
+    // olio joka annetaan parametrina (compared)
     public bool Before(SimpleDate compared)
     {
-      // first compare years
+      // vertaa ensin vuosia
       if (this.year < compared.year)
       {
         return true;
       }
 
-      // if the years are the same, compare months
+      // jos vuodet samat, vertaa kuukausia
       if (this.year == compared.year && this.month < compared.month)
       {
         return true;
       }
 
-      // the years and the months are the same, compare days
+      // vuodet ja kuukaudet samoja, vertaa päiviä
       if (this.year == compared.year && this.month == compared.month &&
           this.day < compared.day)
       {
@@ -1738,7 +1739,8 @@ namespace Exercise014
 }
 ```
 
-Here's example use:
+Esimerkki käyttämiseen:
+
 ```cpp
 public static void Main(string[] args)
 {
@@ -1773,7 +1775,11 @@ Friday after 7 weeks is 2.4.2015
 The date after 790 days from the examined Friday is ... try it out yourself!
 ```
 
-<Note>Instead of modifying the state of the old object we return a new one with AfterNumberOfDays. Imagine that the SimpleDate class has a method Advance that works similarly to the method we programmed, but it modifies the state of the old object. In that case the next block of code would cause problems.</Note>
+<Note>
+Sen sijaan että muokkaisimme vanhaa oliota, palautamme uuden olion metodissa AfterNumberOfDays. Kuvittele että SimpleDate-luokassa olisi metodi Advance, joka toimisi samalla tavalla kuin meidän toteuttamamme metodi AfterNumberOfDays, mutta muuttaisi vanhan olion tilaa. Tällöin seuraava koodinpätkä aiheuttaisi ongelmia.
+</Note>
+
+
 
 ```cpp
 SimpleDate now = new SimpleDate(13, 2, 2015);
@@ -1789,15 +1795,17 @@ Now: 20.2.2015
 After one week: 20.2.2015
 ```
 
-This is because a normal assignment only copies the reference to the object. So the objects now and afterOneWeek in the program now refer to the one and same SimpleDate object.
+Tämä johtuu siitä, että tavallinen sijoitusoperaatio kopioi viitteen olioon. Tässä tapauksessa oliot now ja afterOneWeek viittaavat samaan olioon. 
 
 </Exercise>
 
 <Exercise title={'015 Money'}>
 
-This exercise is worth 2 points without individual sections.
+Tämä tehtävä on 2 pisteen arvoinen ilman erillisiä osia.
 
-In the Payment card exercise we used a double-type object variable to store the amount of money. In real applications this is not the approach you want to take, since as we have seen, calculating with doubles is not exact. A more reasonable way to handle amounts of money is create an own class for that purpose. Here is a layout for the class:
+Maksukorttia tehdessämme käytimme double-tyyppistä muuttujaa rahan määrän kuvaamiseen, Todellisuudessa tämä ei ole haluttu tapa tehdä tätä, koska kuten olemme huomanneet, double-tyypin laskeminen ei ole täysin tarkkaa. Järkevämpi tapa rahan käsittelyyn on luoda oma luokka tähän tarkoitukseen.
+
+Tässä on luonnos luokasta Money (raha):
 
 ```cpp
 namespace Exercise015
@@ -1822,25 +1830,25 @@ namespace Exercise015
 
     public Money Plus(Money addition)
     {
-      Money newMoney = new Money(/* Do something here*/);
-      // create a new Money object that has the correct worth
+      Money newMoney = new Money(/* Tee jotain täällä */);
+      // luo uusi Money-olio jolla on oikea arvo
 
-      // return the new Money object
+      // palauta tämä uusi Money
       return newMoney;
     }
 
     public Money Minus(Money decreaser)
     {
-      Money newMoney = new Money(/* Do something here*/);
-      // create a new Money object that has the correct worth
+      Money newMoney = new Money(/* Tee jotain täällä */);
+      // luo uusi Money-olio jolla on oikea arvo
 
-      // return the new Money object
+      // palauta tämä uusi Money
       return newMoney;
     }
 
     public bool LessThan(Money compared)
     {
-      // Do something here
+      // Tee jotain täällä
       return false;
     }
 
@@ -1858,31 +1866,38 @@ namespace Exercise015
 }
 ```
 
-Next we'll create a few operations for processing money.
+Seuraavaksi luodaan muutama operaatio rahan käsittelyyn.
 
-- First create the method `public Money Plus(Money addition)` that returns a new money object that is worth the total amount of the object whose mehtod was called and the object that is received as the parameter.
+- Luodaan ensin metodi `public Money Plus(Money addition)` joka palauttaa uuden raha-olion, jonka arvo on kahden raha-olion summa (kutsuja + parametri).
 
-The basis for the method is the following:
+Pohja metodin toimintaan on seuraava:
+
 
 ```cpp
 public Money Plus(Money addition)
 {
-  Money newMoney = new Money(/* Do something here*/);
-  // create a new Money object that has the correct worth
+  Money newMoney = new Money(/* Tee jotain täällä */);
+  // luo uusi Money-olio jolla on oikea arvo
 
-  // return the new Money object
+  // palauta tämä uusi Money
   return newMoney;
 }
 ```
-<Note>If the cents would go over 99 (100 or more), the euros should increase as well!</Note>
+<Note>
+Jos sentit menevät yli 99 (eli 100 tai enemmän), eurojen määrä kasvaa myös!
+</Note>
 
-- create the method `public bool LessThan(Money compared)` that returns true if the money object whose method is called has a lesser worth than the money object that is received as the method parameter.
+- Luodaan metodi `public bool LessThan(Money compared)` joka palauttaa true jos raha-olio jolle metodi kutsutaan on pienempi kuin raha-olio joka on parametrina.
 
-- Write the method `public Money Minus(Money decreaser)` that returns a new money object worth the difference of the object whose method was called and the object received as the parameter. If the difference would be negative, the worth of the created money object is set to 0.
+- Luodaan metodi `public Money Minus(Money decreaser)` joka palauttaa uuden raha-olion, jonka arvo on kahden raha-olion erotus (kutsuja - parametri). Jos erotus on negatiivinen, palautetaan raha-olio jonka arvo on 0.
 
-<Note>If the cents would go under 0, the euros should decrease as well!</Note>
+<Note>
+Jos sentit menevät alle 0, eurojen määrä vähenee myös!
+</Note>
 
-Example of all the methods:
+Esimerkki kaikista metodeista:
+
+
 ```cpp
 Money money = new Money(100, 00);
 Money moreMoney = new Money(500, 50);
@@ -1912,7 +1927,7 @@ lessMoney = lessMoney.Minus(moreMoney);
 Console.WriteLine(lessMoney);
 ```
 
-Prints out
+Tulostaa:
 
 ```console
 100.00e
