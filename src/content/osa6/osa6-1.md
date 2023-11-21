@@ -4,7 +4,7 @@ nav_order: 1
 hidden: false
 ---
 
-# Separating the user interface from program logic
+# Käyttöliittymän erottaminen ohjelman logiikasta
 
 Let's examine the process of implementing a program and separating different areas of responsibility from each other. The program asks the user to write words until they write the same word twice.
 
