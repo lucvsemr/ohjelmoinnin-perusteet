@@ -710,9 +710,10 @@ public class SimpleDate
 }
 ```
 
-Even though the object variables year, month, and day are encapsulated (private) object variables, we can read their values by writing compared.**variableName** This is because private variable can be accessed from all the methods contained by that class. Notice that the syntax here matches calling some object method. Unlike when calling a method, we refer to a property or a field of an object, so the parentheses that indicate a method call are not written.
+Vaikka objektin muuttujat year, month ja day ovat kapsuloitu (private) oliomuuttujia, voimme lukea niiden arvoja kirjoittamalla compared.**muuttujanNimi**. Tämä johtuu siitä, että private-muuttujat ovat luokan kaikkien metodien käytettävissä. Huomaa, että syntaksissa kutsutaan oliomuuttujia, ei metodeja. Toisin kuin metodia kutsuttuaessa, nyt viittaus on oliomuuttujaan, joten sulkumerkkejä, jotka ilmaisevat metodikutsua, ei kirjoiteta.
 
-An example of how to use the method:
+Esimerkki metodin käytöstä:
+
 
 ```cpp
 SimpleDate d1 = new SimpleDate(14, 2, 2011);
@@ -739,7 +740,7 @@ Console.WriteLine(d1 + " is earlier than " + d4 + ": " + d1.Before(d4));
 14.2.2011 is earlier than 31.12.2010: False
 ```
 
-Let's tweak the method OlderThan of the Person class so that from here on out, we take use of the comparison functionality that date objects provide.
+Parannetaan OlderThan-metodia, siten että jatkossa se käyttää SimpleDate-luokan vertailutoimintoa.
 
 ```cpp
 public bool OlderThan(Person compared) {
@@ -754,9 +755,10 @@ public bool OlderThan(Person compared) {
 }
 ```
 
-Now the concrete comparison of dates is implemented in the class that it logically (based on the class names) belongs to.
+Nyt päivämäärien konkreettinen vertailu on toteutettu luokassa, johon se loogisesti kuuluu (perustuen luokkien nimiin).
 
-## Equality
+## Yhdenvertaisuus (Equality)
+
 
 If we want to be able to compare two objects of our own design with the **Equals** method, that method must be defined in the class. The method equals is defined as a method that returns a boolean type value -- the return value indicates whether the objects are equal.
 
