@@ -759,10 +759,11 @@ Nyt päivämäärien konkreettinen vertailu on toteutettu luokassa, johon se loo
 
 ## Yhdenvertaisuus (Equality)
 
+Jos haluamme vertailla kahta itsesuunnittelemaamme oliota, pääasiassa haluamme käyttää **Equals** -metodia, joka täytyy siis määritellä luokassa itsessään. Metodi Equals on määritelty palauttamaan boolean-tyyppinen arvo -- paluuarvo kertoo, ovatko oliot yhtäläiset.
 
-If we want to be able to compare two objects of our own design with the **Equals** method, that method must be defined in the class. The method equals is defined as a method that returns a boolean type value -- the return value indicates whether the objects are equal.
+Equals-metodi toteutetaan siten, että sen avulla voidaan vertailla kyseistä objektia mihin tahansa toiseen objektiin. Metodi saa parametrina **Object** -tyyppisen objektin, joka on kaikkien objektien yläluokka, eli kaikki objektit/oliot ovat tyyppiä Object oman tyyppinsä lisäksi. Ensin vertailemme objektien osoitteita: jos osoitteet ovat samat, ovat oliot samat. Tämän jälkeen tarkistamme, ovatko objektien tyypit samat: jos eivät ole, ovat oliot erilaiset. Tämän jälkeen muunnetaan parametrina saatu objekti samaan tyyppiin kuin vertailtava olio, ja vertaillaan objektien muuttujien arvoja. Alla on toteutettu yhdenvertaisuusvertailu SimpleDate-luokalle.
 
-The method equals is implemented in a way that allows for using it to compare the current object with any other object. The method receives an Object type object as its single parameter -- all objects are Object type, in addition to their own type. The equals method first compares if the addresses are equal: if so, the objects are equal. After this, we examine if the types of the objects are the same: if not, the objects are not equal. Then the Object object passed as the parameter is converted to the type of the object that is being examined by using a type cast. Then the values of the object variables can be compared. Below the equality comparison has been implemented for the SimpleDate class.
+
 
 ```cpp
 namespace Exercise001
@@ -782,24 +783,24 @@ namespace Exercise001
 
     public override bool Equals(object compared)
     {
-      // if the variables are located in the same position, they are equal
+      // jos oliot ovat samassa muistipaikassa, ne ovat samat
       if (this == compared)
       {
         return true;
       }
 
-      // if the compared object is null, or
-      // if the type of the compared object is not SimpleDate, the objects are not equal
+      // jos vertailtava olio on null, 
+      // tai jos oliot eivät ole samaa tyyppiä, oliot eivät ole samat
       if ((compared == null) || !this.GetType().Equals(compared.GetType()))
       {
         return false;
       }
 
-      // convert the Object type compared object
-      // into an SimpleDate type object called comparedSimpleDate
+      // muunnetaan Object-tyyppinen vertailtava olio SimpleDate-olioksi
+      // nimeltä comparedSimpleDate
       SimpleDate comparedSimpleDate = (SimpleDate)compared;
 
-      // if the values of the object variables are the same, the objects are equal
+      // jos olioiden muuttujien arvot ovat samat, ovat oliot samat
       if (this.day == comparedSimpleDate.day &&
           this.month == comparedSimpleDate.month &&
           this.year == comparedSimpleDate.year)
@@ -807,7 +808,7 @@ namespace Exercise001
         return true;
       }
 
-      // otherwise the objects are not equal
+      // muulloin oliot eivät ole samat
       return false;
     }
 
@@ -820,7 +821,8 @@ namespace Exercise001
 }
 ```
 
-<Note>So far we have compared only with ==, but now we're also using Equals. They compare different things. Try out, what happens if you compare two identical SimpleDates with both:
+<Note>
+Tähän asti olemme vertailleet vain == -operaattorilla, mutta nyt käytämme myös Equalsia. Ne vertailevat eri asioita. Kokeile, mitä tapahtuu, jos vertailet kahta identtistä SimpleDatea molemmilla:
 
 ```cpp
 static void Main(string[] args)
@@ -834,11 +836,11 @@ static void Main(string[] args)
 </Note>
 
 
-## Some inheritance
+## Hieman perintää (inheritance)
 
-Every class we create (and every ready-made C# class) inherits the class Object, even though it is not specially visible in the program code. This is why an instance of any class can be passed as a parameter to a method that receives an Object type variable as its parameter. Inheriting the Object can be seen elsewhere, too: for instance, the **ToString** method exists even if you have not implemented it yourself, just as the equals method does.
+Jokainen luokka jonko luomme (ja jokainen valmis C#:n luokka) perii luokan Object, vaikka se ei olekaan erityisesti näkyvissä ohjelmakoodissa. Tämän vuoksi minkä tahansa luokan ilmentymä voidaan antaa parametrina metodille, joka saa parametrinaan Object-tyyppisen muuttujan. Periminen näkyy muuallakin: esimerkiksi **ToString**-metodi löytyy vaikka et olisi sitä itse toteuttanut, samoin kuin Equals-metodi.
 
-To illustrate, the following source code compiles successfully: **Equals** method can be found in the Object class inherited by all classes.
+Voimme havainnollistaa tätä seuraavalla esimerkillä. **Equals** löytyy Object-luokasta, joka on peritty kaikille luokille.
 
 ```cpp
 namespace Exercise001
@@ -859,8 +861,9 @@ namespace Exercise001
 static void Main(string[] args)
 {
   Bird red = new Bird("Red");
-  // We're using GetHashCode to show they're unique
-  // The method returns the exact runtime type of the current instance.
+  // Käytämme metodia GetHashCode näyttääksemme, että ne ovat uniikkeja
+  // Metodi palauttaa olion hash-koodin, joka on kokonaisluku
+  // Palaamme tähän myöhemmin.
   Console.WriteLine(red.GetHashCode());
 
   Bird chuck = new Bird("Chuck");
@@ -883,9 +886,10 @@ static void Main(string[] args)
 They're not equal!
 ```
 
-## Object equality and lists
+## Olion samankaltaisuus ja listat
 
-Let's examine how the **Equals** method is used with Lists. Let's assume we have the previously described class **Bird** with only the default **Equals** method (not defined by us).
+Tarkastellaan kuinka **Equals**-metodia käytetään listojen kanssa. Oletetaan, että meillä on edellä kuvattu luokka **Bird** vain oletus **Equals**-metodilla (ei määritelty meidän toimesta).
+
 
 ```cpp
 public class Bird
@@ -899,7 +903,7 @@ public class Bird
 }
 ```
 
-Let's create a list and add a bird to it. After this we'll check if that bird is contained in it.
+Luodaan lista ja lisätään siihen lintu. Tämän jälkeen tarkistetaan, onko lintu listalla.
 
 ```cpp
 static void Main(string[] args)
@@ -948,37 +952,38 @@ However!
 Red is not on the list.
 ```
 
-We can notice in the example above that we can search a list for our own objects. First, when the bird had not been added to the list, it is not found -- and after adding it is found. When the program switches the **red** object into a new object, with exactly the same contents as before, it is no longer equal to the object on the list, and therefore cannot be found on the list.
+Huomaamme yllä olevasta esimerkistä, että voimme etsiä listalta omia olioitamme. Ensin, kun lintua ei ollut lisätty listaan, sitä ei löydetty -- ja lisäämisen jälkeen se löytyi. Kun ohjelma vaihtoi **red**-olion uuteen olioon, jolla on täsmälleen samat sisällöt kuin aiemmin, se ei kuitenkaan ole sama olio, ja siksi sitä ei löydy listalta.
 
-The **Contains** method of a list uses the **Equals** method that is defined for the objects in its search for objects. In the example above, the **Bird** class has no definition for that method, so a bird with exactly the same contents -- but a different reference -- cannot be found on the list.
+Metodi **Contains** käyttää itseasiassa **Equals**-metodia vertailuun. Yllä olevassa esimerkissä, **Bird**-luokassa ei ole määritelty omaa vertailumetodia, joten lint jolla on täsmälleen sama sisältö -- mutta eri muistiviite -- ei löydykään listalta.
 
-Let's implement the **Equals** method for the class **Bird**. The method examines if the names of the objects are equal -- if the names match, the birds are thought to be equal.
+Toteutetaan linnulle sen oma **Equals**. Metodi tarkastelee onko linnuilla sama nimi -- jos nimet täsmää, lintuja voidaan pitää samoina.
 
 ```cpp
 public override bool Equals(object compared)
 {
-  // if the variables are located in the same position, they are equal
+  // Jos oliot ovat samassa muistipaikassa, ne ovat yhtenevät eli sama
   if (this == compared)
   {
     return true;
   }
 
-  // if the compared object is null or not of type Bird, the objects are not equal
+  // Jos vertailtava olio on null, tai jos oliot eivät ole samaa tyyppiä, oliot eivät ole samat
   if ((compared == null) || !this.GetType().Equals(compared.GetType()))
   {
     return false;
   }
   else
   {
-    // convert the object to a Bird object
+    // Muutetaan Object-tyyppinen vertailtava olio Bird-olioksi nimeltä comparedBird
     Bird comparedBird = (Bird)compared;
-    // if the values of the object variables are equal, the objects are, too
+    // Jos vertailtava muuttuja on sama, ovat oliot samat
+    // Jos ne ovat eri, alla oleva vertailu palauttaa false
     return this.name.Equals(comparedBird.name);
   }
 }
 ```
 
-Now the Contains list method recognizes birds with identical contents.
+Nyt listan Contains tunnistaa linnut, joilla on sama nimi, samaksi linnuksi.
 
 ```cpp
 static void Main(string[] args)
@@ -1027,11 +1032,12 @@ However!
 Red is on the list.
 ```
 
-## Object as a method's return value
+## Olio metodin paluuarvona
 
-We have seen methods return boolean values, numbers, and strings. Easy to guess, a method can return an object of any type.
+Olemme nähneet metodeita joiden paluuarvo on totuusarvo, numero tai merkkijono. Kuten arvata saattaa, metodi voi palauttaa minkä tahansa objektin (olion).
 
-In the next example we present a simple counter that has the method **Clone**. The method can be used to crete a clone of the counter; i.e. a new counter object that has the same value at the time of its creation as the counter that is being cloned.
+Seuraavassa esimerkissä luomme uuden yksinkertaisen laskurin jolla on metodi **Clone**. Metodia voidaan käyttää luomaan klooni laskurista; eli uusi laskuri jolla on sama arvo kuin kloonattavalla laskurilla.
+
 
 ```cpp
 namespace Exercise001
@@ -1040,9 +1046,9 @@ namespace Exercise001
   {
     private int value;
 
-    // example of using multiple constructors:
-    // you can call another constructor from a constructor by calling this
-    // notice that the this call must be on the first line of the constructor
+    // samalla esimerkkki monesta konstruktorista:
+    // voit kutsua toista konstruktoria konstruktorista käsin käyttämällä this
+    // huomaa että this-kutsu on oltava konstruktorin ensimmäisellä rivillä
     public Counter() : this(0)
     {
     }
@@ -1064,42 +1070,42 @@ namespace Exercise001
 
     public Counter Clone()
     {
-      // create a new counter object that receives the value of the cloned counter as its initial value
+      // luodaan uusi laskuri-olio, joka saa arvokseen kloonattavan laskurin arvon
       Counter clone = new Counter(this.value);
 
-      // return the clone to the caller
+      // palauta klooni kutsujalle
       return clone;
     }
   }
 }
 ```
 
-An example of using counters follows:
+Esimerkki laskurin toiminnasta:
 
 ```cpp
 Counter counter = new Counter();
 counter.Increase();
 counter.Increase();
 
-Console.WriteLine(counter);         // prints 2
+Console.WriteLine(counter);         // tulostaa 2
 
 Counter clone = counter.Clone();
 
-Console.WriteLine(counter);         // prints 2
-Console.WriteLine(clone);          // prints 2
+Console.WriteLine(counter);         // tulostaa 2
+Console.WriteLine(clone);          // tulostaa 2
 
 counter.Increase();
 counter.Increase();
 counter.Increase();
 counter.Increase();
 
-Console.WriteLine(counter);         // prints 6
-Console.WriteLine(clone);          // prints 2
+Console.WriteLine(counter);         // tulostaa 6
+Console.WriteLine(clone);          // tulostaa 2
 
 clone.Increase();
 
-Console.WriteLine(counter);         // prints 6
-Console.WriteLine(clone);          // prints 3
+Console.WriteLine(counter);         // tulostaa 6
+Console.WriteLine(clone);          // tulostaa 3
 ```
 
 ```console
@@ -1112,9 +1118,10 @@ value: 6
 value: 3
 ```
 
-Immediately after the cloning operation, the values contained by the clone and the cloned object are the same. However, they are two different objects, so increasing the value of one counter does not affect the value of the other in any way.
+Heti kloonaamisen jälkeen laskurien arvot ovat samat. Ne ovat kuitenkin kaksi eri oliota, joten toisen arvon kasvattaminen ei vaikuta toiseen.
 
-Similarly, a **Factory** object could also be used to create and return new Car objects. Below is a sketch of the outline of the factory -- the factory also knows the makes of the cars that are created.
+Samaan tapaan, **Factory**-oliota voidaan käyttää luomaan uusia **Car**-olioita. Alla on hahmotelma tehtaasta -- tehdas tietää myös, minkä merkkisiä autoja luodaan.
+
 
 ```cpp
 public class Factory 
@@ -1137,64 +1144,69 @@ public class Factory
 
 <Exercise title={'006 NullReferenceException'}>
 
-Implement a program that causes the `NullReferenceException` error. The error should occur directly after starting the program -- don't wait to read input from the user, for instance.
+Luo ohjelma joka aiheuttaa `NullReferenceException` virheen. Virheen tulisi tapahtua heti ohjelman käynnistämisen jälkeen -- älä odota käyttäjän syötettä, esimerkiksi.
 
-<Note>Change an object into null, and try to use it.</Note>
+
+<Note>
+Vinkki: Muuta olio null:ksi, ja koeta käyttää sitä.
+</Note>
 
 </Exercise>
 
 <Exercise title={'007 Health station'}>
 
-In the exercise base there is the class `Person`, which we are already quite familiar with. There is also an outline for the class `HealthStation`. Health station objects process people in different ways, they e.g. weigh and feed people. In this exercise we will construct a health station. The code of the Person class should not be modified in this exercise!
+Tehtäväpohjassa on luokka `Person`, joka on meille jo tuttu. Lisäksi pohjassa on luonnos luokasta `HealthStation` (TerveysAsema suomeksi). Terveysasema-olio käsittelee ihmisiä eri tavoin, esimerkiksi punnitsemalla ja ruokkimalla heitä. Tässä tehtävässä rakennetaan terveysasema. Tehtäväpohjassa olevaa Person-luokkaa ei saa muuttaa! 
 
-* Osa 1 - Weighing people
 
-The `Weigh` method receives a person as a parameter, and it is meant to return to its caller the weight of that person. The weight information can be found by calling a suitable property of the Person person. So your task is to complete the code of the method!
+* Osa 1 - Henkilöiden punnitseminen
 
-* Osa 2 - Feeding people
+Metodi `Weigh` saa parametrina henkilön, ja sen tarkoituksena on palauttaa parametrina annetun henkilön paino. Paino löytyy kutsumalla sopivaa ominaisuutta Person-oliosta. Tehtäväsi on täydentää metodin koodi!
 
-It is possible to modify the state of the object that is received as a parameter. Fill in the method called `public void Feed(Person person)` for the health station. It should increase the weight of the parameter person by one.
+* Osa 2 - Henkilöiden ruokkiminen
 
-* Osa 3 - Counting weighings
+On mahdollista muokata parametrina saadun olion tilaa. Täytä metodi `public void Feed(Person person)` terveysasemalle. Sen tulee lisätä parametrina saadun henkilön painoa yhdellä.
 
-Use the variable `public int weighings { get; private set; }` to count weighings - That is, when ever the method `Weigh` is called, the variable should increase by one.
 
-Here's a Main class to test all of the sections:
+* Osa 3 - Punnistusten laskeminen
+
+Käytä muuttujaa `public int weighings { get; private set; }` punnitusten laskemiseen - Eli kun metodia `Weigh` kutsutaan, muttujan arvon pitäisi kasvaa yhdellä.
+
+Tässä on Main-metodin esimerkki, jolla testataan terveysaseman kaikkia osia:
 
 ```cpp
 public static void Main(string[] args)
 {
-  // create new Station
+  // Luo uusi asema
   HealthStation childrensHospital = new HealthStation();
 
-  // create two new persons
+  // Luo kaksi uutta henkilöä
   Person ethan = new Person("Ethan", 1, 110, 7);
   Person peter = new Person("Peter", 33, 176, 85);
 
-  // Try out the Persons and method Weigh
+  // Kokeile henkilöitä ja punnistusta
   Console.WriteLine(ethan.name + " weight: " + childrensHospital.Weigh(ethan) + " kilos");
   Console.WriteLine(peter.name + " weight: " + childrensHospital.Weigh(peter) + " kilos");
 
-  // Test feeding the persons
+  // Kokeile ruokintaa
   childrensHospital.Feed(ethan);
   childrensHospital.Feed(peter);
 
-  // See that the weights have changed
+  // Tarkista, että paino on noussut
   Console.WriteLine(ethan.name + " weight: " + childrensHospital.Weigh(ethan) + " kilos");
   Console.WriteLine(peter.name + " weight: " + childrensHospital.Weigh(peter) + " kilos");
 
-  // Keep weighing to increase the 'int weighings'
+  // Punnitse muutaman kerran lisää
   childrensHospital.Weigh(ethan);
   childrensHospital.Weigh(ethan);
   childrensHospital.Weigh(ethan);
   childrensHospital.Weigh(ethan);
 
-  // See that the variable has increased to 8
+  // Tarkista, että punnitusten lukumäärä on 8
   Console.WriteLine("weighings performed: " + childrensHospital.weighings);
 }
 ```
 
-Should print out 
+Tämän pitäisi lopulta tulostaa
 
 ```console
 Ethan weight: 110 kilos
@@ -1207,16 +1219,16 @@ weighings performed: 8
 
 <Exercise title={'008 Card payments'}>
 
-In a previous exercises part we created a class called `PaymentCard`. The card had methods for Eating a lunch and drinking coffee, and also for adding money to the card.
+Aiemmissa tehtävissä olemme käyttäneet luokkaa `PaymentCard`. Kortilla on ollut metodeja lounaan syömiseen ja kahvin juomiseen, sekä rahan lisäämiseen kortille.
 
-However, there was a problem with the PaymentCard class that is implemented in this fashion. The card knew the prices of the different payments, and therefore was able to decrease the balance by the proper amount. What about if the prices are raised? Or new items are added to the list of offered products? A change in the pricing would mean that all the existing cards would have to be replaced with new cards that are aware of the new prices.
+On kuitenkin hieman ongelmallista toteuttaa luokka tällä tavalla. Kortti tietää eri maksujen hinnat, ja pystyy vähentämään saldosta oikean määrän. Entä jos hinnat muuttuvat? Tai jos uusia tuotteita lisätään? Hinnan muuttuessa kaikki olemassa olevat kortit pitäisi korvata uusilla, jotka tietävät uudet hinnat.
 
-An improved solution is to make the cards "dumb"; unaware of the prices and products that are sold, and only keeping track of their balance. All the intelligence is better placed in separate objects, payment terminals.
+Parannettu toteutus on tehdä kortista "tyhmä"; tietämätön hinnoista ja myydyistä tuotteista, ja pitää kirjaa vain omasta saldostaan. Kaikki äly on parempi sijoittaa toiseen olioon, eli maksupäätteeseen.
 
 
 * Osa 1
 
-Let's first implement the "dumb" version of the PaymentCard. The card only has ability for asking for the balance, adding money, and taking money. Complete the method `public bool TakeMoney(double amount)` in the class below (and found in the exercise template), using the following as a guide:
+Luodaan ensin "tyhmä" versio luokasta **PaymentCard**. Kortilla on vain kyky kysyä saldoa, lisätä rahaa ja ottaa rahaa. Täytä metodi `public bool TakeMoney(double amount)` luokassa alla (ja tehtäväpohjassa), käyttäen seuraavaa mallina:
 
 ```cpp
 namespace Exercise008
@@ -1237,9 +1249,9 @@ namespace Exercise008
 
     public bool TakeMoney(double amount)
     {
-      // implement the method so that it only takes money from the card if
-      // the balance is at least the amount parameter.
-      // returns true if successful and false otherwise
+      // toteuta metodi siten että se ottaa kortilta rahaa 
+      // vain jos saldo on vähintään amount
+      // palauttaa true jos onnistui ja false muuten
 
       return false;
     }
@@ -1264,7 +1276,7 @@ static void Main(string[] args)
 }
 ```
 
-Should print like this:
+Pitäisi tulostaa seuraavaa:
 
 ```console
 money 10
@@ -1276,36 +1288,39 @@ money 2
 
 * Osa 2
 
-When visiting a student cafeteria, the customer pays either with cash or with a payment card. The cashier uses a payment terminal to charge the card or to process the cash payment. First, let's create a terminal that's suitable for cash payments.
+Kun käydään opiskelijakahvilassa, on mahdollista maksaa joko käteisellä tai maksukortilla. Kassahenkilö käyttää maksupäätettä, ja veloittaa joko käteiseltä tai kortilta. Ensin toteutetaan maksupääte, joka toimii käteisen kanssa.
 
-The outline of the payment terminal. The comments inside the methods tell the wanted functionality:
+Maksupääteen hahmotelma. Kommentit kertovat mitä metodeiden halutaan tekevän:
+
 
 ```cpp
 namespace Exercise008
 {
   public class PaymentTerminal
   {
-    private double money;  // amount of cash
-    private int coffeeAmount; // number of sold coffees
-    private int lunchAmount;  // number of sold lunches
+    private double money;  // käteisen määrä kassassa
+    private int coffeeAmount; // myytyjen kahvien määrä
+    private int lunchAmount;  // myytyjen lounaiden määrä
 
     public PaymentTerminal()
     {
-      // register initially has 1000 euros of money
+      // alussa rahaa on 1000 euroa
     }
 
     public double DrinkCoffee(double payment)
     {
-      // an coffee now costs 2.50 euros
-      // increase the amount of cash by the price of an coffee mean and return the change
-      // if the payment parameter is not large enough, no coffee is sold and the method should return the whole payment
+      // kahvi maksaa nyt 2.50 euroa
+      // kasvata kassassa olevaa rahamäärää kahvin hinnalla
+      // kasvata myytyjen lukumäärää ja palauta (return) vaihtorahat
+      // jos maksu ei ole riittävä, älä kasvata lukumäärää, palauta koko maksu ja älä muuta kassassa olevaa rahamäärää
     }
 
     public double EatLunch(double payment)
     {
-      // a lunch now costs 10.30 euros
-      // increase the amount of cash by the price of a lunch and return the change
-      // if the payment parameter is not large enough, no lunch is sold and the method should return the whole payment
+      // lounas maksaa nyt 10.30 euroa
+      // kasvata kassassa olevaa rahamäärää lounaan hinnalla
+      // kasvata myytyjen lukumäärää ja palauta (return) vaihtorahat
+      // jos maksu ei ole riittävä, älä kasvata lukumäärää, palauta koko maksu ja älä muuta kassassa olevaa rahamäärää
     }
 
     public override string ToString()
@@ -1316,7 +1331,7 @@ namespace Exercise008
 }
 ```
 
-The terminal starts with 1000 euros in it. Implement the methods so they work correctly, using the basis above and the example prints of the main program below.
+Maksupääte aloittaa 1000 eurolla. Toteuta metodit jotta ne toimivat oikein, perustuen ohjeisiin yllä ja alla olevaan esimerkkiin, joka tulostaa maksupäätteen tietoja:
 
 ```cpp
 PaymentTerminal lunchCafeteria = new PaymentTerminal();
@@ -1342,25 +1357,28 @@ money: 1015.3, number of sold coffees: 2, number of sold lunches: 1
 
 * Osa 3
 
-Let's extend our payment terminal to also support card payments. We are going to create new methods for the terminal. It receives a payment card as a parameter, and decreases its balance by the price of the meal that was purchased. Here are the outlines for the methods, and instructions for completing them.
+Laajennetaan maksupäätettä tukemaan korttimaksuja. Meidän tarvitsee luoda uusia metodeja maksupäätteeseen. Pääte ottaa korttimaksun vastaan, ja vähentää kortin saldosta ostoksen hinnan. Tässä jälleen hahmotelma, ja ohjeet metodien täydentämiseen.
 
 ```cpp
 public bool DrinkCoffee(PaymentCard card)
 {
-  // a coffee costs 2.50 euros
-  // if the payment card has enough money, the balance of the card is decreased by the price, and the method returns true
-  // otherwise false is returned
+  // kahvi maksaa 2.50 euroa
+  // jos kortilla on tarpeeksi rahaa, vähennä hinta kortilta, kasvata myytyjen lukumäärää ja palauta true
+  // muutoin palauta false
 }
 
 public bool EatLunch(PaymentCard card)
 {
-  // a lunch costs 10.30 euros
-  // if the payment card has enough money, the balance of the card is decreased by the price, and the method returns true
-  // otherwise false is returned
+  // lounas maksaa 10.30 euroa
+  // jos kortilla on tarpeeksi rahaa, vähennä hinta kortilta, kasvata myytyjen lukumäärää ja palauta true
+  // muutoin palauta false
 }
 ```
 
-Notice! Card payments do not increase the cash in the register.
+<Note>
+HUOM!
+Korttimaksu ei lisää rahaa kassaan, vaan vähentää rahaa kortilta.
+</Note>
 
 ```cpp
 PaymentTerminal lunchCafeteria = new PaymentTerminal();
@@ -1390,7 +1408,8 @@ money: 1002.5, number of sold coffees: 2, number of sold lunches: 1
 
 * Osa 4
 
-Let's create a method for the terminal that can be used to add money to a payment card. Recall that the payment that is received when adding money to the card is stored in the register (adding cash). The basis for the method:
+Luodaan maksupäätteelle metodi jolla voidaan lisätä rahaa kortille. Muista, että kortille ladattu raha tallennetaan maksupäätteelle (lisätään käteistä). Pohja metodille:
+
 
 ```cpp
 public void AddMoneyToCard(PaymentCard card, double sum)
@@ -1399,13 +1418,13 @@ public void AddMoneyToCard(PaymentCard card, double sum)
 }
 ```
 
-A main program to illustrate:
+Main-metodi havainnollistamaan toimintaa:
 
 
 ```cpp
 public static void Main(string[] args)
 {
-  // Try your code here, if you want
+  // Tätä kannattaa kokeilla omassa koodissas
 
   PaymentTerminal lunchCafeteria = new PaymentTerminal();
   Console.WriteLine(lunchCafeteria);
@@ -1441,7 +1460,8 @@ money: 1100, number of sold coffees: 0, number of sold lunches: 1
 
 <Exercise title={'009 Biggest pet shop'}>
 
-Two classes, Person and Pet, are included in the exercise template. Each person has one pet. Modify the `public override string ToString` method of the `Person class` so that the string it returns tells the pet's name and breed in addition to the person's own name.
+Kaksi luokkaa, Person ja Pet, ovat valmiina tehtäväpohjassa. Jokaisella henkilöllä on yksi lemmikki. Muokkaa metodia `public override string ToString()` luokassa Person siten, että se palauttaa henkilön nimen ja lemmikin nimen ja rodun.
+
 
 ```cpp
 public static void Main(string[] args)
@@ -1469,9 +1489,9 @@ Mike, has a friend called Toothless (dragon)
 
 <Exercise title={'010 Comparing apartments'}>
 
-Fill in the method `public bool LargerThan(Apartment compared)` that returns true if the apartment object whose method is called has a larger total area than the apartment object that is being compared.
+Täytä metodi `public bool LargerThan(Apartment compared)` luokassa Apartment. Metodin tulee palauttaa true jos huoneisto jossa metodia kutsutaan on suurempi kuin parametrina annettu huoneisto. 
 
-An example of how the method should work:
+Esimerkki metodin toiminnasta:
 
 ```cpp
 public static void Main(string[] args)
@@ -1490,9 +1510,10 @@ False
 True
 ```
 
-Fill in the method `public int PriceDifference(Apartment compared)` that returns the price difference of the apartment object whose method was called and the apartment object received as the parameter. The price difference is the absolute value of the difference of the prices (price can be calculated by multiplying the price per square by the number of squares). Use the method `private int Price()` to calculate the price for the apartments.
+Täytä metodi `public int PriceDifference(Apartment compared)` luokassa Apartment, joka palauttaa huoneiston hinnan erotuksen. Hinta lasketaan kertomalla neliöiden määrä neliöhinnalla. Metodin tulee palauttaa positiivinen luku. Käytä metodia `private int Price()` huoneiston hinnan laskemiseen.
 
-An example of how the method should work:
+Esimerkki metodin toiminnasta:
+
 
 ```cpp
 Apartment manhattanStudioApt = new Apartment(1, 16, 5500);
@@ -1507,9 +1528,10 @@ Console.WriteLine(bangorThreeBedroomApt.PriceDifference(manhattanStudioApt));
 107000
 ```
 
-Fill in the method `public bool MoreExpensiveThan(Apartment compared)` that returns true if the apartment object whose method is called is more expensive than the apartment object being compared.
+Täytä metodi `public bool MoreExpensiveThan(Apartment compared)` luokassa Apartment, joka palauttaa true jos huoneisto jossa metodia kutsutaan on kalliimpi kuin parametrina annettu huoneisto.
 
-An example of how the method should work:
+Esimerkki metodin toiminnasta:
+
 
 ```cpp
 Apartment manhattanStudioApt = new Apartment(1, 16, 5500);
