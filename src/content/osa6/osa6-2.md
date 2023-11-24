@@ -4,32 +4,33 @@ nav_order: 2
 hidden: false
 ---
 
-# Class and object methods: static
+# Luokkien ja olioiden metodit: staattisuus
 
-In the beginning, most of our methods had the modifier **static**, but with objects we quit using it all together. Why?
+Alussa useimmat metodimme sisälsivät avainsanan **static**, mutta olioiden myötä luovuimme siitä kokonaan. Miksi?
 
-In C#, methods can be divided into two groups, defined with the modifier **static**. Methods without the modifier are **object methods** belong to the specific object, rather than to the class.
+C#:ssa metodit voidaan jakaa kahteen ryhmään, jotka määritellään avainsanalla **static**. Avainsanan **static** puuttuessa metodit ovat **olion metodeja**, jotka kuuluvat tiettyyn olioon luokan sijaan.
 
- In classes, you may add the static modifier to fields, methods, properties, operators, events, and constructors.
+Luokissa voit lisätä avainsanan **static** kenttiin, metodeihin, ominaisuuksiin, operaattoreihin, tapahtumiin ja konstruktoreihin (englanniksi **fields, methods, properties, operators, events, constructors**).
 
- Object methods are methods which belong to objects, and in whose code object variables and other object methods can be handled. In object methods you can use **this** keyword, which refers to the exact object's methods and variables.
+Oliometodit ovat metodeja, jotka kuuluvat olioihin, ja joiden koodissa voidaan käsitellä olion omia muuttujia ja muita oliometodeja. Oliometodeissa voidaan käyttää **this**-avainsanaa, joka viittaa kyseiseen olioon.
 
- Below is an example of a class **Item**, which has three object methods. Each method can handle object's variables.
+Alla on esimerkki luokasta **Item**, jolla on kolme oliometodia. Jokainen metodi voi käsitellä oliomuuttujia.
 
- ```cpp
- public class Item
- {
+
+```cpp
+public class Item
+{
    private string name;
 
    public Item(string name) 
    {
      this.name = name;
    }
-   
-  // In C# this could also be done with { get; set; for the varible}
-  // That way the variable would be public
-  // For this example, we want to protect it and keep it private
-  public string GetName()
+
+  // C#:ssa tämä voisi olla myös { get; set; } muuttujalle
+  // Tällöin muuttuja olisi julkinen
+  // Tässä esimerkissä haluamme suojata muuttujan ja pitää sen yksityisenä 
+    public string GetName()
   {
     return this.name;
   }
@@ -46,7 +47,8 @@ In C#, methods can be divided into two groups, defined with the modifier **stati
 }
 ```
 
-Unlike object methods, class methods are methods, which can only handle parameters given as parameters, or created inside the method. Below is an example of the class **Printer**, which has two class methods. The first one prints the given string with underscore, and the second one prints lines with the amount given as a parameter.
+Toisin kuin oliometodit, luokkametodit voivat käsitellä vain muuttujia jotka annetaan parametreina tai jotka luodaan metodin sisällä. Alla on esimerkki luokasta **Printer**, jolla on kaksi luokkametodia. Ensimmäinen tulostaa annetun merkkijonon alaviivoilla, ja toinen tulostaa viivoja annetun määrän.
+
 
 ```cpp
 public class Printer
@@ -69,9 +71,10 @@ public class Printer
 }
 ```
 
-To call object methods, we need an object, for whom the the method is called (in the form of **objectName.MethodName**). Class methods can be called without an object (call in the form **MethodName**). If we want to call for a class method from outside the class, the call is in form **className.MethodName**.
+Oliometodin kutsumiseen tarvitaan olio, jonka metodia kutsumme (muotoa **olioNimi.MetodinNimi**). Luokkametodeita voidaan kutsua ilman oliota (kutsu muodossa **MetodinNimi**). Jos haluamme kutsua luokkametodia luokan ulkopuolelta, kutsu on muodossa **LuokanNimi.MetodinNimi**.
 
-Let's examine the examples above in a class **Program**. In the example below we use the class **Printer**'s class methods, and from the class **Item** we create an object and use its methods.
+Tarkastellaan esimerkkejä yllä olevista luokista **Program**-luokassa. Käytämme esimerkissä luokan **Printer** luokkametodeja, ja luokan **Item** oliota ja sen metodeja.
+
 
 ```cpp
 public class Program 
@@ -95,9 +98,10 @@ Kartell Louis Ghost
 -------------------
 ```
 
-## Objects as a class method parameter
+## Oliot luokkametodin parametrina
 
-Let's examine a program which handles lists. In the **Main** method is functionality which handles integers in a list. Also the class has a class method **ZeroList** which works according to its name, setting a zero to each value of the list it gets as a parameter.
+Tarkastellaan ohjelmaa, joka käsittelee listoja. **Main**-metodissa on toiminnallisuus, joka käsittelee listan kokonaislukuja. Lisäksi luokalla on luokkametodi **ZeroList**, joka toimii nimensä mukaisesti, asettaen nollan jokaiseen listaan saamaansa arvoon.
+
 
 ```cpp
 public class Program 
@@ -113,7 +117,7 @@ public class Program
 
     foreach (int number in numbers)
     {
-      Console.Write(number + " "); // Prints 1 2 3 4 5
+      Console.Write(number + " "); // Tulostaa 1 2 3 4 5
     }
     Console.WriteLine();
 
@@ -121,7 +125,7 @@ public class Program
 
     foreach (int number in numbers)
     {
-      Console.Write(number + " "); // Prints 0 0 0 0 0
+      Console.Write(number + " "); // Tulostaa 0 0 0 0 0
     }
   }
 
@@ -135,15 +139,16 @@ public class Program
 }
 ```
 
-In the example above, the method **ZeroList** has the modifier **static** and it is called without an object reference before it.
+Yllä olevassa esimerkissä **ZeroList**-metodilla on avainsana **static**, ja sitä kutsutaan ilman oliota ennen sitä.
 
-To a class method (or a **static method**) we can give an object as a parameter (which we have been doing for quite a while, now, already). Class method, however, cannot handle any other numbers, strings or objects than those given to it as a parameter, or which it creates itself.
+Voimme antaa luokkametodille (tai **staattiselle metodille**) olion parametrina (jota olemme itseasiassa tehneet jo jonkin aikaa todelisuudessa). Luokkametodit eivät kuitenkaan voi käsitellä muita numeroita, merkkijonoja tai olioita kuin niitä, jotka annetaan parametreina tai jotka luodaan metodin sisällä.
 
-In other words, The code using the class method needs to support the method by giving it the values and objects, which the class method uses.
+Toisinsanoen, luokkametodia käyttävän koodin täytyy tukea metodia antamalla sille arvot ja oliot, joita se käyttää.
 
-Since the class method is not connected to any object, it is not called the way an object method would be called (**objectName.MethodName()**), but to call it (inside the same class) we only use the method name. If the class method is called from outside the class, it can be called in the format **ClassName.StaticMethodName()**.
+Koska luokkametodi ei ole sidoksissa yhteenkään olioon, sitä ei kutsuta samalla tavalla kuin oliometodia (**olioNimi.MetodinNimi()**), vaan kutsumme sitä (samassa luokassa) vain metodin nimellä. Jos luokkametodia kutsutaan luokan ulkopuolelta, se voidaan kutsua muodossa **LuokanNimi.StaattinenMetodi()**.
 
-Below is the same example, varied in a way that the Main program and the method are in their own classes:
+Alla on sama esimerkki, muutettuna siten, että **Main**-metodi ja metodi ovat omissa luokissaan:
+
 
 ```cpp
 public class Program 
@@ -186,13 +191,14 @@ public class Lists
 }
 ```
 
-Static method defined in another class, here the class is called **Lists**, is called above in the format of **Lists.ZeroList(** parameters **);**.
+Staattinen metodi joka määritellään toisessa luokassa, tällä kertaa luokassa **Lists**, kutsutaan yllä olevassa esimerkissä muodossa **Lists.ZeroList(** parametrit **);**.
 
-## When to use class methods
+## Milloin tulisi käyttää luokkametodeja
 
-All methods which handle the state of an object, must be defined as object methods, i.e. without the modifier static. In the previous parts we have defined classes like **Person, SimpleDate, Item, ...** all methods should be defined without static.
+Kaikki metodit jotka käsittelevät olioiden tilaa, täytyy määritellä oliometodeina, eli ilman avainsanaa **static**. Aiemmissa osissa olemme määritelleet luokkia kuten **Person, SimpleDate, Item, ...**, joiden kaikki metodit tulisi määritellä ilman **static**.
 
-Let's return to the class **Person**. Following is a part of the class. All the object variables are referred with the keyword **this** to highlight, that the methods are using the object variables "inside" the object itself.
+Palataan luokkaan **Person**. Alla on osa luokasta. Kaikki oliomuuttujat viitataan avainsanalla **this** korostaaksemme, että metodit käyttävät oliomuuttujia "sisällä" oliossa.
+
 
 ```cpp
 public class Person
@@ -223,7 +229,7 @@ public class Person
 }
 ```
 
-Since the methods are handling the object, they cannot be defined as static, or "independent of objects". If we try to do so, the method will not work. For example, the method below does not work:
+Kun metodit käsittelevät oliota, niitä ei voida määrittää staattisiksi, eli "riippumattomiksi oliosta". Jos yritämme tehdä näin, metodi ei toimi. Alla oleva metodi ei toimi:
 
 ```cpp
 public static void GrowOlder()
@@ -232,16 +238,17 @@ public static void GrowOlder()
 }
 ```
 
-As a result, we get an error:
+Tuloksena saamme virheen:
 
 ```console
 Member 'Exercise001.Person.GrowOlder()' cannot be accessed with an instance reference; qualify it with a type name instead
 (38:5) Keyword 'this' is not valid in a static property, static method, or static field initializer
 ```
 
-This means the static method cannot handle the object variable.
+Tämä tarkoittaa sitä, että staattinen metodi ei voi käsitellä oliomuuttujia.
 
-So, when should we use static methods? Let's look at the next example, where we have person objects. In the program, we create persons, grow them older, and eventually print information if they are of age.
+No milloin sitten tulisi käyttää staattisia metodeja? Katsotaan seuraavaa esimerkkiä, jossa meillä on henkilö-olioita. Ohjelmassa luomme henkilöitä, kasvatamme heitä vanhemmiksi ja lopulta tulostamme tietoa siitä, ovatko he täysi-ikäisiä.
+
 
 ```cpp
 public class Program
@@ -290,9 +297,10 @@ public class Program
 }
 ```
 
-We can already see, that the code to tell each persons' of age has been copy-pasted three times. That's ugly!
+Kuten näemme, koodi joka kertoo henkilön täysi-ikäisyydestä on kopioitu kolmeen kertaan. Tämä on rumaa!
 
-This is a good opportunity to use a static method. Let's rewrite the program, using the method:
+Tässä on hyvä tilaisuus käyttää staattista metodia. Kirjoitetaan ohjelma uudelleen, käyttäen metodia:
+
 
 ```cpp
 public class Program
@@ -330,13 +338,14 @@ public class Program
 }
 ```
 
-The method **TellIfOfAge** has been defined static, so it is not attached to any object, **BUT** the the method gets an object as a parameter. Method has not been defined inside the person class, even though it handles Persons. It is a helper method for the main program, which made our main program more readable.
+Metodi **TellIfOfAge** on määritelty staattiseksi, joten se ei ole kiinnitetty mihinkään olioon, **MUTTA** metodi saa olion parametrina. Metodia ei ole määritelty **Person**-luokassa, vaikka se käsittelee **Person**-olioita. Se on apumetodi pääohjelmalle, joka tekee pääohjelmasta luettavamman.
 
 # Tehtävät
 
 <Exercise title={'003 How many names'}>
 
-Our template has the `Person` class and some use for it in Main. create a `public static void HowManyNames(Person person)` for the Main Program, which prints the name and the amount of names as follows:
+Tehtäväpohjassa on luokka `Person` ja sen käyttöä Mainissa. Tee Main-luokkaan metodi `public static void HowManyNames(Person person)`, joka tulostaa nimen ja sen nimien määrän seuraavasti:
+
 
 ```cpp
 public static void Main(string[] args)
@@ -357,13 +366,15 @@ Jack The Ripper has 3 names.
 Mike The Incredible Magic Mouse has 5 names.
 ```
 
-<Note> The Console.WriteLine is called from inside the method this time!</Note>
+<Note> 
+Console.WriteLine kutsutaan metodin sisältä tällä kertaa!
+</Note>
 
 </Exercise>
 
 <Exercise title={'004 How many names in person'}>
 
-Our template has the `Person` class and some use for it in Main. create a `public int HowManyNames()` in the `Person` class, which returns the name and the amount of names as follows:
+Tehtäväpohjassa on luokka `Person` ja sen käyttöä Mainissa. Tee luokkaan `Person` metodi `public int HowManyNames()`, joka palauttaa nimen ja sen nimien määrän seuraavasti:
 
 ```cpp
 public static void Main(string[] args)
@@ -384,6 +395,8 @@ Jack The Ripper has 3 names.
 Mike The Incredible Magic Mouse has 5 names.
 ```
 
-<Note> The Console.WriteLine is called from inside the method this time!</Note>
+<Note> 
+Console.WriteLine kutsutaan metodin sisältä tällä kertaa!
+</Note>
 
 </Exercise>
