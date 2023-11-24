@@ -6,7 +6,8 @@ hidden: false
 
 # Käyttöliittymän erottaminen ohjelman logiikasta
 
-Let's examine the process of implementing a program and separating different areas of responsibility from each other. The program asks the user to write words until they write the same word twice.
+
+Tässä osassa katsotaan tarkemmin käyttöliittymää (englanniksi **User Interface** tai lyhennettynä **UI**) ja ohjelmalogiikkaa (englanniksi **program logic**.) Tarkastellaan prosessia jossa toteutamme ohjelman ja erotamme eri vastuualueet toisistaan. Ohjelma pyytää käyttäjää kirjoittamaan sanoja kunnes käyttäjä kirjoittaa saman sanan kahdesti.
 
 
 ```console
@@ -23,9 +24,10 @@ Write a word:
 You wrote the same word twice!
 ```
 
-Let's build this program piece by piece. One of the challenges is that it is difficult to decide how to approach the problem, or how to split the problem into smaller subproblems, and from which subproblem to start. There is no one clear answer -- sometimes it is good to start from the problem domain and its concepts and their connections, sometimes it is better to start from the user interface.
+Rakennetaan ohjelma pala palalta. Yksi haasteista on se, että on vaikea päättää miten lähestyä ongelmaa, eli miten pilkkoa ongelma pienempiin osaongelmiin ja mistä osaongelmasta aloittaa. Yhtä oikeaa vastausta ei ole -- joskus on hyvä lähteä liikkeelle ongelma-alueesta ja sen käsitteistä ja niiden välisistä yhteyksistä, joskus taas on parempi lähteä liikkeelle käyttöliittymästä.
 
-We could start implementing the user interface by creating a class UserInterface. 
+Voisimme aloittaa ohjelman toteuttamisen luomalla käyttöliittymän ja sille luokan UserInterface. 
+
 
 ```cpp
 public class UserInterface
@@ -37,12 +39,13 @@ public class UserInterface
 
   public void Start()
   {
-    // Do something...
+    // Tehdään jotain...
   }
 }
 ```
 
-Creating and starting up a user interface can be done as follows.
+Käyttöliittymän luominen ja käynnistäminen onnistuu seuraavasti.
+
 
 ```cpp
 public static void Main(string[] args) 
@@ -52,10 +55,9 @@ public static void Main(string[] args)
 }
 ```  
 
-## Looping and quitting
+## Silmukka ja lopetus
 
-This program has (at least) two "sub-problems". The first problem is continuously reading words from the user until a certain condition is reached. We can outline this as follows.
-
+Tässä ohjelmassa on (ainakin) kaksi "aliongelmaa". Ensimmäinen on sanojen lukeminen käyttäjältä niin kauan kuin jokin ehto toteutuu. Voimme hahmotella tämän seuraavasti.
 
 ```cpp
 public class UserInterface
@@ -72,7 +74,7 @@ public class UserInterface
       Console.WriteLine("Enter a word:");
       string word = Console.ReadLine();
 
-      if(/*stop condition here*/) {
+      if(/*loppuehto tänne*/) {
         break;
       }
     }
@@ -81,7 +83,7 @@ public class UserInterface
 }
 ```
 
-The program continues to ask for words until the user enters a word that has already been entered before. Let us modify the program so that it checks whether the word has been entered or not. We don't know yet how to implement this functionality, so let us first build an outline for it.
+Ohjelma jatkaa sanojen lukemista kunnes käyttäjä kirjoittaa sanan jonka hän on jo kirjoittanut aiemmin. Muokataan ohjelmaa niin, että se tarkistaa onko sana jo kirjoitettu. Emme vielä tiedä miten tämä toteutetaan, joten tehdään ensin luonnos.
 
 ```cpp
 public class UserInterface
@@ -107,13 +109,14 @@ public class UserInterface
 
   public bool AlreadyEntered(string word) 
   {
-    // do something here
+    // Tehdään jotain täällä
     return false;
   }
 }
 ```
 
-It's a good idea to test the program continuously, so let's make a test version of the method:
+On hyvä idea testata ohjelmaa jatkuvasti, joten tehdään testiversio metodista.
+
 
 ```cpp
 public bool AlreadyEntered(string word) 
@@ -126,7 +129,7 @@ public bool AlreadyEntered(string word)
 }
 ```
 
-Now the loop continues until the input equals the word "end":
+Nyt silmukka jatkuu kunnes käyttäjä kirjoittaa sanan "end".
 
 ```console
 Write a word:
@@ -142,11 +145,12 @@ Write a word:
 You wrote the same word twice!
 ```
 
-The program doesn't completely work yet, but the first sub-problem - quitting the loop when a certain condition has been reached - has now been implemented.
+Ohjelma ei vielä toimi täysin, mutta ensimmäinen osaongelma -- silmukan lopettaminen kun tietty ehto on täyttynyt -- on ratkaistu.
 
-## Storing relevant information
+## Oleeellisen tiedon säilyttäminen
 
-Another sub-problem is remembering the words that have already been entered. A list is a good structure for this purpose.
+Toinen aliongelma on muistaa mitä sanoja on jo kirjoitettu. Tähän tarkoitukseen sopiva tietorakenne on lista.
+
 
 ```cpp
 public class UserInterface
@@ -182,7 +186,7 @@ public class UserInterface
 }
 ```
 
-When a new word is entered, it has to be added to the list of words that have been entered before. This is done by adding a line that updates our list to the while-loop:
+Kun uusi sana annetaan, se täytyy lisätä listaan sanoja jotka on jo kirjoitettu. Tämä tehdään lisäämällä rivi joka päivittää listaa silmukan sisällä:
 
 ```cpp
 while(true)
@@ -194,12 +198,14 @@ while(true)
   {
     break;
   }
-  // adding the word to the list of previous words
+  // lisätään sana listaan aiemmin kirjoitettujen sanojen joukkoon
   this.words.Add(word);
 }
 ```
 
-The whole user interface now looks as follows.
+Koko käyttöliittymä näyttää nyt seuraavalta.
+
+
 
 ```cpp
 public class UserInterface
@@ -222,7 +228,7 @@ public class UserInterface
       {
         break;
       }
-      // adding the word to the list of previous words
+      // lisätään sana listaan aiemmin kirjoitettujen sanojen joukkoon
       this.words.Add(word);
     }
     Console.WriteLine("You gave the same word twice!");
@@ -239,16 +245,17 @@ public class UserInterface
 }
 ```
 
-Again, it is a good idea to test that the program still works. For example, it might be useful to add a test print to the end of the start-method to make sure that the entered words have really been added to the list.
+On jälleen hyvä idea testata että ohjelma toimii. Esimerkiksi voimme lisätä testitulostuksen Start-metodin loppuun, jotta varmistamme että syötetyt sanat ovat todella lisätty listaan.
 
 ```cpp
-// test print to check that everything still works
+// testitulostus kokeilemaan että kaikki toimii
 words.ForEach(Console.WriteLine);
 ```
 
-## Combining the solutions to sub-problems
+## Aliongelmien ratkaisujen yhdistäminen
 
-Let's change the method 'AlreadyEntered' so that it checks whether the entered word is contained in our list of words that have been already entered.
+Muutetaan metodia **AlreadyEntered** niin, että se tarkistaa onko syötetty sana jo aiemmin syötettyjen sanojen listassa.
+
 
 ```cpp
 public bool AlreadyEntered(string word) 
@@ -257,12 +264,12 @@ public bool AlreadyEntered(string word)
 }
 ```
 
-Now the application works as intended.
+Nyt sovellus toimii kuten pitääkin.
 
-## Objects as a natural part of problem solving
 
-We just built a solution to a problem where the program reads words from a user until the user enters a word that has already been entered before. Our example input was as follows:
+## Oliot luonnollisena osana ongelmanratkaisua
 
+Loimme juuri ratkaisun ongelmaan, jossa ohjelma lukee käyttäjältä sanoja kunnes käyttäjä kirjoittaa sanan joka on jo kirjoitettu aiemmin. Esimerkkisyöte oli seuraava:
 
 ```console
 Write a word:
@@ -278,7 +285,7 @@ Write a word:
 You wrote the same word twice!
 ```
 
-We came up with the following solution:
+Saimme aikaan seuraavan ratkaisun:
 
 
 ```cpp
@@ -302,7 +309,7 @@ public class UserInterface
       {
         break;
       }
-      // adding the word to the list of previous words
+      // lisätään sana listaan aiemmin kirjoitettujen sanojen joukkoon
       this.words.Add(word);
     }
     Console.WriteLine("You gave the same word twice!");
@@ -315,16 +322,17 @@ public class UserInterface
 }
 ```
 
-From the point of view of the user interface, the support variable 'words' is just a detail. The main thing is that the user interface remembers the set of words that have been entered before. The set is a clear distinct "concept" or an abstraction. Distinct concepts like this are all potential objects: when we notice that we have an abstraction like this in our code, we can think about separating the concept into a class of its own.
+Käyttöliittymän näkökulmasta, apumuuttuja **words** on vain yksi yksityiskohta. Tärkeintä on että käyttöliittymä muistaa mitä sanoja on syötetty aiemmin. Joukko sanoja on selkeä erillinen "konsepti" tai abstraktio. Tällaiset selkeät konseptit ovat kaikki mahdollisia olioita: kun huomaamme että koodissamme on tällainen abstraktio, voimme miettiä sen erottamista omaksi luokakseen.
 
-## Word set
+## Sanajoukko
 
-Let's make a class called 'WordSet'. After implenting the class, the user interface's start method looks like this:
+Luodaan luokka **WordSet**. Luokan toteutuksen jälkeen käyttöliittymän **Start**-metodi näyttää tältä:
+
 
 ```cpp
 while(true)
 {
-  if (words.Contains(word))
+  if (wordSet.Contains(word))
   {
     break;
   }
@@ -333,38 +341,40 @@ while(true)
 Console.WriteLine("You gave the same word twice!");
 ```
 
-From the point of view of the user interface, the class WordSet should contain the method **bool Contains(string word)**, that checks whether the given word is contained in our set of words, and the method **void Add(word)**, that adds the given word into the set.
+Käyttöliittymän näkökulmasta, luokka **WordSet** tarjoaa metodin **bool Contains(string word)**, joka tarkistaa onko annettu sana joukossa, ja metodin **void Add(word)**, joka lisää annetun sanan joukkoon.
 
-We notice that the readability of the user interface is greatly improved when it's written like this.
+Huomaamme että käyttöliittymän koodi on nyt paljon selkeämpää. 
 
-The outline for the class 'WordSet' looks like this:
+Luokan WordSet luonnos näyttää tältä:
+
 
 ```cpp
 public class WordSet 
 {
-  // object variable(s)
+  // oliomuuttuja(t)
 
   public WordSet() 
   {
-    // constructor
+    // konstruktori
   }
 
   public bool Contains(string word) 
   {
-    // implementation of the contains method
+    // Contains-metodin toteutus
     return false;
   }
 
   public void Add(string word) 
   {
-    // implementation of the add method
+    // Add-metodin toteutus
   }
 }
 ```
 
-## Earlier solution as part of implementation
+## Aiempi ratkaisu osana toteutusta
 
-We can implement the set of words by making our earlier solution, the list, into an object variable:
+Voimme implementoida sanajoukon tekemällä aiemman ratkaisun, listan, oliomuuttujaksi:
+
 
 ```cpp
 public class WordSet 
@@ -388,9 +398,10 @@ public class WordSet
 }
 ```
 
-Now our solution is quite elegant. We have separated a distinct concept into a class of its own, and our user interface looks clean. All the "dirty details" have been encapsulated neatly inside an object.
+Nyt ratkaisumme on melko elegantti. Olemme erottaneet selkeän konseptin omaksi luokakseen, ja käyttöliittymämme näyttää siistiltä. Kaikki "likaiset yksityiskohdat" on encapsuloitu siististi olioon.
 
-Let's now edit the user interface so that it uses the class WordSet. The class is given to the user interface as a parameter.
+Muokataan nyt käyttöliittymää niin että se käyttää luokkaa WordSet. Luokka annetaan käyttöliittymälle parametrina.
+
 
 ```cpp
 public class UserInterface
@@ -413,7 +424,7 @@ public class UserInterface
       {
         break;
       }
-      // adding the word to the list of previous words
+      // lisätään sana listaan aiemmin kirjoitettujen sanojen joukkoon
       this.wordSet.Add(word);
     }
     Console.WriteLine("You gave the same word twice!");
@@ -421,7 +432,7 @@ public class UserInterface
 }
 ```
 
-Starting the program is now done as follows:
+Ohjelma käynnistetään nyt seuraavasti:
 
 ```cpp
 public static void Main(string[] args) 
@@ -432,15 +443,16 @@ public static void Main(string[] args)
 }  
 ```
 
-## Changing the implementation of a class
+## Luokan toteutuksen muuttaminen
 
-We have arrived at a situation where the class 'WordSet' "encapsulates" a List. Is this reasonable? Perhaps. This is because we can make other changes to the class if we so desire, and before long we might arrive into a situation where the word set has to be, for example, saved into a file. If we make all these changes inside the class WordSet without changing the names of the methods that the user interface uses, we don't have to modify the actual user interface at all.
+Olemme saavuttaneet nyt ratkaisun missä luokka **WordSet** kapsuloi listan. Onko tämä järkevää? Ehkä. Tämä johtuu siitä että voimme tehdä luokkaan muutoksia jos niin haluamme, ja pian saattaa olla että sanajoukon täytyy tallentaa sanat tiedostoon. Jos teemme kaikki muutokset luokkaan WordSet muuttamatta käyttöliittymän metodeja, emme joudu muuttamaan käyttöliittymän koodia ollenkaan.
 
-The main point here is that changes made inside the class WordSet don't affect the class UserInterface. This is because the user interface uses WordSet through the methods that it provides -- these are called its public interfaces.
+Tärkein pointti on kuitenkin se, että muutokset jotka tehdään luokkaan WordSet eivät vaikuta käyttöliittymään. Tämä johtuu siitä että käyttöliittymä käyttää luokkaa WordSet vain sen tarjoamien metodien kautta -- näitä kutsutaan luokan julkisiksi rajapinnoiksi.
 
-## Implementing new functionality: palindromes
+## Uuden toiminnallisuuden toteuttaminen: palindromit
 
-In the future, we might want to augment the program so that the class 'WordSet' offers some new functionalities. If, for example, we wanted to know how many of the entered words were palindromes, we could add a method called **Palindromes** into the program.
+Tulevaisuudessa voisimme haluta laajentaa ohjelmaa niin että luokka **WordSet** tarjoaa uusia toiminnallisuuksia. Jos esimerkiksi haluaisimme tietää kuinka monta syötetyistä sanoista oli palindromi, voisimme lisätä luokkaan **WordSet** metodin **Palindromes**.
+
 
 ```cpp
 public void Start()
@@ -454,7 +466,6 @@ public void Start()
     {
       break;
     }
-    // adding the word to the list of previous words
     this.wordSet.Add(word);
   }
   Console.WriteLine("You gave the same word twice!");
@@ -462,7 +473,8 @@ public void Start()
 }
 ```
 
-The user interface remains clean, because counting the palindromes is done inside the 'WordSet' object. The following is an example implementation of the method.
+Käyttöliittymä pysyy siistinä, koska palindromien laskeminen tapahtuu luokan **WordSet** sisällä. Seuraavassa on esimerkki metodin toteutuksesta.
+
 
 ```cpp
 public int Palindromes() 
@@ -493,35 +505,36 @@ public bool IsPalindrome(string word)
 }
 ```
 
-The method **Palindromes** uses the helper method **IsPalindrome** to check whether the word that's given to it as a parameter is, in fact, a palindrome.
+Metodi **Palindromes** käyttää apunaan metodia **IsPalindrome**. Metodi **Palindromes** laskee kuinka monta sanoista on palindromi, ja metodi **IsPalindrome** tarkistaa onko sana palindromi vai ei.
 
-When concepts have been separated into different classes in the code, recycling them and reusing them in other projects becomes easy. For example, the class 'WordSet' could be well be used in a graphical user interface, and it could also part of a mobile phone application. In addition, testing the program is much easier when it has been divided into several concepts, each of which has its own separate logic and can function alone as a unit.
+Kun konseptit on erotettu toisistaan eri luokkiin koodissa, niiden kierrätys ja uudelleenkäyttö muissa projekteissa käy helposti. Esimerkiksi luokkaa **WordSet** voisi käyttää hyvin graafisessa käyttöliittymässä, tai se voisi olla osa mobiilisovellusta. Lisäksi ohjelman testaaminen on helpompaa kun se on jaettu useisiin konsepteihin, joista jokainen toimii itsenäisenä kokonaisuutena.
 
-## Programming tips
+## Ohjelmoinrivinkkejä
 
-In the larger example above, we were following the advice given here.
+Yllä olevassa isossa esimerkissä noudatimme seuraavia ohjelmoinnin periaatteita.
 
-* Proceed with small steps
-  * Try to separate the program into several sub-problems and work on only one sub-problem at a time
-  * Always test that the program code is advancing in the right direction, in other words: test that the solution to the sub-problem is correct
-  * Recognize the conditions that require the program to work differently. In the example above, we needed a different functionality to test whether a word had been already entered before.
+* Etene pienin askelin
+  * Yritä jakaa ohjelma pienempiin aliongelmiin ja ratkaista ne yksi kerrallaan
+  * Testaa aina että ohjelma toimii ennen kuin jatkat eteenpäin, toisin sanottuna: testaa että aliongelman ratkaisu on oikea
+  * Tunnista tilanteet joissa ohjelman tulee toimia eri tavalla. Yllä olevassa esimerkissä, tarvitsimme toiminnallisuuden tarkistamaan onko sana jo kirjoitettu aiemmin.
 
-* Write as "clean" code as possible
-  * Indent your code
-  * Use descriptive method and variable names
-  * Don't make your methods too long, not even the main method
-  * Do only one thing inside one method
-  * **Remove all copy-paste code**
-  * Replace the "bad" and unclean parts of your code with clean code
+* Kirjoita niin "puhdasta" koodia kuin mahdollista
+  * Sisennä koodisi
+  * Käytä kuvaavia metodi- ja muuttujanimiä
+  * Älä tee metodeistasi liian pitkiä, ei edes Main-metodista
+  * Tee vain yhtä asiaa yhdessä metodissa
+  * **Poista kaikki copy-paste -koodi**
+  * Korvaa "huono" ja epäsiisti puhtaalla koodilla
+  
 
-* If needed, take a step back and assess the program as a whole. If it doesn't work, it might be a good idea to return into a previous state where the code still worked. As a corollary, we might say that a program that's broken is rarely fixed by adding more code to it.
+* Jos on tarve, ota askel taaksepäin ja tarkastele ohjelmaa kokonaisuutena. Jos se e toimi, voi olla hyvä idea palata edelliseen tilanteeseen jossa ohjelma toimi. Voisimmekin sanoa, että rikkinäistä ohjelmaa ei korjata lisäämällä siihen lisää koodia.
 
-Programmers follow these conventions so that programming can be made easier. Following them also makes it easier to read programs, to keep them up, and to edit them in teams.
+Ohjelmoijat seuraavat näitä periaatteita jotta ohjelmoinnista voisi tehdä helpompaa. Niitä seuraamalla koodista tulee myös helpompaa lukea, ylläpitää ja muokata tiimeissä.
 
+## Yhdestä entiteetistä useaan osaan
 
-## From one entity to many parts
+Tarkastellaan ohjelmaa joka pyytää käyttäjää antamaan tenttipisteitä ja muuttaa ne arvosanoiksi. Lopuksi ohjelma tulostaa arvosanojen jakauman tähtinä. Ohjelma lopettaa syötteiden lukemisen kun käyttäjä antaa tyhjän syötteen. Esimerkki ohjelma näyttää seuraavalta:
 
-Let's examine a program that asks the user to enter exam points and turns them into grades. Finally, the program prints the distribution of the grades as stars. The program stops reading inputs when the user inputs an empty string. An example program looks as follows:
 
 ```console
 Points:
@@ -562,7 +575,8 @@ Points:
 0: **
 ```
 
-As almost all programs, this program can be written into main as one entity. Here is one possibility.
+Kuten melkein kaikki ohjelmat, tämä ohjelma voidaan kirjoittaa yhtenä kokonaisuutena Main-metodiin. Tässä on yksi mahdollisuus.
+
 
 ```cpp
 public class Program 
@@ -641,13 +655,14 @@ public class Program
 }
 ```
 
-Let's separate the program into smaller chunks. This can be done by identifying several discrete areas of responsibility within the program. Keeping track of grades, including converting scores into grades, could be done inside a different class. In addition, we could create a new class for the user interface.
+Erotellaan ohjelman eri osat pienemmiksi paloiksi. Tämä voidaan tehdä tunnistamalla ohjelmasta eri vastuualueet. Arvosanojen seuranta, mukaanluettuna pisteiden muuttaminen arvosanoiksi, voidaan tehdä omassa luokassaan. Lisäksi voimme luoda uuden luokan käyttöliittymälle.
 
-## Program logic
+## Ohjelmalogiikka
 
-Program logic includes parts that are crucial for the execution of the program, like functionalities that store information. From the previous example, we can separate the parts that store grade information. From these we can make a class called 'GradeRegister', which is responsible for keeping track of the numbers of different grades students have received. In the register, we can add grades according to scores. In addition, we can use the register to ask how many people have received a certain grade.
+Ohjelmalogiikka sisältää ohjelman toiminnan kannalta kriittiset osat, kuten toiminnot jotka säilyttävät tietoa. Edellisestä esimerkistä pystymme erottamaan osat jotka tallentavat arvosanatiedot. Näistä voimme tehdä luolan **GradeRegister**, joka on vastuussa eri arvosanojen määrän laskemisesta. Rekisteriin voidaan lisätä arvosanoja pisteiden perusteella. Lisäksi rekisteristä voidaan kysyä kuinka monta tiettyä arvosanaa on annettu.
 
-An example class follows.
+Esimerkki luokasta alla.
+
 
 ```cpp
 public class GradeRegister 
@@ -710,7 +725,7 @@ public class GradeRegister
 }
 ```
 
-When the grade register has been separated into a class, we can remove the functionality associated with it from our main program. The main program now looks like this.
+Kun luokka on erotettu omaksi luokakseen, voimme käyttää sitä käyttöliittymässä. Main näyttää nyt tältä.
 
 
 ```cpp
@@ -756,7 +771,7 @@ public class Program
 }
 ```
 
-Separating the program logic is a major benefit for the maintenance of the program. Since the program logic -- in this case the GradeRegister -- is its own class, it can also be tested separately from the other parts of the program. If you wanted to, you could copy the class GradeRegister and use it in your other programs. Below is an example of simple manual testing -- this experiment only concerns itself with a small part of the register's functionality.
+Ohjelmalogiikan erottaminen omakseen on erittäin hyödyllistä ohjelman ylläpidon kannalta. Kun ohjelmalogiikka -- tässä tapauksessa GradeRegister -- on omana luokkanaan, sitä voidaan myös testta muista osista erikseen. Jos haluat, voit kopioida luokan GradeRegister ja käyttää sitä muissa ohjelmissa. Alla on esimerkki yksinkertaisesta manuaalisesta testistä -- tässä testissä keskitytään vain osaan rekisterin toiminnallisuudesta.
 
 ```cpp
 GradeRegister register = new GradeRegister();
@@ -768,11 +783,11 @@ Console.WriteLine("Number of students with grade 0 (should be 1): " + register.N
 Console.WriteLine("Number of students with grade 1 (should be 2): " + register.NumberOfGrades(1));
 ```
 
-## User interface
+## Käyttöliittymä
 
-Typically each program has its own user interface. We will create the class UserInterface and separate it from the main program. The user interface receives a grade register for storing the grades as a parameter for the constructor.
+Tyypillisesti jokaisella ohjelmalla on oma käyttöliittymänsä. Luomme luokan **UserInterface** ja erotamme sen Main-metodista. Käyttöliittymä saa parametrina GradeRegister-olion, jotta se voi käyttää sitä.
 
-When we now have a separate user interface at our disposal, the main program that initializes the whole program becomes very clear.
+Nyt kun meillä on erillinen käyttöliittymä, pääohjelma jää hyvin yksinkertaiseksi.
 
 ```cpp
 public class Program 
@@ -787,7 +802,8 @@ public class Program
 }
 ```
 
-Let's have a look at how the user interface is implemented. There are two essential parts to the UI: reading the points, and printing the grade distribution.
+Katsotaan tarkemmin toteuttamaamme käyttöliittymää. Käyttöliittymässä on kaksi keskeistä osaa: pisteiden lukeminen ja arvosanojen tulostaminen.
+
 
 ```cpp
 public class UserInterface 
@@ -816,7 +832,7 @@ public class UserInterface
 }
 ```
 
-We can copy the code for reading exam points and printing grade distribution nearly as is from the previous main program. In the program below, parts of the code have indeed been copied from the earlier main program, and new method for printing stars has also been created -- this clarifies the method that is used for printing the grade distribution.
+Voimme kopioida koodin pisteiden lukemiseen ja arvosanojen tulostamiseen melko suoraan edellisestä main-metodista. Alla olevassa ohjelmassa on kopioitu koodia vanhasta Main-metodista, ja on luotu uusi metodi tähtien tulostamiseen -- tämä selkeyttää arvosanajakauman tulostamiseen käytetyn metodin koodia.
 
 ```cpp
 public class UserInterface 
@@ -885,11 +901,12 @@ public class UserInterface
 
 <Exercise title={'001 Grade register'}>
 
-The exercise base contains the `GradeRegister` from the material. In this exercise you will further develop the program, so that it can calculate the average of grades and exam results.
+Tehtäväpohjassa on materiaalista tuttu luokka `GradeRegister`. Tässä tehtävässä kehitämme ohjelmaa eteenpäin, jonka avulla voidaan laskea arvosanojen keskiarvoja ja tenttituloksia.
 
-* Osa 1 - Average grade
+* Osa 1 - Arvosanojen keskiarvo
 
-create the method `public double AverageOfGrades()` for the class `GradeRegister`. It should return the average of the grades, rounded to 2 decimals. If the register contains no grades, the method should return `-1`. Use the `grades` list to calculate the average. Example:
+Luo metodi `public double AverageOfGrades()` luokkaan `GradeRegister`. Sen tulee palauttaa arvosanojen keskiarvo pyöristettynä kahden desimaalin tarkkuuteen. Jos rekisterissä ei ole arvosanoja, metodin tulee palauttaa `-1`. Käytä keskiarvon laskemiseen listaa `grades`. Esimerkki:
+
 
 ```cpp
 GradeRegister register = new GradeRegister();
@@ -905,9 +922,9 @@ Console.WriteLine(register.AverageOfGrades());
 4.75
 ```
 
-* Osa 2 - Average points
+* Osa 2 - Pisteiden keskiarvo
 
-Give the class GradeRegister a new object variable: a list where you will store the exam points every time that the method `AddGradeBasedOnPoints` is called. After this addition, create a method `public double AverageOfPoints()` that calculates and returns the average of the exam points, rounded to 2 decimals. If there are no points added to the register, the method should return the number -1. Example:
+Anna luokalle `GradeRegister` uusi oliomuuttuja: lista johon tallennetaan tenttipisteet aina kun metodia `AddGradeBasedOnPoints` kutsutaan. Tämän lisäyksen jälkeen luo metodi `public double AverageOfPoints()` joka laskee ja palauttaa tenttipisteiden keskiarvon pyöristettynä kahden desimaalin tarkkuuteen. Jos rekisterissä ei ole pisteitä, metodin tulee palauttaa `-1`. Esimerkki:
 
 ```cpp
 GradeRegister register = new GradeRegister();
@@ -922,9 +939,9 @@ Console.WriteLine(register.AverageOfPoints());
 92
 ```
 
-* Osa 3 - Prints in the user interface
+* Osa 3 - Tulostaminen käyttöliittymässä
 
-As a final step, add the methods implemented above as parts of the user interface. When the program prints the grade distribution, it should also print the averages of the points and the grades.
+Viimeisenä osana, lisää yllä toteutetut metodit käyttöliittymään. Kun ohjelma tulostaa arvosanojen jakauman, se tulostaa myös pisteiden ja arvosanojen keskiarvot. 
 
 ```console
 Points:
@@ -958,11 +975,13 @@ The average of grades: 2.43
 
 <Exercise title={'002 Joke manager'}>
 
-<Note>This exercise DOES NOT HAVE TESTS. It is up to you to decide, when the exercise is ready. I WILL CHECK THEM, SO DON'T CHEAT.</Note>
+<Note>
+Tässä tehtävässä EI OLE TESTEJÄ. Sinun tulee itse päättää, milloin tehtävä on valmis. TARKASTAN TEHTÄVÄN, JOTEN ÄLÄ HUIJAA.
+</Note>
 
-<Note>This is worth double the points, so 4 in total (2 per section).</Note>
+<Note>Tästä saa tuplapisteet, eli 4 yhteensä (2 per osio).</Note>
 
-The exercise base contains the following program that has been written "in the main".
+Tehtäväpohjassa on seuraava ohjelma joka on kirjoitettu kokonaan Main-luokkaan.
 
 ```cpp
 using System;
@@ -1028,17 +1047,17 @@ namespace Exercise002
 }
 ```
 
-The application is in practice a storage for jokes. You can add jokes, get a randomized joke, and the stored jokes can be printed. In this exercise the program is divided into parts in a guided manner.
+Ohjelma on käytännössä vitsivarasto. Voit lisätä vitsejä, hakea satunnaisen vitsin, ja tallennetut vitsit voi tulostaa. Tässä tehtävässä ohjelma jaetaan osiin ohjelmoinnin periaatteiden mukaisesti.
 
-* Osa 1 - Joke manager
+* Osa 1 - Joke manager (vitsivarasto)
 
-Create a class called `JokeManager` and move the functionality to manage jokes in it. The class must have a parameter-free constructor, and the following methods:
+Luo luokka `JokeManager` ja siirrä vitsien hallintaan liittyvä toiminnallisuus siihen. Luokan tulee sisältää parametriton konstruktori, sekä seuraavat metodit:
 
-* `public void AddJoke(string joke)` - adds a joke to the manager.
-* `public string DrawJoke()` - chooses one joke at random and returns it. It there are no jokes stored in the joke manager, the method should return the string "Jokes are in short supply.".
-* `public void PrintJokes()` - prints all the jokes stored in the joke manager.
+* `public void AddJoke(string joke)` - lisää vitsi vitsivarastoon.
+* `public string DrawJoke()` - valitse yksi satunnainen vitsi ja palauta se. Jos vitsejä ei ole, palauta merkkijono "Jokes are in short supply.".
+* `public void PrintJokes()` - tulostaa kaikki vitsit jotka on talletettu vitsivarastoon.
 
-An example of how to use the class:
+Esimerkki luokan käytöstä:
 
 ```cpp
 JokeManager manager = new JokeManager();
@@ -1056,7 +1075,8 @@ Console.WriteLine("Printing jokes:");
 manager.PrintJokes();
 ```
 
-Below is a possible output of the program. Notice that the jokes will probably not be drawn as in this example.
+Alla on mahdollinen tuloste ohjelmasta. Huomaa että vitsejä ei välttämättä tulosteta samassa järjestyksessä kuin ne on lisätty.
+
 
 ```console
 Drawing jokes: 
@@ -1071,18 +1091,20 @@ What is red and smells of blue paint? - Red paint.
 What is blue and smells of red paint? - Blue paint.
 ```
 
-* Osa 2 - User Interface
+* Osa 2 - User Interface (käyttöliittymä)
 
-Create a class called `UserInterface` and move the UI functionality of the program there. The class must have a constructor with one parameter: an instance of the JokeManager class. In addition, the class should have the method `public void Start()` that can be used to start the user interface.
+Luo luokka `UserInterface` ja siirrä käyttöliittymän toiminnallisuus siihen. Luokan tulee sisältää konstruktori jossa on yksi parametri: `JokeManager`-luokan olio. Lisäksi luokalla tulee olla metodi `public void Start()` jota voidaan käyttää käyttöliittymän käynnistämiseen.
 
-The user interface should provide the user with the following commands:
+Käyttöliittymän tulee tarjota seuraavat komennot käyttäjälle:
 
-* X - ending: exits the method start.
-* 1 - adding: asks the user for the joke to be added to the joke manager, and then adds it.
-* 2 - drawing: chooses a random joke from the joke manager and prints it. If there are no jokes in the manager, thi string "Jokes are in short supply." will be printed.
-* 3 - printing: prints all the jokes stored in the joke manager.
+* X - Lopetus: Poistuu metodista Start.
+* 1 - Lisääminen: Kysyy käyttäjältä vitsin ja lisää sen vitsivarastoon. 
+* 2 - Arpominen: Valitsee satunnaisen vitsin vitsivarastosta ja tulostaa sen. Jos vitsejä ei ole, tulostetaan merkkijono "Jokes are in short supply.".
+* 3 - Tulostaminen: Tulostaa kaikki vitsit jotka on talletettu vitsivarastoon.
 
-An example of how to use the UI:
+Esimerkki käyttöliittymän käytöstä:
+
+
 
 ```cpp
 JokeManager manager = new JokeManager();
