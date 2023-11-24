@@ -7,7 +7,7 @@ hidden: false
 Tervetuloa ohjelmoinnin perusteisiin C#:lla (_C-Sharp_)!
 
 <Note>
-Tämän sivun käännöstyö on vielä kesken. <a href="https://centria.github.io/basic-csharp/">Englanninkielinen materiaali on valmis! </a>
+<a href="https://centria.github.io/basic-csharp/">English material behind this link!</a>
  </Note>
 
 ## Jos haluat vain oppia
