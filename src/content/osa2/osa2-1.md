@@ -228,6 +228,7 @@ Kirjoita ohjelma, joka lukee kokonaisluvun käyttäjältä. Jos luku on alle 0, 
 
 </Exercise>
 
+
 <Exercise title={'004 Comparison'}>
 
 Kirjoita ohjelma joka lukee kaksi kokonaislukua käyttäjältä. Jos ensimmäinen luku on suurempi kuin toinen, tulosta "(first) is greater than (second)." Jos toinen luku on suurempi kuin ensimmäinen, tulosta "(first) is less than (second)." Muussa tapauksessa tulosta "(first) is equal to (second)." (first) ja (second) tulee korvata käyttäjän antamilla luvuilla.
