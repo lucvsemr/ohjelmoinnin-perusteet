@@ -17,7 +17,7 @@ Osallistuaksesi opintojaksolle, sinun ei tarvitse olla opiskelija Centria-ammatt
 
 ## Rekisteröityminen avoimeen ammattikorkeakouluun
 
-Voit rekisteröityä opintojaksolle [TÄÄLTÄ](https://koulutus.centria.fi/koulutukset/software-development/).
+Voit rekisteröityä opintojaksolle [TÄÄLTÄ](https://ella.eduplan.fi/centria/).
 
 <Note>Centrian opiskelijat eivät rekisteröidy avoimen kautta, vaan Pepissä!</Note>
 
