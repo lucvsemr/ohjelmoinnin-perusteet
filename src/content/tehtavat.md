@@ -26,6 +26,6 @@ Koe löytyy Centrian Itslearning-alustalta.
 
 ### Avoimen AMK:n koe
 
-Päästäksesi kokeeseen käsiksi, lue ohjeet ja rekisteröidy: https://koulutus.centria.fi/koulutukset/software-development/.
+Päästäksesi kokeeseen käsiksi, lue ohjeet ja rekisteröidy: https://ella.eduplan.fi/centria.
 
 Jos haluat opintopisteitä, sinun tulee rekisteröityä avoimeen ammattikorkeakouluun. Rekisteröityneet saavat käyttäjätunnukset Centrian Itslearning-alustalle. Loppukoe on Itslearningissa ja se tulee tehdä deadlineen mennessä (jokaisella toteutuksella oma deadline).
