@@ -6,6 +6,10 @@ hidden: false
 
 Welcome to the Basics of Programming with C# course!
 
+<Note>
+<a href="https://centria.github.io/ohjelmoinnin-perusteet/">Suomenkielinen materiaali tämän linkin takana!</a>
+ </Note>
+
 ## If you just want to learn
 
 To attend the course, you do not have to be a student in Centria University of Applied science. All the material and exercises are available online. If you want to get ECTS credits for the course, you have to register to Centria Open University.
