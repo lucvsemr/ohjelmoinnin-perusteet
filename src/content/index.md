@@ -4,6 +4,9 @@ nav_order: 1
 hidden: false
 ---
 
+<Note><h2>Dotnet 6.0 tuki päättyy.
+Syksyllä käytössä on dotnet8.0!</h2></Note>
+
 Tervetuloa ohjelmoinnin perusteisiin C#:lla (_C-Sharp_)!
 
 <Note>
