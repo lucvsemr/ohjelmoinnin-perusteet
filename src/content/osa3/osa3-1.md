@@ -10,7 +10,7 @@ Olemme tähän mennessä harjoitelleet ohjelmointikielen perusteita, kuten muutt
 
 Ohjelmoija tulee usein sokeaksi omalle koodilleen. Tutustutaan tähän ilmiöön alla olevan videon avulla. Laske kuinka monta kertaa valkopaitaiset pelaajat syöttävät palloa toisilleen. Videolla on ohjeet englanniksi.
 
-[![Link to video: https://www.youtube.com/watch?v=Ahg6qcgoay4](https://img.youtube.com/vi/Ahg6qcgoay4/mqdefault.jpg)](http://www.youtube.com/watch?v=Ahg6qcgoay4)
+[![Link to video: https://www.youtube.com/watch?v=vJG698U2Mvo](https://www.youtube.com/watch?v=vJG698U2Mvo/mqdefault.jpg)](https://www.youtube.com/watch?v=vJG698U2Mvo)
 
 Videolla tapahtuu myös jotain muuta, joka saattaa jäädä huomaamatta. Tätä ilmiötä kutsutaan havaintosokeudeksi, ja se selittyy sillä, että keskittyessämme johonkin tiettyyn tehtävään aivomme suodattavat pois tehtävän kannalta epärelevanttia tietoa. Emme kuitenkaan aina tiedä mikä tieto on itse asiassa olennaista ja mikä ei -- esimerkkinä tästä on opiskelu. Tietyn opiskelutehtävän keskittyminen johonkin tiettyyn osa-alueeseen voi johtaa siihen, että olennainen tieto suodattuu pois.
 

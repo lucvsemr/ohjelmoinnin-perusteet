@@ -234,7 +234,7 @@ Arvot muuttujille **result** ja **i** edellisestä esimerkistä on kirjoitettu t
 
 Edellisissä esimerkeissä, olemme keskittyneet tapauksiin joissa silmukka suoritetaan ennalta määrätyn määrän kertoja. Toistojen määrä voi perustua käyttäjän syötteeseen -- näissä tapauksissa for-silmukka on kätevä.
 
-Ohjelmissa joissa silmukka suoritetaan kunnes käyttäjä antaa tietyn syötteen, for-silmukka ei ole paras vaihtoehto. Tällaisissa tapauksissa, while-true silmukka jota harjoittelimme aiemmin toimii hyvin.
+Ohjelmissa joissa silmukka suoritetaan kunnes käyttäjä antaa tietyn syötteen, for-silmukka ei ole paras vaihtoehto. Tällaisissa tapauksissa, while-true silmukka jota harjoittelimme aiemmin toimii hyvin. 
 
 Katsotaan vähän monimutkaisempaa ohjelmaa, joka lukee kokonaislukuja käyttäjältä. Ohjelma käsittelee negatiiviset luvut virheellisinä, ja nolla lopettaa silmukan. Kun käyttäjä antaa nollan, ohjelma tulostaa kelvollisten lukujen summan, kelvollisten lukujen määrän ja virheellisten lukujen määrän.
 
