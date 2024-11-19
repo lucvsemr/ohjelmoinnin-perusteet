@@ -10,7 +10,7 @@ We've so far been practicing the fundamentals of the language, such as variables
 
 A programmer often becomes blind to their code. Let's familiarize ourselves with this effect with the aid of the short video below. Count how many times the white-shirted players pass the ball between each other. The video contains instructions in English.
 
-[![Link to video: https://www.youtube.com/watch?v=Ahg6qcgoay4](https://img.youtube.com/vi/Ahg6qcgoay4/mqdefault.jpg)](http://www.youtube.com/watch?v=Ahg6qcgoay4)
+[![Link to video: https://www.youtube.com/watch?v=vJG698U2Mvo](https://i3.ytimg.com/vi/vJG698U2Mvo/maxresdefault.jpg)](https://www.youtube.com/watch?v=vJG698U2Mvo)
 
 There's something else that also happens in the video that may go unnoticed at first. This effect is known as perceptual blindness, and is explained by the fact that as we focus on a specific task, our brains tend to filter out information that is irrelevant to that task. However, we don't always know what information is, in fact, essential and what is not - an example of this being when we study. Concentrating on a specific part of a study exercise can lead to relevant information being filtered out.
 
