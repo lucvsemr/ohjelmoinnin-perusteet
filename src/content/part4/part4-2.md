@@ -346,7 +346,8 @@ Matthew, age 12 years
 
 <Exercise title={'015 Main class'}>
 
-Implement the class `Main` described here.
+Implement the method `Main` in the class `Program` as described here.
+
 
 <Note>Do not modify the class Item.</Note>
 
@@ -372,7 +373,7 @@ Hot Potato (created at: 9.2.2020 13.48.21)
 
 <Exercise title={'016 Personal information'}>
 
-The program described here should be implemented in the class `Main`. 
+The program described here should be implemented in the method `Main` in class `Program`. 
 
 <Note>Do not modify the class PersonalInformation.</Note>
 
@@ -410,7 +411,7 @@ You can (and should) ask the identification number as a string.
 
 In the exercise template there is a ready-made class `TelevisionProgram`, representing a television program. The class has object variables name and duration, a constructor, and a few methods.
 
-Implement a program (in the `Main` class) that begins by reading television programs from the user. When the user inputs an empty string as the name of the program, the program stops reading programs.
+Implement a program (in the `Main` method) that begins by reading television programs from the user. When the user inputs an empty string as the name of the program, the program stops reading programs.
 
 After this the user is queried for a maximum duration. Once the maximum is given, the program proceeds to list all the programs whose duration is smaller or equal to the specified maximum duration.
 
