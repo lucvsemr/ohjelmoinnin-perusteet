@@ -349,7 +349,7 @@ Matthew, age 12 years
 
 <Exercise title={'015 Main class'}>
 
-Luo luokka `Main`, joka kuvaillaan alla.
+Täytä `Program`luokan metodi `Main`, joka kuvaillaan alla.
 
 <Note>Älä muokkaa luokkaa Item</Note>
 
@@ -376,7 +376,7 @@ Hot Potato (created at: 9.2.2020 13.48.21)
 
 <Exercise title={'016 Personal information'}>
 
-Tässä kuvailtu ohjelma tulee toteuttaa luokkaan `Main`.
+Tässä kuvailtu ohjelma tulee toteuttaa `Program`luokan metodiin `Main`.
 
 <Note>Älä muokkaa luokkaa PersonalInformation</Note>
 
@@ -416,7 +416,7 @@ Voit (ja kannattaa) pyytää henkilötunnusta merkkijonona.
 
 Tehtäväpohjassa on valmiina luokka `TelevisionProgram`, joka kuvaa televisio-ohjelmaa. Luokalla on oliomuuttujat `name` ja `duration`, konstruktori sekä muutama metodi.
 
-Luo ohjelma (`Main` luokassa) joka lukee käyttäjältä televisio-ohjelmia ja niiden pituuksia. Kun käyttäjä syöttää tyhjän merkkijonon, lukeminen lopetetaan.
+Luo ohjelma (`Main` metodissa) joka lukee käyttäjältä televisio-ohjelmia ja niiden pituuksia. Kun käyttäjä syöttää tyhjän merkkijonon, lukeminen lopetetaan.
 
 Tämän jälkeen käyttäjältä kysytään ohjelman maksimikestoa. Kun maksimikesto on saatu, ohjelma listaa kaikki ne ohjelmat, joiden kesto on pienempi tai yhtä suuri kuin maksimikesto.
 
